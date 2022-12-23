@@ -1,0 +1,13 @@
+.navbar{
+    border-bottom: 1px solid;
+    border-color: #00000031;
+    border-width: 1px;
+    color: #222C61;
+}
+
+.nav-link{
+    color: #222C61;
+}
+.header {
+    font-family: 'Kanit', cursive;
+}
