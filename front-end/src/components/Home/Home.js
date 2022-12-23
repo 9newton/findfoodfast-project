@@ -10,6 +10,7 @@ function HomePage() {
                 <div class="card-body">
                     This is some text within a card body.
                 </div>
+                <div>ajfafadfdf</div>
             </div>
         </div>
     )
