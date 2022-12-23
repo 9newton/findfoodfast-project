@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 function HomePage() {
     return (
         <div className="home">
-            <h1>EIEIEI</h1>
+            <h1>EIEIEI2</h1>
             <div class="card">
                 <div class="card-body">
                     This is some text within a card body.
