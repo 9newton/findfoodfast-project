@@ -8,6 +8,13 @@
 .nav-link{
     color: #222C61;
 }
-.header {
-    font-family: 'Kanit', cursive;
+.copyright{
+    color: #484848;
+    font-weight:lighter;
+}
+
+@media screen and (max-width: 480px) {
+    .img-logo{
+        width: 150px;
+    }
 }

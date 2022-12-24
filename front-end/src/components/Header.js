@@ -11,7 +11,7 @@ function Header() {
             <Navbar className="navbar" bg="white">
         <Container>
           <Navbar.Brand href="#home">
-            <img src={Logo}/>
+            <img className='img-logo' src={Logo}/>
           </Navbar.Brand>
           <Nav>
             <Nav.Link href="#home">หน้าหลัก</Nav.Link>

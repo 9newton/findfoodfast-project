@@ -1,0 +1,49 @@
+.content{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.card {
+    max-width: 1000px;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 0px 0px 30px #a5a5a54f;
+}
+
+.img {
+    width: 240px;
+    height: 350px;
+    border-radius: 20px;
+}
+.r{
+    text-align: left;
+}
+
+h2{
+    color: #222C61;
+}
+
+.FaMapMarkerAlt{
+    color: red;
+}
+
+@media screen and (max-width: 480px) {
+    .content-con {
+        flex-direction: column;
+    }
+    .content-con:nth-child(2) .content-r {
+        order: 1;
+    }
+    .card {
+        width: 300px;
+    }
+    .img {
+        height: 320px;
+    }
+    .r{
+        text-align: center;
+    }
+}
