@@ -7,9 +7,9 @@ import Report from './components/Report/Report';
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
+      <Home />
       {/* <Random /> */}
-      <Report />
+      {/* <Report /> */}
     </div>
   );
 }
