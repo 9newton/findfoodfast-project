@@ -9,6 +9,7 @@ let bannerData = {
     desc2: "บริเวณ มทร.ธัญบุรี"
 }
 
+
 function Banner() {
     return (
         <div className="banner-bg">
@@ -25,8 +26,9 @@ function Banner() {
                         {bannerData.desc2}
                     </h1>
                     <div className='py-4'>
-                    <a href="#" className="banner-btn"><FaSearch /> ค้นหาร้านอาหาร</a>
+                    
                     </div>
+                    <a href="#" className="banner-btn"><FaSearch /> ค้นหาร้านอาหาร</a>
                 </div>
             </div>
         </div>

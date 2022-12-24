@@ -1,21 +1,18 @@
 import React from 'react';
-import './Home.css';
+import './Random.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
-import Banner from './Banner';
 import Content from './Content';
-import Search from './Search';
 
-function HomePage() {
+
+function Random() {
     return (
-        <div className="home">
+        <div className="random">
           
           <div className='page-container'>
           <div className='content-wrap'>
             <Header />
-            <Banner />
-            <Search />
             <Content />
             </div>
             <Footer />
@@ -25,4 +22,4 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default Random;

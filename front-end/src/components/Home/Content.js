@@ -3,6 +3,11 @@ import './Content.css';
 import Img from '../../image/test1.jpg';
 import Card from 'react-bootstrap/Card';
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
+import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
+
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import Button from 'react-bootstrap/Button';
+
 
 function Content() {
     return (
@@ -16,8 +21,12 @@ function Content() {
         <img className='img' src={Img} alt=""/>
         </div>
         <div className='col-12 col-md-6 py-3 py-md-0 r'>
-        <h2>เครปไส้แตก</h2>
-            <div className='py-4'>
+        <span className='h3'>เครปไส้แตก </span>
+        <Button
+        className="mb-3 btn btn-link like">
+        <FaHeart />
+      </Button>
+            <div className='py-3'>
                     <p>
                     อาหารที่ขาย : เครป
                     </p>
@@ -33,6 +42,8 @@ function Content() {
                     <p>
                     <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
                     </p>
+                    <span className="tag">ของทานเล่น</span>
+                    <p className='link-menu'><a href='#' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
             </div>
         </div>
     </div>

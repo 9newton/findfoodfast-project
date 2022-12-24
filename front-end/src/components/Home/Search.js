@@ -11,7 +11,7 @@ function Search() {
 <div className="search">
         <h1 className='search-head'>วันนี้กินอะไรดี?</h1>
 
-        <div className='row input'>
+        <div className='input'>
             <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
         <InputGroup className="mb-3">
         <DropdownButton
@@ -27,7 +27,6 @@ function Search() {
       </div>
       </div>
 
-      <div className='row'>
       <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
       <Form.Select className='select' aria-label="Default select example">
       <option className='text-center'>เลือกซอย</option>
@@ -36,7 +35,7 @@ function Search() {
       <option className='text-center' value="3">ซอยซูม</option>
     </Form.Select>
         </div>
-      </div>
+      
     <div>
     <p className='btn text-danger reset py-3'><u>ล้างค่าทั้งหมด</u></p>
     </div>
