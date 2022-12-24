@@ -88,6 +88,18 @@
     text-align: center;
 }
 
+.link-reset{
+    text-align: center;
+}
+
+.reset{
+    color: #ff0000;
+}
+.reset:hover{
+    color: #ff0000;
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 767px){
     #input-group-dropdown-1{
         width: 90px;

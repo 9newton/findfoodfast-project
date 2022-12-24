@@ -37,7 +37,7 @@ function Search() {
         </div>
       
     <div>
-    <p className='btn text-danger reset py-3'><u>ล้างค่าทั้งหมด</u></p>
+    <p className='link-reset'><a href='#' className="btn btn-link reset">ล้างค่าทั้งหมด</a></p>
     </div>
     
 
