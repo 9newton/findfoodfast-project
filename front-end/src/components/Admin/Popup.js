@@ -1,50 +1,36 @@
-import React from 'react';
-import Popup from 'reactjs-popup';
+import "./Popup.css";
+import Modal from 'react-bootstrap/Modal';
+import React, { useState } from 'react';
+import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 
-<Popup
-      trigger={<button className="button"> Open Modal </button>}
-      modal
-      nested
-    >
-      {close => (
-        <div className="modal">
-          <button className="close" onClick={close}>
-            &times;
-          </button>
-          <div className="header"> Modal Title </div>
-          <div className="content">
-            {' '}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-            Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-            delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-            commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-            explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-          </div>
-          <div className="actions">
-            <Popup
-              trigger={<button className="button"> Trigger </button>}
-              position="top center"
-              nested
-            >
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                magni omnis delectus nemo, maxime molestiae dolorem numquam
-                mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                sapiente! Laudantium, aperiam doloribus. Odit, aut.
-              </span>
-            </Popup>
-            <button
-              className="button"
-              onClick={() => {
-                console.log('modal closed ');
-                close();
-              }}
-            >
-              close modal
-            </button>
-          </div>
-        </div>
-      )}
-    </Popup>
+function Popup() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <>
+      <div className='col-10 offset-1 col-md-6 offset-md-3 col-xl-2 offset-xl-5 mb-4 random-btn' onClick={() => setShow(true)}>
+        <FaPlus className="mb-1"/> เพิ่มร้านอาหาร
+      </div>
+
+      <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+            aaaaaaaaaaaaaaaa
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            bbbbbbbbbbb!
+          </p>
+        </Modal.Body>
+      </Modal>
+    </>
+  )
+};
+
+export default Popup;
