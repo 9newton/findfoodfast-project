@@ -1,0 +1,125 @@
+.content{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.card {
+    max-width: 1000px;
+    width: 600px;
+    height: 420px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 0px 0px 30px #a5a5a54f;
+}
+
+.img {
+    width: 240px;
+    height: 350px;
+    border-radius: 20px;
+}
+.r{
+    text-align: left;
+}
+
+h2{
+    color: #222C61;
+}
+
+.FaMapMarkerAlt{
+    color: red;
+}
+
+.tag{
+    background-color: #222C61;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    width: auto;
+    padding: 3px 10px;
+}
+
+.tag:hover{
+    background-color: #222C61;
+    border-radius: 20px;
+    color: white;
+}
+
+.tag:focus{
+    background-color: #222C61;
+    border-radius: 20px;
+    color: white;
+}
+
+.link-menu{
+    text-align: end;
+}
+
+.go-menu{
+    color: #222C61;
+}
+.go-menu:hover{
+    color: #222c61b4;
+}
+
+.outline-primary{
+    text-align: right;
+}
+.like{
+    color: #c1c1c1;
+    font-size: 20px;
+}
+.like:hover{
+    background-color: transparent;
+    color: #ff0000b4;
+}
+
+.like:focus{
+    background-color: transparent;
+    color: #ff0000b4;
+}
+
+@media screen and (max-width: 480px) {
+    .content-con {
+        flex-direction: column;
+    }
+    .content-con:nth-child(2) .content-r {
+        order: 1;
+    }
+    .card {
+        width: 370px;
+        height: 740px;
+    }
+    .img {
+        width: 300px;
+        height: 280px;
+    }
+    .r{
+        text-align: center;
+    }
+    .content{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+    .link-menu{
+        padding-top: 40px;
+        text-align: center;
+    }
+    .go-menu{
+        color: #222C61;
+        text-decoration: none;
+        border: solid #222C61;
+        border-width: 1px;
+        border-radius: 10px;
+    }
+    .go-menu:hover{
+        color: white;
+        background-color: #222C61;
+    }
+    .go-menu:focus{
+        color: white;
+        background-color: #222C61;
+    }
+    
+}

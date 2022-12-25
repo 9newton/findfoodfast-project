@@ -1,0 +1,72 @@
+.container {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.banner-bg {
+    width: 100%;
+    height: 600px;
+    background: url("../../image/banner4.png") no-repeat;
+    background-size: cover;
+    background-position:right;
+    overflow: hidden;
+}
+.banner-con {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    height: 500px;
+}
+.banner-text {
+    color: #222C61;
+    /* text-align: center; */
+}
+.banner-btn {
+    width: 265px;
+    background: transparent;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #222C61;
+    border: 2px solid transparent;
+    border-color: #222C61;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.banner-btn:hover {
+    border: 2px solid #222C61;
+    background: #222C61;
+    color: #fff;
+}
+
+.title{
+    font-size: 22px;
+    font-family: 'Poppins', cursive;
+    font-weight: 300;
+}
+
+@media screen and (max-width: 1279px) {
+    .banner-text {
+        padding: 0 2rem;
+    }
+    .banner-con {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+    }
+    .banner-bg{
+        background-position:left;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
