@@ -1,10 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import UserRoute from "./routes/UserRoute.js";
+import RestaurantRoute from "./routes/RestaurantRoute.js";
 
 const app = express();
-mongoose.connect('mongodb://localhost:27017/fullstack_db',{
+mongoose.connect('mongodb://localhost:27017/findfoodfastDB',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -14,6 +14,6 @@ db.once('open', () => console.log('Database Connected...'));
 
 app.use(cors());
 app.use(express.json());
-app.use(UserRoute);
+app.use(RestaurantRoute);
 
 app.listen(5000, ()=> console.log('Server up and running...'));

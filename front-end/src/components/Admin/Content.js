@@ -12,21 +12,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function Content() {
-  const [users, setUser] = useState([]);
+  const [restaurants, setRestaurant] = useState([]);
 
   useEffect(() => {
-    getUsers();
+    getRestaurant();
   }, []);
 
-  const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
-    setUser(response.data);
+  const getRestaurants = async () => {
+    const response = await axios.get("http://localhost:5000/restaurants");
+    setRestaurant(response.data);
   };
 
-  const deleteUser = async (id) => {
+  const deleteRestaurant = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
-      getUsers();
+      await axios.delete(`http://localhost:5000/restaurants/${id}`);
+      getRestaurants();
     } catch (error) {
       console.log(error);
     }
@@ -75,19 +75,27 @@ function Content() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
-                  <tr key={user._id}>
-                    <td>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.gender}</td>
+                {restaurants.map((restaurant, index) => (
+                  <tr key={restaurant._id}>
                     <td>
-                      <Link to={`edit/${user._id}`}>
+                      <Link to={`edit/${restaurant._id}`}>
                         Edit
-                      </Link></td>
+                      </Link>
+                    </td>
+                    <td>{index + 1}</td>
+                    <td>{restaurant.name}</td>
+                    <td>{restaurant.food}</td>
+                    <td>{restaurant.timeOpen}</td>
+                    <td>{restaurant.timeClose}</td>
+                    <td>{restaurant.holiday}</td>
+                    <td>{restaurant.ratePrice}</td>
+                    <td>{restaurant.contact}</td>
+                    <td>{restaurant.delivery}</td>
+                    <td>{restaurant.tag}</td>
+                    <td>{restaurant.alley}</td>
                     <td>
                       <button
-                        onClick={() => deleteUser(user._id)}
+                        onClick={() => deleteRestaurant(restaurant._id)}
                         className=""
                       >
                         Delete
