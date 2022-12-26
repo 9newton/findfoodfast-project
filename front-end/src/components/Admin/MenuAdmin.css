@@ -1,0 +1,87 @@
+h4{
+color:white;
+font-weight: 600;
+}
+.card-menu{
+    cursor: pointer;
+}
+.card-menu:hover{
+    box-shadow: 0px 0px 30px #00000050;
+    background: #222C61;
+    transition: 1s ease;
+}
+
+.card-menu-food{
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 50px;
+    background: #7E71E4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#7E71E4, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#7E71E4, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#7E71E4, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#7E71E4, white); /* Standard syntax (must be last) */
+}
+.card-menu-like{
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 50px;
+    background: #1C6392; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#1C6392, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#1C6392, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#1C6392, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#1C6392, white); /* Standard syntax (must be last) */
+}
+.card-menu-report{
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 50px;
+    background: #8CB7FB; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#8CB7FB, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#8CB7FB, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#8CB7FB, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#8CB7FB, white); /* Standard syntax (must be last) */
+}
+.card-menu-dashboard{
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 50px;
+    background: #C4A9A1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#C4A9A1, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#C4A9A1, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#C4A9A1, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#C4A9A1, white); /* Standard syntax (must be last) */
+}
+
+.img{
+    width: auto;
+    height: 200px;
+}
+
+.goto-web-btn {
+    width: 265px;
+    background: transparent;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #222C61;
+    border: 2px solid transparent;
+    border-color: #222C61;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.goto-web-btn:hover {
+    background-color: #222C61;
+    border: 2px solid #222C61;
+    transition: 1s;
+    color: #fff;
+}
+a{
+    text-decoration: none;
+}

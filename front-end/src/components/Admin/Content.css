@@ -12,10 +12,6 @@
     font-weight:300;
 }
 
-.form{
-    text-align: left;
-}
-
 .name{
     color: #222C61;
 }
@@ -46,6 +42,19 @@
     box-shadow: none;
 }
 
+.soi-btn{
+    border-color: #C1C1C1;
+    border-width: 1px;
+    border-radius: 20px;
+    height: 50px;
+}
+.soi-btn:focus{
+    color: #222C61;
+    border-color: #222C61;
+    border-width: 2px;
+    box-shadow: none;
+}
+
 .send-btn {
     width: 265px;
     background: #222C61;
@@ -67,11 +76,10 @@
     transition: 1s;
     color: #fff;
 }
-
-.card-body{
+.card{
+    max-width: 1980px;
     width: 100%;
 }
-
 th{
     color: #222C61;
     font-weight: 500;

@@ -7,6 +7,9 @@ import 'reactjs-popup/dist/index.css';
 import Popup from './Popup';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Content() {
   const [users, setUser] = useState([]);
@@ -31,32 +34,31 @@ function Content() {
 
   return (
     <div className="content">
-      <h1 className='content-head mb-4 mt-4 mt-md-0'>แอดมิน</h1>
-
-      <div className='col-10 offset-1 col-md-6 offset-md-3 col-xl-2 offset-xl-5 mb-4 form'>
-        <Form.Control
+      <h1 className='content-head mb-4 mt-4 mt-md-0'>เพิ่มร้านอาหารเลย!</h1>
+    <Container>
+      <Row>
+        <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 0 }} xl={{ span: 3, offset: 0 }} className="mt-md-4"><Form.Control
           type="text"
           id="inputPassword5"
           className='form-search'
           aria-describedby="passwordHelpBlock"
           placeholder='Search'
-        />
-      </div>
-
-      <div className='col-10 offset-1 col-xl-10 form'>
-        <Card className='card-body'>
-          <Card.Body>
-
-            <div className='select'>
-              <Form.Select className='tag-btn pointer' aria-label="Default select example">
+        /></Col>
+        <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 4 }} xl={{ span: 2, offset: 7 }} className="mt-md-4">
+        <Form.Select className='soi-btn pointer mt-2 mb-4 mt-md-0' aria-label="Default select example">
                 <option className='text-center'>เลือกซอย</option>
                 <option className='text-center' value="1">อาหารตามสั่ง</option>
                 <option className='text-center' value="2">ของทานเล่น</option>
                 <option className='text-center' value="3">เครื่องดื่ม</option>
               </Form.Select>
-            </div>
+        </Col>
+      </Row>
 
-            <Table responsive="sm text-center">
+      <Row>
+    <Col xs={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} className=" form">
+    <Card>
+      <Card.Body>
+      <Table responsive="sm text-center">
               <thead>
                 <tr>
                   <th>EDIT</th>
@@ -95,10 +97,13 @@ function Content() {
                 ))}
               </tbody>
             </Table>
-          </Card.Body>
-        </Card>
-        <Popup />
-      </div>
+      </Card.Body>
+    </Card>
+      </Col>
+      </Row>
+    <Popup />
+    </Container>
+  
     </div>
   )
 

@@ -4,6 +4,8 @@ import Home from './components/Home/Home';
 import Random from './components/Random/Random';
 import Report from './components/Report/Report';
 import Admin from './components/Admin/Admin';
+import Add from './components/Admin/Content';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
             <Route path="/random" element={<Random />} />
             <Route path="/report" element={<Report />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/add" element={<Add />} />
           </Route>
         </Routes>
       </BrowserRouter>

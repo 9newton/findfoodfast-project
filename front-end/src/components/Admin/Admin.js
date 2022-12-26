@@ -2,8 +2,8 @@ import React from 'react';
 import './Admin.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
-import Header from '../Header';
-import Content from './Content';
+import MenuAdmin from './MenuAdmin';
+
 
 
 function Admin() {
@@ -12,8 +12,7 @@ function Admin() {
           
           <div className='page-container'>
           <div className='content-wrap'>
-            <Header />
-            <Content />
+            <MenuAdmin />
             </div>
             <Footer />
           </div>

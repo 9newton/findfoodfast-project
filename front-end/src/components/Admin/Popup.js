@@ -5,6 +5,9 @@ import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function Popup() {
   const [show, setShow] = useState(false);
@@ -37,7 +40,7 @@ function Popup() {
         location,
         coverImg,
         menuImg,
-        gender
+        gender,
       });
       navigate("/");
     } catch (error) {
@@ -47,12 +50,19 @@ function Popup() {
 
   return (
     <>
-      <div
-        className="col-10 offset-1 col-md-6 offset-md-3 col-xl-2 offset-xl-5 mb-4 random-btn pointer"
-        onClick={() => setShow(true)}
-      >
-        <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
-      </div>
+      <Container>
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 4, offset: 8 }}
+            xl={{ span: 2, offset: 10 }}
+            className="mt-md-4 add-btn pointer"
+            onClick={() => setShow(true)}
+          >
+            <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
+          </Col>
+        </Row>
+      </Container>
 
       <Modal
         show={show}
@@ -120,7 +130,7 @@ function Popup() {
 
               <div className="col-12 col-md-6 col-xl-6">
                 <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                เวลาปิด
+                  เวลาปิด
                 </Form.Label>
                 <div className="control">
                   <Form.Select
@@ -259,7 +269,7 @@ function Popup() {
             </div>
 
             <div className="col-12 col-xl-12">
-            <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
                 Cover Image
               </Form.Label>
               <Form.Control
@@ -271,7 +281,7 @@ function Popup() {
             </div>
 
             <div className="col-12 col-xl-12">
-            <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
                 Menu Image
               </Form.Label>
               <Form.Control
@@ -282,11 +292,19 @@ function Popup() {
               />
             </div>
 
-            <div className="col-12 col-xl-12 mt-4 mb-2 add-con">
-              <button type="submit" className="add-btn">
-                เพิ่มร้านอาหาร
-              </button>
-            </div>
+            <Container>
+              <Row>
+                <Col
+                  xs={{ span: 12, offset: 0 }}
+                  md={{ span: 12, offset: 0 }}
+                  xl={{ span: 12, offset: 0 }}
+                  className="mt-md-4 add-btn pointer"
+                  onClick={() => setShow(true)}
+                >
+                  เพิ่มร้านอาหาร
+                </Col>
+              </Row>
+            </Container>
           </form>
         </Modal.Body>
       </Modal>
