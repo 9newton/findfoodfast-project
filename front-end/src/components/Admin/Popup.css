@@ -1,7 +1,12 @@
-.random-btn {
+*{
+    font-family: 'Kanit', cursive;
+}
+.popup-head{
+    color: #222C61;
+}
+.add-btn {
     width: 265px;
     background: #222C61;
-    display: inline-block;
     padding: .5rem 1rem;
     text-decoration: none;
     color: white;
@@ -14,9 +19,37 @@
     text-align: center;
     cursor: pointer;
 }
-.random-btn:hover {
+.add-btn:hover {
     border: 2px solid #222C61;
     opacity: 0.7;
     transition: 1s;
     color: #fff;
+}
+
+.add-con{
+    text-align: center;
+}
+
+.form-input{
+    border-color: #C1C1C1;
+    border-width: 2px;
+    border-radius: 20px;
+    height: 60px;
+}
+
+.form-input:focus{
+    color: #222C61;
+    border-color: #222C61;
+    box-shadow: none;
+}
+.select-btn{
+    border-color: #C1C1C1;
+    border-width: 2px;
+    border-radius: 20px;
+    height: 60px;
+}
+.select-btn:focus{
+    color: #222C61;
+    border-color: #222C61;
+    box-shadow: none;
 }

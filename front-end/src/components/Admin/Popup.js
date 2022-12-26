@@ -1,15 +1,16 @@
 import "./Popup.css";
-import Modal from 'react-bootstrap/Modal';
-import React, { useState } from 'react';
+import Modal from "react-bootstrap/Modal";
+import React, { useState } from "react";
 import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 function Popup() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("Male");
+  const [gender, setGender] = useState("เลือกซอย");
   const navigate = useNavigate();
 
   const saveUser = async (e) => {
@@ -28,7 +29,10 @@ function Popup() {
 
   return (
     <>
-      <div className='col-10 offset-1 col-md-6 offset-md-3 col-xl-2 offset-xl-5 mb-4 random-btn' onClick={() => setShow(true)}>
+      <div
+        className="col-10 offset-1 col-md-6 offset-md-3 col-xl-2 offset-xl-5 mb-4 random-btn"
+        onClick={() => setShow(true)}
+      >
         <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
       </div>
 
@@ -40,61 +44,69 @@ function Popup() {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            aaaaaaaaaaaaaaaa
+            <h4 className="popup-head">เพิ่มร้านอาหารเลย!</h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={saveUser}>
-            <div className="field">
-              <label className="label">Name</label>
+            <div className="col-12 col-xl-12">
+              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                ชื่อร้านอาหาร
+              </Form.Label>
+              <Form.Control
+                type="text"
+                className="form-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="ชื่อร้านอาหาร"
+              />
+            </div>
+
+            <div className="col-12 col-xl-12">
+              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                อาหารที่ขาย
+              </Form.Label>
+              <Form.Control
+                type="text"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="อาหารที่ขาย"
+              />
+            </div>
+
+            <div className="col-12 col-xl-12">
+              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                ซอย
+              </Form.Label>
               <div className="control">
-                <input
-                  type="text"
-                  className="input"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Name"
-                />
+                <Form.Select
+                  className="select-btn"
+                  aria-label="Default select example"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                >
+                  <option className="text-center" value="เลือกหมวดหมู่">เลือกซอย</option>
+                  <option className="text-center" value="Male">
+                    ซอยพร
+                  </option>
+                  <option className="text-center" value="Female">
+                    ซอยมาลี
+                  </option>
+                </Form.Select>
               </div>
             </div>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  type="text"
-                  className="input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Gender</label>
-              <div className="control">
-                <div className="select is-fullwidth">
-                  <select
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                  >
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className="field">
-              <div className="control">
-                <button type="submit" className="button is-success">
-                  Save
+
+            <div className="col-12 col-xl-12 mt-4 mb-2 add-con">
+                <button type="submit" className="add-btn">
+                  เพิ่มร้านอาหาร
                 </button>
-              </div>
             </div>
           </form>
         </Modal.Body>
       </Modal>
     </>
-  )
-};
+  );
+}
 
 export default Popup;
