@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Content.css';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import 'reactjs-popup/dist/index.css';
 import Popup from './Popup';
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Content() {
-  
+  const [users, setUser] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    const response = await axios.get("http://localhost:5000/users");
+    setUser(response.data);
+  };
+
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${id}`);
+      getUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="content">
       <h1 className='content-head mb-4 mt-4 mt-md-0'>แอดมิน</h1>
@@ -52,19 +73,26 @@ function Content() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                {users.map((user, index) => (
+                  <tr key={user._id}>
+                    <td>{index + 1}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.gender}</td>
+                    <td>
+                      <Link to={`edit/${user._id}`}>
+                        Edit
+                      </Link></td>
+                    <td>
+                      <button
+                        onClick={() => deleteUser(user._id)}
+                        className=""
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </Card.Body>
