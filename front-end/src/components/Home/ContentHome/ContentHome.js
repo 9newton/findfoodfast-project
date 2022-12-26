@@ -17,7 +17,7 @@ function Content() {
 
 <div className="row">
         <div className='col-12 col-md-6 l'>
-        <img className='img-cover' src={Img} alt=""/>
+        <img className='img-cover-show' src={Img} alt=""/>
         </div>
         <div className='col-12 col-md-6 py-3 py-md-0 r'>
         <span className='h3'>เครปไส้แตก </span>
