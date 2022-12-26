@@ -1,10 +1,10 @@
 import React from "react";
 import "./MenuAdmin.css";
 import Card from 'react-bootstrap/Card';
-import admin1 from "../../image/admin1.png";
-import admin2 from "../../image/admin2.png";
-import admin3 from "../../image/admin3.png";
-import admin4 from "../../image/admin4.png";
+import admin1 from "../../../image/admin1.png";
+import admin2 from "../../../image/admin2.png";
+import admin3 from "../../../image/admin3.png";
+import admin4 from "../../../image/admin4.png";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

@@ -11,22 +11,22 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function ContentAdmin() {
-  const [users, setUser] = useState([]);
+function Content() {
+  const [restaurants, setRestaurant] = useState([]);
 
   useEffect(() => {
-    getUsers();
+    getRestaurants();
   }, []);
 
-  const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
-    setUser(response.data);
+  const getRestaurants = async () => {
+    const response = await axios.get("http://localhost:5000/restaurants");
+    setRestaurant(response.data);
   };
 
-  const deleteUser = async (id) => {
+  const deleteRestaurant = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
-      getUsers();
+      await axios.delete(`http://localhost:5000/restaurants/${id}`);
+      getRestaurants();
     } catch (error) {
       console.log(error);
     }
@@ -47,9 +47,9 @@ function ContentAdmin() {
         <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 4 }} xl={{ span: 2, offset: 7 }} className="mt-md-4">
         <Form.Select className='soi-btn pointer mt-2 mb-4 mt-md-0' aria-label="Default select example">
                 <option className='text-center'>เลือกซอย</option>
-                <option className='text-center' value="1">ซอยพร</option>
-                <option className='text-center' value="2">ซอยมาลี</option>
-                <option className='text-center' value="3">ซอยอีสเทิร์น</option>
+                <option className='text-center' value="1">อาหารตามสั่ง</option>
+                <option className='text-center' value="2">ของทานเล่น</option>
+                <option className='text-center' value="3">เครื่องดื่ม</option>
               </Form.Select>
         </Col>
       </Row>
@@ -72,23 +72,30 @@ function ContentAdmin() {
                   <th>บริการส่ง</th>
                   <th>TAG</th>
                   <th>ซอย</th>
-                  <th>Location</th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
-                  <tr key={user._id}>
-                    <td>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>{user.food}</td>
-                    <td>{user.day}</td>
+                {restaurants.map((restaurant, index) => (
+                  <tr key={restaurant._id}>
                     <td>
-                      <Link to={`edit/${user._id}`}>
+                      <Link to={`edit/${restaurant._id}`}>
                         Edit
-                      </Link></td>
+                      </Link>
+                    </td>
+                    <td>{index + 1}</td>
+                    <td>{restaurant.name}</td>
+                    <td>{restaurant.food}</td>
+                    <td>{restaurant.timeOpen}</td>
+                    <td>{restaurant.timeClose}</td>
+                    <td>{restaurant.holiday}</td>
+                    <td>{restaurant.ratePrice}</td>
+                    <td>{restaurant.contact}</td>
+                    <td>{restaurant.delivery}</td>
+                    <td>{restaurant.tag}</td>
+                    <td>{restaurant.alley}</td>
                     <td>
                       <button
-                        onClick={() => deleteUser(user._id)}
+                        onClick={() => deleteRestaurant(restaurant._id)}
                         className=""
                       >
                         Delete
@@ -110,5 +117,4 @@ function ContentAdmin() {
 
 }
 
-export default ContentAdmin;
-
+export default Content;

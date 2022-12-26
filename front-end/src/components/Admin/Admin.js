@@ -2,7 +2,8 @@ import React from 'react';
 import './Admin.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
-import MenuAdmin from './MenuAdmin';
+import MenuAdmin from './AdminMenu/MenuAdmin';
+
 
 
 

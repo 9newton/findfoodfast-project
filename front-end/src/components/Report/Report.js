@@ -3,7 +3,8 @@ import './Report.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
-import ContentReport from './ContentReport';
+import ContentReport from './ContentReport/ContentReport';
+
 
 
 function Report() {

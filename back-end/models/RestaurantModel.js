@@ -15,7 +15,7 @@ const Restaurant = mongoose.Schema({
     }
     ,
     timeClose: {
-        type: time,
+        type: String,
         required: true
     }
     ,

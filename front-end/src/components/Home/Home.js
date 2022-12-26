@@ -3,9 +3,10 @@ import './Home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
-import Banner from './Banner';
-import ContentHome from './ContentHome';
-import Search from './Search';
+import Banner from './Banner/Banner';
+import Search from './Search/Search';
+import ContentHome from './ContentHome/ContentHome';
+
 
 function HomePage() {
     return (

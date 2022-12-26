@@ -2,7 +2,7 @@ import React from 'react';
 import './ContentReport.css';
 import Form from 'react-bootstrap/Form';
 
-function Content() {
+function ContentReport() {
     return (
        
 <div className="content">
@@ -29,4 +29,4 @@ function Content() {
     )
 }
 
-export default Content;
+export default ContentReport;

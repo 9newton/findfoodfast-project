@@ -1,9 +1,9 @@
 import React from 'react';
 import './ContentRandom.css';
 import Form from 'react-bootstrap/Form';
-import Img from '../../image/random.png';
+import Img from '../../../image/random.png';
 
-function Content() {
+function ContentRandom() {
     return (
        
 <div className="content">
@@ -30,4 +30,4 @@ function Content() {
     )
 }
 
-export default Content;
+export default ContentRandom;

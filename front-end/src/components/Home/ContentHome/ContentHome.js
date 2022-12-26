@@ -1,6 +1,6 @@
 import React from 'react';
 import './ContentHome.css';
-import Img from '../../image/test1.jpg';
+import Img from '../../../image/test1.jpg';
 import Card from 'react-bootstrap/Card';
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
@@ -42,7 +42,7 @@ function Content() {
                     <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
                     </p>
                     <span className="tag">ของทานเล่น</span>
-                    <p className='link-menu'><a href='#' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
+                    <p className='link-menu'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
             </div>
         </div>
     </div>

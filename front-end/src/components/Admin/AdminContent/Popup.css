@@ -1,0 +1,82 @@
+*{
+    font-family: 'Kanit', cursive;
+}
+.pointer{
+    cursor: pointer;
+}
+.popup-head{
+    color: #222C61;
+}
+.add-btn {
+    background: #222C61;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: white;
+    border: 2px solid transparent;
+    border-color: #222C61;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.add-btn:hover {
+    border: 2px solid #222C61;
+    opacity: 0.7;
+    transition: 1s;
+    color: #fff;
+}
+
+.add-con{
+    text-align: center;
+}
+
+.form-input{
+    border-color: #C1C1C1;
+    border-width: 1px;
+    border-radius: 20px;
+    height: 60px;
+}
+
+.form-input:focus{
+    color: #222C61;
+    border-color: #222C61;
+    border-width: 2px;
+    box-shadow: none;
+}
+.select-btn{
+    border-color: #C1C1C1;
+    border-width: 1px;
+    border-radius: 20px;
+    height: 60px;
+}
+.select-btn:focus{
+    color: #222C61;
+    border-color: #222C61;
+    border-width: 2px;
+    box-shadow: none;
+}
+
+.img-upload{
+    border-radius: 10px;
+}
+.goto-web-btn {
+    background: transparent;
+    text-decoration: none;
+    color: #222C61;
+    border: 2px solid transparent;
+    border-color: #222C61;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.goto-web-btn:hover {
+    background-color: #222C61;
+    border: 2px solid #222C61;
+    transition: 1s;
+    color: #fff;
+}
