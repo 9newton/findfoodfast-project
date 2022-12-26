@@ -17,7 +17,7 @@ function Header() {
       <div className="container">
         <div className="header-con">
           <div className="logo-container">
-            <a href="/">
+            <a href="/admin">
               <img className="img-logo" src={Logo} />
             </a>
           </div>

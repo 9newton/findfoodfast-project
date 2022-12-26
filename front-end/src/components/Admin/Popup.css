@@ -1,6 +1,9 @@
 *{
     font-family: 'Kanit', cursive;
 }
+.pointer{
+    cursor: pointer;
+}
 .popup-head{
     color: #222C61;
 }
@@ -32,7 +35,7 @@
 
 .form-input{
     border-color: #C1C1C1;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 20px;
     height: 60px;
 }
@@ -40,16 +43,22 @@
 .form-input:focus{
     color: #222C61;
     border-color: #222C61;
+    border-width: 2px;
     box-shadow: none;
 }
 .select-btn{
     border-color: #C1C1C1;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 20px;
     height: 60px;
 }
 .select-btn:focus{
     color: #222C61;
     border-color: #222C61;
+    border-width: 2px;
     box-shadow: none;
+}
+
+.img-upload{
+    border-radius: 10px;
 }

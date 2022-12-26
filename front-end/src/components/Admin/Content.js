@@ -37,7 +37,7 @@ function Content() {
         <Form.Control
           type="text"
           id="inputPassword5"
-          className='form-name'
+          className='form-search'
           aria-describedby="passwordHelpBlock"
           placeholder='Search'
         />
@@ -48,7 +48,7 @@ function Content() {
           <Card.Body>
 
             <div className='select'>
-              <Form.Select className='tag-btn' aria-label="Default select example">
+              <Form.Select className='tag-btn pointer' aria-label="Default select example">
                 <option className='text-center'>เลือกซอย</option>
                 <option className='text-center' value="1">อาหารตามสั่ง</option>
                 <option className='text-center' value="2">ของทานเล่น</option>
