@@ -3,7 +3,7 @@ import './Random.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
-import Content from './Content';
+import ContentRandom from './ContentRandom';
 
 
 function Random() {
@@ -13,7 +13,7 @@ function Random() {
           <div className='page-container'>
           <div className='content-wrap'>
             <Header />
-            <Content />
+            <ContentRandom />
             </div>
             <Footer />
           </div>

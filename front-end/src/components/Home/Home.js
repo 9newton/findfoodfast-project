@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
 import Banner from './Banner';
-import Content from './Content';
+import ContentHome from './ContentHome';
 import Search from './Search';
 
 function HomePage() {
@@ -16,7 +16,7 @@ function HomePage() {
             <Header />
             <Banner />
             <Search />
-            <Content />
+            <ContentHome />
             </div>
             <Footer />
           </div>

@@ -208,7 +208,7 @@ function Popup() {
             <div className="row">
               <div className="col-12 col-md-6 col-xl-6">
                 <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                  Tag
+                  หมวดหมู่อาหาร
                 </Form.Label>
                 <div className="control">
                   <Form.Select
@@ -218,7 +218,7 @@ function Popup() {
                     onChange={(e) => setTag(e.target.value)}
                   >
                     <option className="text-center" value="เลือกหมวดหมู่">
-                      เลือกTag
+                      เลือกหมวดหมู่
                     </option>
                     <option className="text-center" value="Male">
                       ของทานเล่น

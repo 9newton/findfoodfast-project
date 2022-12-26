@@ -3,7 +3,7 @@ import './Report.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from '../Footer';
 import Header from '../Header';
-import Content from './Content';
+import ContentReport from './ContentReport';
 
 
 function Report() {
@@ -13,7 +13,7 @@ function Report() {
           <div className='page-container'>
           <div className='content-wrap'>
             <Header />
-            <Content />
+            <ContentReport />
             </div>
             <Footer />
           </div>
