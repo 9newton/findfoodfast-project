@@ -26,7 +26,6 @@ function Popup() {
   // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
 
-
   const saveRestaurant = async (e) => {
     e.preventDefault();
     try {
@@ -155,20 +154,96 @@ function Popup() {
             </div>
 
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                วันหยุด
-              </Form.Label>
-              <Form.Control
-                type="text"
-                className="form-input"
-                value={holiday}
-                onChange={(e) => setHoliday(e.target.value)}
-                placeholder="วันหยุด"
-              />
+              <Form>
+                {["checkbox"].map((type) => (
+                  <div key={`inline-${type}`} className="mb-3">
+                    <Form.Label
+                      className="name h5 mt-4"
+                      htmlFor="inputPassword5"
+                    >
+                      วันหยุด
+                    </Form.Label>
+                    <div className="mt-2">
+                    <Form.Check
+                      inline
+                      label="จ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="อ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="พ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="พฤ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ศ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ส."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="อา."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ไม่มี"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={holiday}
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                ))}
+              </Form>
             </div>
 
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-2" htmlFor="inputPassword5">
                 เรทราคา
               </Form.Label>
               <Form.Control
@@ -182,56 +257,207 @@ function Popup() {
 
             <div className="col-12 col-xl-12">
               <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                ช่องทางติดต่อ
+                ช่องทางการติดต่อ
               </Form.Label>
               <Form.Control
                 type="text"
                 className="form-input"
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
-                placeholder="ช่องทางติดต่อ"
+                placeholder="เบอร์โทรศัพท์"
+              />
+            </div>
+
+            <div className="col-12 col-xl-12 mt-3">
+              <Form.Control
+                type="text"
+                className="form-input"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                placeholder="Line"
+              />
+            </div>
+
+            <div className="col-12 col-xl-12 mt-3">
+              <Form.Control
+                type="text"
+                className="form-input"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                placeholder="Facebook"
               />
             </div>
 
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                บริการส่ง
-              </Form.Label>
-              <Form.Control
-                type="text"
-                className="form-input"
-                value={delivery}
-                onChange={(e) => setDelivery(e.target.value)}
-                placeholder="บริการส่ง"
-              />
+            <Form>
+                {["checkbox"].map((type) => (
+                  <div key={`inline-${type}`} className="mb-3">
+                    <Form.Label
+                      className="name h5 mt-4"
+                      htmlFor="inputPassword5"
+                    >
+                      บริการส่ง
+                    </Form.Label>
+                    <div className="mt-2">
+                    <Form.Check
+                      inline
+                      label="LINEMAN"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="GRAB"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="Robinhood"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="Shopee"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="Foodpanda"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ร้านส่งเอง"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ไม่มีส่ง"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={delivery}
+                      onChange={(e) => setDelivery(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                ))}
+              </Form>
             </div>
 
-            <div className="row">
-              <div className="col-12 col-md-6 col-xl-6">
-                <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
-                  Tag
-                </Form.Label>
-                <div className="control">
-                  <Form.Select
-                    className="select-btn"
-                    aria-label="Default select example"
-                    value={tag}
-                    onChange={(e) => setTag(e.target.value)}
-                  >
-                    <option className="text-center" value="เลือกหมวดหมู่">
-                      เลือกTag
-                    </option>
-                    <option className="text-center" value="ของทานเล่น">
-                      ของทานเล่น
-                    </option>
-                    <option className="text-center" value="อาหารตามสั่ง">
-                      อาหารตามสั่ง
-                    </option>
-                  </Form.Select>
-                </div>
-              </div>
+            <div className="col-12 col-xl-12">
+            <Form>
+                {["checkbox"].map((type) => (
+                  <div key={`inline-${type}`} className="mb-3">
+                    <Form.Label
+                      className="name h5 mt-4"
+                      htmlFor="inputPassword5"
+                    >
+                      หมวดหมู่
+                    </Form.Label>
+                    <div className="mt-2">
+                    <Form.Check
+                      inline
+                      label="อาหารจานเดียว"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ก๋วยเตี๋ยว"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="สเต็ก"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="หมูกะทะ"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ชาบู"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ของทานเล่น"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ของหวาน"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="เครื่องดื่ม"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                ))}
+              </Form>
+            </div>
 
-              <div className="col-12 col-md-6 col-xl-6">
+              <div className="col-12 col-md-12 col-xl-12">
                 <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
                   ซอย
                 </Form.Label>
@@ -254,7 +480,6 @@ function Popup() {
                   </Form.Select>
                 </div>
               </div>
-            </div>
 
             <div className="col-12 col-xl-12">
               <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
@@ -300,11 +525,10 @@ function Popup() {
                   md={{ span: 12, offset: 0 }}
                   xl={{ span: 12, offset: 0 }}
                   onClick={() => setShow(true)}
+                  className="mt-md-4 add-btn pointer"
+                  type="submit"
                 >
-                  <button type="submit" className="mt-md-4 add-btn pointer"
->
                     เพิ่มร้านอาหาร
-                  </button>
                 </Col>
               </Row>
             </Container>
