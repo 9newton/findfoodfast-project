@@ -16,14 +16,14 @@ import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 function ContentRestaurant() {
   return (
     <div className="content-restaurant">
-      <h1 className="content-head mb-4 mt-0 mt-md-0">เครปไส้แตก</h1>
+      <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
       <Container>
         <Row>
           <Col
             xs={{ span: 12, offset: 0 }}
             md={{ span: 12, offset: 0 }}
             xl={{ span: 8, offset: 2 }}
-            xxl={{ span: 6, offset: 3 }}
+            xxl={{ span: 8, offset: 2 }}
             className="mt-4 form"
           >
             <Card className="card-restaurant">
@@ -38,64 +38,77 @@ function ContentRestaurant() {
                   >
                     <img className="img-cover" src={ImgCover} alt="" />
                   </Col>
+
                   <Col
-                    xs={{ span: 6, offset: 0 }}
-                    md={{ span: 3, offset: 0 }}
-                    xl={{ span: 3, offset: 0 }}
+                    xs={{ span: 12, offset: 0 }}
+                    md={{ span: 8, offset: 0 }}
+                    xl={{ span: 8, offset: 0 }}
+                    xxl={{ span: 8, offset: 0 }}
                     className=" form"
                   >
-                    <div className="mt-3 l">
-                      <p className="heading-name">อาหารที่ขาย</p>
-                      <p className="description">เครป</p>
-                      <p className="heading-name">เวลาเปิด - ปิด</p>
-                      <p className="description">17:00 - 22:00 น.</p>
-                      <p className="heading-name">วันหยุดของร้าน</p>
-                      <p className="description">เปิดทุกวัน</p>
-                      <p className="heading-name">เรทราคา</p>
-                      <p className="description">40 - 100 บาท</p>
-                      {/* <span className="tag mx-1">ของทานเล่น</span><span className="tag">เครื่องดื่ม</span> */}
-                    </div>
-                  </Col>
-                  <Col
-                    xs={{ span: 6, offset: 0 }}
-                    md={{ span: 3, offset: 0 }}
-                    xl={{ span: 3, offset: 0 }}
-                    className=" form"
-                  >
-                    <div className="mt-3">
-                      <p className="heading-name">ช่องทางติดต่อ</p>
-                      <p className="description">
-                        <FaPhone className="heading-name icon-call mb-1" />{" "}
-                        0984781350
-                      </p>
-                      <p className="description">
-                        <FaLine className="heading-name icon-line mb-1" /> -
-                      </p>
-                      <p className="description">
-                        <FaFacebook className="heading-name icon-fb mb-1" />{" "}
-                        เครปไส้แตก
-                      </p>
-                      <p className="heading-name">บริการส่ง</p>
-                      <p className="description">
-                        ทางร้านส่งเอง, Foodpanda, Lineman
-                      </p>
-                      <p className="heading-name">
-                        <FaMapMarkerAlt className="text-danger" /> ซอยพรธิสาร
-                      </p>
-                    </div>
-                  </Col>
-                  {/* <Col
-                    xs={{ span: 6, offset: 0 }}
-                    md={{ span: 1, offset: 0 }}
-                    xl={{ span: 2, offset: 0 }}
-                    className=" form"
-                  >
-                    <div className="mt-2">
-                      <Button className="btn btn-link like">
-                        <FaHeart />LIKE
+                    <div className="mt-4 offset-4 offset-md-0">
+                      <span className="h2">เครปไส้แตก</span>
+                      <Button className="mb-3 btn btn-link like">
+                        <FaHeart />
                       </Button>
                     </div>
-                  </Col> */}
+
+                    <Row>
+                      <Col
+                        xs={{ span: 6, offset: 0 }}
+                        md={{ span: 5, offset: 0 }}
+                        xl={{ span: 6, offset: 0 }}
+                        xxl={{ span: 6, offset: 0 }}
+                        className=" form"
+                      >
+                        <div className="mt-4 mb-5 l">
+                          <p className="heading-name">อาหารที่ขาย</p>
+                          <p className="description">เครป</p>
+                          <p className="heading-name">เวลาเปิด - ปิด</p>
+                          <p className="description">17:00 - 22:00 น.</p>
+                          <p className="heading-name">วันหยุดของร้าน</p>
+                          <p className="description">เปิดทุกวัน</p>
+                          <p className="heading-name">เรทราคา</p>
+                          <p className="description">40 - 100 บาท</p>
+                        </div>
+                      </Col>
+
+                      <Col
+                        xs={{ span: 6, offset: 0 }}
+                        md={{ span: 7, offset: 0 }}
+                        xl={{ span: 6, offset: 0 }}
+                        xxl={{ span: 6, offset: 0 }}
+                        className=" form"
+                      >
+                        <div className="mt-4 mb-4">
+                          <p className="heading-name">ช่องทางติดต่อ</p>
+                          <p className="description">
+                            <FaPhone className="heading-name icon-call mb-1" />{" "}
+                            0984781350
+                          </p>
+                          <p className="description">
+                            <FaLine className="heading-name icon-line mb-1" /> -
+                          </p>
+                          <p className="description">
+                            <FaFacebook className="heading-name icon-fb mb-1" />{" "}
+                            เครปไส้แตก
+                          </p>
+                          <p className="heading-name">บริการส่ง</p>
+                          <p className="description">
+                            ทางร้านส่งเอง, Foodpanda, Lineman
+                          </p>
+                          <div className="mt-4 offset-md-0">
+                            <a href="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
+                              <span className="heading-location">
+                                <FaMapMarkerAlt className="text-danger" />{" "}
+                                ซอยพรธิสาร
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
                 </Row>
               </Card.Body>
             </Card>

@@ -41,7 +41,7 @@ function ContentRestaurant() {
                 xs={{ span: 12, offset: 0 }}
                 md={{ span: 12, offset: 0 }}
                 xl={{ span: 8, offset: 0 }}
-                xxl={{ span: 4, offset: 3 }}
+                xxl={{ span: 4, offset: 2 }}
                 className="form"
               >
                 <h4 className="content-head">เมนู</h4>
@@ -52,42 +52,12 @@ function ContentRestaurant() {
                 xs={{ span: 12, offset: 0 }}
                 md={{ span: 12, offset: 0 }}
                 xl={{ span: 12, offset:0 }}
-                xxl={{ span: 6, offset: 3 }}
+                xxl={{ span: 8, offset: 2 }}
                 className="form"
               >
             <ImageGallery items={images} />
             </Col>
             </Row>
-            {/* <Row>
-              <Col
-                xs={{ span: 4, offset: 0 }}
-                md={{ span: 4, offset: 0 }}
-                xl={{ span: 4, offset:0 }}
-                xxl={{ span: 2, offset: 3 }}
-                className="form"
-              >
-                <img className="img-menu" src={ImgCover} alt="" />
-              </Col>
-              <Col
-                xs={{ span: 4, offset: 0 }}
-                md={{ span: 4, offset: 0 }}
-                xl={{ span: 4, offset: 0 }}
-                xxl={{ span: 2, offset: 0 }}
-                className="form"
-              >
-                <img className="img-menu" src={ImgCover} alt="" />
-              </Col>
-
-              <Col
-                xs={{ span: 4, offset: 0 }}
-                md={{ span: 4, offset: 0 }}
-                xl={{ span: 4, offset: 0 }}
-                xxl={{ span: 2, offset: 0 }}
-                className="form"
-              >
-                <img className="img-menu" src={ImgCover} alt="" />
-              </Col>
-            </Row> */}
           </Col>
         </Row>
       </Container>
