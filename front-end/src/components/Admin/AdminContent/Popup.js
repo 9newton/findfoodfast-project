@@ -458,7 +458,7 @@ function Popup() {
             </div>
 
               <div className="col-12 col-md-12 col-xl-12">
-                <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                <Form.Label className="name h5 mt-2" htmlFor="inputPassword5">
                   ซอย
                 </Form.Label>
                 <div className="control">
