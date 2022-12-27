@@ -13,7 +13,8 @@ function Content() {
        
 <div className="content">
 <Card className='card-show-food'>
-<Card.Body className='card-body'>
+<a href='/home/restaurant'>
+    <Card.Body className='card-body-show'>
 
 <div className="row">
         <div className='col-12 col-md-6 l'>
@@ -26,29 +27,31 @@ function Content() {
         <FaHeart />
       </Button>
             <div className='py-3'>
-                    <p>
-                    อาหารที่ขาย : เครป
+                    <p className='text-dark'>
+                    อาหารที่ขาย : <span className='font-blue'>เครป</span>
                     </p>
-                    <p>
-                    เวลาเปิด - ปิด : 17:00 - 22:00 น.
+                    <p className='text-dark'>
+                    เวลาเปิด - ปิด : <span className='font-blue'>17:00 - 22:00 น.</span>
                     </p>
-                    <p>
-                    วันหยุดของร้าน : เปิดทุกวัน
+                    <p className='text-dark'>
+                    วันหยุดของร้าน : <span className='font-blue'>เปิดทุกวัน</span>
                     </p>
-                    <p>
-                    เรทราคา : 40 - 100 บาท
+                    <p className='text-dark'>
+                    เรทราคา : <span className='font-blue'>40 - 100 บาท</span>
                     </p>
-                    <p>
+                    <p className='font-blue'>
                     <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
                     </p>
-                    <span className="tag">ของทานเล่น</span>
+                    <span className="tag mx-1">ของทานเล่น</span><span className="tag">เครื่องดื่ม</span>
                     <p className='link-menu'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
             </div>
         </div>
     </div>
     
     </Card.Body>
+    </a>
     </Card>
+    
     </div>
     )
 }

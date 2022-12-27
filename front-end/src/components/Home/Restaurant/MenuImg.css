@@ -1,0 +1,10 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.img-menu{
+    width: 100%;
+    height: 80%;
+}
+.img-menu2{
+    width: 100%;
+    height:38.4%;
+}
