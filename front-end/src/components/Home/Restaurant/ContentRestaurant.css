@@ -58,3 +58,9 @@
         padding-left: 1rem;
     }
 }
+
+@media screen and (min-width:1600px) {
+    .img-cover{
+        max-height: 470px;
+    }
+}

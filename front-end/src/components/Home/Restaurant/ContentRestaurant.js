@@ -33,7 +33,7 @@ function ContentRestaurant() {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 4, offset: 0 }}
                     xl={{ span: 4, offset: 0 }}
-                    xxl={{ span: 4, offset: 0 }}
+                    xxl={{ span: 5, offset: 0 }}
                     className=" form"
                   >
                     <img className="img-cover" src={ImgCover} alt="" />
@@ -43,7 +43,7 @@ function ContentRestaurant() {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 8, offset: 0 }}
                     xl={{ span: 8, offset: 0 }}
-                    xxl={{ span: 8, offset: 0 }}
+                    xxl={{ span: 7, offset: 0 }}
                     className=" form"
                   >
                     <div className="mt-4 offset-4 offset-md-0">
