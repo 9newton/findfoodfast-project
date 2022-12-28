@@ -74,6 +74,9 @@
     .content-bottom{
         font-size: 18px;
     }
+    .content{
+        padding-top: 3rem;
+    }
 }
 
 

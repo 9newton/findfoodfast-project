@@ -12,6 +12,7 @@ let bannerData = {
 
 function Banner() {
     return (
+        <div className='banner'>
         <div className="banner-bg">
         <div className="container">
             <div className="banner-con">
@@ -32,6 +33,7 @@ function Banner() {
                 </div>
             </div>
         </div>
+    </div>
     </div>
     )
 }

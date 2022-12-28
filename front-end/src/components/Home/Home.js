@@ -14,13 +14,15 @@ function HomePage() {
           
           <div className='page-container'>
           <div className='content-wrap'>
+            <div className='fixed-top'>
             <Header />
+            </div>
             <Banner />
             <Search />
             <ContentHome />
             </div>
             <Footer />
-          </div>
+            </div>
         </div>
         
     )

@@ -99,13 +99,13 @@ h2{
     .content-con:nth-child(2) .content-r {
         order: 1;
     }
-    .card {
+    .card-show-food {
         width: 370px;
-        height: 740px;
+        height: auto;
     }
-    .img {
+    .img-cover-show {
         width: 300px;
-        height: 280px;
+        height: auto;
     }
     .r{
         text-align: center;

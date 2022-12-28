@@ -13,7 +13,9 @@ function Report() {
           
           <div className='page-container'>
           <div className='content-wrap'>
+          <div className='fixed-top'>
             <Header />
+            </div>
             <ContentReport />
             </div>
             <Footer />

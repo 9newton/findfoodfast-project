@@ -14,7 +14,9 @@ function Random() {
           
           <div className='page-container'>
           <div className='content-wrap'>
+            <div className='fixed-top'>
             <Header />
+            </div>
             <ContentRandom />
             </div>
             <Footer />

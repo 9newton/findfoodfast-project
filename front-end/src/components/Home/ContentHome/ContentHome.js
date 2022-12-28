@@ -26,7 +26,7 @@ function Content() {
         className="mb-3 btn btn-link like">
         <FaHeart />
       </Button>
-            <div className='py-3'>
+            <div className='py-0'>
                     <p className='text-dark'>
                     อาหารที่ขาย : <span className='font-blue'>เครป</span>
                     </p>
@@ -43,7 +43,7 @@ function Content() {
                     <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
                     </p>
                     <span className="tag mx-1">ของทานเล่น</span><span className="tag">เครื่องดื่ม</span>
-                    <p className='link-menu'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
+                    <p className='link-menu mt-0 mb-0 mt-md-4'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
             </div>
         </div>
     </div>
