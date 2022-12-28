@@ -13,7 +13,7 @@ function Header() {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <div className="header">
+    <div className="header fixed-top">
       <div className="container">
         <div className="header-con">
           <div className="logo-container">
