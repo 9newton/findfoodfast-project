@@ -1,9 +1,12 @@
+.content-random{
+    padding-top: 8rem;
+}
 .content-head{
     color: #222C61;
     font-weight:800;
 }
 
-.content-bottom{
+.content-wording{
     color: #222C61;
     font-size: 30px;
     font-weight:300;
@@ -60,8 +63,8 @@
     .img-random{
         width: 100%;
     }
-    .content-bottom{
-        font-size: 18px;
+    .content-wording{
+        font-size: 20px;
     }
 }
 

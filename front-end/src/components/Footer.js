@@ -10,9 +10,9 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col-xs={12} col-md">
-                    <img src={Logo}/>
+                    <a href='/'><img src={Logo}/></a>
                         <ul className='list-unstyled'>
-                            <span><FaFacebook /></span>
+                            <a href='https://www.facebook.com/FFFKlong6' className='icon-facebook'><span><FaFacebook /></span></a>
                         </ul>
                     </div>
 
@@ -26,7 +26,7 @@ function Footer() {
                     <div className="col-xs={12} col-md">
                         <h5>ช่วยเหลือ</h5>
                         <ul className='list-unstyled'>
-                            <li href="#">แจ้งปัญหา</li>
+                            <a href='/report' className='a'><li href="#">แจ้งปัญหา</li></a>
                             {/* <Router>
                             <Link style={{textDecoration: 'none'}} to="/">
                                 Home

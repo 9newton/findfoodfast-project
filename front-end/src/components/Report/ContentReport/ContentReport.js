@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 function ContentReport() {
     return (
        
-<div className="content">
+<div className="content-report">
         <h1 className='content-head mb-4 mt-4 mt-md-0'>แจ้งปัญหาอะไรดี?</h1>
 
     <div className='col-10 offset-1 col-xl-4 offset-xl-4 form'>

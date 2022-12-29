@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 function MenuAdmin() {
   return (
-    <div className="content">
+    <div className="content-admin">
       <h1 className="content-head mb-5">จัดการอะไรดี?</h1>
 
       <Container>

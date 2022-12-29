@@ -22,8 +22,8 @@ function ContentRestaurant() {
           <Col
             xs={{ span: 12, offset: 0 }}
             md={{ span: 12, offset: 0 }}
-            xl={{ span: 8, offset: 2 }}
-            xxl={{ span: 8, offset: 2 }}
+            xl={{ span: 10, offset: 1 }}
+            xxl={{ span: 10, offset: 1 }}
             className="mt-4 form"
           >
             <Card className="card-restaurant">
@@ -33,7 +33,7 @@ function ContentRestaurant() {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 4, offset: 0 }}
                     xl={{ span: 4, offset: 0 }}
-                    xxl={{ span: 5, offset: 0 }}
+                    xxl={{ span: 4, offset: 0 }}
                     className=" form"
                   >
                     <img className="img-cover" src={ImgCover} alt="" />
@@ -42,12 +42,12 @@ function ContentRestaurant() {
                   <Col
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 8, offset: 0 }}
-                    xl={{ span: 8, offset: 0 }}
-                    xxl={{ span: 7, offset: 0 }}
+                    xl={{ span: 6, offset: 0 }}
+                    xxl={{ span: 6, offset: 0 }}
                     className=" form"
                   >
-                    <div className="mt-4 offset-4 offset-md-0">
-                      <span className="h2">เครปไส้แตก</span>
+                    <div className="mt-4 xs offset-md-0">
+                      <span className="h3">เครปไส้แตก</span>
                       <Button className="mb-3 btn btn-link like">
                         <FaHeart />
                       </Button>
@@ -57,8 +57,8 @@ function ContentRestaurant() {
                       <Col
                         xs={{ span: 6, offset: 0 }}
                         md={{ span: 5, offset: 0 }}
-                        xl={{ span: 6, offset: 0 }}
-                        xxl={{ span: 6, offset: 0 }}
+                        xl={{ span: 7, offset: 0 }}
+                        xxl={{ span: 7, offset: 0 }}
                         className=" form"
                       >
                         <div className="mt-4 mb-5 l">
@@ -76,8 +76,8 @@ function ContentRestaurant() {
                       <Col
                         xs={{ span: 6, offset: 0 }}
                         md={{ span: 7, offset: 0 }}
-                        xl={{ span: 6, offset: 0 }}
-                        xxl={{ span: 6, offset: 0 }}
+                        xl={{ span: 5, offset: 0 }}
+                        xxl={{ span: 5, offset: 0 }}
                         className=" form"
                       >
                         <div className="mt-4 mb-4">
@@ -97,9 +97,9 @@ function ContentRestaurant() {
                           <p className="description">
                             ทางร้านส่งเอง, Foodpanda, Lineman
                           </p>
-                          <div className="mt-4 offset-md-0">
+                          <div className="mt-2 offset-md-0 location-md">
                             <a href="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
-                              <span className="heading-location">
+                              <span className="heading-location p">
                                 <FaMapMarkerAlt className="text-danger" />{" "}
                                 ซอยพรธิสาร
                               </span>
@@ -108,6 +108,19 @@ function ContentRestaurant() {
                         </div>
                       </Col>
                     </Row>
+                  </Col>
+                  <Col
+                    xs={{ span: 12, offset: 0 }}
+                    md={{ span: 2, offset: 0 }}
+                    xl={{ span: 2, offset: 0 }}
+                    xxl={{ span: 2, offset: 0 }}
+                    className="location-xl"
+                  >
+                    <div className="mt-5 offset-4 offset-md-0">
+                      <span className="heading-location p">
+                        <FaMapMarkerAlt className="text-danger" /> ซอยพรธิสาร
+                      </span>
+                    </div>
                   </Col>
                 </Row>
               </Card.Body>

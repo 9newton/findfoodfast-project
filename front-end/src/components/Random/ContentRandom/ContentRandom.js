@@ -6,7 +6,7 @@ import Img from '../../../image/random.png';
 function ContentRandom() {
     return (
        
-<div className="content">
+<div className="content-random">
         <h1 className='content-head mb-4 mt-4 mt-md-0'>ไม่รู้จะกินอะไรดี?</h1>
 
     <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
@@ -23,7 +23,7 @@ function ContentRandom() {
         </div>
         <img className='img-random' src={Img} alt=""/>
         <div>
-            <p className='content-bottom mt-5'>กด”ปุ่มสุ่มร้านอาหาร”เพื่อดูว่าวันนี้จะกินอะไรดี</p>
+            <p className='content-wording mt-5'>กด”ปุ่มสุ่มร้านอาหาร”เพื่อดูว่าวันนี้จะกินอะไรดี</p>
         </div>
         
     </div>

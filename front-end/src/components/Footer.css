@@ -18,3 +18,12 @@ li{
     font-family: 'Poppins', cursive;
     font-weight: 300;
 }
+.icon-facebook{
+    font-size: 30px;
+}
+.icon-facebook:hover{
+    opacity: 0.7;
+}
+.a:hover{
+    opacity: 0.7;
+}

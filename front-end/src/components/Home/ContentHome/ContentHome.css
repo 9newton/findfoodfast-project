@@ -1,17 +1,11 @@
-.content{
-    padding-top: 5rem;
+.content-home{
+    padding-top: 1rem;
     padding-bottom: 5rem;
 }
 .card-show-food {
-    max-width: 1000px;
-    width: 600px;
-    height: 420px;
-    margin: 0 auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     border-radius: 30px;
     border-color: white;
-    box-shadow: 0px 0px 30px #a5a5a54f;
+    box-shadow: 0px 0px 30px #dbdbdb4f;
 }
 
 .card-show-food:hover{
@@ -20,19 +14,18 @@
 }
 
 .img-cover-show {
-    width: 240px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
 }
 .r{
     text-align: left;
 }
 
-h2{
+.h2{
     color: #222C61;
-}
-.h3{
-    color: #222C61;
+    font-size: 30px;
+    font-weight: 600;
 }
 .font-blue{
     color: #222C61;
@@ -44,24 +37,13 @@ h2{
 }
 
 .tag{
+    font-size: 10px;
     background-color: #222C61;
     border-radius: 20px;
     color: white;
     font-size: 12px;
     width: auto;
     padding: 3px 10px;
-}
-
-.tag:hover{
-    background-color: #222C61;
-    border-radius: 20px;
-    color: white;
-}
-
-.tag:focus{
-    background-color: #222C61;
-    border-radius: 20px;
-    color: white;
 }
 
 .link-menu{
@@ -92,26 +74,20 @@ h2{
     color: #ff0000b4;
 }
 
+.show-detail{
+    padding: 0px;
+}
+
+
 @media screen and (max-width: 480px) {
     .content-con {
         flex-direction: column;
     }
-    .content-con:nth-child(2) .content-r {
-        order: 1;
-    }
-    .card-show-food {
-        width: 370px;
-        height: auto;
-    }
     .img-cover-show {
-        width: 300px;
-        height: auto;
+        border-radius: 10px;
     }
-    .r{
-        text-align: center;
-    }
-    .content{
-        padding-top: 1rem;
+    .content-home{
+        padding-top: 0rem;
         padding-bottom: 2rem;
     }
     .link-menu{
@@ -133,5 +109,59 @@ h2{
         color: white;
         background-color: #222C61;
     }
-    
+    .h2{
+        font-size: 20px;
+    }
+    .detail-right{
+        font-size: 10px;
+    }
+    .tag{
+        background-color: #222C61;
+        border-radius: 20px;
+        color: white;
+        font-size: 12px;
+        width: auto;
+        padding: 1.2px 10px;
+        font-size: 10px;
+    }
+    p{
+        margin-bottom: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .link-menu{
+        display: none;
+    }
+    .detail-right{
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width:1280px) and (max-width:1600px) {
+    .detail-right{
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 1601px) {
+    .h2{
+        font-size: 40px;
+    }
+    .detail-right{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .tag{
+        font-size: 15px;
+    }
+    .name-right{
+        padding-bottom: 20px;
+    }
+    .go-menu{
+        font-size: 20px;
+    }
+    p{
+        margin-bottom: 1.5rem;
+    }
 }

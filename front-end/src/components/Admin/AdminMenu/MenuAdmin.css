@@ -1,3 +1,6 @@
+.content-admin{
+    padding-top: 4rem;
+}
 h4{
 color:white;
 font-weight: 600;
@@ -85,4 +88,9 @@ font-weight: 600;
 }
 a{
     text-decoration: none;
+}
+@media screen and (min-width:1280px) {
+    .content-admin{
+        padding-top: 8rem;
+    }
 }
