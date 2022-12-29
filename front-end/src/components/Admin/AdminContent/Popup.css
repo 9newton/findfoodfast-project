@@ -44,7 +44,9 @@
     border-color: #222C61;
     border-width: 2px;
     box-shadow: none;
-}
+} input[type=time]::-webkit-datetime-edit-ampm-field {
+    display: none;
+  }
 .select-btn{
     border-color: #C1C1C1;
     border-width: 1px;

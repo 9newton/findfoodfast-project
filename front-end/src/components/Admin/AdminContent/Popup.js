@@ -16,12 +16,14 @@ function Popup() {
   const [timeOpen, setTimeOpen] = useState("");
   const [timeClose, setTimeClose] = useState("");
   const [holiday, setHoliday] = useState([]);
-  // const [ratePrice, setRatePrice] = useState("");
-  // const [contact, setContact] = useState("");
-  // const [delivery, setDelivery] = useState("");
-  // const [tag, setTag] = useState("เลือกTag");
-  // const [alley, setAlley] = useState("เลือกซอย");
-  // const [location, setLocation] = useState("");
+  const [ratePrice, setRatePrice] = useState("");
+  const [tel, setTel] = useState("");
+  const [line, setLine] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [delivery, setDelivery] = useState([]);
+  const [tag, setTag] = useState([]);
+  const [alley, setAlley] = useState("เลือกซอย");
+  const [location, setLocation] = useState("");
   // const [coverImg, setCoverImg] = useState("");
   // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
@@ -29,10 +31,32 @@ function Popup() {
   const checkboxHoliday = async (e) => {
     const isChecked = e.target.checked;
     if (isChecked) {
-      setHoliday([...holiday, e.target.value])
+      setHoliday((prev) => [...prev, e.target.value]);
+    } else {
+      const newData = holiday.filter((d) => !d.includes(e.target.value));
+      setHoliday(newData);
     }
-    console.log({holiday});
-  }
+  };
+
+  const checkboxDelivery = async (e) => {
+    const isChecked = e.target.checked;
+    if (isChecked) {
+      setDelivery((prev) => [...prev, e.target.value]);
+    } else {
+      const newData = delivery.filter((d) => !d.includes(e.target.value));
+      setDelivery(newData);
+    }
+  };
+
+  const checkboxTag = async (e) => {
+    const isChecked = e.target.checked;
+    if (isChecked) {
+      setTag((prev) => [...prev, e.target.value]);
+    } else {
+      const newData = tag.filter((d) => !d.includes(e.target.value));
+      setTag(newData);
+    }
+  };
 
   const saveRestaurant = async (e) => {
     e.preventDefault();
@@ -43,12 +67,14 @@ function Popup() {
         timeOpen,
         timeClose,
         holiday,
-        // ratePrice,
-        // contact,
-        // delivery,
-        // tag,
-        // alley,
-        // location,
+        ratePrice,
+        tel,
+        line,
+        facebook,
+        delivery,
+        tag,
+        alley,
+        location,
       });
       navigate(setShow(false));
     } catch (error) {
@@ -85,8 +111,9 @@ function Popup() {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={saveRestaurant}>
+            {/* ////////// Name ////////// */}
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4">
                 ชื่อร้านอาหาร
               </Form.Label>
               <Form.Control
@@ -97,9 +124,9 @@ function Popup() {
                 placeholder="ชื่อร้านอาหาร"
               />
             </div>
-
+            {/* ////////// Food ////////// */}
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4">
                 อาหารที่ขาย
               </Form.Label>
               <Form.Control
@@ -108,154 +135,125 @@ function Popup() {
                 value={food}
                 onChange={(e) => setFood(e.target.value)}
                 placeholder="อาหารที่ขาย"
+                required
               />
             </div>
-
+            {/* ////////// timeOpen ////////// */}
             <div className="row">
               <div className="col-12 col-md-6 col-xl-6">
-                <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                <Form.Label className="name h5 mt-4" >
                   เวลาเปิด
                 </Form.Label>
-                <div className="control">
-                  <Form.Select
-                    className="select-btn"
-                    aria-label="Default select example"
-                    value={timeOpen}
-                    onChange={(e) => setTimeOpen(e.target.value)}
-                  >
-                    <option className="text-center" value="เลือกหมวดหมู่">
-                      เลือกเวลาเปิด
-                    </option>
-                    <option className="text-center" value="11.00">
-                      11.00
-                    </option>
-                    <option className="text-center" value="12.00">
-                      12.00
-                    </option>
-                  </Form.Select>
-                </div>
+                <Form.Control
+                  type="time"
+                  className="form-input"
+                  value={timeOpen}
+                  onChange={(e) => setTimeOpen(e.target.value)}
+                />
               </div>
-
+              {/* ////////// timeClose ////////// */}
               <div className="col-12 col-md-6 col-xl-6">
-                <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+                <Form.Label className="name h5 mt-4">
                   เวลาปิด
                 </Form.Label>
-                <div className="control">
-                  <Form.Select
-                    className="select-btn"
-                    aria-label="Default select example"
-                    value={timeClose}
-                    onChange={(e) => setTimeClose(e.target.value)}
-                  >
-                    <option className="text-center" value="เลือกหมวดหมู่">
-                      เลือกเวลาปิด
-                    </option>
-                    <option className="text-center" value="11.00">
-                      11.00
-                    </option>
-                    <option className="text-center" value="12.00">
-                      12.00
-                    </option>
-                  </Form.Select>
-                </div>
+                <Form.Control
+                  type="time"
+                  className="form-input"
+                  value={timeClose}
+                  onChange={(e) => setTimeClose(e.target.value)}
+                />
               </div>
             </div>
+            {/* ////////// holiday ////////// */}
 
             <div className="col-12 col-xl-12">
-              <Form value={holiday} onChange={(e) => setHoliday(e.target.value)}>
-                {["checkbox"].map((type) => (
-                  <div key={`inline-${type}`} className="mb-3">
-                    <Form.Label
-                      className="name h5 mt-4"
-                      htmlFor="inputPassword5"
-
-                    >
-                      วันหยุด
-                    </Form.Label>
-                    <div className="mt-2">
-                      <Form.Check
-                        inline
-                        label="จ."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-1`}
-                        // value={holiday}
-                        value="วันจันทร์"
+              {["checkbox"].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                  <Form.Label
+                    className="name h5 mt-4"
+                  >
+                    วันหยุด
+                  </Form.Label>
+                  <div className="mt-2">
+                    <Form.Check
+                      inline
+                      label="จ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value="วันจันทร์"
                       onChange={(e) => checkboxHoliday(e)}
-                      />
-                      <Form.Check
-                        inline
-                        label="อ."
-                        name="group2"
-                        type={type}
-                        id={`inline-${type}-2`}
-                        // value={holiday}
-                        value="วันอังคาร"
+                    />
+                    <Form.Check
+                      inline
+                      label="อ."
+                      name="group2"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value="วันอังคาร"
                       onChange={(e) => checkboxHoliday(e)}
-                      />
-                      {/* <Form.Check
-                        inline
-                        label="พ."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-1`}
-                        value="วันพุธ"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      />
-                      <Form.Check
-                        inline
-                        label="พฤ."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-2`}
-                        value="วันพฤหัสบดี"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      />
-                      <Form.Check
-                        inline
-                        label="ศ."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-1`}
-                        value="วันศุกร์"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      />
-                      <Form.Check
-                        inline
-                        label="ส."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-2`}
-                        value="วันเสาร์"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      />
-                      <Form.Check
-                        inline
-                        label="อา."
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-1`}
-                        value="วันอาทิตย์"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      />
-                      <Form.Check
-                        inline
-                        label="ไม่มี"
-                        name="group1"
-                        type={type}
-                        id={`inline-${type}-1`}
-                        value="ไม่มีวันหยุดที่แน่นอน"
-                        onChange={(e) => setHoliday(e.target.value)}
-                      /> */}
-                    </div>
+                    />
+                    <Form.Check
+                      inline
+                      label="พ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value="วันพุธ"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="พฤ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value="วันพฤหัสบดี"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ศ."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value="วันศุกร์"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ส."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                      value="วันเสาร์"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="อา."
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value="วันอาทิตย์"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
+                    <Form.Check
+                      inline
+                      label="ไม่มี"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                      value="ไม่มีวันหยุดที่แน่นอน"
+                      onChange={(e) => setHoliday(e.target.value)}
+                    />
                   </div>
-                ))}
-              </Form>
+                </div>
+              ))}
             </div>
-
-
-            {/* <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-2" htmlFor="inputPassword5">
+            {/* ////////// ratePrice ////////// */}
+            <div className="col-12 col-xl-12">
+              <Form.Label className="name h5 mt-2" >
                 เรทราคา
               </Form.Label>
               <Form.Control
@@ -263,19 +261,19 @@ function Popup() {
                 className="form-input"
                 value={ratePrice}
                 onChange={(e) => setRatePrice(e.target.value)}
-                placeholder="เรทราคา"
+                placeholder="เรทราคา (Ex. 60-100)"
               />
             </div>
-
+            {/* ////////// contact ////////// */}
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4">
                 ช่องทางการติดต่อ
               </Form.Label>
               <Form.Control
                 type="text"
                 className="form-input"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                value={tel}
+                onChange={(e) => setTel(e.target.value)}
                 placeholder="เบอร์โทรศัพท์"
               />
             </div>
@@ -284,8 +282,8 @@ function Popup() {
               <Form.Control
                 type="text"
                 className="form-input"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                value={line}
+                onChange={(e) => setLine(e.target.value)}
                 placeholder="Line"
               />
             </div>
@@ -294,31 +292,29 @@ function Popup() {
               <Form.Control
                 type="text"
                 className="form-input"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                value={facebook}
+                onChange={(e) => setFacebook(e.target.value)}
                 placeholder="Facebook"
               />
             </div>
-
+            {/* ////////// delivery ////////// */}
             <div className="col-12 col-xl-12">
-            <Form>
-                {["checkbox"].map((type) => (
-                  <div key={`inline-${type}`} className="mb-3">
-                    <Form.Label
-                      className="name h5 mt-4"
-                      htmlFor="inputPassword5"
-                    >
-                      บริการส่ง
-                    </Form.Label>
-                    <div className="mt-2">
+              {["checkbox"].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                  <Form.Label
+                    className="name h5 mt-4"
+                  >
+                    บริการส่ง
+                  </Form.Label>
+                  <div className="mt-2">
                     <Form.Check
                       inline
                       label="LINEMAN"
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="LINEMAN"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -326,8 +322,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="GRAB"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -335,8 +331,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="Robinhood"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -344,8 +340,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="Shopee"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -353,8 +349,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="Foodpanda"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -362,8 +358,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="ร้านส่งเอง"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                     <Form.Check
                       inline
@@ -371,34 +367,31 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={delivery}
-                      onChange={(e) => setDelivery(e.target.value)}
+                      value="ไม่มีส่ง"
+                      onChange={(e) => checkboxDelivery(e)}
                     />
                   </div>
-                  </div>
-                ))}
-              </Form>
+                </div>
+              ))}
             </div>
-
+            {/* ////////// tag ////////// */}
             <div className="col-12 col-xl-12">
-            <Form>
-                {["checkbox"].map((type) => (
-                  <div key={`inline-${type}`} className="mb-3">
-                    <Form.Label
-                      className="name h5 mt-4"
-                      htmlFor="inputPassword5"
-                    >
-                      หมวดหมู่
-                    </Form.Label>
-                    <div className="mt-2">
+              {["checkbox"].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                  <Form.Label
+                    className="name h5 mt-4"
+                  >
+                    หมวดหมู่
+                  </Form.Label>
+                  <div className="mt-2">
                     <Form.Check
                       inline
                       label="อาหารจานเดียว"
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="อาหารจานเดียว"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -406,8 +399,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="ก๋วยเตี๋ยว"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -415,8 +408,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="สเต็ก"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -424,8 +417,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="หมูกะทะ"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -433,8 +426,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="ชาบู"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -442,8 +435,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="ของทานเล่น"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -451,8 +444,8 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="ของหวาน"
+                      onChange={(e) => checkboxTag(e)}
                     />
                     <Form.Check
                       inline
@@ -460,41 +453,40 @@ function Popup() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      value="เครื่องดื่ม"
+                      onChange={(e) => checkboxTag(e)}
                     />
                   </div>
-                  </div>
-                ))}
-              </Form>
+                </div>
+              ))}
             </div>
 
-              <div className="col-12 col-md-12 col-xl-12">
-                <Form.Label className="name h5 mt-2" htmlFor="inputPassword5">
-                  ซอย
-                </Form.Label>
-                <div className="control">
-                  <Form.Select
-                    className="select-btn"
-                    aria-label="Default select example"
-                    value={alley}
-                    onChange={(e) => setAlley(e.target.value)}
-                  >
-                    <option className="text-center" value="เลือกหมวดหมู่">
-                      เลือกซอย
-                    </option>
-                    <option className="text-center" value="ซอยพร">
-                      ซอยพร
-                    </option>
-                    <option className="text-center" value="ซอยมาลี">
-                      ซอยมาลี
-                    </option>
-                  </Form.Select>
-                </div>
+            <div className="col-12 col-md-12 col-xl-12">
+              <Form.Label className="name h5 mt-2">
+                ซอย
+              </Form.Label>
+              <div className="control">
+                <Form.Select
+                  className="select-btn"
+                  aria-label="Default select example"
+                  value={alley}
+                  onChange={(e) => setAlley(e.target.value)}
+                >
+                  <option className="text-center" value="เลือกหมวดหมู่">
+                    เลือกซอย
+                  </option>
+                  <option className="text-center" value="ซอยพร">
+                    ซอยพร
+                  </option>
+                  <option className="text-center" value="ซอยมาลี">
+                    ซอยมาลี
+                  </option>
+                </Form.Select>
               </div>
-
+            </div>
+            {/* ////////// location ////////// */}
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4">
                 Location
               </Form.Label>
               <Form.Control
@@ -504,10 +496,10 @@ function Popup() {
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Location"
               />
-            </div> */}
+            </div>
 
             {/* <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4">
                 Cover Image
               </Form.Label>
               <Form.Control
@@ -519,7 +511,7 @@ function Popup() {
             </div>
 
             <div className="col-12 col-xl-12">
-              <Form.Label className="name h5 mt-4" htmlFor="inputPassword5">
+              <Form.Label className="name h5 mt-4" >
                 Menu Image
               </Form.Label>
               <Form.Control

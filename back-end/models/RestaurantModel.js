@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Restaurant = mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Please enter a name']
+        required: true
     },
     food: {
         type: String,
@@ -11,43 +11,58 @@ const Restaurant = mongoose.Schema({
     },
     timeOpen: {
         type: String,
-        required: false
+        required: true
     }
     ,
     timeClose: {
         type: String,
-        required: false
+        required: true
     }
     ,
     holiday: {
         type: Array,
         required: true
     }
-    // ,
-    // ratePrice: {
-    //     type: String,
-    //     required: false
-    // }
-    // ,
-    // contact: {
-    //     type: String,
-    //     required: false
-    // }
-    // ,
-    // delivery: {
-    //     type: String,
-    //     required: false
-    // }
-    // ,
-    // tag: {
-    //     type: String,
-    //     required: false
-    // }
-    // ,
-    // alley: {
-    //     type: String,
-    //     required: false
-    // }
+    ,
+    ratePrice: {
+        type: String,
+        required: true
+    }
+    ,
+    tel: {
+        type: String,
+        required: false,
+    }
+    ,
+    line: {
+        type: String,
+        required: false,
+    }
+    ,
+    facebook: {
+        type: String,
+        required: false,
+    }
+    ,
+    delivery: {
+        type: Array,
+        required: true
+    }
+    ,
+    tag: {
+        type: Array,
+        required: true
+    }
+    ,
+    alley: {
+        type: String,
+        required: true
+    }
+    ,
+    location: {
+        type: String,
+        required: false
+    }
 });
 
 export default mongoose.model('Restaurants', Restaurant);

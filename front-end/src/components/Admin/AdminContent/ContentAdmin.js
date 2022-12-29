@@ -85,14 +85,20 @@ function Content() {
                         <td>{index + 1}</td>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.food}</td>
-                        <td>{restaurant.timeOpen}</td>
-                        <td>{restaurant.timeClose}</td>
+                        <td>
+                          {restaurant.timeOpen}-{restaurant.timeClose}
+                        </td>
                         <td>{restaurant.holiday}</td>
                         <td>{restaurant.ratePrice}</td>
-                        <td>{restaurant.contact}</td>
+                        <td>
+                          Tel: {restaurant.tel}<br />
+                          Line: {restaurant.line}<br />
+                          FB: {restaurant.facebook}
+                        </td>
                         <td>{restaurant.delivery}</td>
                         <td>{restaurant.tag}</td>
                         <td>{restaurant.alley}</td>
+                        <td>{restaurant.location}</td>
                         <td>
                           <button
                             onClick={() => deleteRestaurant(restaurant._id)}
