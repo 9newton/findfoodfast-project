@@ -122,6 +122,7 @@ function Popup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="ชื่อร้านอาหาร"
+                required
               />
             </div>
             {/* ////////// Food ////////// */}
@@ -149,6 +150,7 @@ function Popup() {
                   className="form-input"
                   value={timeOpen}
                   onChange={(e) => setTimeOpen(e.target.value)}
+                  required
                 />
               </div>
               {/* ////////// timeClose ////////// */}
@@ -161,6 +163,7 @@ function Popup() {
                   className="form-input"
                   value={timeClose}
                   onChange={(e) => setTimeClose(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -262,6 +265,7 @@ function Popup() {
                 value={ratePrice}
                 onChange={(e) => setRatePrice(e.target.value)}
                 placeholder="เรทราคา (Ex. 60-100)"
+                required
               />
             </div>
             {/* ////////// contact ////////// */}
@@ -275,6 +279,7 @@ function Popup() {
                 value={tel}
                 onChange={(e) => setTel(e.target.value)}
                 placeholder="เบอร์โทรศัพท์"
+                maxLength={10}
               />
             </div>
 
@@ -471,6 +476,7 @@ function Popup() {
                   aria-label="Default select example"
                   value={alley}
                   onChange={(e) => setAlley(e.target.value)}
+                  required
                 >
                   <option className="text-center" value="เลือกหมวดหมู่">
                     เลือกซอย
@@ -495,6 +501,7 @@ function Popup() {
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Location"
+                required
               />
             </div>
 
