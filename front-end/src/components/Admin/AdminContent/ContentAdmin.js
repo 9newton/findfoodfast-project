@@ -4,13 +4,10 @@ import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import 'reactjs-popup/dist/index.css';
-import Popup from './Popup';
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Edit from './Edit2';
 import { Link } from 'react-router-dom';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 
@@ -82,7 +79,7 @@ function Content() {
                       <tr key={restaurant._id}>
                         <td>
                           <Link
-                            to={`edit/${restaurant._id}`}
+                            to={`/admin/manageRestaurant/edit/${restaurant._id}`}
                             className="button is-info is-small mr-1"
                           >
                             Edit
@@ -133,7 +130,7 @@ function Content() {
             </Card>
           </Col>
         </Row>
-                        <a href='/popup'>
+                        <a href='/admin/manageRestaurant/add'>
                           <Row>
                             <Col
                             xs={{ span: 12, offset: 0 }} 

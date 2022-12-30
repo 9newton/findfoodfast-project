@@ -17,7 +17,7 @@ function MenuAdmin() {
       <Container>
       <Row>
         <Col xs={{ span: 12 ,offset : 0}} md={{ span: 6 ,offset : 0}} xl={{ span: 3}} className="mt-md-4 mt-xl-5">
-        <a href="/admin/add">
+        <a href="/admin/manageRestaurant">
         <Card className="card-menu-food card-menu">
           <Card.Body className="card-body">
             <h4>เพิ่มร้านอาหาร</h4>

@@ -5,12 +5,12 @@ import Restaurant from './components/Home/Restaurant/Restaurant';
 import Random from './components/Random/Random';
 import Report from './components/Report/Report';
 import Admin from './components/Admin/Admin';
-import AdminAdd from './components/Admin/AdminContent/ContentAdmin';
+import ManageRestaurant from './components/Admin/AdminContent/ContentAdmin';
 import AdminLike from './components/Admin/AdminLike/AdminLike';
 import AdminReport from './components/Admin/AdminReport/AdminReport';
 import AdminDashboard from './components/Admin/AdminDashboard/AdminDashboard';
-import Edit from './components/Admin/AdminContent/Edit';
-
+import EditRestaurant from './components/Admin/AdminContent/Edit';
+import AddRestaurant from './components/Admin/AdminContent/Popup';
 
 function App() {
   return (
@@ -22,10 +22,10 @@ function App() {
             <Route path="/home/restaurant" element={<Restaurant />} />
             <Route path="/random" element={<Random />} />
             <Route path="/report" element={<Report />} />
-
             <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/add" element={<AdminAdd />} />
-            <Route path="/admin/add/edit/:id" element={<Edit />} />
+            <Route path="/admin/manageRestaurant" element={<ManageRestaurant />} />
+            <Route path="/admin/manageRestaurant/add" element={<AddRestaurant />} />
+            <Route path="/admin/manageRestaurant/edit/:id" element={<EditRestaurant />} />
             <Route path="/admin/like" element={<AdminLike />} />
             <Route path="/admin/report" element={<AdminReport />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />

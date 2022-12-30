@@ -1,7 +1,5 @@
 import "./Popup.css";
-import Modal from "react-bootstrap/Modal";
 import React, { useState } from 'react';
-import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -11,8 +9,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 
-function Popup() {
-  const [show, setShow] = useState(false);
+const Popup = () => {
   const [name, setName] = useState("");
   const [food, setFood] = useState("");
   const [timeOpen, setTimeOpen] = useState("");
@@ -78,7 +75,7 @@ function Popup() {
         alley,
         location,
       });
-      navigate(setShow(false));
+      navigate("/admin/manageRestaurant");
     } catch (error) {
       console.log(error);
     }
@@ -97,108 +94,109 @@ function Popup() {
           >
             <Card className="card-admin">
               <Card.Body>
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                      ชื่อร้านอาหาร
-                    </Form.Label>
-                    </div>
-                    <Form.Control
-                      type="text"
-                      className="form-input"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="ชื่อร้านอาหาร"
-                    />
-                  </Col>
-                </Row>
+                <Form onSubmit={saveRestaurant}>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          ชื่อร้านอาหาร
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="ชื่อร้านอาหาร"
+                      />
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    อาหารที่ขาย
-                </Form.Label>
-                </div>
-                <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={food}
-                    onChange={(e) => setFood(e.target.value)}
-                    placeholder="อาหารที่ขาย"
-                    required
-                />
-                  </Col>
-                </Row>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          อาหารที่ขาย
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={food}
+                        onChange={(e) => setFood(e.target.value)}
+                        placeholder="อาหารที่ขาย"
+                        required
+                      />
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 6, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    เวลาเปิด
-                </Form.Label>
-                </div>
-                <Form.Control
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 6, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          เวลาเปิด
+                        </Form.Label>
+                      </div>
+                      <Form.Control
                         type="time"
                         className="form-input"
                         value={timeOpen}
                         onChange={(e) => setTimeOpen(e.target.value)}
-                    />
-                  </Col>
-                
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 6, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    เวลาปิด
-                </Form.Label>
-                </div>
-                <Form.Control
+                      />
+                    </Col>
+
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 6, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          เวลาปิด
+                        </Form.Label>
+                      </div>
+                      <Form.Control
                         type="time"
                         className="form-input"
                         value={timeClose}
                         onChange={(e) => setTimeClose(e.target.value)}
-                    />
-                  </Col>
-                </Row>
+                      />
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >            
-                <div className="text-start">
-                {["checkbox"].map((type) => (
-                    <div key={`inline-${type}`} className="mb-3">
-                        <Form.Label
-                            className="name h5 mt-4"
-                        >
-                            วันหยุด
-                        </Form.Label>
-                        <div className="mt-2">
-                            <Form.Check
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        {["checkbox"].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <Form.Label
+                              className="name h5 mt-4"
+                            >
+                              วันหยุด
+                            </Form.Label>
+                            <div className="mt-2">
+                              <Form.Check
                                 inline
                                 label="จ."
                                 name="group1"
@@ -206,8 +204,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="วันจันทร์"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="อ."
                                 name="group2"
@@ -215,8 +213,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="วันอังคาร"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="พ."
                                 name="group1"
@@ -224,8 +222,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="วันพุธ"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="พฤ."
                                 name="group1"
@@ -233,8 +231,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="วันพฤหัสบดี"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="ศ."
                                 name="group1"
@@ -242,8 +240,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="วันศุกร์"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="ส."
                                 name="group1"
@@ -251,8 +249,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="วันเสาร์"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="อา."
                                 name="group1"
@@ -260,8 +258,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="วันอาทิตย์"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="ไม่มี"
                                 name="group1"
@@ -269,110 +267,110 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="ไม่มีวันหยุดที่แน่นอน"
                                 onChange={(e) => checkboxHoliday(e)}
-                            />
-                        </div>
-                    </div>
-                ))}
-            </div>
-                  </Col>
-                </Row>
-                
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    เรทราคา
-                </Form.Label>
-                </div>
-                <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={ratePrice}
-                    onChange={(e) => setRatePrice(e.target.value)}
-                    placeholder="เรทราคา (Ex. 60-100)"
-                />
-                  </Col>
-                </Row>
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    ช่องทางการติดต่อ
-                </Form.Label>
-                </div>
-                <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={tel}
-                    onChange={(e) => setTel(e.target.value)}
-                    placeholder="เบอร์โทรศัพท์"
-                />
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                 <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={line}
-                    onChange={(e) => setLine(e.target.value)}
-                    placeholder="Line"
-                />
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                 <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={facebook}
-                    onChange={(e) => setFacebook(e.target.value)}
-                    placeholder="Facebook"
-                />
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >            
-                <div className="text-start">
-                {["checkbox"].map((type) => (
-                    <div key={`inline-${type}`} className="mb-3">
-                        <Form.Label
-                            className="name h5 mt-4"
-                        >
-                            บริการส่ง
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          เรทราคา
                         </Form.Label>
-                        <div className="mt-2">
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={ratePrice}
+                        onChange={(e) => setRatePrice(e.target.value)}
+                        placeholder="เรทราคา (Ex. 60-100)"
+                      />
+                    </Col>
+                  </Row>
 
-                        <Form.Check
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          ช่องทางการติดต่อ
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={tel}
+                        onChange={(e) => setTel(e.target.value)}
+                        placeholder="เบอร์โทรศัพท์"
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className="mt-2"
+                    >
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={line}
+                        onChange={(e) => setLine(e.target.value)}
+                        placeholder="Line"
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className="mt-2"
+                    >
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={facebook}
+                        onChange={(e) => setFacebook(e.target.value)}
+                        placeholder="Facebook"
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        {["checkbox"].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <Form.Label
+                              className="name h5 mt-4"
+                            >
+                              บริการส่ง
+                            </Form.Label>
+                            <div className="mt-2">
+
+                              <Form.Check
                                 inline
                                 label="LINEMAN"
                                 name="group1"
@@ -380,8 +378,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="LINEMAN"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="GRAB"
                                 name="group1"
@@ -389,8 +387,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="GRAB"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="Robinhood"
                                 name="group1"
@@ -398,8 +396,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="Robinhood"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="Shopee"
                                 name="group1"
@@ -407,8 +405,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="Shopee"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="Foodpanda"
                                 name="group1"
@@ -416,8 +414,8 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="Foodpanda"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="ร้านส่งเอง"
                                 name="group1"
@@ -425,8 +423,8 @@ function Popup() {
                                 id={`inline-${type}-2`}
                                 value="ร้านส่งเอง"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
-                            <Form.Check
+                              />
+                              <Form.Check
                                 inline
                                 label="ไม่มีส่ง"
                                 name="group1"
@@ -434,122 +432,217 @@ function Popup() {
                                 id={`inline-${type}-1`}
                                 value="ไม่มีส่ง"
                                 onChange={(e) => checkboxDelivery(e)}
-                            />
+                              />
 
-                        </div>
-                    </div>
-                ))}
-            </div>
-                  </Col>
-                </Row>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        {["checkbox"].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <Form.Label
+                              className="name h5 mt-4"
+                            >
+                              หมวดหมู่
+                            </Form.Label>
+                            <div className="mt-2">
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    ซอย
-                </Form.Label>
-                </div>
-                <Form.Select
+                              <Form.Check
+                                inline
+                                label="อาหารจานเดียว"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="อาหารจานเดียว"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="ก๋วยเตี๋ยว"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-2`}
+                                value="ก๋วยเตี๋ยว"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="สเต็ก"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="สเต็ก"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="หมูกะทะ"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-2`}
+                                value="หมูกะทะ"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="ชาบู"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="ชาบู"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="ของทานเล่น"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-2`}
+                                value="ของทานเล่น"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="ของหวาน"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="ของหวาน"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+                              <Form.Check
+                                inline
+                                label="เครื่องดื่ม"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="เครื่องดื่ม"
+                                onChange={(e) => checkboxTag(e)}
+                              />
+
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          ซอย
+                        </Form.Label>
+                      </div>
+                      <Form.Select
                         className="select-btn"
                         aria-label="Default select example"
                         value={alley}
                         onChange={(e) => setAlley(e.target.value)}
-                    >
-                        <option className="text-center" value="เลือกหมวดหมู่">
-                            เลือกซอย
+                      >
+                        <option className="text-center">
+                          เลือกซอย
                         </option>
                         <option className="text-center" value="ซอยพร">
-                            ซอยพร
+                          ซอยพร
                         </option>
                         <option className="text-center" value="ซอยมาลี">
-                            ซอยมาลี
+                          ซอยมาลี
                         </option>
-                    </Form.Select>
-                  </Col>
-                </Row>
+                      </Form.Select>
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    Location
-                </Form.Label>
-                </div>
-                <Form.Control
-                    type="text"
-                    className="form-input"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    placeholder="Location"
-                />
-                  </Col>
-                </Row>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          Location
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="Location"
+                      />
+                    </Col>
+                  </Row>
 
-                {/* <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    รูปปก
-                </Form.Label>
-                </div>
-                <Form.Control
-                type="file"
-                className="img-upload"
-                value={coverImg}
-                onChange={(e) => setCoverImg(e.target.value)}
-              />
-                  </Col>
-                </Row>
+                  {/* <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          รูปปก
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="file"
+                        className="img-upload"
+                        value={coverImg}
+                        onChange={(e) => setCoverImg(e.target.value)}
+                      />
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 12, offset: 0 }}
-                    className=""
-                  >
-                    <div className="text-start">
-                    <Form.Label className="name h5 mt-4">
-                    รูปเมนู
-                </Form.Label>
-                </div>
-                <Form.Control
-                type="file"
-                className="img-upload"
-                value={menuImg}
-                onChange={(e) => setMenuImg(e.target.value)}
-              />
-                  </Col>
-                </Row> */}
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          รูปเมนู
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="file"
+                        className="img-upload"
+                        value={menuImg}
+                        onChange={(e) => setMenuImg(e.target.value)}
+                      />
+                    </Col>
+                  </Row> */}
 
-                <Row className="mt-3">
-                <button
-                    xs={{ span: 12, offset: 0 }}
-                    md={{ span: 12, offset: 0 }}
-                    xl={{ span: 10, offset: 0 }}
-                    className="mt-md-4 add-btn pointer"
-                    type="submit"
-                >
-                    เพิ่มร้านอาหาร
-                </button>
-            </Row>
-
+                  <Row className="mt-3">
+                    <button
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 10, offset: 0 }}
+                      className="mt-md-4 add-btn pointer"
+                      type="submit"
+                    >
+                      เพิ่มร้านอาหาร
+                    </button>
+                  </Row>
+                </Form>
               </Card.Body>
             </Card>
           </Col>
