@@ -9,7 +9,8 @@ import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import Edit from './Edit';
+import Edit from './Edit2';
+import { Link } from 'react-router-dom';
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -78,9 +79,12 @@ function Content() {
                     {restaurants.map((restaurant, index) => (
                       <tr key={restaurant._id}>
                         <td>
-                          <button to={`edit/${restaurant._id}`}>
-                            {/* <Edit /> */}
-                          </button>
+                          <Link
+                            to={`edit/${restaurant._id}`}
+                            className="button is-info is-small mr-1"
+                          >
+                            Edit
+                          </Link>
                         </td>
                         <td>{index + 1}</td>
                         <td>{restaurant.name}</td>
@@ -88,15 +92,27 @@ function Content() {
                         <td>
                           {restaurant.timeOpen}-{restaurant.timeClose}
                         </td>
-                        <td>{restaurant.holiday}</td>
+                        <td>
+                          {restaurant.holiday.map((holiday, indexHoliday) =>
+                            restaurant.holiday.length - 1 === indexHoliday ? <span key={indexHoliday + "holiday"}>{holiday}<br /></span> : <span key={indexHoliday + "holiday"}>{holiday}<br /></span>
+                          )}
+                        </td>
                         <td>{restaurant.ratePrice}</td>
                         <td>
                           Tel: {restaurant.tel}<br />
                           Line: {restaurant.line}<br />
                           FB: {restaurant.facebook}
                         </td>
-                        <td>{restaurant.delivery}</td>
-                        <td>{restaurant.tag}</td>
+                        <td>
+                          {restaurant.delivery.map((delivery, indexDelivery) =>
+                            restaurant.delivery.length - 1 === indexDelivery ? <span key={indexDelivery + "delivery"}>{delivery}<br /></span> : <span key={indexDelivery + "delivery"}>{delivery}<br /></span>
+                          )}
+                        </td>
+                        <td>
+                          {restaurant.tag.map((tag, indexTag) =>
+                            restaurant.tag.length - 1 === indexTag ? <span key={indexTag + "tag"}>{tag}<br /></span> : <span key={indexTag + "tag"}>{tag}<br /></span>
+                          )}
+                        </td>
                         <td>{restaurant.alley}</td>
                         <td>{restaurant.location}</td>
                         <td>

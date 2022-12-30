@@ -203,7 +203,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-1`}
                       value="วันพุธ"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                     <Form.Check
                       inline
@@ -212,7 +212,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-2`}
                       value="วันพฤหัสบดี"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                     <Form.Check
                       inline
@@ -221,7 +221,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-1`}
                       value="วันศุกร์"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                     <Form.Check
                       inline
@@ -230,7 +230,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-2`}
                       value="วันเสาร์"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                     <Form.Check
                       inline
@@ -239,7 +239,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-1`}
                       value="วันอาทิตย์"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                     <Form.Check
                       inline
@@ -248,7 +248,7 @@ function Popup() {
                       type={type}
                       id={`inline-${type}-1`}
                       value="ไม่มีวันหยุดที่แน่นอน"
-                      onChange={(e) => setHoliday(e.target.value)}
+                      onChange={(e) => checkboxHoliday(e)}
                     />
                   </div>
                 </div>

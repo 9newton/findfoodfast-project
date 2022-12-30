@@ -9,6 +9,7 @@ import AdminAdd from './components/Admin/AdminContent/ContentAdmin';
 import AdminLike from './components/Admin/AdminLike/AdminLike';
 import AdminReport from './components/Admin/AdminReport/AdminReport';
 import AdminDashboard from './components/Admin/AdminDashboard/AdminDashboard';
+import Edit from './components/Admin/AdminContent/Edit';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/add" element={<AdminAdd />} />
+            <Route path="/admin/add/edit/:id" element={<Edit />} />
             <Route path="/admin/like" element={<AdminLike />} />
             <Route path="/admin/report" element={<AdminReport />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
