@@ -1,6 +1,6 @@
 import './Footer.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Logo from '../image/Logo.png';
+import Logo from '../image/Logo3.png';
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 // import {BrowserRouter as Router, Link} from 'react-router-dom';
 
