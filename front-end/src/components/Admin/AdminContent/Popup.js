@@ -21,7 +21,7 @@ const Popup = () => {
   const [facebook, setFacebook] = useState("");
   const [delivery, setDelivery] = useState([]);
   const [tag, setTag] = useState([]);
-  const [alley, setAlley] = useState("เลือกซอย");
+  const [alley, setAlley] = useState("");
   const [location, setLocation] = useState("");
   // const [coverImg, setCoverImg] = useState("");
   // const [menuImg, setMenuImg] = useState("");
@@ -553,6 +553,7 @@ const Popup = () => {
                         aria-label="Default select example"
                         value={alley}
                         onChange={(e) => setAlley(e.target.value)}
+                        required
                       >
                         <option className="text-center">
                           เลือกซอย

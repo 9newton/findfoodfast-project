@@ -57,7 +57,6 @@ const Restaurant = mongoose.Schema({
     alley: {
         type: String,
         required: true,
-        null:false
     }
     ,
     location: {

@@ -20,7 +20,7 @@ const Edit = () => {
     const [facebook, setFacebook] = useState("");
     const [delivery, setDelivery] = useState([]);
     const [tag, setTag] = useState([]);
-    const [alley, setAlley] = useState("เลือกซอย");
+    const [alley, setAlley] = useState("");
     const [location, setLocation] = useState("");
     // const [coverImg, setCoverImg] = useState("");
     // const [menuImg, setMenuImg] = useState("");
@@ -104,7 +104,7 @@ const Edit = () => {
 
     return (
         <div className="content">
-            <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
+            <h1 className="content-head mb-4 mt-4 mt-md-0">{name}</h1>
             <Container>
                 <Row>
                     <Col
@@ -232,8 +232,7 @@ const Edit = () => {
                                                                 name="group2"
                                                                 type={type}
                                                                 id={`inline-${type}-2`}
-                                                                value="วันอังคาร"
-                                                                onChange={(e) => checkboxHoliday(e)}
+                                                                value={holiday}
                                                             />
                                                             <Form.Check
                                                                 inline
@@ -575,9 +574,6 @@ const Edit = () => {
                                                 value={alley}
                                                 onChange={(e) => setAlley(e.target.value)}
                                             >
-                                                <option className="text-center" value="เลือกหมวดหมู่">
-                                                    เลือกซอย
-                                                </option>
                                                 <option className="text-center" value="ซอยพร">
                                                     ซอยพร
                                                 </option>
@@ -616,7 +612,7 @@ const Edit = () => {
                                             className="mt-md-4 add-btn pointer"
                                             type="submit"
                                         >
-                                            เพิ่มร้านอาหาร
+                                            บันทึก
                                         </button>
                                     </Row>
                                 </Form>

@@ -10,6 +10,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
+import { FaEdit } from '@react-icons/all-files/fa/FaEdit';
+import { FaTrash } from '@react-icons/all-files/fa/FaTrash';
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -58,10 +60,11 @@ function Content() {
           <Col xs={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} className="form">
             <Card className='card-admin'>
               <Card.Body>
-                <Table responsive="sm text-center">
+                <Table className='text-center' responsive hover>
                   <thead>
                     <tr>
                       <th>EDIT</th>
+                      <th>DELETE</th>
                       <th>ID</th>
                       <th>ชื่อร้าน</th>
                       <th>อาหารที่ขาย</th>
@@ -70,8 +73,9 @@ function Content() {
                       <th>เรทราคา</th>
                       <th>ช่องทางติดต่อ</th>
                       <th>บริการส่ง</th>
-                      <th>TAG</th>
+                      <th>หมวดหมู่</th>
                       <th>ซอย</th>
+                      <th>ที่ตั้ง</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,7 +86,15 @@ function Content() {
                             to={`/admin/manageRestaurant/edit/${restaurant._id}`}
                             className="button is-info is-small mr-1"
                           >
-                            Edit
+                            <FaEdit className='font-blue' />
+                          </Link>
+                        </td>
+                        <td>
+                          <Link
+                            onClick={() => deleteRestaurant(restaurant._id)}
+                            className="button is-info is-small mr-1"
+                          >
+                            <FaTrash className='text-danger' />
                           </Link>
                         </td>
                         <td>{index + 1}</td>
@@ -114,14 +126,6 @@ function Content() {
                         </td>
                         <td>{restaurant.alley}</td>
                         <td>{restaurant.location}</td>
-                        <td>
-                          <button
-                            onClick={() => deleteRestaurant(restaurant._id)}
-                            className=""
-                          >
-                            Delete
-                          </button>
-                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -130,17 +134,17 @@ function Content() {
             </Card>
           </Col>
         </Row>
-                        <a href='/admin/manageRestaurant/add'>
-                          <Row>
-                            <Col
-                            xs={{ span: 12, offset: 0 }} 
-                            md={{ span: 12, offset: 0 }} 
-                            xl={{ span: 2, offset: 10 }} 
-                            className="add-btn">
-                              <FaPlus className='mb-1'/> เพิ่มร้านอาหาร
-                            </Col>
-                          </Row>
-                          </a>
+        <a href='/admin/manageRestaurant/add'>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 2, offset: 10 }}
+              className="add-btn">
+              <FaPlus className='mb-1' /> เพิ่มร้านอาหาร
+            </Col>
+          </Row>
+        </a>
       </Container>
 
     </div>
