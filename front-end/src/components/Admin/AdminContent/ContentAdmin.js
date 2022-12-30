@@ -9,8 +9,10 @@ import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Edit from './Edit2';
 import { Link } from 'react-router-dom';
+import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -56,7 +58,7 @@ function Content() {
         </Row>
 
         <Row>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} className=" form">
+          <Col xs={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} className="form">
             <Card className='card-admin'>
               <Card.Body>
                 <Table responsive="sm text-center">
@@ -131,7 +133,17 @@ function Content() {
             </Card>
           </Col>
         </Row>
-        <Popup />
+                        <a href='/popup'>
+                          <Row>
+                            <Col
+                            xs={{ span: 12, offset: 0 }} 
+                            md={{ span: 12, offset: 0 }} 
+                            xl={{ span: 2, offset: 10 }} 
+                            className="add-btn">
+                              <FaPlus className='mb-1'/> เพิ่มร้านอาหาร
+                            </Col>
+                          </Row>
+                          </a>
       </Container>
 
     </div>
