@@ -344,7 +344,7 @@ const Edit = () => {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 12, offset: 0 }}
                     xl={{ span: 12, offset: 0 }}
-                    className=""
+                    className="mt-2"
                   >
                  <Form.Control
                     type="text"
@@ -361,7 +361,7 @@ const Edit = () => {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 12, offset: 0 }}
                     xl={{ span: 12, offset: 0 }}
-                    className=""
+                    className="mt-2"
                   >
                  <Form.Control
                     type="text"
