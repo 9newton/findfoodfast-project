@@ -1,5 +1,5 @@
 import "./Popup.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-
 
 const Popup = () => {
   const [name, setName] = useState("");
@@ -190,9 +189,7 @@ const Popup = () => {
                       <div className="text-start">
                         {["checkbox"].map((type) => (
                           <div key={`inline-${type}`} className="mb-3">
-                            <Form.Label
-                              className="name h5 mt-4"
-                            >
+                            <Form.Label className="name h5 mt-4">
                               วันหยุด
                             </Form.Label>
                             <div className="mt-2">
@@ -363,13 +360,10 @@ const Popup = () => {
                       <div className="text-start">
                         {["checkbox"].map((type) => (
                           <div key={`inline-${type}`} className="mb-3">
-                            <Form.Label
-                              className="name h5 mt-4"
-                            >
+                            <Form.Label className="name h5 mt-4">
                               บริการส่ง
                             </Form.Label>
                             <div className="mt-2">
-
                               <Form.Check
                                 inline
                                 label="LINEMAN"
@@ -433,7 +427,6 @@ const Popup = () => {
                                 value="ไม่มีส่ง"
                                 onChange={(e) => checkboxDelivery(e)}
                               />
-
                             </div>
                           </div>
                         ))}
@@ -450,13 +443,10 @@ const Popup = () => {
                       <div className="text-start">
                         {["checkbox"].map((type) => (
                           <div key={`inline-${type}`} className="mb-3">
-                            <Form.Label
-                              className="name h5 mt-4"
-                            >
+                            <Form.Label className="name h5 mt-4">
                               หมวดหมู่
                             </Form.Label>
                             <div className="mt-2">
-
                               <Form.Check
                                 inline
                                 label="อาหารจานเดียว"
@@ -529,7 +519,6 @@ const Popup = () => {
                                 value="เครื่องดื่ม"
                                 onChange={(e) => checkboxTag(e)}
                               />
-
                             </div>
                           </div>
                         ))}
@@ -544,9 +533,7 @@ const Popup = () => {
                       className=""
                     >
                       <div className="text-start">
-                        <Form.Label className="name h5 mt-4">
-                          ซอย
-                        </Form.Label>
+                        <Form.Label className="name h5 mt-4">ซอย</Form.Label>
                       </div>
                       <Form.Select
                         className="select-btn"
@@ -555,9 +542,7 @@ const Popup = () => {
                         onChange={(e) => setAlley(e.target.value)}
                         required
                       >
-                        <option className="text-center">
-                          เลือกซอย
-                        </option>
+                        <option className="text-center">เลือกซอย</option>
                         <option className="text-center" value="ซอยพร">
                           ซอยพร
                         </option>
@@ -651,6 +636,6 @@ const Popup = () => {
       </Container>
     </div>
   );
-}
+};
 
-export default Popup; 
+export default Popup;

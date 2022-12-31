@@ -91,6 +91,7 @@ a{
 }
 @media screen and (min-width:1280px) {
     .content-admin{
-        padding-top: 8rem;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
     }
 }
