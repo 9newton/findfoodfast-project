@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 const Popup = () => {
+  const [coverImg, setCoverImg] = useState("");
   const [name, setName] = useState("");
   const [food, setFood] = useState("");
   const [timeOpen, setTimeOpen] = useState("");
@@ -22,7 +23,6 @@ const Popup = () => {
   const [tag, setTag] = useState([]);
   const [alley, setAlley] = useState("");
   const [location, setLocation] = useState("");
-  // const [coverImg, setCoverImg] = useState("");
   // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
 
@@ -60,6 +60,7 @@ const Popup = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5000/restaurants", {
+        coverImg,
         name,
         food,
         timeOpen,
@@ -94,6 +95,28 @@ const Popup = () => {
             <Card className="card-admin">
               <Card.Body>
                 <Form onSubmit={saveRestaurant}>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          รูปหน้าร้าน
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={coverImg}
+                        onChange={(e) => setCoverImg(e.target.value)}
+                        placeholder="URL"
+                      />
+                    </Col>
+                  </Row>
+
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
@@ -619,10 +642,7 @@ const Popup = () => {
 
                   <Row className="mt-3">
                     <button
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 10, offset: 0 }}
-                      className="mt-md-4 add-btn pointer"
+                      className="col-12 mt-md-4 add-btn pointer"
                       type="submit"
                     >
                       เพิ่มร้านอาหาร

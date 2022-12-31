@@ -22,7 +22,7 @@ const Edit = () => {
   const [tag, setTag] = useState([]);
   const [alley, setAlley] = useState("");
   const [location, setLocation] = useState("");
-  // const [coverImg, setCoverImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
   // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
@@ -33,6 +33,7 @@ const Edit = () => {
 
   const getRestaurantById = async () => {
     const response = await axios.get(`http://localhost:5000/restaurants/${id}`);
+    setCoverImg(response.data.coverImg);
     setName(response.data.name);
     setFood(response.data.food);
     setTimeOpen(response.data.timeOpen);
@@ -52,6 +53,7 @@ const Edit = () => {
     e.preventDefault();
     try {
       await axios.patch(`http://localhost:5000/restaurants/${id}`, {
+        coverImg,
         name,
         food,
         timeOpen,
@@ -128,6 +130,28 @@ const Edit = () => {
             <Card className="card-admin">
               <Card.Body>
                 <Form onSubmit={updateRestaurant}>
+                  <Row>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 12, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          รูปหน้าร้าน
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={coverImg}
+                        onChange={(e) => setCoverImg(e.target.value)}
+                        placeholder="URL"
+                      />
+                    </Col>
+                  </Row>
+
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}

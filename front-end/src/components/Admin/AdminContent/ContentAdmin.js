@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import './ContentAdmin.css';
-import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
-import Card from 'react-bootstrap/Card';
-import 'reactjs-popup/dist/index.css';
+import React, { useState, useEffect } from "react";
+import "./ContentAdmin.css";
+import Form from "react-bootstrap/Form";
+import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
+import "reactjs-popup/dist/index.css";
 import axios from "axios";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
-import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
-import { FaEdit } from '@react-icons/all-files/fa/FaEdit';
-import { FaTrash } from '@react-icons/all-files/fa/FaTrash';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
+import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
+import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -36,36 +37,67 @@ function Content() {
 
   return (
     <div className="content">
-      <h1 className='content-head mb-4 mt-4 mt-md-0'>เพิ่มร้านอาหารเลย!</h1>
+      <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
       <Container>
         <Row>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 0 }} xl={{ span: 3, offset: 0 }} className="mt-md-4"><Form.Control
-            type="text"
-            id="inputPassword5"
-            className='form-search'
-            aria-describedby="passwordHelpBlock"
-            placeholder='Search'
-          /></Col>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 4 }} xl={{ span: 2, offset: 7 }} className="mt-md-4">
-            <Form.Select className='soi-btn pointer mt-2 mb-4 mt-md-0' aria-label="Default select example">
-              <option className='text-center'>เลือกซอย</option>
-              <option className='text-center' value="1">อาหารตามสั่ง</option>
-              <option className='text-center' value="2">ของทานเล่น</option>
-              <option className='text-center' value="3">เครื่องดื่ม</option>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 4, offset: 0 }}
+            xl={{ span: 3, offset: 0 }}
+            className="mt-md-4"
+          >
+            <Form.Control
+              type="text"
+              id="inputPassword5"
+              className="form-search"
+              aria-describedby="passwordHelpBlock"
+              placeholder="Search"
+            />
+          </Col>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 4, offset: 4 }}
+            xl={{ span: 2, offset: 7 }}
+            className="mt-md-4"
+          >
+            <Form.Select
+              className="soi-btn pointer mt-2 mb-4 mt-md-0"
+              aria-label="Default select example"
+            >
+              <option className="text-center">เลือกซอย</option>
+              <option className="text-center" value="1">
+                ซอยพร
+              </option>
+              <option className="text-center" value="2">
+                ซอยมาลี
+              </option>
+              <option className="text-center" value="3">
+                ซอยอีสเทิร์น
+              </option>
             </Form.Select>
           </Col>
         </Row>
 
         <Row>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} className="form">
-            <Card className='card-admin'>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 12, offset: 0 }}
+            xl={{ span: 12, offset: 0 }}
+            className="form"
+          >
+            <Card className="card-admin">
               <Card.Body>
-                <Table className='text-center' responsive hover>
+                <a href="/admin/manageRestaurant/add">
+                  <button className="col-12 offset-0 col-md-2 offset-md-10 mt-0 add-manage-btn">
+                    <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
+                  </button>
+                </a>
+                <Table className="text-center" responsive hover>
                   <thead>
                     <tr>
                       <th>EDIT</th>
                       <th>DELETE</th>
-                      <th>ID</th>
+                      <th>รูปร้าน</th>
                       <th>ชื่อร้าน</th>
                       <th>อาหารที่ขาย</th>
                       <th>เวลาเปิด-ปิด</th>
@@ -86,7 +118,7 @@ function Content() {
                             to={`/admin/manageRestaurant/edit/${restaurant._id}`}
                             className="button is-info is-small mr-1"
                           >
-                            <FaEdit className='font-blue' />
+                            <FaEdit className="font-blue" />
                           </Link>
                         </td>
                         <td>
@@ -94,10 +126,17 @@ function Content() {
                             onClick={() => deleteRestaurant(restaurant._id)}
                             className="button is-info is-small mr-1"
                           >
-                            <FaTrash className='text-danger' />
+                            <FaTrash className="text-danger" />
                           </Link>
                         </td>
-                        <td>{index + 1}</td>
+                        <td>
+                          <a href={restaurant.coverImg}>
+                            <img
+                              src={restaurant.coverImg}
+                              className="img-avatar"
+                            />
+                          </a>
+                        </td>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.food}</td>
                         <td>
@@ -105,23 +144,55 @@ function Content() {
                         </td>
                         <td>
                           {restaurant.holiday.map((holiday, indexHoliday) =>
-                            restaurant.holiday.length - 1 === indexHoliday ? <span key={indexHoliday + "holiday"}>{holiday}<br /></span> : <span key={indexHoliday + "holiday"}>{holiday}<br /></span>
+                            restaurant.holiday.length - 1 === indexHoliday ? (
+                              <span key={indexHoliday + "holiday"}>
+                                {holiday}
+                                <br />
+                              </span>
+                            ) : (
+                              <span key={indexHoliday + "holiday"}>
+                                {holiday}
+                                <br />
+                              </span>
+                            )
                           )}
                         </td>
                         <td>{restaurant.ratePrice}</td>
                         <td>
-                          Tel: {restaurant.tel}<br />
-                          Line: {restaurant.line}<br />
+                          Tel: {restaurant.tel}
+                          <br />
+                          Line: {restaurant.line}
+                          <br />
                           FB: {restaurant.facebook}
                         </td>
                         <td>
                           {restaurant.delivery.map((delivery, indexDelivery) =>
-                            restaurant.delivery.length - 1 === indexDelivery ? <span key={indexDelivery + "delivery"}>{delivery}<br /></span> : <span key={indexDelivery + "delivery"}>{delivery}<br /></span>
+                            restaurant.delivery.length - 1 === indexDelivery ? (
+                              <span key={indexDelivery + "delivery"}>
+                                {delivery}
+                                <br />
+                              </span>
+                            ) : (
+                              <span key={indexDelivery + "delivery"}>
+                                {delivery}
+                                <br />
+                              </span>
+                            )
                           )}
                         </td>
                         <td>
                           {restaurant.tag.map((tag, indexTag) =>
-                            restaurant.tag.length - 1 === indexTag ? <span key={indexTag + "tag"}>{tag}<br /></span> : <span key={indexTag + "tag"}>{tag}<br /></span>
+                            restaurant.tag.length - 1 === indexTag ? (
+                              <span key={indexTag + "tag"}>
+                                {tag}
+                                <br />
+                              </span>
+                            ) : (
+                              <span key={indexTag + "tag"}>
+                                {tag}
+                                <br />
+                              </span>
+                            )
                           )}
                         </td>
                         <td>{restaurant.alley}</td>
@@ -134,22 +205,9 @@ function Content() {
             </Card>
           </Col>
         </Row>
-        <a href='/admin/manageRestaurant/add'>
-          <Row>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 0 }}
-              xl={{ span: 2, offset: 10 }}
-              className="add-btn">
-              <FaPlus className='mb-1' /> เพิ่มร้านอาหาร
-            </Col>
-          </Row>
-        </a>
       </Container>
-
     </div>
-  )
-
+  );
 }
 
 export default Content;

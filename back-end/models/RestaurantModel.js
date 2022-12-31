@@ -1,68 +1,62 @@
 import mongoose from "mongoose";
 
 const Restaurant = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    food: {
-        type: String,
-        required: true
-    },
-    timeOpen: {
-        type: String,
-        required: true
-    }
-    ,
-    timeClose: {
-        type: String,
-        required: true
-    }
-    ,
-    holiday: {
-        type: Array,
-        required: true
-    }
-    ,
-    ratePrice: {
-        type: String,
-        required: true
-    }
-    ,
-    tel: {
-        type: String,
-        required: false,
-    }
-    ,
-    line: {
-        type: String,
-        required: false,
-    }
-    ,
-    facebook: {
-        type: String,
-        required: false,
-    }
-    ,
-    delivery: {
-        type: Array,
-        required: true
-    }
-    ,
-    tag: {
-        type: Array,
-        required: true
-    }
-    ,
-    alley: {
-        type: String,
-        required: true,
-    }
-    ,
-    location: {
-        type: String,
-        required: false
-    }
+  //   coverImg: {
+  //     type: String,
+  //     required: true,
+  //   },
+  name: {
+    type: String,
+    required: true,
+  },
+  food: {
+    type: String,
+    required: true,
+  },
+  timeOpen: {
+    type: String,
+    required: true,
+  },
+  timeClose: {
+    type: String,
+    required: true,
+  },
+  holiday: {
+    type: Array,
+    required: true,
+  },
+  ratePrice: {
+    type: String,
+    required: true,
+  },
+  tel: {
+    type: String,
+    required: false,
+  },
+  line: {
+    type: String,
+    required: false,
+  },
+  facebook: {
+    type: String,
+    required: false,
+  },
+  delivery: {
+    type: Array,
+    required: true,
+  },
+  tag: {
+    type: Array,
+    required: true,
+  },
+  alley: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: false,
+  },
 });
 
-export default mongoose.model('Restaurants', Restaurant);
+export default mongoose.model("Restaurants", Restaurant);
