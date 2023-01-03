@@ -139,28 +139,6 @@ const Edit = () => {
                     >
                       <div className="text-start">
                         <Form.Label className="name h5 mt-4">
-                          รูปหน้าร้าน
-                        </Form.Label>
-                      </div>
-                      <Form.Control
-                        type="text"
-                        className="form-input"
-                        value={coverImg}
-                        onChange={(e) => setCoverImg(e.target.value)}
-                        placeholder="URL"
-                      />
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className=""
-                    >
-                      <div className="text-start">
-                        <Form.Label className="name h5 mt-4">
                           ชื่อร้านอาหาร
                         </Form.Label>
                       </div>

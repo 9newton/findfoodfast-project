@@ -95,6 +95,7 @@ function Content() {
                 <Table className="text-center" responsive hover>
                   <thead>
                     <tr>
+                      <th></th>
                       <th>EDIT</th>
                       <th>DELETE</th>
                       <th>รูปร้าน</th>
@@ -113,6 +114,16 @@ function Content() {
                   <tbody>
                     {restaurants.map((restaurant, index) => (
                       <tr key={restaurant._id}>
+                        <td>
+                          <a href="/admin/manageRestaurant/addImage">
+                            <button
+                              className="add-img"
+                              variant="outline-primary"
+                            >
+                              เพิ่มรูป
+                            </button>
+                          </a>
+                        </td>
                         <td>
                           <Link
                             to={`/admin/manageRestaurant/edit/${restaurant._id}`}

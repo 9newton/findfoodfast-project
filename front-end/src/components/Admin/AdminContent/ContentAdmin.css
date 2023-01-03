@@ -116,6 +116,21 @@ th {
   color: #fff;
 }
 
+.add-img {
+  border-color: #222c61;
+  background-color: transparent;
+  border-width: 1px;
+  border-radius: 7px;
+  color: #222c61;
+  font-size: 12px;
+}
+.add-img:hover {
+  border-color: #222c61;
+  color: white;
+  background-color: #222c61;
+  font-size: 12px;
+}
+
 @media screen and (max-width: 480px) {
   .img {
     width: 100%;
