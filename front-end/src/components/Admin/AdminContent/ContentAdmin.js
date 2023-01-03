@@ -115,14 +115,14 @@ function Content() {
                     {restaurants.map((restaurant, index) => (
                       <tr key={restaurant._id}>
                         <td>
-                          <a href="/admin/manageRestaurant/addImage">
+                          <Link to={`/admin/manageRestaurant/addImage/${restaurant._id}`}>
                             <button
                               className="add-img"
                               variant="outline-primary"
                             >
                               เพิ่มรูป
                             </button>
-                          </a>
+                          </Link>
                         </td>
                         <td>
                           <Link
@@ -217,7 +217,7 @@ function Content() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </div >
   );
 }
 
