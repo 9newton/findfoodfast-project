@@ -89,7 +89,7 @@ const Popup = () => {
           <Col
             xs={{ span: 12, offset: 0 }}
             md={{ span: 6, offset: 3 }}
-            xl={{ span: 4, offset: 4 }}
+            xl={{ span: 10, offset: 1 }}
             className="mt-md-4"
           >
             <Card className="card-admin">
@@ -99,7 +99,7 @@ const Popup = () => {
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
+                      xl={{ span: 6, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -115,13 +115,11 @@ const Popup = () => {
                         placeholder="ชื่อร้านอาหาร"
                       />
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
+                      xl={{ span: 6, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -144,7 +142,7 @@ const Popup = () => {
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 6, offset: 0 }}
+                      xl={{ span: 3, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -163,7 +161,7 @@ const Popup = () => {
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 6, offset: 0 }}
+                      xl={{ span: 3, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -178,13 +176,11 @@ const Popup = () => {
                         onChange={(e) => setTimeClose(e.target.value)}
                       />
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
+                      xl={{ span: 6, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -277,7 +273,7 @@ const Popup = () => {
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
+                      xl={{ span: 4, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
@@ -293,18 +289,63 @@ const Popup = () => {
                         placeholder="เรทราคา (Ex. 60-100)"
                       />
                     </Col>
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 4, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">ซอย</Form.Label>
+                      </div>
+                      <Form.Select
+                        className="select-btn"
+                        aria-label="Default select example"
+                        value={alley}
+                        onChange={(e) => setAlley(e.target.value)}
+                        required
+                      >
+                        <option className="text-center">เลือกซอย</option>
+                        <option className="text-center" value="ซอยพร">
+                          ซอยพร
+                        </option>
+                        <option className="text-center" value="ซอยมาลี">
+                          ซอยมาลี
+                        </option>
+                      </Form.Select>
+                    </Col>
+
+                    <Col
+                      xs={{ span: 12, offset: 0 }}
+                      md={{ span: 12, offset: 0 }}
+                      xl={{ span: 4, offset: 0 }}
+                      className=""
+                    >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          Location
+                        </Form.Label>
+                      </div>
+                      <Form.Control
+                        type="text"
+                        className="form-input"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="Location"
+                      />
+                    </Col>
                   </Row>
 
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
+                      xl={{ span: 4, offset: 0 }}
                       className=""
                     >
                       <div className="text-start">
                         <Form.Label className="name h5 mt-4">
-                          ช่องทางการติดต่อ
+                          เบอร์โทรศัพท์
                         </Form.Label>
                       </div>
                       <Form.Control
@@ -315,15 +356,16 @@ const Popup = () => {
                         placeholder="เบอร์โทรศัพท์"
                       />
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className="mt-2"
+                      xl={{ span: 4, offset: 0 }}
+                      className=""
                     >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">Line</Form.Label>
+                      </div>
                       <Form.Control
                         type="text"
                         className="form-input"
@@ -332,15 +374,18 @@ const Popup = () => {
                         placeholder="Line"
                       />
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className="mt-2"
+                      xl={{ span: 4, offset: 0 }}
+                      className=""
                     >
+                      <div className="text-start">
+                        <Form.Label className="name h5 mt-4">
+                          Facebook
+                        </Form.Label>
+                      </div>
                       <Form.Control
                         type="text"
                         className="form-input"
@@ -524,55 +569,6 @@ const Popup = () => {
                           </div>
                         ))}
                       </div>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className=""
-                    >
-                      <div className="text-start">
-                        <Form.Label className="name h5 mt-4">ซอย</Form.Label>
-                      </div>
-                      <Form.Select
-                        className="select-btn"
-                        aria-label="Default select example"
-                        value={alley}
-                        onChange={(e) => setAlley(e.target.value)}
-                        required
-                      >
-                        <option className="text-center">เลือกซอย</option>
-                        <option className="text-center" value="ซอยพร">
-                          ซอยพร
-                        </option>
-                        <option className="text-center" value="ซอยมาลี">
-                          ซอยมาลี
-                        </option>
-                      </Form.Select>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className=""
-                    >
-                      <div className="text-start">
-                        <Form.Label className="name h5 mt-4">
-                          Location
-                        </Form.Label>
-                      </div>
-                      <Form.Control
-                        type="text"
-                        className="form-input"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        placeholder="Location"
-                      />
                     </Col>
                   </Row>
 
