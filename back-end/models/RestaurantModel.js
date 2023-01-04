@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const Restaurant = mongoose.Schema({
-  //   coverImg: {
-  //     type: String,
-  //     required: true,
-  //   },
+  coverImg: {
+    type: String,
+    required: false,
+  },
   name: {
     type: String,
     required: true,

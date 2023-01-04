@@ -25,13 +25,14 @@ const AddImage = () => {
     setName(response.data.name);
   };
 
-  const updateRestaurant = async (e) => {
+  const uploadImageRestaurant = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/restaurants/${id}`, {
-        coverImg,
-        name,
-      });
+      const formData = new FormData();
+      formData.append("coverImg", coverImg);
+      await axios.post(`http://localhost:5000/restaurants/upload/${id}`,
+        formData
+      );
       navigate("/admin/manageRestaurant");
     } catch (error) {
       console.log(error);
@@ -51,7 +52,7 @@ const AddImage = () => {
           >
             <Card className="card-admin">
               <Card.Body>
-                <Form onSubmit={updateRestaurant}>
+                <Form onSubmit={uploadImageRestaurant}>
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
@@ -67,15 +68,14 @@ const AddImage = () => {
                       <Form.Control
                         type="file"
                         className="file"
-                        // value={food}
-                        // onChange={(e) => setFood(e.target.value)}
+                        onChange={(e) => setCoverImg(e.target.files[0])}
                         placeholder="อาหารที่ขาย"
                         required
                       />
                     </Col>
                   </Row>
 
-                  <Row>
+                  {/* <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
@@ -96,7 +96,7 @@ const AddImage = () => {
                         required
                       />
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row className="mt-3">
                     <button
                       className="col-12 mt-md-4 add-btn pointer"
