@@ -57,7 +57,7 @@ export const deleteRestaurant = async (req, res) => {
 export const uploadImageRestaurant = async (req, res) => {
     try {
         const folder = 'restaurant1'
-        const fileName = `${folder}/${Date.now()}`
+        const fileName = `${folder}/${Date.now()}/1`
         const fileUpload = bucket.file(fileName);
         const blobStream = fileUpload.createWriteStream({
             metadata: {
@@ -69,13 +69,16 @@ export const uploadImageRestaurant = async (req, res) => {
             res.status(405).json(err);
         });
 
-        blobStream.on('finish', () => {
-            res.status(200).send('Upload complete!');
+        blobStream.on("finish", async () => {
+            // Get the URL for the uploaded image
+            const [url] = await fileUpload.getSignedUrl({
+                action: "read",
+                expires: "03-09-2491",
+            });
+            await Restaurant.updateOne({ _id: req.params.id }, { $set: { coverImg: url } });
+            console.log(`Image URL: ${url}`);
+            res.status(200).send(url);
         });
-        // blobStream.on('finish', () => {
-        //     const url = format(`https://storage.googleapis.com/fff-project-95ee1/1129326.png`);
-        //     res.status(200).send(url);
-        // });
 
         blobStream.end(req.file.buffer);
     } catch (error) {

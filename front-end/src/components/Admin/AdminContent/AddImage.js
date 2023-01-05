@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 
 const AddImage = () => {
   const [name, setName] = useState("");
@@ -39,6 +40,10 @@ const AddImage = () => {
     }
   };
 
+  function handleChange(e) {
+    setCoverImg(URL.createObjectURL(e.target.files[0]));
+  }
+
   return (
     <div className="content">
       <h1 className="content-head mb-4 mt-4 mt-md-0">{name}</h1>
@@ -52,24 +57,27 @@ const AddImage = () => {
           >
             <Card className="card-admin">
               <Card.Body>
-                <Form onSubmit={uploadImageRestaurant}>
+                <Form onSubmit={uploadImageRestaurant} >
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
                       xl={{ span: 12, offset: 0 }}
-                      className=""
                     >
                       <div className="text-start">
                         <Form.Label className="name h5 mt-4">
                           รูปภาพปก
                         </Form.Label>
                       </div>
+                      <Image
+                        src={coverImg || "http://via.placeholder.com/300"}
+                        alt="Image-Select"
+                      />
                       <Form.Control
                         type="file"
                         className="file"
+                        accept="image/*"
                         onChange={(e) => setCoverImg(e.target.files[0])}
-                        placeholder="อาหารที่ขาย"
                         required
                       />
                     </Col>
