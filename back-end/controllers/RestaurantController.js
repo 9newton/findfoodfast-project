@@ -72,6 +72,10 @@ export const uploadImageRestaurant = async (req, res) => {
         blobStream.on('finish', () => {
             res.status(200).send('Upload complete!');
         });
+        // blobStream.on('finish', () => {
+        //     const url = format(`https://storage.googleapis.com/fff-project-95ee1/1129326.png`);
+        //     res.status(200).send(url);
+        // });
 
         blobStream.end(req.file.buffer);
     } catch (error) {
