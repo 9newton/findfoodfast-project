@@ -37,7 +37,7 @@ function App() {
               element={<EditRestaurant />}
             />
             <Route
-              path="/admin/manageRestaurant/addImage/:id"
+              path="/admin/manageRestaurant/addImage/:id/:name/:alley"
               element={<AddImage />}
             />
             <Route path="/admin/like" element={<AdminLike />} />

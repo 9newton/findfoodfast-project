@@ -11,6 +11,7 @@ import Image from "react-bootstrap/Image";
 
 const AddImage = () => {
   const [name, setName] = useState("");
+  const [alley, setAlley] = useState("");
   const [coverImg, setCoverImg] = useState("");
   // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const AddImage = () => {
     const response = await axios.get(`http://localhost:5000/restaurants/${id}`);
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
+    setAlley(response.data.alley);
   };
 
   const uploadImageRestaurant = async (e) => {
@@ -31,7 +33,7 @@ const AddImage = () => {
     try {
       const formData = new FormData();
       formData.append("coverImg", coverImg);
-      await axios.post(`http://localhost:5000/restaurants/upload/${id}`,
+      await axios.post(`http://localhost:5000/restaurants/upload/${id}/${name}/${alley}`,
         formData
       );
       navigate("/admin/manageRestaurant");

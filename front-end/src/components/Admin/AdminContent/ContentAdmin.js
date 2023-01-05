@@ -114,7 +114,7 @@ function Content() {
                     {restaurants.map((restaurant, index) => (
                       <tr key={restaurant._id}>
                         <td>
-                          <Link to={`/admin/manageRestaurant/addImage/${restaurant._id}`}>
+                          <Link to={`/admin/manageRestaurant/addImage/${restaurant._id}/${restaurant.name}/${restaurant.alley}`}>
                             <button
                               className="add-img"
                               variant="outline-primary"

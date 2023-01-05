@@ -56,8 +56,8 @@ export const deleteRestaurant = async (req, res) => {
 
 export const uploadImageRestaurant = async (req, res) => {
     try {
-        const folder = 'restaurant1'
-        const fileName = `${folder}/${Date.now()}/1`
+        const folder = req.params.alley
+        const fileName = `${folder}/${req.params.name}/cover_${Date.now()}`
         const fileUpload = bucket.file(fileName);
         const blobStream = fileUpload.createWriteStream({
             metadata: {

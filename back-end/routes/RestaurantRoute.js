@@ -22,7 +22,7 @@ const multer = Multer({
 router.get('/restaurants', getRestaurants);
 router.get('/restaurants/:id', getRestaurantById);
 router.post('/restaurants', saveRestaurant);
-router.post('/restaurants/upload/:id', multer.single('coverImg'), uploadImageRestaurant);
+router.post('/restaurants/upload/:id/:name/:alley', multer.single('coverImg'), uploadImageRestaurant);
 router.patch('/restaurants/:id', updateRestaurant);
 router.delete('/restaurants/:id', deleteRestaurant);
 
