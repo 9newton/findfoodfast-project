@@ -2,7 +2,8 @@ import './Footer.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Logo from '../image/Logo3.png';
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
-// import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
 
 function Footer() {
     return (
@@ -10,9 +11,9 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col-xs={12} col-md">
-                    <a href='/'><img src={Logo}/></a>
+                        <Link to='/'><Image src={Logo} /></Link>
                         <ul className='list-unstyled'>
-                            <a href='https://www.facebook.com/FFFKlong6' className='icon-facebook'><span><FaFacebook /></span></a>
+                            <Link to='https://www.facebook.com/FFFKlong6' className='icon-facebook'><span><FaFacebook /></span></Link>
                         </ul>
                     </div>
 
@@ -26,7 +27,7 @@ function Footer() {
                     <div className="col-xs={12} col-md">
                         <h5>ช่วยเหลือ</h5>
                         <ul className='list-unstyled'>
-                            <a href='/report' className='a'><li href="#">แจ้งปัญหา</li></a>
+                            <Link to='/report' className='a'><li href="#">แจ้งปัญหา</li></Link>
                             {/* <Router>
                             <Link style={{textDecoration: 'none'}} to="/">
                                 Home

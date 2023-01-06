@@ -10,6 +10,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -96,7 +97,7 @@ function Content() {
                               xxl={{ span: 5, offset: 0 }}
                               className="show-img"
                             >
-                              <img className="img-cover-show" src={data.coverImg} alt="" />
+                              <Image className="img-cover-show" src={data.coverImg} alt="" />
                             </Col>
 
                             <Col
@@ -160,6 +161,7 @@ function Content() {
               </Container>
             ))
           }
+          <h1>all = {result.length}</h1>
         </div >
       )
     } else {
