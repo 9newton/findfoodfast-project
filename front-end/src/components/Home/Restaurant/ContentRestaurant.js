@@ -1,33 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ImgCover from "../../../image/test1.jpg";
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaLine } from "@react-icons/all-files/fa/FaLine";
 import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
-import axios from "axios";
+function ContentRestaurant({ restaurant }) {
 
-function ContentRestaurant() {
-  const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null)
-  const fetchrestaurantsData = useCallback(async (_id) => {
-    const response = await axios.get(`http://localhost:5000/restaurants/${_id}`);
-    setRestaurant(response)
-  }, []);
 
-  useEffect(() => {
-    if (id) {
-      fetchrestaurantsData(id)
-    }
-  }, [id])
 
   const ratingStars = {
     size: 30,
@@ -62,7 +49,7 @@ function ContentRestaurant() {
                     xxl={{ span: 4, offset: 0 }}
                     className=" form"
                   >
-                    <Image className="img-cover" src={ImgCover} alt="" />
+                    <Image className="img-cover" src={restaurant?.coverImg} alt="" />
                   </Col>
                   <Col
                     xs={{ span: 12, offset: 0 }}
@@ -72,7 +59,7 @@ function ContentRestaurant() {
                     className=" form"
                   >
                     <div className="mt-4 xs offset-md-0">
-                      <span className="h3">เครปไส้แตก</span>
+                      <span className="h3">{restaurant?.name}</span>
                       <ReactStars {...ratingStars} />
                     </div>
                     <Row>
@@ -85,13 +72,13 @@ function ContentRestaurant() {
                       >
                         <div className="mt-4 mb-5 l">
                           <p className="heading-name">อาหารที่ขาย</p>
-                          <p className="description">เครป</p>
+                          <p className="description">{restaurant?.food}</p>
                           <p className="heading-name">เวลาเปิด - ปิด</p>
-                          <p className="description">17:00 - 22:00 น.</p>
+                          <p className="description">{restaurant?.timeOpen} - {restaurant?.timeClose}</p>
                           <p className="heading-name">วันหยุดของร้าน</p>
-                          <p className="description">เปิดทุกวัน</p>
+                          <p className="description">{restaurant?.holiday.toString()}</p>
                           <p className="heading-name">เรทราคา</p>
-                          <p className="description">40 - 100 บาท</p>
+                          <p className="description">{restaurant?.ratePrice} บาท</p>
                         </div>
                       </Col>
 
@@ -106,24 +93,24 @@ function ContentRestaurant() {
                           <p className="heading-name">ช่องทางติดต่อ</p>
                           <p className="description">
                             <FaPhone className="heading-name icon-call mb-1" />{" "}
-                            0984781350
+                            {restaurant?.tel}
                           </p>
                           <p className="description">
                             <FaLine className="heading-name icon-line mb-1" /> -
                           </p>
                           <p className="description">
                             <FaFacebook className="heading-name icon-fb mb-1" />{" "}
-                            เครปไส้แตก
+                            {restaurant?.facebook}
                           </p>
                           <p className="heading-name">บริการส่ง</p>
                           <p className="description">
-                            ทางร้านส่งเอง, Foodpanda, Lineman
+                            {restaurant?.delivery.toString()}
                           </p>
                           <div className="mt-2 offset-md-0 location-md">
                             <Link to="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
                               <span className="heading-location p">
                                 <FaMapMarkerAlt className="text-danger" />{" "}
-                                ซอยพรธิสาร
+                                {restaurant?.alley}
                               </span>
                             </Link>
                           </div>
@@ -140,7 +127,7 @@ function ContentRestaurant() {
                   >
                     <div className="mt-5 offset-4 offset-md-0">
                       <span className="heading-location p">
-                        <FaMapMarkerAlt className="text-danger" /> ซอยพรธิสาร
+                        <FaMapMarkerAlt className="text-danger" /> {restaurant?.alley}
                       </span>
                     </div>
                   </Col>

@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import './ContentRandom.css';
 import Form from 'react-bootstrap/Form';
 import Img from '../../../image/random.png';
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
+import axios from 'axios';
 
 function ContentRandom() {
+    const [restaurants, setRestaurants] = useState(null)
+
+    const fetchrestaurants = useCallback(async () => {
+        const response = await axios.get("http://localhost:5000/restaurants");
+        setRestaurants(response.data);
+    }, []);
+
+    useEffect(() => {
+        fetchrestaurants();
+    }, []);
+
+    const randomRestuarant = useMemo(() => {
+        if (restaurants) {
+            const length = restaurants.length
+            const random = Math.floor(Math.random() * length);
+            return restaurants[random]
+        } else {
+            return null
+        }
+    }, [restaurants])
+
     return (
 
         <div className="content-random">
@@ -27,7 +49,7 @@ function ContentRandom() {
             <div>
                 <p className='content-wording mt-5'>กด”ปุ่มสุ่มร้านอาหาร”เพื่อดูว่าวันนี้จะกินอะไรดี</p>
             </div>
-
+            {randomRestuarant?.name}
         </div>
     )
 }

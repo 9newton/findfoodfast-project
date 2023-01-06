@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./MenuImg.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -8,25 +8,22 @@ import Col from "react-bootstrap/Col";
 import ImgCover from "../../../image/test1.jpg";
 import ImageGallery from 'react-image-gallery';
 
-const images = [
-    {
-      original: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390912130519070/S__31973489.jpg',
-      thumbnail: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390912130519070/S__31973489.jpg',
-    },
-    {
-      original: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390911908225074/S__31973488.jpg',
-      thumbnail: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390911908225074/S__31973488.jpg',
-    },
-    {
-      original: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390911652376656/S__31973487.jpg',
-      thumbnail: 'https://cdn.discordapp.com/attachments/610914716113567755/1057390911652376656/S__31973487.jpg',
-    },
-  ];
+function ContentRestaurant({ restaurant }) {
 
-function ContentRestaurant() {
+  const images = useMemo(() => {
+    if (restaurant) {
+      return restaurant.images.map(data => ({
+        original: data,
+        thumbnail: data
+      }))
+    } else {
+      return []
+    }
+  }, [restaurant])
+
   return (
     <div className="menu-restaurant">
-        
+
       <Container className="mb-5">
         <Row>
           <Col
@@ -51,12 +48,12 @@ function ContentRestaurant() {
               <Col
                 xs={{ span: 12, offset: 0 }}
                 md={{ span: 12, offset: 0 }}
-                xl={{ span: 12, offset:0 }}
+                xl={{ span: 12, offset: 0 }}
                 xxl={{ span: 8, offset: 2 }}
                 className="form"
               >
-            <ImageGallery items={images} />
-            </Col>
+                <ImageGallery items={images} />
+              </Col>
             </Row>
           </Col>
         </Row>

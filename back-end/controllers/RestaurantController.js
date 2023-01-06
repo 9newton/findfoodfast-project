@@ -17,7 +17,7 @@ export const getRestaurantById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const restaurant = await Restaurant.findById(id);
-    res.status(200).send(id).end();
+    res.status(200).send(restaurant).end();
   } catch (error) {
     next(error);
   }

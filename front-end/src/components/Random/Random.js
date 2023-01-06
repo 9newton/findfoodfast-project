@@ -9,21 +9,21 @@ import ContentRandom from './ContentRandom/ContentRandom';
 
 
 function Random() {
-    return (
-        <div className="random">
-          
-          <div className='page-container'>
-          <div className='content-wrap'>
-            <div className='fixed-top'>
+  return (
+    <div className="random">
+
+      <div className='page-container'>
+        <div className='content-wrap'>
+          <div className='fixed-top'>
             <Header />
-            </div>
-            <ContentRandom />
-            </div>
-            <Footer />
           </div>
+          <ContentRandom />
         </div>
-        
-    )
+        <Footer />
+      </div>
+    </div>
+
+  )
 }
 
 export default Random;
