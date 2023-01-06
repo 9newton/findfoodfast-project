@@ -14,7 +14,8 @@ const ratingSchema = new Schema(
 
 const restaurant = new Schema(
   {
-    coverImg: { type: String },
+    coverImg: { type: String, default: "" },
+    images: { type: Array, default: [] },
     name: { type: String, required: true },
     food: { type: String, required: true },
     timeOpen: { type: String, required: true },

@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import ReactStars from "react-rating-stars-component";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -70,7 +71,12 @@ function Content() {
                 <select id="input-group-dropdown-1" className='text-center' value={input.tag} onChange={e => handleSearch(e, "tag")}>
                   <option value="">ทั้งหมด</option>
                   <option value="อาหารจานเดียว">อาหารจานเดียว</option>
+                  <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
+                  <option value="สเต๊ก">สเต๊ก</option>
+                  <option value="หมูกะทะ">หมูกะทะ</option>
+                  <option value="หมูกะทะ">ชาบู</option>
                   <option value="ของทานเล่น">ของทานเล่น</option>
+                  <option value="ของหวาน">ของหวาน</option>
                   <option value="เครื่องดื่ม">เครื่องดื่ม</option>
                 </select>
 
@@ -83,9 +89,15 @@ function Content() {
             <Form.Select className='select' aria-label="Default select example" value={input.alley} onChange={e => handleSearch(e, "alley")} >
               <option className='text-center' hidden >เลือกซอย</option>
               <option className='text-center' value="">ทั้งหมด</option>
-              <option className='text-center' value="ซอยพร">ซอยพร</option>
+              <option className='text-center' value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
               <option className='text-center' value="ซอยมาลี">ซอยมาลี</option>
               <option className='text-center' value="ซอยซูม">ซอยซูม</option>
+              <option className='text-center' value="ซอย 4B">ซอย 4B</option>
+              <option className='text-center' value="ซอยหมูแฮม">ซอยหมูแฮม</option>
+              <option className='text-center' value="ซอย RS">ซอย RS</option>
+              <option className='text-center' value="ซอยพรธิสาร">ซอยพรธิสาร</option>
+              <option className='text-center' value="ซอย Icon">ซอย Icon</option>
+              <option className='text-center' value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
             </Form.Select>
           </div>
 

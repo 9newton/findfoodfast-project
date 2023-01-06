@@ -1,103 +1,92 @@
 import Restaurant from "../models/RestaurantModel.js";
-import serviceAccount from "../firebase-config.json" assert { type: "json" };
-import admin from "firebase-admin";
-const FirebaseApp = admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://fff-project-95ee1.appspot.com",
-});
-const storage = FirebaseApp.storage();
-const bucket = storage.bucket();
-
 import mongoose from "mongoose";
+import { uploadImage } from "../utils/index.js";
+
 const { ObjectId } = mongoose.Types;
 
-export const getRestaurants = async (req, res) => {
+export const getRestaurants = async (req, res, next) => {
   try {
     const restaurants = await Restaurant.find();
-    res.json(restaurants);
+    res.status(200).send(restaurants).end();
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    next(error);
   }
 };
 
-export const getRestaurantById = async (req, res) => {
+export const getRestaurantById = async (req, res, next) => {
   try {
-    const restaurant = await Restaurant.findById(req.params.id);
-    res.json(restaurant);
+    const { id } = req.params;
+    const restaurant = await Restaurant.findById(id);
+    res.status(200).send(id).end();
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    next(error);
   }
 };
 
-export const saveRestaurant = async (req, res) => {
+export const saveRestaurant = async (req, res, next) => {
   const restaurant = new Restaurant(req.body);
   try {
     const insertedrestaurant = await restaurant.save();
-    res.status(201).json(insertedrestaurant);
+    res.status(201).send(insertedrestaurant).send();
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    next(error);
   }
 };
 
-export const updateRestaurant = async (req, res) => {
+export const updateRestaurant = async (req, res, next) => {
   try {
-    const updatedrestaurant = await Restaurant.updateOne(
-      { _id: req.params.id },
-      { $set: req.body }
+    const { id } = req.params;
+    const body = req.body;
+    const restaurant = await Restaurant.updateOne({ _id: id }, { $set: body });
+    res.status(200).send(restaurant);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteRestaurant = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deletedRestaurant = await Restaurant.deleteOne({
+      _id: id,
+    });
+    res.status(200).send(deletedRestaurant).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const uploadImageRestaurant = async (req, res, next) => {
+  try {
+    const { id, alley } = req.params;
+    let { coverImg, images } = req.files;
+    coverImg = coverImg[0];
+
+    if (!coverImg || !images.length) {
+      throw { message: "Please insert correct images", statusCode: 400 };
+    }
+
+    const promisesImages = images.map((img) =>
+      uploadImage(id, alley, img.originalname, img, "image")
     );
-    res.status(200).json(updatedrestaurant);
+
+    const imagesUrl = await Promise.all([
+      uploadImage(id, alley, coverImg.originalname, coverImg),
+      ...promisesImages,
+    ]);
+
+    coverImg = imagesUrl[0];
+    imagesUrl.shift();
+    images = imagesUrl;
+
+    await Restaurant.findByIdAndUpdate(id, { $set: { coverImg, images } });
+    res.status(200).send("OK").end();
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    next(error);
   }
 };
 
-export const deleteRestaurant = async (req, res) => {
-  try {
-    const deletedrestaurant = await Restaurant.deleteOne({
-      _id: req.params.id,
-    });
-    res.status(200).json(deletedrestaurant);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
-export const uploadImageRestaurant = async (req, res) => {
-  try {
-    const folder = req.params.alley;
-    const fileName = `${folder}/${req.params.name}/cover_${Date.now()}`;
-    const fileUpload = bucket.file(fileName);
-    const blobStream = fileUpload.createWriteStream({
-      metadata: {
-        contentType: req.file.mimetype,
-      },
-    });
-
-    blobStream.on("error", (err) => {
-      res.status(405).json(err);
-    });
-
-    blobStream.on("finish", async () => {
-      // Get the URL for the uploaded image
-      const [url] = await fileUpload.getSignedUrl({
-        action: "read",
-        expires: "03-09-2491",
-      });
-      await Restaurant.updateOne(
-        { _id: req.params.id },
-        { $set: { coverImg: url } }
-      );
-      console.log(`Image URL: ${url}`);
-      res.status(200).send(url);
-    });
-
-    blobStream.end(req.file.buffer);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
-export const updateRatingRestaurant = async (req, res) => {
+export const updateRatingRestaurant = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { prevRating, updateRating } = req.body;
@@ -130,10 +119,7 @@ export const updateRatingRestaurant = async (req, res) => {
     await Restaurant.findByIdAndUpdate(id, { $set: { rating } });
     res.status(200).send("OK").end();
   } catch (err) {
-    console.log({ err });
-    err.statusCode
-      ? res.status(err.statusCode).send(err.message).end()
-      : res.status(500).send(err.message).end();
+    next(err);
   }
 };
 
