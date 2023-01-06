@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -12,9 +12,8 @@ import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
+import axios from "axios";
 function ContentRestaurant({ restaurant }) {
-
-
 
   const ratingStars = {
     size: 30,
@@ -23,9 +22,6 @@ function ContentRestaurant({ restaurant }) {
     value: 0,
     color: "grey",
     activeColor: "gold",
-    onChange: (newValue) => {
-      console.log(`new value is ${newValue}`);
-    }
   };
   return (
     <div className="content-restaurant">

@@ -13,7 +13,7 @@ const AddImage = () => {
   const [name, setName] = useState("");
   const [alley, setAlley] = useState("");
   const [coverImg, setCoverImg] = useState("");
-  // const [menuImg, setMenuImg] = useState("");
+  const [file, setFile] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -32,8 +32,11 @@ const AddImage = () => {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("coverImg", coverImg);
-      await axios.post(`http://localhost:5000/restaurants/upload/${id}/${name}/${alley}`,
+      formData.append('coverImg', coverImg)
+      for (let i = 0; i < file.length; i++) {
+        formData.append('images', file[i]);
+      }
+      await axios.post(`http://localhost:5000/restaurants/upload/${id}/${alley}`,
         formData
       );
       navigate("/admin/manageRestaurant");
@@ -41,10 +44,6 @@ const AddImage = () => {
       console.log(error);
     }
   };
-
-  function handleChange(e) {
-    setCoverImg(URL.createObjectURL(e.target.files[0]));
-  }
 
   return (
     <div className="content">
@@ -79,34 +78,40 @@ const AddImage = () => {
                         type="file"
                         className="file"
                         accept="image/*"
-                        onChange={(e) => setCoverImg(e.target.files[0])}
+                        onChange={(e) => {
+                          setCoverImg(e.target.files[0])
+                        }}
                         required
                       />
                     </Col>
                   </Row>
 
-                  {/* <Row>
+                  <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
                       md={{ span: 12, offset: 0 }}
                       xl={{ span: 12, offset: 0 }}
-                      className=""
                     >
                       <div className="text-start">
                         <Form.Label className="name h5 mt-4">
-                          รูปภาพเมนู
+                          รูปเมนู
                         </Form.Label>
                       </div>
+                      <Image
+                        src={file || "http://via.placeholder.com/300"}
+                        alt="Image-Select"
+                      />
                       <Form.Control
                         type="file"
                         className="file"
-                        // value={food}
-                        // onChange={(e) => setFood(e.target.value)}
-                        placeholder="อาหารที่ขาย"
+                        accept="image/*"
+                        name='images'
+                        onChange={(e) => setFile(e.target.files)}
+                        multiple="multiple"
                         required
                       />
                     </Col>
-                  </Row> */}
+                  </Row>
                   <Row className="mt-3">
                     <button
                       className="col-12 mt-md-4 add-btn pointer"

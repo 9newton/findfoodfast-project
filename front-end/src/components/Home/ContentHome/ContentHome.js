@@ -11,7 +11,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import ReactStars from "react-rating-stars-component";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -72,9 +71,9 @@ function Content() {
                   <option value="">ทั้งหมด</option>
                   <option value="อาหารจานเดียว">อาหารจานเดียว</option>
                   <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
-                  <option value="สเต๊ก">สเต๊ก</option>
+                  <option value="สเต็ก">สเต็ก</option>
                   <option value="หมูกะทะ">หมูกะทะ</option>
-                  <option value="หมูกะทะ">ชาบู</option>
+                  <option value="ชาบู">ชาบู</option>
                   <option value="ของทานเล่น">ของทานเล่น</option>
                   <option value="ของหวาน">ของหวาน</option>
                   <option value="เครื่องดื่ม">เครื่องดื่ม</option>
