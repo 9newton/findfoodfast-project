@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import { FaHamburger } from "@react-icons/all-files/fa/FaHamburger";
 import { FaAngleLeft } from "@react-icons/all-files/fa/FaAngleLeft";
 import Logo from "../image/Logo3.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
+
 
 function Header() {
   const [click, setClick] = useState(false);
@@ -17,9 +19,9 @@ function Header() {
       <div className="container">
         <div className="header-con">
           <div className="logo-container">
-            <a href="/admin">
-              <img className="img-logo" src={Logo} />
-            </a>
+            <Link to="/admin">
+              <Image className="img-logo" src={Logo} />
+            </Link>
           </div>
           <ul className={click ? "menu active" : "menu"}>
             <li className="menu-link" onClick={closeMobileMenu}>
@@ -43,7 +45,7 @@ function Header() {
               </NavLink>
             </li>
             <li className="menu-link" onClick={closeMobileMenu}>
-            <NavLink
+              <NavLink
                 to="/report"
                 className={({ isActive }) =>
                   isActive ? "link-active" : "link"

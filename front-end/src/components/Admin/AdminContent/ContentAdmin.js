@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
 import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
+import Image from "react-bootstrap/Image";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -86,11 +87,11 @@ function Content() {
           >
             <Card className="card-admin">
               <Card.Body>
-                <a href="/admin/manageRestaurant/add">
+                <Link to="/admin/manageRestaurant/add">
                   <button className="col-12 offset-0 col-md-2 offset-md-10 mt-0 add-manage-btn">
                     <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
                   </button>
-                </a>
+                </Link>
                 <Table className="text-center" responsive hover>
                   <thead>
                     <tr>
@@ -140,12 +141,12 @@ function Content() {
                           </Link>
                         </td>
                         <td>
-                          <a href={restaurant.coverImg}>
-                            <img
+                          <Link to={restaurant.coverImg}>
+                            <Image
                               src={restaurant.coverImg}
                               className="img-avatar"
                             />
-                          </a>
+                          </Link>
                         </td>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.food}</td>

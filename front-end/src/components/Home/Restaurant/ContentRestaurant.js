@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -12,6 +12,8 @@ import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaLine } from "@react-icons/all-files/fa/FaLine";
 import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
+import { Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
 
 function ContentRestaurant() {
   return (
@@ -36,7 +38,7 @@ function ContentRestaurant() {
                     xxl={{ span: 4, offset: 0 }}
                     className=" form"
                   >
-                    <img className="img-cover" src={ImgCover} alt="" />
+                    <Image className="img-cover" src={ImgCover} alt="" />
                   </Col>
 
                   <Col
@@ -98,12 +100,12 @@ function ContentRestaurant() {
                             ทางร้านส่งเอง, Foodpanda, Lineman
                           </p>
                           <div className="mt-2 offset-md-0 location-md">
-                            <a href="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
+                            <Link to="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
                               <span className="heading-location p">
                                 <FaMapMarkerAlt className="text-danger" />{" "}
                                 ซอยพรธิสาร
                               </span>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </Col>

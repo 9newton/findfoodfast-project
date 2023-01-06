@@ -72,7 +72,7 @@
 //         </div>
       
 //     <div>
-//     <p className='link-reset'><a href='#' className="btn btn-link reset">ล้างค่าทั้งหมด</a></p>
+//     <p className='link-reset'><Link href='#' className="btn btn-link reset">ล้างค่าทั้งหมด</Link></p>
 //     </div>
 // {result.map((data, index) => (
 //   <Container>
@@ -151,7 +151,7 @@
 //                             )
 //                           )}</span>
 //                     </div>
-//                     <p className='link-menu mt-0 mb-0 mt-md-4'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
+//                     <p className='link-menu mt-0 mb-0 mt-md-4'><Link href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</Link></p>
 //                     </div>
 //                   </Col>
 //                 </Row>
