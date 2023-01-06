@@ -6,16 +6,26 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ImgCover from "../../../image/test1.jpg";
-import Button from "react-bootstrap/Button";
-import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaLine } from "@react-icons/all-files/fa/FaLine";
 import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
+import ReactStars from "react-rating-stars-component";
 
 function ContentRestaurant() {
+  const ratingStars = {
+    size: 30,
+    count: 5,
+    isHalf: false,
+    value: 0,
+    color: "grey",
+    activeColor: "gold",
+    // onChange: (newValue) => {
+    //   console.log(`new value is ${newValue}`);
+    // }
+  };
   return (
     <div className="content-restaurant">
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
@@ -40,7 +50,6 @@ function ContentRestaurant() {
                   >
                     <Image className="img-cover" src={ImgCover} alt="" />
                   </Col>
-
                   <Col
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 8, offset: 0 }}
@@ -50,11 +59,8 @@ function ContentRestaurant() {
                   >
                     <div className="mt-4 xs offset-md-0">
                       <span className="h3">เครปไส้แตก</span>
-                      <Button className="mb-3 btn btn-link like">
-                        <FaHeart />
-                      </Button>
+                      <ReactStars {...ratingStars} />
                     </div>
-
                     <Row>
                       <Col
                         xs={{ span: 6, offset: 0 }}
