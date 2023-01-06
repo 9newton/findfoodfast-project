@@ -1,21 +1,82 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import './ContentHome.css';
-import Img from '../../../image/test1.jpg';
+import './Search.css';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import Card from 'react-bootstrap/Card';
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
-import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from 'react-bootstrap/Button';
-
 
 function Content() {
+  const [restaurants, setRestaurant] = useState([]);
+  const [input, setInput] = useState('');
+
+  const handleSearch= useCallback( (e) => {
+    console.log(e.target.value);
+    setInput(e.target.value);
+  }, []);
+
+  const fetchrestaurants = useCallback(async () => {
+    const response = await axios.get("http://localhost:5000/restaurants");
+    setRestaurant(response.data);
+  }, []);
+
+  useEffect(() => {
+    getRestaurants();
+    fetchrestaurants();
+  }, []);
+
+  const getRestaurants = async () => {
+    const response = await axios.get("http://localhost:5000/restaurants");
+    setRestaurant(response.data);
+  };
+
+  const restaurantList = useMemo(() => {
+    if (restaurants !== null) {
+      const result = restaurants.filter((data) =>{
+        console.log(input);
+        return data.name.includes(input) || data.food.includes(input)
+      })
     return (
        
 <div className="content-home">
+<h1 className='search-head'>วันนี้กินอะไรดี?</h1>
 
-<Container>
+        <div className='input'>
+            <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
+        <InputGroup className="mb-3">
+        <DropdownButton
+          title="ทั้งหมด"
+          id="input-group-dropdown-1"
+        >
+          <Dropdown.Item className='text-center' href="#">อาหารตามสั่ง</Dropdown.Item>
+          <Dropdown.Item className='text-center' href="#">ของทานเล่น</Dropdown.Item>
+          <Dropdown.Item className='text-center' href="#">เครื่องดื่ม</Dropdown.Item>
+        </DropdownButton>
+        <Form.Control className='input-search'placeholder='ค้นหาชื่อร้านอาหาร หรือ ชื่ออาหาร' onChange={e => handleSearch(e)}/>
+      </InputGroup>
+      </div>
+      </div>
+
+      <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
+      <Form.Select className='select' aria-label="Default select example">
+      <option className='text-center'>เลือกซอย</option>
+      <option className='text-center' value="1">ซอยพร</option>
+      <option className='text-center' value="2">ซอยมาลี</option>
+      <option className='text-center' value="3">ซอยซูม</option>
+    </Form.Select>
+        </div>
+      
+    <div>
+    <p className='link-reset'><a href='#' className="btn btn-link reset">ล้างค่าทั้งหมด</a></p>
+    </div>
+{result.map((data, index) => (
+  <Container>
         <Row>
           <Col
             xs={{ span: 12, offset: 0 }}
@@ -35,7 +96,7 @@ function Content() {
                     xxl={{ span: 5, offset: 0 }}
                     className="show-img"
                   >
-                    <img className="img-cover-show" src={Img} alt="" />
+                    <img className="img-cover-show" src={data.coverImg} alt="" />
                   </Col>
 
                   <Col
@@ -47,25 +108,49 @@ function Content() {
                   >
                     <div className='detail-right'>
                     <div className='mb-3 name-right'>
-                    <span className='h2 font-blue'>เครปไส้แตก</span>
+                    <span className='h2 font-blue'>{data.name}</span>
                     </div>
                     <p className='text-dark'>
-                    อาหารที่ขาย : <span className='font-blue'>เครป</span>
+                    อาหารที่ขาย : <span className='font-blue'>{data.food}</span>
                     </p>
                     <p className='text-dark'>
-                    เวลาเปิด - ปิด : <span className='font-blue'>17:00 - 22:00 น.</span>
+                    เวลาเปิด - ปิด : <span className='font-blue'> {data.timeOpen}-{data.timeClose} น.</span>
                     </p>
                     <p className='text-dark'>
-                    วันหยุดของร้าน : <span className='font-blue'>เปิดทุกวัน</span>
+                    วันหยุดของร้าน : <span className='font-blue'>{data.holiday.map((holiday, indexHoliday) =>
+                            data.holiday.length - 1 === indexHoliday ? (
+                              <span key={indexHoliday + "holiday"}>
+                                {holiday}
+                                <br />
+                              </span>
+                            ) : (
+                              <span key={indexHoliday + "holiday"}>
+                                {holiday}
+                                <br />
+                              </span>
+                            )
+                          )}</span>
                     </p>
                     <p className='text-dark'>
-                    เรทราคา : <span className='font-blue'>40 - 100 บาท</span>
+                    เรทราคา : <span className='font-blue'>{data.ratePrice} บาท</span>
                     </p>
                     <p className='font-blue'>
-                    <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
+                    <FaMapMarkerAlt className='text-danger'/> {data.alley}
                     </p>
                     <div className='box-tag'>
-                    <span className="tag">ของทานเล่น</span>
+                    <span className="tag">{data.tag.map((tag, indexTag) =>
+                            data.tag.length - 1 === indexTag ? (
+                              <span key={indexTag + "tag"}>
+                                {tag}
+                                <br />
+                              </span>
+                            ) : (
+                              <span key={indexTag + "tag"}>
+                                {tag}
+                                <br />
+                              </span>
+                            )
+                          )}</span>
                     </div>
                     <p className='link-menu mt-0 mb-0 mt-md-4'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
                     </div>
@@ -76,50 +161,18 @@ function Content() {
             </Card>
           </Col>
         </Row>
-      </Container>
-
-{/* <Card className='card-show-food'>
-<a href='/home/restaurant'>
-    <Card.Body className='card-body-show'>
-
-<div className="row">
-        <div className='col-12 col-md-6 l'>
-        <img className='img-cover-show' src={Img} alt=""/>
-        </div>
-        <div className='col-12 col-md-6 py-3 py-md-0 r'>
-        <span className='h3'>เครปไส้แตก </span>
-        <Button
-        className="mb-3 btn btn-link like">
-        <FaHeart />
-      </Button>
-            <div className='py-0'>
-                    <p className='text-dark'>
-                    อาหารที่ขาย : <span className='font-blue'>เครป</span>
-                    </p>
-                    <p className='text-dark'>
-                    เวลาเปิด - ปิด : <span className='font-blue'>17:00 - 22:00 น.</span>
-                    </p>
-                    <p className='text-dark'>
-                    วันหยุดของร้าน : <span className='font-blue'>เปิดทุกวัน</span>
-                    </p>
-                    <p className='text-dark'>
-                    เรทราคา : <span className='font-blue'>40 - 100 บาท</span>
-                    </p>
-                    <p className='font-blue'>
-                    <FaMapMarkerAlt className='text-danger'/> ซอยพรธิสาร
-                    </p>
-                    <span className="tag mx-1">ของทานเล่น</span><span className="tag">เครื่องดื่ม</span>
-                    <p className='link-menu mt-0 mb-0 mt-md-4'><a href='/home/restaurant' className="btn btn-link go-menu">ดูเมนูเพิ่มเติม</a></p>
-            </div>
-        </div>
-    </div>
-    
-    </Card.Body>
-    </a>
-    </Card> */}
-    
+        </Container>
+         ))}
     </div>
     )
+} else {
+  return <div>NO DATA</div>;
 }
+}, [restaurants,input]);
+return (
+  <div>{restaurantList}</div>
+ );
+}
+
 
 export default Content;

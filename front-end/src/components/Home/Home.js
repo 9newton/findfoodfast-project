@@ -18,7 +18,6 @@ function HomePage() {
             <Header />
             </div>
             <Banner />
-            <Search />
             <ContentHome />
             </div>
             <Footer />
