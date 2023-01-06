@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -10,11 +10,25 @@ import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaLine } from "@react-icons/all-files/fa/FaLine";
 import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
+import axios from "axios";
 
 function ContentRestaurant() {
+  const { id } = useParams();
+  const [restaurant, setRestaurant] = useState(null)
+  const fetchrestaurantsData = useCallback(async (_id) => {
+    const response = await axios.get(`http://localhost:5000/restaurants/${_id}`);
+    setRestaurant(response)
+  }, []);
+
+  useEffect(() => {
+    if (id) {
+      fetchrestaurantsData(id)
+    }
+  }, [id])
+
   const ratingStars = {
     size: 30,
     count: 5,
@@ -22,9 +36,9 @@ function ContentRestaurant() {
     value: 0,
     color: "grey",
     activeColor: "gold",
-    // onChange: (newValue) => {
-    //   console.log(`new value is ${newValue}`);
-    // }
+    onChange: (newValue) => {
+      console.log(`new value is ${newValue}`);
+    }
   };
   return (
     <div className="content-restaurant">

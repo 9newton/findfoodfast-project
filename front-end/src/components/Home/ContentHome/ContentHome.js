@@ -14,11 +14,25 @@ import Image from "react-bootstrap/Image";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState({
+    tag: "",
+    name: "",
+    alley: ""
+  });
 
-  const handleSearch = useCallback((e) => {
-    console.log(e.target.value);
-    setInput(e.target.value);
+  const handleSearch = useCallback((event, type) => {
+    setInput(prev => {
+      prev[type] = event.target.value.trim();
+      return { ...prev }
+    });
+  }, []);
+
+  const handleReset = useCallback(() => {
+    setInput({
+      tag: "",
+      name: "",
+      alley: ""
+    });
   }, []);
 
   const fetchrestaurants = useCallback(async () => {
@@ -38,9 +52,12 @@ function Content() {
 
   const restaurantList = useMemo(() => {
     if (restaurants !== null) {
+
       const result = restaurants.filter((data) => {
-        console.log(input);
-        return data.name.includes(input) || data.food.includes(input) || data.tag.includes(input) || data.alley.includes(input)
+        const nameValid = input.name ? data.name.includes(input.name) || data.food.includes(input.name) : true;
+        const tagValid = input.tag ? data.tag.includes(input.tag) : true;
+        const alleyValid = input.alley ? data.alley.includes(input.alley) : true;
+        return nameValid && tagValid && alleyValid;
       })
       return (
 
@@ -50,20 +67,20 @@ function Content() {
           <div className='input'>
             <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
               <InputGroup className="mb-3">
-                <select id="input-group-dropdown-1" className='text-center' onChange={e => handleSearch(e)}>
+                <select id="input-group-dropdown-1" className='text-center' value={input.tag} onChange={e => handleSearch(e, "tag")}>
                   <option value="">ทั้งหมด</option>
                   <option value="อาหารจานเดียว">อาหารจานเดียว</option>
                   <option value="ของทานเล่น">ของทานเล่น</option>
                   <option value="เครื่องดื่ม">เครื่องดื่ม</option>
                 </select>
 
-                <Form.Control className='input-search' placeholder='ค้นหาชื่อร้านอาหาร หรือ ชื่ออาหาร' onChange={e => handleSearch(e)} />
+                <Form.Control className='input-search' placeholder='ค้นหาชื่อร้านอาหาร หรือ ชื่ออาหาร' value={input.name} onChange={e => handleSearch(e, "name")} />
               </InputGroup>
             </div>
           </div>
 
           <div className='col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3'>
-            <Form.Select className='select' aria-label="Default select example" onChange={e => handleSearch(e)} >
+            <Form.Select className='select' aria-label="Default select example" value={input.alley} onChange={e => handleSearch(e, "alley")} >
               <option className='text-center' hidden >เลือกซอย</option>
               <option className='text-center' value="">ทั้งหมด</option>
               <option className='text-center' value="ซอยพร">ซอยพร</option>
@@ -73,11 +90,11 @@ function Content() {
           </div>
 
           <div>
-            <p className='link-reset'><Link className="btn btn-link reset">ล้างค่าทั้งหมด</Link></p>
+            <p className='link-reset' onClick={handleReset}><Link className="btn btn-link reset">ล้างค่าทั้งหมด</Link></p>
           </div>
           {
             result.map((data, index) => (
-              <Container>
+              <Container key={data._id}>
                 <Row>
                   <Col
                     xs={{ span: 12, offset: 0 }}
@@ -87,7 +104,7 @@ function Content() {
                     className="mt-4 form"
                   >
                     <Card className="card-restaurant">
-                      <Link to='/home/restaurant'>
+                      <Link to={`/home/restaurant/${data._id}`}>
                         <Card.Body className="card-show-food">
                           <Row>
                             <Col
