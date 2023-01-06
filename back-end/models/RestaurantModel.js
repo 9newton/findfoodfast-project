@@ -1,62 +1,40 @@
 import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const Restaurant = mongoose.Schema({
-  coverImg: {
-    type: String,
-    required: false,
+const ratingSchema = new Schema(
+  {
+    fiveStar: { type: Number, default: 0 },
+    fourStar: { type: Number, default: 0 },
+    threeStar: { type: Number, default: 0 },
+    twoStar: { type: Number, default: 0 },
+    oneStar: { type: Number, default: 0 },
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  food: {
-    type: String,
-    required: true,
-  },
-  timeOpen: {
-    type: String,
-    required: true,
-  },
-  timeClose: {
-    type: String,
-    required: true,
-  },
-  holiday: {
-    type: Array,
-    required: true,
-  },
-  ratePrice: {
-    type: String,
-    required: true,
-  },
-  tel: {
-    type: String,
-    required: false,
-  },
-  line: {
-    type: String,
-    required: false,
-  },
-  facebook: {
-    type: String,
-    required: false,
-  },
-  delivery: {
-    type: Array,
-    required: true,
-  },
-  tag: {
-    type: Array,
-    required: true,
-  },
-  alley: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: false,
-  },
-});
+  { _id: false }
+);
 
-export default mongoose.model("Restaurants", Restaurant);
+const restaurant = new Schema(
+  {
+    coverImg: { type: String },
+    name: { type: String, required: true },
+    food: { type: String, required: true },
+    timeOpen: { type: String, required: true },
+    timeClose: { type: String, required: true },
+    holiday: { type: Array, required: true },
+    ratePrice: { type: String, required: true },
+    tel: { type: String },
+    line: { type: String },
+    facebook: { type: String },
+    delivery: { type: Array, required: true },
+    tag: { type: Array, required: true },
+    alley: { type: String, required: true },
+    location: { type: String },
+    rating: { type: ratingSchema },
+  },
+  {
+    strict: false,
+    versionKey: false,
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+  }
+);
+
+export default mongoose.model("Restaurants", restaurant);
