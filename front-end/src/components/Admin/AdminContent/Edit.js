@@ -241,8 +241,8 @@ const Edit = () => {
                                 name="group2"
                                 type={type}
                                 id={`inline-${type}-2`}
-                                value={holiday}
-                                checked={checkboxHolidayFunc("วันอาทิตย์")}
+                                value="วันอังคาร"
+                                checked={checkboxHolidayFunc("วันอังคาร")}
                                 onChange={(e) => checkboxHoliday(e)}
                               />
                               <Form.Check
