@@ -350,12 +350,15 @@ const Edit = () => {
                         value={alley}
                         onChange={(e) => setAlley(e.target.value)}
                       >
-                        <option className="text-center" value="ซอยพร">
-                          ซอยพร
-                        </option>
-                        <option className="text-center" value="ซอยมาลี">
-                          ซอยมาลี
-                        </option>
+                       <option className='text-center' value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
+              <option className='text-center' value="ซอยมาลี">ซอยมาลี</option>
+              <option className='text-center' value="ซอยซูม">ซอยซูม</option>
+              <option className='text-center' value="ซอย 4B">ซอย 4B</option>
+              <option className='text-center' value="ซอยหมูแฮม">ซอยหมูแฮม</option>
+              <option className='text-center' value="ซอย RS">ซอย RS</option>
+              <option className='text-center' value="ซอยพรธิสาร">ซอยพรธิสาร</option>
+              <option className='text-center' value="ซอย Icon">ซอย Icon</option>
+              <option className='text-center' value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
                       </Form.Select>
                     </Col>
 
