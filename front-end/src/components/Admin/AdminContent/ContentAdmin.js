@@ -12,11 +12,19 @@ import { Link } from "react-router-dom";
 import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
 import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
+import { FaBars } from "@react-icons/all-files/fa/FaBars";
+import { FaHome } from "@react-icons/all-files/fa/FaHome";
+import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
+import { FaStar } from "@react-icons/all-files/fa/FaStar";
+import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
+import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Image from "react-bootstrap/Image";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
+  const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     getRestaurants();
@@ -37,8 +45,55 @@ function Content() {
   };
 
   return (
-    
-    <div className="content">
+    <main className={show ? "space-toggle" : null}>
+    <div>
+      <header
+        className={`header-admin ${show ? "space-toggle" : null}`}
+      >
+        <div className="header-toggle" onClick={() => setShow(!show)}>
+          <FaBars
+            className={`fas fa-bars ${
+              show ? "fa-solid fa-xmark" : null
+            }`}
+          />
+        </div>
+      </header>
+
+      <aside className={`sidebar ${show ? "show" : null}`}>
+      <nav className='nav'>
+          <div>
+            <Link to='/' className='nav-logo'>
+              <FaHome className={`fas fa-home-alt nav-logo-icon`} />
+              <span className='nav-logo-name'>หน้าหลัก</span>
+            </Link>
+
+            <div className='nav-list'>
+              <Link to='/admin' className='nav-link'>
+                <FaChartLine className='fas fa-tachometer-alt nav-link-icon mt-1' />
+                <span className='nav-link-name'>แดชบอร์ด</span>
+              </Link>
+              <Link to='/admin/manageRestaurant' className='nav-link active'>
+                <FaUtensils className='fas fa-dollar-sign nav-link-icon mt-1' />
+                <span className='nav-link-name'>ร้านอาหาร</span>
+              </Link>
+              <Link to='/admin/like' className='nav-link'>
+                <FaStar className='fas fa-hotel nav-link-icon mt-1' />
+                <span className='nav-link-name'>ยอดดาว</span>
+              </Link>
+              <Link to='/admin/report' className='nav-link'>
+                <FaInbox className='fas fa-image nav-link-icon mt-1' />
+                <span className='nav-link-name'>แจ้งปัญหา</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* <Link to='/logout' className='nav-link'>
+            <i className='fas fa-sign-out nav-link-icon'></i>
+            <span className='nav-link-name'>Logout</span>
+          </Link> */}
+        </nav>
+      </aside>
+      <div className="content">
       <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
       <Container>
         <Row>
@@ -220,6 +275,9 @@ function Content() {
         </Row>
       </Container>
     </div >
+    </div>
+  </main>
+   
   );
 }
 

@@ -33,7 +33,7 @@ const MenuAdmin = () => {
             </Link>
 
             <div className='nav-list'>
-              <Link to='/admin/dashboard' className='nav-link active'>
+              <Link to='/admin' className='nav-link active'>
                 <FaChartLine className='fas fa-tachometer-alt nav-link-icon mt-1' />
                 <span className='nav-link-name'>แดชบอร์ด</span>
               </Link>
@@ -59,5 +59,6 @@ const MenuAdmin = () => {
         </nav>
   );
 };
+
 
 export default MenuAdmin;
