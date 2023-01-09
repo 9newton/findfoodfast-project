@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function AdminDashborad() {
+function AdminDashboard() {
 
   return (
     <div className="content">
@@ -20,5 +20,5 @@ function AdminDashborad() {
 
 }
 
-export default AdminDashborad;
+export default AdminDashboard;
 

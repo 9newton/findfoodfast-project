@@ -1,5 +1,13 @@
-import React from "react";
-import "./MenuAdmin.css";
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import "./Sidebar.css";
+import { Link } from 'react-router-dom';
+import { FaBars } from "@react-icons/all-files/fa/FaBars";
+import { FaHome } from "@react-icons/all-files/fa/FaHome";
+import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
+import { FaStar } from "@react-icons/all-files/fa/FaStar";
+import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
+import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Card from 'react-bootstrap/Card';
 import admin1 from "../../../image/admin1.png";
 import admin2 from "../../../image/admin2.png";
@@ -8,69 +16,48 @@ import admin4 from "../../../image/admin4.png";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
+import Content from '../AdminContent/ContentAdmin';
+import AdminLike from '../AdminLike/AdminLike';
 
-function MenuAdmin() {
+const MenuAdmin = () => {
+  const [show, setShow] = useState(false);
+
   return (
-    <div className="content-admin">
-      <h1 className="content-head mb-5">จัดการอะไรดี?</h1>
 
-      <Container>
-        <Row>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 6, offset: 0 }} xl={{ span: 3 }} className="mt-md-4 mt-xl-5">
-            <Link to="/admin/manageRestaurant">
-              <Card className="card-menu-food card-menu">
-                <Card.Body className="card-body">
-                  <h4>เพิ่มร้านอาหาร</h4>
-                  <Image className='img' src={admin1} alt="" />
-                </Card.Body>
-              </Card>
+        <nav className='nav'>
+          <div>
+            <Link to='/' className='nav-logo'>
+              <FaHome className={`fas fa-home-alt nav-logo-icon`} />
+              <span className='nav-logo-name'>หน้าหลัก</span>
             </Link>
-          </Col>
 
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 6, offset: 0 }} xl={{ span: 3, offset: 0 }} className="mt-4 mt-xl-5">
-            <Link to="/admin/like">
-              <Card className="card-menu-like card-menu">
-                <Card.Body className="card-body">
-                  <h4>ยอดถูกใจ</h4>
-                  <Image className='img' src={admin2} alt="" />
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 6, offset: 0 }} xl={{ span: 3 }} className="mt-4 mt-xl-5">
-            <Link to="/admin/report">
-              <Card className="card-menu-report card-menu">
-                <Card.Body className="card-body">
-                  <h4>แจ้งปัญหา</h4>
-                  <Image className='img-report' src={admin3} alt="" />
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
-          <Col xs={{ span: 12, offset: 0 }} md={{ span: 6, offset: 0 }} xl={{ span: 3 }} className="mt-4 mt-xl-5">
-            <Link to="/admin/dashboard">
-              <Card className="card-menu-dashboard card-menu">
-                <Card.Body className="card-body">
-                  <h4>แดชบอร์ด</h4>
-                  <Image className='img' src={admin4} alt="" />
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
+            <div className='nav-list'>
+              <Link to='/admin/dashboard' className='nav-link active'>
+                <FaChartLine className='fas fa-tachometer-alt nav-link-icon mt-1' />
+                <span className='nav-link-name'>แดชบอร์ด</span>
+              </Link>
+              <Link to='/admin/manageRestaurant' className='nav-link'>
+                <FaUtensils className='fas fa-dollar-sign nav-link-icon mt-1' />
+                <span className='nav-link-name'>ร้านอาหาร</span>
+              </Link>
+              <Link to='/admin/like' className='nav-link'>
+                <FaStar className='fas fa-hotel nav-link-icon mt-1' />
+                <span className='nav-link-name'>ยอดดาว</span>
+              </Link>
+              <Link to='/admin/report' className='nav-link'>
+                <FaInbox className='fas fa-image nav-link-icon mt-1' />
+                <span className='nav-link-name'>แจ้งปัญหา</span>
+              </Link>
+            </div>
+          </div>
 
-      <div className="col-12 col-xl-12 mt-4 mb-2 add-con">
-        <Link to="/"><button type="submit" className="goto-web-btn">
-          ไปหน้าเว็ปไซต์
-        </button>
-        </Link>
-      </div>
-
-    </div>
+          {/* <Link to='/logout' className='nav-link'>
+            <i className='fas fa-sign-out nav-link-icon'></i>
+            <span className='nav-link-name'>Logout</span>
+          </Link> */}
+        </nav>
   );
-}
+};
 
 export default MenuAdmin;

@@ -13,6 +13,7 @@ import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
 import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
 import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import Image from "react-bootstrap/Image";
+import MenuAdmin from "../AdminMenu/MenuAdmin";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -36,6 +37,7 @@ function Content() {
   };
 
   return (
+    
     <div className="content">
       <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
       <Container>
