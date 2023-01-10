@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -13,18 +13,55 @@ import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-function ContentRestaurant({ restaurant }) {
 
+function ContentRestaurant({ restaurant }) {
+  const [updateRating, setUpdateRating] = useState("");
+  const [prevRating, setPrevRating] = useState("");
   const ratingStars = {
     size: 30,
     count: 5,
     isHalf: false,
     value: 0,
     color: "grey",
-    activeColor: "gold",
+    activeColor: "#ffd700",
+  };
+  const ratingChanged = async (newRating) => {
+    console.log(newRating)
+    try {
+      // switch (newRating) {
+      //   case 0: setUpdateRating("oneStar"); break;
+      //   case 1: setUpdateRating("oneStar"); break;
+      //   case 2: setUpdateRating("twoStar"); break;
+      //   case 3: setUpdateRating("threeStar"); break;
+      //   case 4: setUpdateRating("fourStar"); break;
+      //   case 5: setUpdateRating("fiveStar"); break;
+      //   default: setUpdateRating("none"); break;
+      // }
+      // if (newRating === 5) {
+      //   setUpdateRating("fiveStar");
+      // } else if (newRating === 4) {
+      //   setUpdateRating("fourStar");
+      // } else if (newRating === 3) {
+      //   setUpdateRating("threeStar");
+      // } else if (newRating === 2) {
+      //   setUpdateRating("twoStar");
+      // } else {
+      //   setUpdateRating("oneStar");
+      // }
+      // console.log(updateRating)
+
+      await axios.put(`http://localhost:5000/restaurants/rating/${restaurant._id}`,
+        {
+          "prevRating": prevRating,
+          "updateRating": newRating
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
-    <div className="content-restaurant">
+    <div className="content-restaurant" >
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
       <Container>
         <Row>
@@ -56,7 +93,7 @@ function ContentRestaurant({ restaurant }) {
                   >
                     <div className="mt-4 xs offset-md-0">
                       <span className="h3">{restaurant?.name}</span>
-                      <ReactStars {...ratingStars} />
+                      <ReactStars {...ratingStars} onChange={ratingChanged} />
                     </div>
                     <Row>
                       <Col
@@ -133,7 +170,7 @@ function ContentRestaurant({ restaurant }) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </div >
   );
 }
 
