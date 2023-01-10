@@ -42,8 +42,8 @@ function App() {
               element={<AddImage />}
             />
             <Route path="/admin/like" element={<AdminLike />} />
-            <Route path="/admin/report" component = {Admin} element={<AdminReport />} />
-            <Route path="/admin/dashboard" component = {Admin} element={<AdminDashboard />} />
+            <Route path="/admin/report" component={Admin} element={<AdminReport />} />
+            <Route path="/admin/dashboard" component={Admin} element={<AdminDashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

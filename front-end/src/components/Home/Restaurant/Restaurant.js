@@ -25,7 +25,6 @@ function Restaurant() {
 
   return (
     <div className="restaurant">
-
       <div className='page-container'>
         <div className='content-wrap'>
           <div className='fixed-top'>
@@ -39,7 +38,6 @@ function Restaurant() {
       </div>
     </div>
   )
-
 }
 
 export default Restaurant;

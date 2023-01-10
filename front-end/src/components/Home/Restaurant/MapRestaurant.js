@@ -40,7 +40,7 @@ function ContentRestaurant() {
                 className="form mt-2"
               >
                 <div className="map">
-                  <Iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d342.1060931797765!2d100.73489017289877!3d14.048299823468835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d83e49a363707%3A0x957376618d39e37d!2sSUPER%20SURFFER!5e0!3m2!1sth!2sth!4v1672175447638!5m2!1sth!2sth" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></Iframe>
+                  <Iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3787.6620210759834!2d99.3986862!3d18.3170581!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d96f16df85adb1%3A0xc11e50b2286fcbba!2z4Liq4LiZ4Liy4Lih4Lif4Li44LiV4Lia4Lit4LilIOC4leC4s-C4muC4pSDguJvguIfguKLguLLguIfguITguIEg4Lit4Liz4LmA4Lig4Lit4Lir4LmJ4Liy4LiH4LiJ4Lix4LiV4LijIOC4peC4s-C4m-C4suC4hyA1MjE5MA!5e0!3m2!1sth!2sth!4v1673364689308!5m2!1sth!2sth" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></Iframe>
                 </div>
               </Col>
             </Row>

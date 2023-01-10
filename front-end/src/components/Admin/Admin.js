@@ -14,7 +14,7 @@ function Admin() {
     <div className="admin">
       <div className="page-container">
         <div className="content-wrap">
-          
+
           <main className={show ? "space-toggle" : null}>
             <div>
               <header
@@ -22,15 +22,14 @@ function Admin() {
               >
                 <div className="header-toggle" onClick={() => setShow(!show)}>
                   <FaBars
-                    className={`fas fa-bars ${
-                      show ? "fa-solid fa-xmark" : null
-                    }`}
+                    className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null
+                      }`}
                   />
                 </div>
               </header>
 
               <aside className={`sidebar ${show ? "show" : null}`}>
-              <MenuAdmin />
+                <MenuAdmin />
               </aside>
               <AdminDashboard />
             </div>

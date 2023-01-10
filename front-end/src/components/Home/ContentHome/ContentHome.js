@@ -115,7 +115,7 @@ function Content() {
                     className="mt-4 form"
                   >
                     <Card className="card-restaurant">
-                      <Link to={`/home/restaurant/${data._id}`}>
+                      <Link to={`/home/restaurant/${data._id}`} target="_blank">
                         <Card.Body className="card-show-food">
                           <Row>
                             <Col
