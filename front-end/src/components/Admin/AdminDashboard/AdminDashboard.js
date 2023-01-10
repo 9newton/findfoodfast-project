@@ -45,249 +45,261 @@ function AdminDashboard() {
             xl={{ span: 6, offset: 0 }}
             className="mt-md-4"
           >
-            <Card className="card-dashboard-web">
-              <Card.Body>
-                <div className="title-dashboard-main mt-4 mb-4">
-                  <div className="h5">ยอดการเข้าใช้เว็บ</div>
-                  <div class="vertical-blue"></div>
-                  <div className="h1">1,339</div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 12, offset: 0 }}
+              className="mt-md-4 col"
+            >
+              <Card className="card-dashboard-web">
+                <Card.Body>
+                  <div className="title-dashboard-main mt-4 mb-4">
+                    <div className="h5">ยอดการเข้าใช้เว็บ</div>
+                    <div class="vertical-blue"></div>
+                    <div className="h1">1,339</div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
 
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>อาหารจานเดียว</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>57</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 12, offset: 0 }}
+              className="mt-md-4"
+            >
+              <Card className="card-dashboard">
+                <Card.Body>
+                  <div className="title-dashboard-main mt-4 mb-4">
+                    <div className="h5">ร้านอาหารทั้งหมด</div>
+                    <div class="vertical"></div>
+                    <div className="h1">250</div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Row>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 6, offset: 0 }}
+                className="mt-md-4"
+              >
+                <Card className="card-dashboard bg-yellow">
+                  <Card.Body>
+                    <div className="title-dashboard">
+                      <div className="h5 mb-4">
+                        <span>ร้านที่มีจำนวนคนกดดาวเยอะที่สุด</span>
+                      </div>
+                      <div className="h2">
+                        <div className="h2 mt-2">
+                          <span>เครปไส้แตก</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>ก๋วยเตี๋ยว</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>20</span>
-                </div>
-              </Card.Body>
-            </Card>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 6, offset: 0 }}
+                className="mt-md-4"
+              >
+                <Card className="card-dashboard bg-lowblue">
+                  <Card.Body>
+                    <div className="title-dashboard">
+                      <div className="h5 mb-4">
+                        <span>ร้านที่มีจำนวนคนกดเข้าดูเยอะที่สุด</span>
+                      </div>
+                      <div className="h2 mt-2">
+                        <span>ข้าวต้มมหาชัย</span>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
-
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>เครื่องดื่ม</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>36</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row>
           <Col
             xs={{ span: 12, offset: 0 }}
             md={{ span: 12, offset: 0 }}
             xl={{ span: 6, offset: 0 }}
             className="mt-md-4"
           >
-            <Card className="card-dashboard">
-              <Card.Body>
-                <div className="title-dashboard-main mt-4 mb-4">
-                  <div className="h5">ร้านอาหารทั้งหมด</div>
-                  <div class="vertical"></div>
-                  <div className="h1">250</div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+            <Row>
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">อาหารจานเดียว</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">57</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>สเต็ก</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>23</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">ก๋วยเตี๋ยว</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">20</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>ชาบู</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>4</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">เครื่องดื่ม</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">36</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
 
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>หมูกะทะ</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>6</span>
-                </div>
-              </Card.Body>
-            </Card>
+            <Row>
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">สเต็ก</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">23</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">ชาบู</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">4</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">หมูกะทะ</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">6</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">ของทานเล่น</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">60</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">ของหวาน</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">14</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 3, offset: 0 }}
+                className="mt-md-4 col"
+              >
+                <Card className="card-dashboard-small">
+                  <Card.Body>
+                    <div className="font-blue mb-2">
+                      <span className="span">ผลไม้</span>
+                    </div>
+                    <div className="font-blue h1 mt-0">
+                      <span className="tag-value">8</span>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </Row>
+      </Container>
 
-        <Row>
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 3, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard bg-yellow">
-              <Card.Body>
-                <div className="title-dashboard">
-                  <div className="h5 mb-4">
-                    <span>ร้านที่มีจำนวนคนกดดาวเยอะที่สุด</span>
-                  </div>
-                  <div className="h1">เครปไส้แตก</div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 3, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard bg-lowblue">
-              <Card.Body>
-                <div className="title-dashboard">
-                  <div className="h5 mb-4">
-                    <span>ร้านที่มีจำนวนคนกดเข้าดูเยอะที่สุด</span>
-                  </div>
-                  <div className="h1">ข้ามต้มมหาชัย</div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>ของทานเล่น</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>60</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>ของหวาน</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>14</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 2, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-small">
-              <Card.Body>
-                <div className="font-blue mb-4">
-                  <span>ผลไม้</span>
-                </div>
-                <div className="font-blue h1 mt-4">
-                  <span>8</span>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        <Container>
-          <Row>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 0 }}
-              xl={{ span: 12, offset: 0 }}
-              className="mt-5"
-            >
-              <h1 className="content-head-admin mb-2 mt-4 mt-md-0">แอดมิน</h1>
-            </Col>
-          </Row>
-        </Container>
-
+      <Container>
         <Row>
           <Col
             xs={{ span: 12, offset: 0 }}
