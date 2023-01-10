@@ -7,7 +7,6 @@ import Logo from "../image/Logo3.png";
 import { NavLink, Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 
-
 function Header() {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);

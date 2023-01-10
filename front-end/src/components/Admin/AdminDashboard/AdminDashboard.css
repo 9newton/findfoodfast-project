@@ -1,0 +1,99 @@
+.title-dashboard-main {
+  display: flex;
+  justify-content: space-evenly;
+}
+.title-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+}
+.vertical {
+  border-left: 2px solid white;
+  height: auto;
+  position: static;
+  left: 50%;
+}
+.vertical-blue {
+  border-left: 2px solid #222c61;
+  height: auto;
+  position: static;
+  left: 50%;
+}
+.h1 {
+  font-size: 50px;
+}
+.h5 {
+  display: flex;
+  align-items: center;
+}
+.card-dashboard {
+  max-height: 148px;
+  color: white;
+  background-color: #222c61;
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 0px 0px 24px #222c6177;
+}
+
+.card-dashboard-small {
+  min-height: 148px;
+  color: white;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 0px 0px 24px #71717131;
+}
+.card-dashboard-medium {
+  min-width: 267px;
+}
+.card-dashboard-big {
+  min-height: auto;
+  color: white;
+  background-color: #222c61;
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 0px 0px 24px #71717131;
+}
+.card-dashboard-web {
+  min-height: 148px;
+  color: #222c61;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 0px 0px 10px #222c6191;
+}
+.card-dashboard-transparent {
+  background-color: transparent;
+  border: transparent;
+}
+.card-header {
+  color: #222c61;
+}
+
+.font-blue {
+  color: #222c61;
+}
+
+.bg-yellow {
+  color: #222c61;
+  background-color: #fad854;
+}
+
+.bg-lowblue {
+  color: #222c61;
+  background-color: #b6bacb;
+}
+
+@media screen and (max-width: 1600px) {
+  .h1 {
+    font-size: 30px;
+  }
+  .h5 {
+    font-size: 15px;
+  }
+}

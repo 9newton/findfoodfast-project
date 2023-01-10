@@ -94,7 +94,18 @@ function Content() {
         </nav>
       </aside>
       <div className="content">
-      <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
+      <Container>
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 12, offset: 0 }}
+            xl={{ span: 12, offset: 0 }}
+            className="mt-md-4"
+          >
+      <h1 className="content-head-admin mb-4 mt-4 mt-md-0">ร้านอาหาร</h1>
+      </Col>
+      </Row>
+      </Container>
       <Container>
         <Row>
           <Col
@@ -145,7 +156,7 @@ function Content() {
             <Card className="card-admin">
               <Card.Body>
                 <Link to="/admin/manageRestaurant/add">
-                  <button className="col-12 offset-0 col-md-2 offset-md-10 mt-0 add-manage-btn">
+                  <button className="col-12 offset-0 col-md-4 offset-md-8 col-xl-2 offset-xl-10 mt-0 add-manage-btn">
                     <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
                   </button>
                 </Link>

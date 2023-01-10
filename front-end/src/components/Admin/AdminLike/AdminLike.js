@@ -89,7 +89,18 @@ function AdminLike() {
         </nav>
       </aside>
       <div className="content">
-      <h1 className='content-head mb-4 mt-4 mt-md-0'>ยอดถูกใจ</h1>
+      <Container>
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 12, offset: 0 }}
+            xl={{ span: 12, offset: 0 }}
+            className="mt-md-4"
+          >
+      <h1 className="content-head-admin mb-4 mt-4 mt-md-0">ยอดเรทติ้งดาว</h1>
+      </Col>
+      </Row>
+      </Container>
     <Container>
       <Row>
         <Col xs={{ span: 12, offset: 0 }} md={{ span: 4, offset: 0 }} xl={{ span: 3, offset: 0 }} className="mt-md-4"><Form.Control
