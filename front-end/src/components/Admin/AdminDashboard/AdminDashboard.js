@@ -283,7 +283,7 @@ function AdminDashboard() {
               xl={{ span: 12, offset: 0 }}
               className="mt-5"
             >
-              <h1 className="content-head-admin mb-2 mt-4 mt-md-0">ทีม</h1>
+              <h1 className="content-head-admin mb-2 mt-4 mt-md-0">แอดมิน</h1>
             </Col>
           </Row>
         </Container>
