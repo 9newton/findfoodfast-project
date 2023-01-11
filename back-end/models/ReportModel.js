@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const report = new Schema(
   {
     subject: { type: String, required: true },
-    category: { type: Array, required: true },
+    category: { type: String, required: true },
     details: { type: String, required: true },
   },
   {

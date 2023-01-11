@@ -300,7 +300,7 @@ const Popup = () => {
                       </div>
                       <Form.Select
                         className="select-btn"
-                        aria-label="Default select example"
+                        aria-label="Form select alley"
                         value={alley}
                         onChange={(e) => setAlley(e.target.value)}
                         required
@@ -574,49 +574,6 @@ const Popup = () => {
                       </div>
                     </Col>
                   </Row>
-
-                  {/* <Row>
-                    <Col
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className=""
-                    >
-                      <div className="text-start">
-                        <Form.Label className="name h5 mt-4">
-                          รูปปก
-                        </Form.Label>
-                      </div>
-                      <Form.Control
-                        type="file"
-                        className="img-upload"
-                        value={coverImg}
-                        onChange={(e) => setCoverImg(e.target.value)}
-                      />
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col
-                      xs={{ span: 12, offset: 0 }}
-                      md={{ span: 12, offset: 0 }}
-                      xl={{ span: 12, offset: 0 }}
-                      className=""
-                    >
-                      <div className="text-start">
-                        <Form.Label className="name h5 mt-4">
-                          รูปเมนู
-                        </Form.Label>
-                      </div>
-                      <Form.Control
-                        type="file"
-                        className="img-upload"
-                        value={menuImg}
-                        onChange={(e) => setMenuImg(e.target.value)}
-                      />
-                    </Col>
-                  </Row> */}
-
                   <Row className="mt-3">
                     <button
                       className="col-12 mt-md-4 add-btn pointer"
