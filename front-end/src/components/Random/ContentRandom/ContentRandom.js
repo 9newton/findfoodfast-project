@@ -5,11 +5,11 @@ import Img from "../../../image/random.png";
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import axios from "axios";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
 
 function ContentRandom() {
   const [restaurants, setRestaurants] = useState(null);
