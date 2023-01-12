@@ -32,7 +32,7 @@ function Restaurant() {
           </div>
           <ContentRestaurant restaurant={restaurant} />
           <MenuImg restaurant={restaurant} />
-          <MapRestaurant />
+          <MapRestaurant restaurant={restaurant} />
         </div>
         <Footer />
       </div>
