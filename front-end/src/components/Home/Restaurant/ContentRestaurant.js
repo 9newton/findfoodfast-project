@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
+import Alert from "react-bootstrap/Alert";
 
 function ContentRestaurant({ restaurant }) {
   const [updateRating, setUpdateRating] = useState("");
@@ -35,6 +36,7 @@ function ContentRestaurant({ restaurant }) {
         4: "fourStar",
         5: "fiveStar",
       };
+      alert("ให้คะแนนร้านค้าเรียบร้อยแล้ว!");
 
       const selectedRating = point[newRating];
       console.log(selectedRating);

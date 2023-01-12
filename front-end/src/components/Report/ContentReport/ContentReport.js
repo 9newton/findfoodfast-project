@@ -122,50 +122,6 @@ function ContentReport() {
           </div>
         </Container>
       </div>
-      {/* <div className="content-report">
-        <h1 className='content-head mb-4 mt-4 mt-md-0'>แจ้งปัญหาอะไรดี?</h1>
-
-        <div className='col-10 offset-1 col-xl-4 offset-xl-4 form'>
-          <Form.Label className='name h5 mt-4' htmlFor="inputPassword5">เรื่อง</Form.Label>
-          <Form.Control
-            type="text"
-            className="form-input"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder='เรื่องที่ต้องการแจ้ง เช่น *ร้านปิดไปแล้ว, หมุดที่ร้านไม่ตรง อื่นๆ'
-            required
-          />
-        </div>
-
-        <div className='col-10 offset-1 col-xl-4 offset-xl-4 form mt-5'>
-          <Form.Select className="text-center"
-            aria-label="Form select category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required>
-            <option value="" selected hidden>เลือกหมวดหมู่</option>
-            <option value="แจ้งปัญหาเว็บไซต์">แจ้งปัญหาเว็บไซต์</option>
-            <option value="แจ้งร้านปิดให้บริการ">แจ้งร้านปิดให้บริการ</option>
-            <option value="หมุดไม่ตรงกับสถานที่จริง">หมุดไม่ตรงกับสถานที่จริง</option>
-            <option value="อื่นๆ">อื่นๆ</option>
-          </Form.Select>
-        </div>
-
-        <div className='col-10 offset-1 col-xl-4 offset-xl-4 form'>
-          <Form.Label className='name h5 mt-4' htmlFor="inputPassword5">รายละเอียด</Form.Label>
-          <Form.Control
-            className='form-detail-report'
-            as="textarea"
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-            placeholder='รายละเอียดที่ต้องการแจ้ง' rows={7}
-            required
-          />
-        </div>
-        <div className='col-10 offset-1 col-xl-4 offset-xl-4 mt-4'>
-          <button type="submit" className="send-btn"> ส่ง </button>
-        </div>
-      </div > */}
     </Form>
   );
 }

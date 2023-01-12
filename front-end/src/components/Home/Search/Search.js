@@ -42,7 +42,7 @@
 //         return data.name.includes(input) || data.food.includes(input)
 //       })
 //     return (
-       
+
 // <div className="content-home">
 // <h1 className='search-head'>วันนี้กินอะไรดี?</h1>
 
@@ -70,7 +70,7 @@
 //       <option className='text-center' value="3">ซอยซูม</option>
 //     </Form.Select>
 //         </div>
-      
+
 //     <div>
 //     <p className='link-reset'><Link href='#' className="btn btn-link reset">ล้างค่าทั้งหมด</Link></p>
 //     </div>
@@ -172,6 +172,5 @@
 //   <div>{restaurantList}</div>
 //  );
 // }
-
 
 // export default Search;
