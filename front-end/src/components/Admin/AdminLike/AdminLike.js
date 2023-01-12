@@ -15,28 +15,20 @@ import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
 import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
+
 import MenuAdmin from "../AdminMenu/MenuAdmin";
 
 function AdminLike() {
-  const [users, setUser] = useState([]);
+  const [restaurants, setRestaurant] = useState([]);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    getUsers();
+    getRestaurants();
   }, []);
 
-  const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
-    setUser(response.data);
-  };
-
-  const deleteUser = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
-      getUsers();
-    } catch (error) {
-      console.log(error);
-    }
+  const getRestaurants = async () => {
+    const response = await axios.get("http://localhost:5000/restaurants");
+    setRestaurant(response.data);
   };
 
   return (
@@ -154,32 +146,17 @@ function AdminLike() {
                     <Table responsive="sm text-center">
                       <thead>
                         <tr>
-                          <th>จำนวนถูกใจ</th>
+                          <th>
+                            คะแนนดาวเฉลี่ย <FaStar className="mb-1" />
+                          </th>
                           <th>ชื่อร้าน</th>
-                          <th>อาหารที่ขาย</th>
-                          <th>ช่องทางติดต่อ</th>
-                          <th>หมวดหมู่อาหาร</th>
-                          <th>ซอย</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {users.map((user, index) => (
-                          <tr key={user._id}>
-                            <td>{index + 1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.food}</td>
-                            <td>{user.day}</td>
-                            <td>
-                              <Link to={`edit/${user._id}`}>Edit</Link>
-                            </td>
-                            <td>
-                              <button
-                                onClick={() => deleteUser(user._id)}
-                                className=""
-                              >
-                                Delete
-                              </button>
-                            </td>
+                        {restaurants.map((restaurant, index) => (
+                          <tr key={restaurant._id}>
+                            <td></td>
+                            <td>{restaurant.name}</td>
                           </tr>
                         ))}
                       </tbody>
