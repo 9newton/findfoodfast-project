@@ -86,7 +86,7 @@ function AdminLike() {
                 className="mt-md-4"
               >
                 <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
-                  ยอดเรทติ้งดาว
+                  <FaStar className="mb-2" /> เรทติ้งดาว
                 </h1>
               </Col>
             </Row>
@@ -146,6 +146,7 @@ function AdminLike() {
                     <Table responsive="sm text-center">
                       <thead>
                         <tr>
+                          <th>อันดับ</th>
                           <th>
                             คะแนนดาวเฉลี่ย <FaStar className="mb-1" />
                           </th>
@@ -155,6 +156,7 @@ function AdminLike() {
                       <tbody>
                         {restaurants.map((restaurant, index) => (
                           <tr key={restaurant._id}>
+                            <td>{index + 1}</td>
                             <td></td>
                             <td>{restaurant.name}</td>
                           </tr>

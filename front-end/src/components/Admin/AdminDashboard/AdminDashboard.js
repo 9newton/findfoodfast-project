@@ -11,6 +11,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Hero from "../../../image/hero.png";
 import Image from "react-bootstrap/Image";
+import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
 
 function AdminDashboard() {
   const ColoredLine = ({ color }) => (
@@ -32,7 +33,9 @@ function AdminDashboard() {
             xl={{ span: 12, offset: 0 }}
             className="mt-md-4"
           >
-            <h1 className="content-head-admin mb-2 mt-4 mt-md-0">แดชบอร์ด</h1>
+            <h1 className="content-head-admin mb-2 mt-4 mt-md-0">
+              <FaChartLine className="mb-1" /> แดชบอร์ด
+            </h1>
           </Col>
         </Row>
       </Container>

@@ -97,7 +97,7 @@ function Content() {
                 className="mt-md-4"
               >
                 <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
-                  ร้านอาหาร
+                  <FaUtensils className="mb-2" /> ร้านอาหาร
                 </h1>
               </Col>
             </Row>
