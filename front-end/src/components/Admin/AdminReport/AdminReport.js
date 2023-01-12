@@ -26,22 +26,36 @@ function AdminReport() {
     category: "",
   });
 
+  const [pageNumber, setPageNumber] = useState(0);
+  const [numberOfPages, setNumberOfPages] = useState(0);
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+
+  const gotoPrevious = () => {
+    setPageNumber(Math.max(0, pageNumber - 1));
+  };
+
+  const gotoNext = () => {
+    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+  };
+
   const handleSearch = useCallback((event, type) => {
     setInput((prev) => {
       prev[type] = event.target.value.trim();
       return { ...prev };
     });
   }, []);
-  // var date = new Date(report.createdAt);
-  // var formattedDate = format(date, "MMMM do, yyyy H:mma");
 
   useEffect(() => {
     getReports();
-  }, []);
+  }, [pageNumber]);
 
   const getReports = async () => {
-    const response = await axios.get("http://localhost:5000/reports");
-    setReport(response.data);
+    fetch(`http://localhost:5000/reports?page=${pageNumber}`)
+      .then((response) => response.json())
+      .then(({ totalPages, reports }) => {
+        setReport(reports);
+        setNumberOfPages(totalPages);
+      });
   };
 
   const deleteReport = async (id) => {
@@ -62,6 +76,7 @@ function AdminReport() {
         const categoryValid = input.category
           ? data.category.includes(input.category)
           : true;
+        // setNumberOfPages(reports.length);
         return subjectValid && categoryValid;
       });
 
@@ -222,8 +237,17 @@ function AdminReport() {
                 </Form.Select>
               </Col>
             </Row>
-            <div>{reportList}</div>;
+            <div>{reportList}</div>
           </Container>
+          <div className="mt-5">
+            <button onClick={gotoPrevious}>Previous</button>
+            {pages.map((pageIndex) => (
+              <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
+                {pageIndex + 1}
+              </button>
+            ))}
+            <button onClick={gotoNext}>Next</button>
+          </div>
         </div>
       </div>
     </main>

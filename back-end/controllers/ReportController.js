@@ -2,7 +2,16 @@ import Report from "../models/ReportModel.js";
 
 export const getReports = async (req, res, next) => {
   try {
-    const reports = await Report.find();
+    const PAGE_SIZE = 5;
+    const page = parseInt(req.query.page || "0");
+    const total = await Report.countDocuments({});
+    const reports = await Report.find({})
+      .limit(PAGE_SIZE)
+      .skip(PAGE_SIZE * page);
+    res.json({
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      reports,
+    });
     res.status(200).send(reports).end();
   } catch (error) {
     next(error);
