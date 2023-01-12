@@ -104,6 +104,7 @@ th {
 }
 
 .add-manage-btn {
+  height: 50px;
   background: transparent;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -138,6 +139,13 @@ th {
   background-color: #222c61;
   font-size: 12px;
 }
+@media screen and (max-width: 1279px) {
+  .content-head-admin {
+    color: #222c61;
+    font-weight: 800;
+    text-align: center;
+  }
+}
 @media screen and (max-width: 480px) {
   .content-head-admin {
     color: #222c61;
@@ -156,4 +164,3 @@ th {
   text-align: center;
   margin-top: 100px;
 }
-

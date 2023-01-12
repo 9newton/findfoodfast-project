@@ -40,7 +40,7 @@ function AdminDashboard() {
         </Row>
       </Container>
 
-      <Container>
+      <Container className="mb-5 mb-xl-0">
         <Row>
           <Col
             xs={{ span: 12, offset: 0 }}
@@ -48,20 +48,29 @@ function AdminDashboard() {
             xl={{ span: 6, offset: 0 }}
             className="mt-md-4"
           >
-            <Form.Label className="name h5 mt-2" htmlFor="inputPassword5">
-              สถิติ
-            </Form.Label>
+            <Row>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 4, offset: 0 }}
+                xl={{ span: 5, offset: 0 }}
+                className="mt-md-4 mt-4 mt-md-0"
+              >
+                <Form.Label className="name h5" htmlFor="inputPassword5">
+                  สถิติ
+                </Form.Label>
+              </Col>
+            </Row>
             <Col
               xs={{ span: 12, offset: 0 }}
               md={{ span: 12, offset: 0 }}
               xl={{ span: 12, offset: 0 }}
-              className="mt-md-4 mt-4 mt-md-0 col"
+              className="mt-md-4 mt-2 mt-md-0 col"
             >
               <Card className="card-dashboard-web">
                 <Card.Body>
                   <div className="title-dashboard-main mt-4 mb-4">
                     <div className="h5">ยอดการเข้าใช้เว็บ</div>
-                    <div class="vertical-blue"></div>
+                    <div className="vertical-blue"></div>
                     <div className="h1">1,339</div>
                   </div>
                 </Card.Body>
@@ -78,7 +87,7 @@ function AdminDashboard() {
                 <Card.Body>
                   <div className="title-dashboard-main mt-4 mb-4">
                     <div className="h5">ร้านอาหารทั้งหมด</div>
-                    <div class="vertical"></div>
+                    <div className="vertical"></div>
                     <div className="h1">250</div>
                   </div>
                 </Card.Body>
@@ -135,12 +144,21 @@ function AdminDashboard() {
             className="mt-md-4 mt-4 mt-md-0"
           >
             <Row>
-              <Form.Label className="name h5" htmlFor="inputPassword5">
-                หมวดหมู่ร้านอาหาร
-              </Form.Label>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 4, offset: 0 }}
+                xl={{ span: 5, offset: 0 }}
+                className="mt-md-4 mt-4 mt-md-0"
+              >
+                <Form.Label className="name h5" htmlFor="inputPassword5">
+                  หมวดหมู่ร้านอาหาร
+                </Form.Label>
+              </Col>
+            </Row>
+            <Row className="mt-2 mt-md-0">
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 2 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -158,7 +176,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -176,7 +194,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -196,7 +214,7 @@ function AdminDashboard() {
             <Row>
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 2 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -214,7 +232,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -232,7 +250,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -252,7 +270,7 @@ function AdminDashboard() {
             <Row>
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 2 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -270,7 +288,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >
@@ -288,7 +306,7 @@ function AdminDashboard() {
 
               <Col
                 xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 1 }}
+                md={{ span: 4, offset: 0 }}
                 xl={{ span: 4, offset: 0 }}
                 className="mt-md-4 col"
               >

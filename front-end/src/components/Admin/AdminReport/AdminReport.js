@@ -197,7 +197,7 @@ function AdminReport() {
             <Row>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 0 }}
+                md={{ span: 5, offset: 0 }}
                 xl={{ span: 3, offset: 0 }}
                 className="mt-md-4"
               >
@@ -213,7 +213,7 @@ function AdminReport() {
               </Col>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 4 }}
+                md={{ span: 4, offset: 3 }}
                 xl={{ span: 2, offset: 7 }}
                 className="mt-md-4"
               >

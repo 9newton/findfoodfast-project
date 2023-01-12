@@ -51,41 +51,39 @@ function AdminLike() {
         return nameValid && alleyValid;
       });
       return (
-        <Container>
-          <Row>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 0 }}
-              xl={{ span: 12, offset: 0 }}
-              className=" form"
-            >
-              <Card className="card-admin">
-                <Card.Body>
-                  <Table responsive="sm text-center">
-                    <thead>
-                      <tr>
-                        <th>อันดับ</th>
-                        <th>
-                          คะแนนดาวเฉลี่ย <FaStar className="mb-1" />
-                        </th>
-                        <th>ชื่อร้าน</th>
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 0 }}
+            md={{ span: 12, offset: 0 }}
+            xl={{ span: 12, offset: 0 }}
+            className=" form"
+          >
+            <Card className="card-admin">
+              <Card.Body>
+                <Table responsive="sm text-center">
+                  <thead>
+                    <tr>
+                      <th>อันดับ</th>
+                      <th>
+                        คะแนนดาวเฉลี่ย <FaStar className="mb-1" />
+                      </th>
+                      <th>ชื่อร้าน</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.map((data, index) => (
+                      <tr key={data._id}>
+                        <td>{index + 1}</td>
+                        <td></td>
+                        <td>{data.name}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {result.map((data, index) => (
-                        <tr key={data._id}>
-                          <td>{index + 1}</td>
-                          <td></td>
-                          <td>{data.name}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </Table>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+                    ))}
+                  </tbody>
+                </Table>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       );
     } else {
       return <div>NO DATA</div>;
@@ -155,7 +153,7 @@ function AdminLike() {
             <Row>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 0 }}
+                md={{ span: 5, offset: 0 }}
                 xl={{ span: 3, offset: 0 }}
                 className="mt-md-4"
               >
@@ -171,7 +169,7 @@ function AdminLike() {
               </Col>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 4 }}
+                md={{ span: 4, offset: 3 }}
                 xl={{ span: 2, offset: 7 }}
                 className="mt-md-4"
               >
