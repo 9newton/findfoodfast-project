@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./MapRestaurant.css";
 import "reactjs-popup/dist/index.css";
 import Container from "react-bootstrap/Container";
@@ -46,7 +46,7 @@ function ContentRestaurant({ restaurant }) {
                 </div>
               </Col>
             </Row>
-          </Col>
+          </Col>  
         </Row>
       </Container>
     </div>
