@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 // import Popup from 'react-popup';
 
 function ContentReport() {
@@ -20,19 +22,28 @@ function ContentReport() {
         category,
         details,
       });
-      alert("แจ้งเรื่องเรียบร้อยแล้ว");
       resetForm();
     } catch (error) {
       console.log(error);
     }
   };
+  const submit = () => toast.success('แจ้งเรื่องเรียบร้อยแล้ว', {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
 
   const resetForm = () => {
     setSubject("");
     setCategory("");
     setDetails("");
   };
-
+  
   return (
     <Form onSubmit={saveReport}>
       <div className="content-report">
@@ -115,11 +126,13 @@ function ContentReport() {
             </Col>
           </Row>
           <div className="col-10 offset-1 col-xl-4 offset-xl-4 mt-4">
-            <button type="submit" className="send-btn">
+            <button onClick={submit} className="send-btn">
               {" "}
               ส่ง{" "}
             </button>
+            <ToastContainer />
           </div>
+
         </Container>
       </div>
     </Form>
