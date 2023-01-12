@@ -24,7 +24,6 @@ function Content() {
   const [restaurants, setRestaurant] = useState([]);
   const [show, setShow] = useState(false);
 
-
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -46,41 +45,38 @@ function Content() {
   return (
     <main className={show ? "space-toggle" : null}>
       <div>
-        <header
-          className={`header-admin ${show ? "space-toggle" : null}`}
-        >
+        <header className={`header-admin ${show ? "space-toggle" : null}`}>
           <div className="header-toggle" onClick={() => setShow(!show)}>
             <FaBars
-              className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null
-                }`}
+              className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}
             />
           </div>
         </header>
 
         <aside className={`sidebar ${show ? "show" : null}`}>
-          <nav className='nav'>
+          <nav className="nav">
             <div>
-              <Link to='/' className='nav-logo'>
+              <Link to="/" className="nav-logo">
                 <FaHome className={`fas fa-home-alt nav-logo-icon`} />
-                <span className='nav-logo-name'>หน้าหลัก</span>
+                <span className="nav-logo-name">หน้าหลัก</span>
               </Link>
 
-              <div className='nav-list'>
-                <Link to='/admin' className='nav-link'>
-                  <FaChartLine className='fas fa-tachometer-alt nav-link-icon mt-1' />
-                  <span className='nav-link-name'>แดชบอร์ด</span>
+              <div className="nav-list">
+                <Link to="/admin" className="nav-link">
+                  <FaChartLine className="fas fa-tachometer-alt nav-link-icon mt-1" />
+                  <span className="nav-link-name">แดชบอร์ด</span>
                 </Link>
-                <Link to='/admin/manageRestaurant' className='nav-link active'>
-                  <FaUtensils className='fas fa-dollar-sign nav-link-icon mt-1' />
-                  <span className='nav-link-name'>ร้านอาหาร</span>
+                <Link to="/admin/manageRestaurant" className="nav-link active">
+                  <FaUtensils className="fas fa-dollar-sign nav-link-icon mt-1" />
+                  <span className="nav-link-name">ร้านอาหาร</span>
                 </Link>
-                <Link to='/admin/like' className='nav-link'>
-                  <FaStar className='fas fa-hotel nav-link-icon mt-1' />
-                  <span className='nav-link-name'>ยอดดาว</span>
+                <Link to="/admin/like" className="nav-link">
+                  <FaStar className="fas fa-hotel nav-link-icon mt-1" />
+                  <span className="nav-link-name">ยอดดาว</span>
                 </Link>
-                <Link to='/admin/report' className='nav-link'>
-                  <FaInbox className='fas fa-image nav-link-icon mt-1' />
-                  <span className='nav-link-name'>แจ้งปัญหา</span>
+                <Link to="/admin/report" className="nav-link">
+                  <FaInbox className="fas fa-image nav-link-icon mt-1" />
+                  <span className="nav-link-name">แจ้งปัญหา</span>
                 </Link>
               </div>
             </div>
@@ -100,7 +96,9 @@ function Content() {
                 xl={{ span: 12, offset: 0 }}
                 className="mt-md-4"
               >
-                <h1 className="content-head-admin mb-4 mt-4 mt-md-0">ร้านอาหาร</h1>
+                <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
+                  ร้านอาหาร
+                </h1>
               </Col>
             </Row>
           </Container>
@@ -127,19 +125,22 @@ function Content() {
                 className="mt-md-4"
               >
                 <Form.Select
-                  className="soi-btn pointer mt-2 mb-4 mt-md-0"
+                  className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                   aria-label="Default select example"
                 >
-                  <option className="text-center">เลือกซอย</option>
-                  <option className="text-center" value="1">
-                    ซอยพร
+                  <option selected hidden>
+                    เลือกซอย
                   </option>
-                  <option className="text-center" value="2">
-                    ซอยมาลี
-                  </option>
-                  <option className="text-center" value="3">
-                    ซอยอีสเทิร์น
-                  </option>
+                  <option value="">ทั้งหมด</option>
+                  <option value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
+                  <option value="ซอยมาลี">ซอยมาลี</option>
+                  <option value="ซอยซูม">ซอยซูม</option>
+                  <option value="ซอย 4B">ซอย 4B</option>
+                  <option value="ซอยหมูแฮม">ซอยหมูแฮม</option>
+                  <option value="ซอย RS">ซอย RS</option>
+                  <option value="ซอยพรธิสาร">ซอยพรธิสาร</option>
+                  <option value="ซอย Icon">ซอย Icon</option>
+                  <option value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
                 </Form.Select>
               </Col>
             </Row>
@@ -181,7 +182,9 @@ function Content() {
                         {restaurants.map((restaurant, index) => (
                           <tr key={restaurant._id}>
                             <td>
-                              <Link to={`/admin/manageRestaurant/addImage/${restaurant._id}/${restaurant.name}/${restaurant.alley}`}>
+                              <Link
+                                to={`/admin/manageRestaurant/addImage/${restaurant._id}/${restaurant.name}/${restaurant.alley}`}
+                              >
                                 <button
                                   className="add-img"
                                   variant="outline-primary"
@@ -221,7 +224,8 @@ function Content() {
                             </td>
                             <td>
                               {restaurant.holiday.map((holiday, indexHoliday) =>
-                                restaurant.holiday.length - 1 === indexHoliday ? (
+                                restaurant.holiday.length - 1 ===
+                                indexHoliday ? (
                                   <span key={indexHoliday + "holiday"}>
                                     {holiday}
                                     <br />
@@ -243,18 +247,20 @@ function Content() {
                               FB: {restaurant.facebook}
                             </td>
                             <td>
-                              {restaurant.delivery.map((delivery, indexDelivery) =>
-                                restaurant.delivery.length - 1 === indexDelivery ? (
-                                  <span key={indexDelivery + "delivery"}>
-                                    {delivery}
-                                    <br />
-                                  </span>
-                                ) : (
-                                  <span key={indexDelivery + "delivery"}>
-                                    {delivery}
-                                    <br />
-                                  </span>
-                                )
+                              {restaurant.delivery.map(
+                                (delivery, indexDelivery) =>
+                                  restaurant.delivery.length - 1 ===
+                                  indexDelivery ? (
+                                    <span key={indexDelivery + "delivery"}>
+                                      {delivery}
+                                      <br />
+                                    </span>
+                                  ) : (
+                                    <span key={indexDelivery + "delivery"}>
+                                      {delivery}
+                                      <br />
+                                    </span>
+                                  )
                               )}
                             </td>
                             <td>
@@ -283,10 +289,9 @@ function Content() {
               </Col>
             </Row>
           </Container>
-        </div >
+        </div>
       </div>
     </main>
-
   );
 }
 

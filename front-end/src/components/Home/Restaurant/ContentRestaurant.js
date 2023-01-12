@@ -26,34 +26,25 @@ function ContentRestaurant({ restaurant }) {
     activeColor: "#ffd700",
   };
   const ratingChanged = async (newRating) => {
-    console.log(newRating)
+    console.log(newRating);
     try {
-      // switch (newRating) {
-      //   case 0: setUpdateRating("oneStar"); break;
-      //   case 1: setUpdateRating("oneStar"); break;
-      //   case 2: setUpdateRating("twoStar"); break;
-      //   case 3: setUpdateRating("threeStar"); break;
-      //   case 4: setUpdateRating("fourStar"); break;
-      //   case 5: setUpdateRating("fiveStar"); break;
-      //   default: setUpdateRating("none"); break;
-      // }
-      // if (newRating === 5) {
-      //   setUpdateRating("fiveStar");
-      // } else if (newRating === 4) {
-      //   setUpdateRating("fourStar");
-      // } else if (newRating === 3) {
-      //   setUpdateRating("threeStar");
-      // } else if (newRating === 2) {
-      //   setUpdateRating("twoStar");
-      // } else {
-      //   setUpdateRating("oneStar");
-      // }
-      // console.log(updateRating)
+      const point = {
+        1: "oneStar",
+        2: "twoStar",
+        3: "threeStar",
+        4: "fourStar",
+        5: "fiveStar",
+      };
 
-      await axios.put(`http://localhost:5000/restaurants/rating/${restaurant._id}`,
+      const selectedRating = point[newRating];
+      console.log(selectedRating);
+      console.log(prevRating);
+
+      await axios.put(
+        `http://localhost:5000/restaurants/rating/${restaurant._id}`,
         {
-          "prevRating": prevRating,
-          "updateRating": newRating
+          prevRating: "none",
+          updateRating: selectedRating,
         }
       );
     } catch (error) {
@@ -61,7 +52,7 @@ function ContentRestaurant({ restaurant }) {
     }
   };
   return (
-    <div className="content-restaurant" >
+    <div className="content-restaurant">
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
       <Container>
         <Row>
@@ -82,7 +73,11 @@ function ContentRestaurant({ restaurant }) {
                     xxl={{ span: 4, offset: 0 }}
                     className=" form"
                   >
-                    <Image className="img-cover" src={restaurant?.coverImg} alt="" />
+                    <Image
+                      className="img-cover"
+                      src={restaurant?.coverImg}
+                      alt=""
+                    />
                   </Col>
                   <Col
                     xs={{ span: 12, offset: 0 }}
@@ -107,11 +102,17 @@ function ContentRestaurant({ restaurant }) {
                           <p className="heading-name">อาหารที่ขาย</p>
                           <p className="description">{restaurant?.food}</p>
                           <p className="heading-name">เวลาเปิด - ปิด</p>
-                          <p className="description">{restaurant?.timeOpen} - {restaurant?.timeClose}</p>
+                          <p className="description">
+                            {restaurant?.timeOpen} - {restaurant?.timeClose}
+                          </p>
                           <p className="heading-name">วันหยุดของร้าน</p>
-                          <p className="description">{restaurant?.holiday.toString()}</p>
+                          <p className="description">
+                            {restaurant?.holiday.toString()}
+                          </p>
                           <p className="heading-name">เรทราคา</p>
-                          <p className="description">{restaurant?.ratePrice} บาท</p>
+                          <p className="description">
+                            {restaurant?.ratePrice} บาท
+                          </p>
                         </div>
                       </Col>
 
@@ -160,7 +161,8 @@ function ContentRestaurant({ restaurant }) {
                   >
                     <div className="mt-5 offset-4 offset-md-0">
                       <span className="heading-location p">
-                        <FaMapMarkerAlt className="text-danger" /> {restaurant?.alley}
+                        <FaMapMarkerAlt className="text-danger" />{" "}
+                        {restaurant?.alley}
                       </span>
                     </div>
                   </Col>
@@ -170,7 +172,7 @@ function ContentRestaurant({ restaurant }) {
           </Col>
         </Row>
       </Container>
-    </div >
+    </div>
   );
 }
 

@@ -137,6 +137,8 @@ const validateRating = (id, prevRating, updateRating) => {
     "none",
   ];
 
+  console.log(updateRating);
+
   if (!staticStar.includes(prevRating) || !staticStar.includes(updateRating)) {
     throw { message: "Please insert correct rating", statusCode: 400 };
   }

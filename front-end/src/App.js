@@ -13,8 +13,12 @@ import EditRestaurant from "./components/Admin/AdminContent/Edit";
 import AddRestaurant from "./components/Admin/AdminContent/Popup";
 import AddImage from "./components/Admin/AdminContent/AddImage";
 import MenuAdmin from "./components/Admin/AdminMenu/MenuAdmin";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    console.log("Hello world");
+  }, []);
   return (
     <div className="App">
       <BrowserRouter>
@@ -42,8 +46,16 @@ function App() {
               element={<AddImage />}
             />
             <Route path="/admin/like" element={<AdminLike />} />
-            <Route path="/admin/report" component={Admin} element={<AdminReport />} />
-            <Route path="/admin/dashboard" component={Admin} element={<AdminDashboard />} />
+            <Route
+              path="/admin/report"
+              component={Admin}
+              element={<AdminReport />}
+            />
+            <Route
+              path="/admin/dashboard"
+              component={Admin}
+              element={<AdminDashboard />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
