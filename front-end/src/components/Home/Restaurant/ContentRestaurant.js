@@ -85,7 +85,9 @@ function ContentRestaurant({ restaurant }) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>ให้คะแนนร้านค้า</Modal.Title>
+          <Modal.Title className="heading-name">
+            ให้คะแนนร้านค้าเลย!
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -108,22 +110,24 @@ function ContentRestaurant({ restaurant }) {
       </Modal>
       <ToastContainer />
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
-      <Row>
-        <Col
-          xs={{ span: 10, offset: 1 }}
-          md={{ span: 6, offset: 3 }}
-          xl={{ span: 2, offset: 5 }}
-          className="mt-4 form"
-        >
-          <Button
-            className="star-btn col-12"
-            variant="outline-warning"
-            onClick={handleShow}
+      <Container>
+        <Row>
+          <Col
+            xs={{ span: 10, offset: 1 }}
+            md={{ span: 6, offset: 3 }}
+            xl={{ span: 2, offset: 5 }}
+            className="mt-2 form"
           >
-            <FaStar className="mb-1 star" /> กดให้คะแนนร้านค้า
-          </Button>{" "}
-        </Col>
-      </Row>
+            <Button
+              className="star-btn col-12"
+              variant="outline-warning"
+              onClick={handleShow}
+            >
+              <FaStar className="mb-1 star" /> กดให้คะแนนร้านค้า
+            </Button>
+          </Col>
+        </Row>
+      </Container>
       <Container>
         <Row>
           <Col

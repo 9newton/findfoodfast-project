@@ -24,7 +24,7 @@
 .form-name {
   border-color: #c1c1c1;
   border-width: 1px;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 60px;
 }
 
@@ -38,7 +38,7 @@
 .form-detail-report {
   border-color: #c1c1c1;
   border-width: 1px;
-  border-radius: 20px;
+  border-radius: 10px;
   height: auto;
 }
 
@@ -75,12 +75,13 @@
   color: #6c757d;
   background-color: transparent;
   border-radius: 15px;
-  border-color: #c1c1c1;
+  border-color: transparent;
   border-width: 1px;
   font-size: 18px;
   font-weight: 500;
   height: 50px;
   display: inline-block;
+  box-shadow: 0px 0px 10px #e2e2e2;
 }
 
 .section-btn:focus {

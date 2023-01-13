@@ -5,8 +5,8 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Popup from 'react-popup';
 
 function ContentReport() {
@@ -27,15 +27,16 @@ function ContentReport() {
       console.log(error);
     }
   };
-  const submit = () => toast.success('แจ้งเรื่องเรียบร้อยแล้ว', {
-    position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
+  const submit = () =>
+    toast.success("แจ้งเรื่องเรียบร้อยแล้ว", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
     });
 
   const resetForm = () => {
@@ -43,7 +44,7 @@ function ContentReport() {
     setCategory("");
     setDetails("");
   };
-  
+
   return (
     <Form onSubmit={saveReport}>
       <div className="content-report">
@@ -94,7 +95,7 @@ function ContentReport() {
               </Form.Label>
               <Form.Control
                 type="text"
-                className="form-input"
+                className="form-name"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder="เรื่องที่ต้องการแจ้ง"
@@ -132,7 +133,6 @@ function ContentReport() {
             </button>
             <ToastContainer />
           </div>
-
         </Container>
       </div>
     </Form>
