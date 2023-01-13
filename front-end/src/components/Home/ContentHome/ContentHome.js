@@ -14,6 +14,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Iframe from "react-iframe";
+import BackToTopButton from "../BackToTop/BackToTopButton";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);

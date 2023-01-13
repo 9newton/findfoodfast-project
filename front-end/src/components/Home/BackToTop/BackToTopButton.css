@@ -1,0 +1,19 @@
+.btn-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0px 0px 10px rgb(176, 176, 176);
+  color: #222c61;
+  font-size: 30px;
+}
+
+.btn-to-top:hover {
+  background-color: #222c61;
+  color: white;
+  transition: 0.2s;
+}
