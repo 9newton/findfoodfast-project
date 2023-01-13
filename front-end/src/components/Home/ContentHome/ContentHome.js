@@ -10,6 +10,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Iframe from "react-iframe";
 
@@ -142,8 +143,15 @@ function Content() {
           </div>
 
           <div>
-            <p className="link-reset" onClick={handleReset}>
-              <Link className="btn btn-link reset">ล้างค่าทั้งหมด</Link>
+            <p
+              className="link-reset mt-3 mt-md-3 mt-xl-2"
+              onClick={handleReset}
+            >
+              <Link>
+                <Button variant="outline-danger" className="mt-1 mt-xl-2">
+                  ล้างค่าทั้งหมด
+                </Button>
+              </Link>
             </p>
           </div>
           {result.map((data, index) => (
