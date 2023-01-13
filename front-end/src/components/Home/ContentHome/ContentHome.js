@@ -6,6 +6,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
+import { FaRedoAlt } from "@react-icons/all-files/fa/FaRedoAlt";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -149,7 +150,7 @@ function Content() {
             >
               <Link>
                 <Button variant="outline-danger" className="mt-1 mt-xl-2">
-                  ล้างค่าทั้งหมด
+                  <FaRedoAlt className="mb-1" /> ล้างค่าทั้งหมด
                 </Button>
               </Link>
             </p>
