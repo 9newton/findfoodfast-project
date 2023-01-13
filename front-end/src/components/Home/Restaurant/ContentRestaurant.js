@@ -9,21 +9,30 @@ import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
 import { FaLine } from "@react-icons/all-files/fa/FaLine";
 import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
+import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ContentRestaurant({ restaurant }) {
   const [updateRating, setUpdateRating] = useState("");
   const [prevRating, setPrevRating] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const ratingStars = {
-    size: 30,
+    size: 50,
     count: 5,
     isHalf: false,
     value: 0,
-    color: "grey",
+    color: "#c1c1c1",
     activeColor: "#ffd700",
   };
   const ratingChanged = async (newRating) => {
@@ -36,7 +45,9 @@ function ContentRestaurant({ restaurant }) {
         4: "fourStar",
         5: "fiveStar",
       };
-      alert("ให้คะแนนร้านค้าเรียบร้อยแล้ว!");
+      handleClose();
+      alertSubmit();
+      // alert("ให้คะแนนร้านค้าเรียบร้อยแล้ว!");
 
       const selectedRating = point[newRating];
       console.log(selectedRating);
@@ -53,9 +64,66 @@ function ContentRestaurant({ restaurant }) {
       console.log(error);
     }
   };
+
+  const alertSubmit = () =>
+    toast.success("ให้คะแนนร้านค้าเรียบร้อยแล้ว!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   return (
     <div className="content-restaurant">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>ให้คะแนนร้านค้า</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Row>
+            <Col
+              xs={{ span: 8, offset: 2 }}
+              md={{ span: 6, offset: 3 }}
+              xl={{ span: 10, offset: 1 }}
+              xxl={{ span: 6, offset: 3 }}
+              className="mt-0 form"
+            >
+              <ReactStars {...ratingStars} onChange={ratingChanged} />
+            </Col>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer />
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
+      <Row>
+        <Col
+          xs={{ span: 10, offset: 1 }}
+          md={{ span: 6, offset: 3 }}
+          xl={{ span: 2, offset: 5 }}
+          className="mt-4 form"
+        >
+          <Button
+            className="star-btn col-12"
+            variant="outline-warning"
+            onClick={handleShow}
+          >
+            <FaStar className="mb-1 star" /> กดให้คะแนนร้านค้า
+          </Button>{" "}
+        </Col>
+      </Row>
       <Container>
         <Row>
           <Col
@@ -90,7 +158,6 @@ function ContentRestaurant({ restaurant }) {
                   >
                     <div className="mt-4 xs offset-md-0">
                       <span className="h3">{restaurant?.name}</span>
-                      <ReactStars {...ratingStars} onChange={ratingChanged} />
                     </div>
                     <Row>
                       <Col

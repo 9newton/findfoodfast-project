@@ -45,6 +45,21 @@
   font-size: 23px;
   color: #1877f2;
 }
+.star {
+  align-content: center;
+}
+.star-btn {
+  color: #222c61;
+  background-color: transparent;
+  border-color: #222c61;
+  border-width: 2px;
+  border-radius: 10px;
+  height: 50px;
+  box-shadow: 0px 0px 10px #e9e9e9;
+}
+.star-btn:hover {
+  color: #222c61;
+}
 
 @media screen and (max-width: 480px) {
   .card-restaurant {

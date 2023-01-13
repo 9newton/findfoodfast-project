@@ -100,7 +100,7 @@ function AdminLike() {
           </div>
         </header>
 
-        <aside className={`sidebar ${show ? "show" : null}`}>
+        <aside className={`sidebar ${show ? "showed" : null}`}>
           <nav className="nav">
             <div>
               <Link to="/" className="nav-logo">
