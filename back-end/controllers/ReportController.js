@@ -5,7 +5,7 @@ export const getReports = async (req, res, next) => {
     const PAGE_SIZE = 5;
     const page = parseInt(req.query.page || "0");
     const subjectValid = req.query.subject;
-    const categoryValid = req.query.subject;
+    const categoryValid = req.query.category;
     const filterAndSearch = {
       $and: [
         { subject: { $regex: subjectValid, $options: 'i' } },
