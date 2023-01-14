@@ -4,15 +4,29 @@ export const getReports = async (req, res, next) => {
   try {
     const PAGE_SIZE = 5;
     const page = parseInt(req.query.page || "0");
-    const total = await Report.countDocuments({});
-    const reports = await Report.find({})
+    const subjectValid = req.query.subject;
+    const categoryValid = req.query.subject;
+    const filterAndSearch = {
+      $and: [
+        { subject: { $regex: subjectValid, $options: 'i' } },
+        { category: { $regex: categoryValid, $options: 'i' } }
+      ]
+    }
+
+    const total = await Report.countDocuments(filterAndSearch);
+
+    Report.find(filterAndSearch)
+      .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
-      .skip(PAGE_SIZE * page);
-    res.json({
-      totalPages: Math.ceil(total / PAGE_SIZE),
-      reports,
-    });
-    res.status(200).send(reports).end();
+      .exec((err, result) => {
+        if (err) {
+          return res.status(500).json({ error: err });
+        }
+        res.json({
+          totalPages: Math.ceil(total / PAGE_SIZE),
+          data: result,
+        })
+      });
   } catch (error) {
     next(error);
   }
