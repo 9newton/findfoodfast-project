@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AdminReport.css";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
@@ -21,11 +21,8 @@ import Moment from "moment";
 function AdminReport() {
   const [reports, setReport] = useState([]);
   const [show, setShow] = useState(false);
-  const [input, setInput] = useState({
-    subject: "",
-    category: "",
-  });
-
+  const [subject, setSubject] = useState("");
+  const [category, setCategory] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
@@ -38,22 +35,15 @@ function AdminReport() {
     setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
   };
 
-  const handleSearch = useCallback((event, type) => {
-    setInput((prev) => {
-      prev[type] = event.target.value.trim();
-      return { ...prev };
-    });
-  }, []);
-
   useEffect(() => {
     getReports();
-  }, [pageNumber]);
+  }, [pageNumber, subject, category]);
 
   const getReports = async () => {
-    fetch(`http://localhost:5000/reports?page=${pageNumber}`)
+    fetch(`http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}`)
       .then((response) => response.json())
-      .then(({ totalPages, reports }) => {
-        setReport(reports);
+      .then(({ totalPages, data }) => {
+        setReport(data);
         setNumberOfPages(totalPages);
       });
   };
@@ -67,71 +57,6 @@ function AdminReport() {
     }
   };
 
-  const reportList = useMemo(() => {
-    if (reports !== null) {
-      const result = reports.filter((data) => {
-        const subjectValid = input.subject
-          ? data.subject.includes(input.subject)
-          : true;
-        const categoryValid = input.category
-          ? data.category.includes(input.category)
-          : true;
-        // setNumberOfPages(reports.length);
-        return subjectValid && categoryValid;
-      });
-
-      return (
-        <>
-          <Row>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 0 }}
-              xl={{ span: 12, offset: 0 }}
-              className=" form"
-            >
-              <Card className="card-admin">
-                <Card.Body>
-                  <Table responsive="sm text-center">
-                    <thead>
-                      <tr>
-                        <th>วันที่</th>
-                        <th>หัวข้อ</th>
-                        <th>เรื่อง</th>
-                        <th>รายละเอียด</th>
-                        <th>ลบ</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {result.map((data, index) => (
-                        <tr key={data._id}>
-                          <td>
-                            {Moment(data.created_at).format("MM/DD/YYYY")}
-                          </td>
-                          <td>{data.category}</td>
-                          <td>{data.subject}</td>
-                          <td>{data.details}</td>
-                          <td>
-                            <Link
-                              onClick={() => deleteReport(data._id)}
-                              className="button is-info is-small mr-1"
-                            >
-                              <FaTrash className="text-danger" />
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </Table>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </>
-      );
-    } else {
-      return <div>NO DATA</div>;
-    }
-  }, [reports, input]);
   return (
     <main className={show ? "space-toggle" : null}>
       <div>
@@ -142,7 +67,6 @@ function AdminReport() {
             />
           </div>
         </header>
-
         <aside className={`sidebar ${show ? "showed" : null}`}>
           <nav className="nav">
             <div>
@@ -170,14 +94,12 @@ function AdminReport() {
                 </Link>
               </div>
             </div>
-
             {/* <Link to='/logout' className='nav-link'>
             <i className='fas fa-sign-out nav-link-icon'></i>
             <span className='nav-link-name'>Logout</span>
           </Link> */}
           </nav>
         </aside>
-
         <div className="content">
           <Container>
             <Row>
@@ -207,8 +129,7 @@ function AdminReport() {
                   className="form-search"
                   aria-describedby="passwordHelpBlock"
                   placeholder="Search"
-                  value={input.subject}
-                  onChange={(e) => handleSearch(e, "subject")}
+                  onChange={(e) => setSubject(e.target.value) & setPageNumber("")}
                 />
               </Col>
               <Col
@@ -220,8 +141,7 @@ function AdminReport() {
                 <Form.Select
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                   aria-label="Default select example"
-                  value={input.category}
-                  onChange={(e) => handleSearch(e, "category")}
+                  onChange={(e) => setCategory(e.target.value) & setPageNumber("")}
                 >
                   <option selected hidden>
                     เลือกหัวข้อ
@@ -234,24 +154,70 @@ function AdminReport() {
                   <option value="หมุดไม่ตรงกับสถานที่จริง">
                     หมุดไม่ตรงกับสถานที่จริง
                   </option>
+                  <option value="อื่นๆ">
+                    อื่นๆ
+                  </option>
                 </Form.Select>
               </Col>
             </Row>
-            <div>{reportList}</div>
+            <Row>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 12, offset: 0 }}
+                className=" form"
+              >
+                <Card className="card-admin">
+                  <Card.Body>
+                    <Table responsive="sm text-center">
+                      <thead>
+                        <tr>
+                          <th>วันที่</th>
+                          <th>หัวข้อ</th>
+                          <th>เรื่อง</th>
+                          <th>รายละเอียด</th>
+                          <th>ลบ</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {reports.map((data, index) => (
+                          <tr key={data._id}>
+                            <td>
+                              {Moment(data.created_at).format("MM/DD/YYYY")}
+                            </td>
+                            <td>{data.category}</td>
+                            <td>{data.subject}</td>
+                            <td>{data.details}</td>
+                            <td>
+                              <Link
+                                onClick={() => deleteReport(data._id)}
+                                className="button is-info is-small mr-1"
+                              >
+                                <FaTrash className="text-danger" />
+                              </Link>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </Card.Body>
+                  <div className="mt-5 mx-5 text-end">
+                    <button onClick={gotoPrevious}>Previous</button>
+                    {pages.map((pageIndex) => (
+                      <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
+                        {pageIndex + 1}
+                      </button>
+                    ))}
+                    <button onClick={gotoNext}>Next</button>
+                  </div>
+                </Card>
+              </Col>
+            </Row>
           </Container>
-          <div className="mt-5">
-            <button onClick={gotoPrevious}>Previous</button>
-            {pages.map((pageIndex) => (
-              <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
-                {pageIndex + 1}
-              </button>
-            ))}
-            <button onClick={gotoNext}>Next</button>
-          </div>
         </div>
       </div>
     </main>
   );
-}
+};
 
 export default AdminReport;
