@@ -12,7 +12,6 @@ export const getReports = async (req, res, next) => {
         { category: { $regex: categoryValid, $options: 'i' } }
       ]
     }
-
     const total = await Report.countDocuments(filterAndSearch);
 
     Report.find(filterAndSearch)
