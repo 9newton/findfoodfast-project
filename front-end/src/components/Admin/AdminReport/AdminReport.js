@@ -17,6 +17,8 @@ import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Moment from "moment";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AdminReport() {
   const [reports, setReport] = useState([]);
@@ -52,10 +54,20 @@ function AdminReport() {
     try {
       await axios.delete(`http://localhost:5000/reports/${id}`);
       getReports();
+      alertsubmit();
     } catch (error) {
       console.log(error);
     }
   };
+  const alertsubmit = () => toast.success('ลบเรียบร้อยแล้ว!', {
+    position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: false,
+  draggable: false,
+  theme: "light",
+    });
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -200,6 +212,7 @@ function AdminReport() {
                         ))}
                       </tbody>
                     </Table>
+                    <ToastContainer />
                   </Card.Body>
                   <div className="mt-5 mx-5 text-end">
                     <button onClick={gotoPrevious}>Previous</button>

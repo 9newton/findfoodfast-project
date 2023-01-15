@@ -20,6 +20,8 @@ import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Image from "react-bootstrap/Image";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -49,10 +51,20 @@ function Content() {
     try {
       await axios.delete(`http://localhost:5000/restaurants/${id}`);
       getRestaurants();
+      alertsubmit();
     } catch (error) {
       console.log(error);
     }
   };
+  const alertsubmit = () => toast.success('ลบข้อมูลร้านเรียบร้อยแล้ว', {
+    position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: false,
+  draggable: false,
+  theme: "light",
+    });
 
   const restaurantList = useMemo(() => {
     if (restaurants !== null) {
@@ -195,6 +207,7 @@ function Content() {
                     ))}
                   </tbody>
                 </Table>
+                <ToastContainer />
               </Card.Body>
             </Card>
           </Col>
