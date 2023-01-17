@@ -1,6 +1,6 @@
 import React from "react";
 import "./Banner.css";
-import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
+import { FaSearch } from 'react-icons/fa';
 import ReactTypingEffect from "react-typing-effect";
 import { ScrollDown, ScrollLink } from "./BannerElements";
 

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { FaHamburger } from "@react-icons/all-files/fa/FaHamburger";
-import { FaAngleLeft } from "@react-icons/all-files/fa/FaAngleLeft";
+import { FaHamburger, FaAngleLeft } from 'react-icons/fa';
 import Logo from "../image/Logo3.png";
 import { NavLink, Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";

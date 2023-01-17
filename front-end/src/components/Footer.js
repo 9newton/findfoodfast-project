@@ -1,7 +1,7 @@
 import './Footer.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Logo from '../image/Logo3.png';
-import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
+import { FaFacebook } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./BackToTopButton.css";
-import { FaAngleUp } from "@react-icons/all-files/fa/FaAngleUp";
+import { FaAngleUp } from 'react-icons/fa';
 
 function BackToTopButton() {
   const [BackToTopButton, setBackToTopButton] = useState(false);

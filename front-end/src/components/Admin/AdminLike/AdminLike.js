@@ -9,12 +9,7 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { FaBars } from "@react-icons/all-files/fa/FaBars";
-import { FaHome } from "@react-icons/all-files/fa/FaHome";
-import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
-import { FaStar } from "@react-icons/all-files/fa/FaStar";
-import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
-import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
+import { FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
 
 function AdminLike() {
   const [restaurants, setRestaurant] = useState([]);
