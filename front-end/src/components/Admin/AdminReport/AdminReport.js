@@ -18,16 +18,22 @@ import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
+import Button from "react-bootstrap/Button";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminReport() {
   const [reports, setReport] = useState([]);
   const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
   const [subject, setSubject] = useState("");
   const [category, setCategory] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
+  const [reportId, setReportId] = useState();
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   const [showPagination, setShowPagination] = React.useState(true);
 
@@ -217,9 +223,12 @@ function AdminReport() {
                             <td>{data.category}</td>
                             <td>{data.subject}</td>
                             <td>{data.details}</td>
+
                             <td>
                               <Link
-                                onClick={() => deleteReport(data._id)}
+                                onClick={() =>
+                                  handleOpen() & setReportId(data._id)
+                                }
                                 className="button is-info is-small mr-1"
                               >
                                 <FaTrash className="text-danger" />
@@ -235,6 +244,37 @@ function AdminReport() {
               </Col>
             </Row>
           </Container>
+          <Modal
+            show={open}
+            size="lg"
+            onHide={handleClose}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                <h1 className="name">ยืนยันการลบ</h1>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h4>คุณต้องการจะลบใช่หรือไม่?</h4>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="outline-danger"
+                className="mt-1 mt-xl-2"
+                onClick={handleClose}
+              >
+                ยกเลิก
+              </Button>
+              <Button
+                className="add-manage-btn mt-0"
+                onClick={() => deleteReport(reportId) & handleClose()}
+              >
+                ตกลง
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <Container>
             <Row>
               <Col

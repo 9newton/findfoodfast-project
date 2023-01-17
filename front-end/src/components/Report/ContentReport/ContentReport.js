@@ -22,12 +22,13 @@ function ContentReport() {
         category,
         details,
       });
+      alertsubmit();
       resetForm();
     } catch (error) {
       console.log(error);
     }
   };
-  const submit = () =>
+  const alertsubmit = () =>
     toast.success("แจ้งเรื่องเรียบร้อยแล้ว", {
       position: "top-right",
       autoClose: 3000,
@@ -127,13 +128,14 @@ function ContentReport() {
             </Col>
           </Row>
           <div className="col-10 offset-1 col-xl-4 offset-xl-4 mt-4">
-            <button onClick={submit} className="send-btn">
+            <button type="submit" className="send-btn">
               {" "}
               ส่ง{" "}
             </button>
-            <ToastContainer />
+            
           </div>
         </Container>
+        <ToastContainer />
       </div>
     </Form>
   );
