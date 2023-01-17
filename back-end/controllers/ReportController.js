@@ -2,7 +2,7 @@ import Report from "../models/ReportModel.js";
 
 export const getReports = async (req, res, next) => {
   try {
-    const PAGE_SIZE = 5;
+    const PAGE_SIZE = parseInt(req.query.pageSize);
     const page = parseInt(req.query.page || "0");
     const subjectValid = req.query.subject;
     const categoryValid = req.query.category;
