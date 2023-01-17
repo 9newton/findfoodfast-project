@@ -9,13 +9,7 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
-import { FaBars } from "@react-icons/all-files/fa/FaBars";
-import { FaHome } from "@react-icons/all-files/fa/FaHome";
-import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
-import { FaStar } from "@react-icons/all-files/fa/FaStar";
-import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
-import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
+import { FaTrash, FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
 import Moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
@@ -23,36 +17,47 @@ import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import "react-toastify/dist/ReactToastify.css";
 
+
 function AdminReport() {
+  // Get Data
   const [reports, setReport] = useState([]);
+  // Delete Data
+  const [reportId, setReportId] = useState();
+  // Nav
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+  // Filter And Search
   const [subject, setSubject] = useState("");
   const [category, setCategory] = useState("");
+  // Sort
+  const [sort, setSort] = useState(-1);
+  // Pagination
   const [pageSize, setPageSize] = useState(5);
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
-  const [reportId, setReportId] = useState();
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   const [showPagination, setShowPagination] = React.useState(true);
+  // Modal
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
 
+
+  useEffect(() => {
+    getReports();
+  }, [pageNumber, subject, category, pageSize, sort]);
+
+  // Pagination
   const gotoPrevious = () => {
     setPageNumber(Math.max(0, pageNumber - 1));
   };
-
   const gotoNext = () => {
     setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
   };
 
-  useEffect(() => {
-    getReports();
-  }, [pageNumber, subject, category, pageSize]);
-
+  // Express
   const getReports = async () => {
     fetch(
-      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}`
+      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -64,7 +69,6 @@ function AdminReport() {
         }
       });
   };
-
   const deleteReport = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/reports/${id}`);
@@ -75,6 +79,7 @@ function AdminReport() {
     }
   };
 
+  // alert
   const alertsubmit = () =>
     toast.success("ลบเรียบร้อยแล้ว!", {
       position: "top-right",
@@ -86,9 +91,11 @@ function AdminReport() {
       theme: "light",
     });
 
+  // others
   const resetPageNumber = () => {
     setPageNumber(0);
   }
+
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -107,7 +114,6 @@ function AdminReport() {
                 <FaHome className={`fas fa-home-alt nav-logo-icon`} />
                 <span className="nav-logo-name">หน้าหลัก</span>
               </Link>
-
               <div className="nav-list">
                 <Link to="/admin" className="nav-link">
                   <FaChartLine className="fas fa-tachometer-alt nav-link-icon mt-1" />
@@ -174,9 +180,23 @@ function AdminReport() {
                 xl={{ span: 2, offset: 7 }}
                 className="mt-md-4"
               >
+                <>
+                  <Form.Select
+                    className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
+                    aria-label="Select Sort"
+                    onChange={(e) =>
+                      setSort(e.target.value) & resetPageNumber()
+                    }
+                  >
+                    <option value="-1" selected>เรียงใหม่สุดไปเก่าสุด</option>
+                    <option value="1">
+                      เรียงจากเก่าไปใหม่สุด
+                    </option>
+                  </Form.Select>
+                </>
                 <Form.Select
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
-                  aria-label="Default select example"
+                  aria-label="Select Category"
                   onChange={(e) =>
                     setCategory(e.target.value) & resetPageNumber()
                   }
@@ -219,7 +239,7 @@ function AdminReport() {
                         {reports.map((data, index) => (
                           <tr key={data._id}>
                             <td>
-                              {Moment(data.created_at).format("MM/DD/YYYY")}
+                              {Moment(data.created_at).format("DD/MM/YYYY")}
                             </td>
                             <td>{data.category}</td>
                             <td>{data.subject}</td>

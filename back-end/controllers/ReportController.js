@@ -6,6 +6,7 @@ export const getReports = async (req, res, next) => {
     const page = parseInt(req.query.page || "0");
     const subjectValid = req.query.subject;
     const categoryValid = req.query.category;
+    const sort = parseInt(req.query.sort);
     const filterAndSearch = {
       $and: [
         { subject: { $regex: subjectValid, $options: "i" } },
@@ -17,6 +18,7 @@ export const getReports = async (req, res, next) => {
     Report.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
+      .sort({ created_at: sort })
       .exec((err, result) => {
         if (err) {
           return res.status(500).json({ error: err });

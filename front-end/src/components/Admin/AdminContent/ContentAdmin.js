@@ -8,20 +8,11 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { FaPlus } from "@react-icons/all-files/fa/FaPlus";
-import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
-import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
-import { FaBars } from "@react-icons/all-files/fa/FaBars";
-import { FaHome } from "@react-icons/all-files/fa/FaHome";
-import { FaChartLine } from "@react-icons/all-files/fa/FaChartLine";
-import { FaStar } from "@react-icons/all-files/fa/FaStar";
-import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
-import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
+import { FaPlus, FaEdit, FaTrash, FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
 import Image from "react-bootstrap/Image";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -58,13 +49,13 @@ function Content() {
   };
   const alertsubmit = () => toast.success('ลบข้อมูลร้านเรียบร้อยแล้ว', {
     position: "top-right",
-  autoClose: 3000,
-  hideProgressBar: false,
-  closeOnClick: false,
-  pauseOnHover: false,
-  draggable: false,
-  theme: "light",
-    });
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    theme: "light",
+  });
 
   const restaurantList = useMemo(() => {
     if (restaurants !== null) {
