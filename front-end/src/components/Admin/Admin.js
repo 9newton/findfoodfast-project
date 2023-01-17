@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Footer from "../Footer";
 import MenuAdmin from "./AdminMenu/MenuAdmin";
 import Content from "./AdminContent/ContentAdmin";
-import { FaBars } from "@react-icons/all-files/fa/FaBars";
+import { FaBars } from 'react-icons/fa';
 import AdminLike from "./AdminLike/AdminLike";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 
@@ -21,9 +21,8 @@ function Admin() {
               >
                 <div className="header-toggle" onClick={() => setShow(!show)}>
                   <FaBars
-                    className={`fas fa-bars ${
-                      show ? "fa-solid fa-xmark" : null
-                    }`}
+                    className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null
+                      }`}
                   />
                 </div>
               </header>
