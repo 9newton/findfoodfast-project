@@ -1,77 +1,103 @@
-.pointer{
-    cursor: pointer;
+.pointer {
+  cursor: pointer;
 }
-.content-head{
-    color: #222C61;
-    font-weight:800;
-}
-
-.content-bottom{
-    color: #222C61;
-    font-size: 30px;
-    font-weight:300;
+.content-head {
+  color: #222c61;
+  font-weight: 800;
 }
 
-.name{
-    color: #222C61;
+.content-bottom {
+  color: #222c61;
+  font-size: 30px;
+  font-weight: 300;
 }
 
-.form-search{
-    background-color: white;
+.name {
+  color: #222c61;
+}
+
+.form-search {
+  background-color: white;
   border-color: white;
   border-width: 1px;
   border-radius: 10px;
   height: 50px;
 }
 
-.form-search:focus{
-    color: #222C61;
-    border-color: #222C61;
-    border-width: 2px;
-    box-shadow: none;
+.form-search:focus {
+  color: #222c61;
+  border-color: #222c61;
+  border-width: 2px;
+  box-shadow: none;
 }
 
-.form-detail{
-    border-color: #C1C1C1;
-    border-width: 2px;
-    border-radius: 20px;
-    height: auto;
+.form-detail {
+  border-color: #c1c1c1;
+  border-width: 2px;
+  border-radius: 20px;
+  height: auto;
 }
-.form-detail:focus{
-    color: #222C61;
-    border-color: #222C61;
-    box-shadow: none;
+.form-detail:focus {
+  color: #222c61;
+  border-color: #222c61;
+  box-shadow: none;
 }
 
-.soi-btn{
-    background-color: white;
+.soi-btn {
+  background-color: white;
   border-color: white;
   border-width: 1px;
   border-radius: 10px;
   height: 50px;
   box-shadow: 0px 0px 10px #e9e9e9;
 }
-.soi-btn:focus{
-    color: #222C61;
-    border-color: #222C61;
-    border-width: 2px;
-    box-shadow: none;
+.soi-btn:focus {
+  color: #222c61;
+  border-color: #222c61;
+  border-width: 2px;
+  box-shadow: none;
 }
 
-.card-admin{
-    max-width: 1980px;
-    width: 100%;
-    border-radius: 10px;
+.card-admin {
+  max-width: 1980px;
+  width: 100%;
+  border-radius: 10px;
 }
-th{
-    color: #222C61;
-    font-weight: 500;
+th {
+  color: #222c61;
+  font-weight: 500;
 }
-.select{
-    text-align: center;
+.select {
+  text-align: center;
 }
 
-.modalClass {  
-    text-align: center;  
-    margin-top: 100px;  
-  } 
+.modalClass {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-of {
+  color: #222c61;
+}
+
+.page-link {
+  color: #222c61;
+}
+
+.page-item:last-child,
+.page-item:first-child .page-link {
+  box-shadow: none;
+}
+
+.page-link.active,
+.active > .page-link {
+  z-index: 3;
+  color: white;
+  background-color: #222c61;
+  border-color: #222c61;
+  box-shadow: none;
+}

@@ -17,8 +17,9 @@ import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { FaInbox } from "@react-icons/all-files/fa/FaInbox";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import Moment from "moment";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Pagination from "react-bootstrap/Pagination";
 
 function AdminReport() {
   const [reports, setReport] = useState([]);
@@ -28,6 +29,13 @@ function AdminReport() {
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  const [showPagination, setShowPagination] = React.useState(true);
+
+  // const Pagination = () => {
+  //   if (numberOfPages > 5) {
+  //     setShowPagination(false);
+  //   }
+  // };
 
   const gotoPrevious = () => {
     setPageNumber(Math.max(0, pageNumber - 1));
@@ -42,11 +50,17 @@ function AdminReport() {
   }, [pageNumber, subject, category]);
 
   const getReports = async () => {
-    fetch(`http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}`)
+    fetch(
+      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}`
+    )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
         setReport(data);
         setNumberOfPages(totalPages);
+        console.log(totalPages.length);
+        if (totalPages > 5) {
+          setShowPagination(false);
+        }
       });
   };
 
@@ -59,14 +73,15 @@ function AdminReport() {
       console.log(error);
     }
   };
-  const alertsubmit = () => toast.success('ลบเรียบร้อยแล้ว!', {
-    position: "top-right",
-  autoClose: 3000,
-  hideProgressBar: false,
-  closeOnClick: false,
-  pauseOnHover: false,
-  draggable: false,
-  theme: "light",
+  const alertsubmit = () =>
+    toast.success("ลบเรียบร้อยแล้ว!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "light",
     });
 
   return (
@@ -141,7 +156,9 @@ function AdminReport() {
                   className="form-search"
                   aria-describedby="passwordHelpBlock"
                   placeholder="Search"
-                  onChange={(e) => setSubject(e.target.value) & setPageNumber("")}
+                  onChange={(e) =>
+                    setSubject(e.target.value) & setPageNumber("")
+                  }
                 />
               </Col>
               <Col
@@ -153,7 +170,9 @@ function AdminReport() {
                 <Form.Select
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                   aria-label="Default select example"
-                  onChange={(e) => setCategory(e.target.value) & setPageNumber("")}
+                  onChange={(e) =>
+                    setCategory(e.target.value) & setPageNumber("")
+                  }
                 >
                   <option selected hidden>
                     เลือกหัวข้อ
@@ -166,9 +185,7 @@ function AdminReport() {
                   <option value="หมุดไม่ตรงกับสถานที่จริง">
                     หมุดไม่ตรงกับสถานที่จริง
                   </option>
-                  <option value="อื่นๆ">
-                    อื่นๆ
-                  </option>
+                  <option value="อื่นๆ">อื่นๆ</option>
                 </Form.Select>
               </Col>
             </Row>
@@ -214,16 +231,61 @@ function AdminReport() {
                     </Table>
                     <ToastContainer />
                   </Card.Body>
-                  <div className="mt-5 mx-5 text-end">
-                    <button onClick={gotoPrevious}>Previous</button>
-                    {pages.map((pageIndex) => (
-                      <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
-                        {pageIndex + 1}
-                      </button>
-                    ))}
-                    <button onClick={gotoNext}>Next</button>
-                  </div>
                 </Card>
+              </Col>
+            </Row>
+          </Container>
+          <Container>
+            <Row>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
+                xl={{ span: 12, offset: 0 }}
+                className="mt-4"
+              >
+                {showPagination ? (
+                  <Pagination>
+                    <Pagination.Prev onClick={gotoPrevious} />
+                    {pages.map((pageIndex) => (
+                      <Pagination.Item
+                        key={pageIndex}
+                        onClick={() => setPageNumber(pageIndex)}
+                        active={pageNumber === pageIndex}
+                      >
+                        {pageIndex + 1}
+                      </Pagination.Item>
+                    ))}
+                    <Pagination.Next onClick={gotoNext} />
+                  </Pagination>
+                ) : null}
+                {!showPagination ? (
+                  <Pagination>
+                    <Pagination.Prev onClick={gotoPrevious} />
+                    <Pagination.Item
+                      key={0}
+                      onClick={() => setPageNumber(0)}
+                      active={pageNumber === 0}
+                    >
+                      {1}
+                    </Pagination.Item>
+                    <Pagination.Ellipsis
+                      key={pages.length / 2}
+                      onClick={() => setPageNumber(pages.length / 2)}
+                      active={pageNumber === pages.length / 2}
+                    />
+                    <Pagination.Item
+                      key={pages.length}
+                      onClick={() => setPageNumber(pages.length - 1)}
+                      active={pageNumber === pages.length - 1}
+                    >
+                      {pages.length}
+                    </Pagination.Item>
+                    <Pagination.Next onClick={gotoNext} />
+                  </Pagination>
+                ) : null}
+                <div className="page-of mb-5">
+                  Page : {pageNumber + 1} of {pages.length}
+                </div>
               </Col>
             </Row>
           </Container>
@@ -231,6 +293,6 @@ function AdminReport() {
       </div>
     </main>
   );
-};
+}
 
 export default AdminReport;

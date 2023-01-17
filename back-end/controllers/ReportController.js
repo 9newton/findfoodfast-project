@@ -8,10 +8,10 @@ export const getReports = async (req, res, next) => {
     const categoryValid = req.query.category;
     const filterAndSearch = {
       $and: [
-        { subject: { $regex: subjectValid, $options: 'i' } },
-        { category: { $regex: categoryValid, $options: 'i' } }
-      ]
-    }
+        { subject: { $regex: subjectValid, $options: "i" } },
+        { category: { $regex: categoryValid, $options: "i" } },
+      ],
+    };
     const total = await Report.countDocuments(filterAndSearch);
 
     Report.find(filterAndSearch)
@@ -24,7 +24,7 @@ export const getReports = async (req, res, next) => {
         res.json({
           totalPages: Math.ceil(total / PAGE_SIZE),
           data: result,
-        })
+        });
       });
   } catch (error) {
     next(error);
