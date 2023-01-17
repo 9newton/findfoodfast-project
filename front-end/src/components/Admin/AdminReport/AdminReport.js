@@ -26,16 +26,11 @@ function AdminReport() {
   const [show, setShow] = useState(false);
   const [subject, setSubject] = useState("");
   const [category, setCategory] = useState("");
+  const [pageSize, setPageSize] = useState(5);
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   const [showPagination, setShowPagination] = React.useState(true);
-
-  // const Pagination = () => {
-  //   if (numberOfPages > 5) {
-  //     setShowPagination(false);
-  //   }
-  // };
 
   const gotoPrevious = () => {
     setPageNumber(Math.max(0, pageNumber - 1));
@@ -47,11 +42,11 @@ function AdminReport() {
 
   useEffect(() => {
     getReports();
-  }, [pageNumber, subject, category]);
+  }, [pageNumber, subject, category, pageSize]);
 
   const getReports = async () => {
     fetch(
-      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}`
+      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -73,6 +68,7 @@ function AdminReport() {
       console.log(error);
     }
   };
+
   const alertsubmit = () =>
     toast.success("ลบเรียบร้อยแล้ว!", {
       position: "top-right",
@@ -83,6 +79,10 @@ function AdminReport() {
       draggable: false,
       theme: "light",
     });
+
+  const resetPageNumber = () => {
+    setPageNumber(0);
+  }
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -127,6 +127,7 @@ function AdminReport() {
           </Link> */}
           </nav>
         </aside>
+
         <div className="content">
           <Container>
             <Row>
@@ -157,7 +158,7 @@ function AdminReport() {
                   aria-describedby="passwordHelpBlock"
                   placeholder="Search"
                   onChange={(e) =>
-                    setSubject(e.target.value) & setPageNumber("")
+                    setSubject(e.target.value) & resetPageNumber()
                   }
                 />
               </Col>
@@ -171,7 +172,7 @@ function AdminReport() {
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                   aria-label="Default select example"
                   onChange={(e) =>
-                    setCategory(e.target.value) & setPageNumber("")
+                    setCategory(e.target.value) & resetPageNumber()
                   }
                 >
                   <option selected hidden>
@@ -243,6 +244,22 @@ function AdminReport() {
                 xl={{ span: 12, offset: 0 }}
                 className="mt-4"
               >
+                <div>
+                  show
+                  <Form.Select
+                    className="text-center"
+                    aria-label="Default select Page Size"
+                    onChange={(e) =>
+                      setPageSize(e.target.value) & resetPageNumber()
+                    }
+                  >
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                  </Form.Select>
+                  data
+                </div>
                 {showPagination ? (
                   <Pagination>
                     <Pagination.Prev onClick={gotoPrevious} />
