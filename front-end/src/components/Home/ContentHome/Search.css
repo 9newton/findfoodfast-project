@@ -115,3 +115,20 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .input-search {
+    border-radius: 100px;
+    border-width: 2px;
+    height: 60px;
+    font-size: 12px;
+  }
+  .select {
+    border-width: 2px;
+    height: 60px;
+    font-size: 12px;
+  }
+  #input-group-dropdown-1 {
+    font-size: 12px;
+  }
+}
