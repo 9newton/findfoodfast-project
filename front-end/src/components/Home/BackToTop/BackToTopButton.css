@@ -1,15 +1,15 @@
 .btn-to-top {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 150px;
+  right: 1px;
   height: 50px;
   width: 50px;
   background-color: white;
-  border-radius: 100px;
+  border-radius: 2px;
   border: 1px solid #e5e5e5;
 
   color: #222c61;
-  font-size: 30px;
+  font-size: 20px;
   z-index: 99;
 }
 
