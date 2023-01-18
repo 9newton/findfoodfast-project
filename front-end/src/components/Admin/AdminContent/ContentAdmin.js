@@ -9,10 +9,20 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import { FaPlus, FaEdit, FaTrash, FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
+import {
+  FaPlus,
+  FaEdit,
+  FaTrash,
+  FaBars,
+  FaHome,
+  FaChartLine,
+  FaStar,
+  FaInbox,
+  FaUtensils,
+} from "react-icons/fa";
 import Image from "react-bootstrap/Image";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Content() {
   const [restaurants, setRestaurant] = useState([]);
@@ -47,15 +57,16 @@ function Content() {
       console.log(error);
     }
   };
-  const alertsubmit = () => toast.success('ลบข้อมูลร้านเรียบร้อยแล้ว', {
-    position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: false,
-    draggable: false,
-    theme: "light",
-  });
+  const alertsubmit = () =>
+    toast.success("ลบข้อมูลร้านเรียบร้อยแล้ว", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "light",
+    });
 
   const restaurantList = useMemo(() => {
     if (restaurants !== null) {
@@ -79,7 +90,7 @@ function Content() {
           >
             <Card className="card-admin">
               <Card.Body>
-                <Table className="text-center" responsive hover>
+                <Table className="text-center table" responsive hover>
                   <thead>
                     <tr>
                       <th></th>
@@ -205,7 +216,7 @@ function Content() {
         </Row>
       );
     } else {
-      return <div>NO DATA</div>;
+      return;
     }
   }, [restaurants, input]);
   return (

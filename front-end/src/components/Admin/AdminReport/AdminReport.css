@@ -101,3 +101,18 @@ th {
   border-color: #222c61;
   box-shadow: none;
 }
+
+.show-item {
+  padding: 0;
+}
+
+.card-admin {
+  max-height: 320px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+@media screen and(max-width:768px) {
+  .show-item {
+    display: none;
+  }
+}

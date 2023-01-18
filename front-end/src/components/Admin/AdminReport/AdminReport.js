@@ -9,14 +9,21 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { FaTrash, FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
+import {
+  FaTrash,
+  FaBars,
+  FaHome,
+  FaChartLine,
+  FaStar,
+  FaInbox,
+  FaUtensils,
+} from "react-icons/fa";
 import Moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import "react-toastify/dist/ReactToastify.css";
-
 
 function AdminReport() {
   // Get Data
@@ -40,7 +47,6 @@ function AdminReport() {
   // Modal
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-
 
   useEffect(() => {
     getReports();
@@ -94,8 +100,7 @@ function AdminReport() {
   // others
   const resetPageNumber = () => {
     setPageNumber(0);
-  }
-
+  };
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -159,7 +164,7 @@ function AdminReport() {
             <Row>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 5, offset: 0 }}
+                md={{ span: 12, offset: 0 }}
                 xl={{ span: 3, offset: 0 }}
                 className="mt-md-4"
               >
@@ -176,8 +181,8 @@ function AdminReport() {
               </Col>
               <Col
                 xs={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 3 }}
-                xl={{ span: 2, offset: 7 }}
+                md={{ span: 6, offset: 0 }}
+                xl={{ span: 2, offset: 5 }}
                 className="mt-md-4"
               >
                 <>
@@ -188,12 +193,19 @@ function AdminReport() {
                       setSort(e.target.value) & resetPageNumber()
                     }
                   >
-                    <option value="-1" selected>เรียงใหม่สุดไปเก่าสุด</option>
-                    <option value="1">
-                      เรียงจากเก่าไปใหม่สุด
+                    <option value="-1" selected>
+                      ใหม่ที่สุดไปเก่าที่สุด
                     </option>
+                    <option value="1">เก่าที่สุดไปใหม่ที่สุด</option>
                   </Form.Select>
                 </>
+              </Col>
+              <Col
+                xs={{ span: 12, offset: 0 }}
+                md={{ span: 6, offset: 0 }}
+                xl={{ span: 2, offset: 0 }}
+                className="mt-md-4"
+              >
                 <Form.Select
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                   aria-label="Select Category"
@@ -297,70 +309,75 @@ function AdminReport() {
             </Modal.Footer>
           </Modal>
           <Container>
-            <Row>
+            <Row className="mt-4">
               <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 12, offset: 0 }}
-                xl={{ span: 12, offset: 0 }}
-                className="mt-4"
+                xs={{ span: 4, offset: 0 }}
+                md={{ span: 2, offset: 0 }}
+                xl={{ span: 1, offset: 0 }}
+                className="mt-0"
               >
-                <div>
-                  show
-                  <Form.Select
-                    className="text-center"
-                    aria-label="Default select Page Size"
-                    onChange={(e) =>
-                      setPageSize(e.target.value) & resetPageNumber()
-                    }
-                  >
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                  </Form.Select>
-                  data
-                </div>
-                {showPagination ? (
-                  <Pagination>
-                    <Pagination.Prev onClick={gotoPrevious} />
-                    {pages.map((pageIndex) => (
-                      <Pagination.Item
-                        key={pageIndex}
-                        onClick={() => setPageNumber(pageIndex)}
-                        active={pageNumber === pageIndex}
-                      >
-                        {pageIndex + 1}
-                      </Pagination.Item>
-                    ))}
-                    <Pagination.Next onClick={gotoNext} />
-                  </Pagination>
-                ) : null}
-                {!showPagination ? (
-                  <Pagination>
-                    <Pagination.Prev onClick={gotoPrevious} />
-                    <Pagination.Item
-                      key={0}
-                      onClick={() => setPageNumber(0)}
-                      active={pageNumber === 0}
-                    >
-                      {1}
-                    </Pagination.Item>
-                    <Pagination.Ellipsis
-                      key={pages.length / 2}
-                      onClick={() => setPageNumber(pages.length / 2)}
-                      active={pageNumber === pages.length / 2}
-                    />
-                    <Pagination.Item
-                      key={pages.length}
-                      onClick={() => setPageNumber(pages.length - 1)}
-                      active={pageNumber === pages.length - 1}
-                    >
-                      {pages.length}
-                    </Pagination.Item>
-                    <Pagination.Next onClick={gotoNext} />
-                  </Pagination>
-                ) : null}
+                <Form.Select
+                  className="text-center"
+                  aria-label="Default select Page Size"
+                  onChange={(e) =>
+                    setPageSize(e.target.value) & resetPageNumber()
+                  }
+                >
+                  <option value="5" selected>
+                    5
+                  </option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                </Form.Select>
+              </Col>
+              <Col
+                xs={{ span: 5, offset: 3 }}
+                md={{ span: 3, offset: 7 }}
+                xl={{ span: 4, offset: 3 }}
+                className="mt-0"
+              >
                 <div className="page-of mb-5">
+                  {showPagination ? (
+                    <Pagination>
+                      <Pagination.Prev onClick={gotoPrevious} />
+                      {pages.map((pageIndex) => (
+                        <Pagination.Item
+                          key={pageIndex}
+                          onClick={() => setPageNumber(pageIndex)}
+                          active={pageNumber === pageIndex}
+                        >
+                          {pageIndex + 1}
+                        </Pagination.Item>
+                      ))}
+                      <Pagination.Next onClick={gotoNext} />
+                    </Pagination>
+                  ) : null}
+                  {!showPagination ? (
+                    <Pagination>
+                      <Pagination.Prev onClick={gotoPrevious} />
+                      <Pagination.Item
+                        key={0}
+                        onClick={() => setPageNumber(0)}
+                        active={pageNumber === 0}
+                      >
+                        {1}
+                      </Pagination.Item>
+                      <Pagination.Ellipsis
+                        key={pages.length / 2}
+                        onClick={() => setPageNumber(pages.length / 2)}
+                        active={pageNumber === pages.length / 2}
+                      />
+                      <Pagination.Item
+                        key={pages.length}
+                        onClick={() => setPageNumber(pages.length - 1)}
+                        active={pageNumber === pages.length - 1}
+                      >
+                        {pages.length}
+                      </Pagination.Item>
+                      <Pagination.Next onClick={gotoNext} />
+                    </Pagination>
+                  ) : null}
                   Page : {pageNumber + 1} of {pages.length}
                 </div>
               </Col>

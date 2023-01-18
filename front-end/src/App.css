@@ -28,6 +28,34 @@
   color: #61dafb;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ecebeb;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #222c61ad;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #222c61;
+}
+
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
