@@ -18,7 +18,7 @@ export const getRestaurants = async (req, res, next) => {
     const PAGE_SIZE = parseInt(req.query.pageSize);
     const page = parseInt(req.query.page || "0");
     const searchValid = req.query.search;
-    const tag = req.query.tag;
+    const tagValid = req.query.tag;
     const alleyValid = req.query.alley;
     // const sort = parseInt(req.query.sort);
     const filterAndSearch = {
