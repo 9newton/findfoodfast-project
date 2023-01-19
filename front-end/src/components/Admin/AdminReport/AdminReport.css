@@ -108,11 +108,17 @@ th {
 
 .card-admin {
   max-height: 320px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }
 @media screen and(max-width:768px) {
   .show-item {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .card-admin {
+    max-height: 600px;
+    overflow-y: auto;
   }
 }

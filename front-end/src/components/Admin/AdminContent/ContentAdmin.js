@@ -63,7 +63,8 @@ function Content() {
 
   // Express
   const getRestaurants = async () => {
-    fetch(`http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+    fetch(
+      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -72,7 +73,9 @@ function Content() {
         console.log(totalPages);
         if (totalPages > 5) {
           setShowPagination(false);
-        } else { setShowPagination(true); }
+        } else {
+          setShowPagination(true);
+        }
       });
   };
   const deleteRestaurant = async (id) => {
@@ -165,7 +168,7 @@ function Content() {
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 5, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
               xl={{ span: 3, offset: 0 }}
               className="mt-md-4"
             >
@@ -181,74 +184,56 @@ function Content() {
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 4, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
               xl={{ span: 2, offset: 5 }}
               className="mt-md-4"
             >
               <Form.Select
-                className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
+                className="soi-btn pointer mt-4 mb-2 mt-md-0 text-center"
                 aria-label="Select Alley"
-                onChange={(e) =>
-                  setTag(e.target.value) & resetPageNumber()
-                }
+                onChange={(e) => setTag(e.target.value) & resetPageNumber()}
               >
                 <option selected hidden>
-                  เลือกซอย
+                  เลือกหมวดหมู่
                 </option>
                 <option value="">ทั้งหมด</option>
-                <option value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
-                <option value="ซอยมาลี">ซอยมาลี</option>
-                <option value="ซอยซูม">ซอยซูม</option>
-                <option value="ซอย 4B">ซอย 4B</option>
-                <option value="ซอยหมูแฮม">ซอยหมูแฮม</option>
-                <option value="ซอย RS">ซอย RS</option>
-                <option value="ซอยพรธิสาร">ซอยพรธิสาร</option>
-                <option value="ซอย Icon">ซอย Icon</option>
-                <option value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
+                <option value="อาหารจานเดียว">อาหารจานเดียว</option>
+                <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
+                <option value="สเต็ก">สเต็ก</option>
+                <option value="หมูกะทะ">หมูกะทะ</option>
+                <option value="ชาบู">ชาบู</option>
+                <option value="ของทานเล่น">ของทานเล่น</option>
+                <option value="ของหวาน">ของหวาน</option>
+                <option value="เครื่องดื่ม">เครื่องดื่ม</option>
               </Form.Select>
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 4, offset: 0 }}
-              xl={{ span: 2, offset: 5 }}
-              className="mt-md-4"
-            >
-              <Form.Select
-                className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
-                aria-label="Select Alley"
-                onChange={(e) =>
-                  setAlley(e.target.value) & resetPageNumber()
-                }
-              >
-                <option selected hidden>
-                  เลือกซอย
-                </option>
-                <option value="">ทั้งหมด</option>
-                <option value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
-                <option value="ซอยมาลี">ซอยมาลี</option>
-                <option value="ซอยซูม">ซอยซูม</option>
-                <option value="ซอย 4B">ซอย 4B</option>
-                <option value="ซอยหมูแฮม">ซอยหมูแฮม</option>
-                <option value="ซอย RS">ซอย RS</option>
-                <option value="ซอยพรธิสาร">ซอยพรธิสาร</option>
-                <option value="ซอย Icon">ซอย Icon</option>
-                <option value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
-              </Form.Select>
-            </Col>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 3, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
               xl={{ span: 2, offset: 0 }}
-              className="mt-md-0"
+              className="mt-md-4"
             >
-              <Link to="/admin/manageRestaurant/add">
-                <button className="col-12 add-manage-btn mt-0 mt-md-4 mb-4">
-                  <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
-                </button>
-              </Link>
+              <Form.Select
+                className="soi-btn pointer mt-0 mb-4 mt-md-0 text-center"
+                aria-label="Select Alley"
+                onChange={(e) => setAlley(e.target.value) & resetPageNumber()}
+              >
+                <option selected hidden>
+                  เลือกซอย
+                </option>
+                <option value="">ทั้งหมด</option>
+                <option value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
+                <option value="ซอยมาลี">ซอยมาลี</option>
+                <option value="ซอยซูม">ซอยซูม</option>
+                <option value="ซอย 4B">ซอย 4B</option>
+                <option value="ซอยหมูแฮม">ซอยหมูแฮม</option>
+                <option value="ซอย RS">ซอย RS</option>
+                <option value="ซอยพรธิสาร">ซอยพรธิสาร</option>
+                <option value="ซอย Icon">ซอย Icon</option>
+                <option value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
+              </Form.Select>
             </Col>
           </Row>
-
 
           <Row>
             <Col
@@ -259,6 +244,18 @@ function Content() {
             >
               <Card className="card-admin">
                 <Card.Body>
+                  <Col
+                    xs={{ span: 12, offset: 0 }}
+                    md={{ span: 4, offset: 8 }}
+                    xl={{ span: 2, offset: 10 }}
+                    className="mt-md-0"
+                  >
+                    <Link to="/admin/manageRestaurant/add">
+                      <button className="col-12 add-manage-btn mt-0 mt-md-0 mb-0">
+                        <FaPlus className="mb-1" /> เพิ่มร้านอาหาร
+                      </button>
+                    </Link>
+                  </Col>
                   <Table className="text-center table" responsive hover>
                     <thead>
                       <tr>
@@ -313,7 +310,10 @@ function Content() {
                           </td>
                           <td>
                             <Link to={data.coverImg}>
-                              <Image src={data.coverImg} className="img-avatar" />
+                              <Image
+                                src={data.coverImg}
+                                className="img-avatar"
+                              />
                             </Link>
                           </td>
                           <td>{data.name}</td>

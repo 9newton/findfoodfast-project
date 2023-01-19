@@ -83,7 +83,7 @@ const Popup = () => {
 
   return (
     <div className="content">
-      <h1 className="content-head mb-4 mt-4 mt-md-0">เพิ่มร้านอาหารเลย!</h1>
+      <h1 className="content-head mb-4 mt-4 mt-md-5">เพิ่มร้านอาหารเลย!</h1>
       <Container>
         <Row>
           <Col
@@ -92,7 +92,7 @@ const Popup = () => {
             xl={{ span: 10, offset: 1 }}
             className="mt-md-4"
           >
-            <Card className="card-admin">
+            <Card className="card-add">
               <Card.Body>
                 <Form onSubmit={saveRestaurant}>
                   <Row>
@@ -306,15 +306,33 @@ const Popup = () => {
                         required
                       >
                         <option className="text-center">เลือกซอย</option>
-                        <option className='text-center' value="ซอยสะพานชมพู">ซอยสะพานชมพู</option>
-                        <option className='text-center' value="ซอยมาลี">ซอยมาลี</option>
-                        <option className='text-center' value="ซอยซูม">ซอยซูม</option>
-                        <option className='text-center' value="ซอย 4B">ซอย 4B</option>
-                        <option className='text-center' value="ซอยหมูแฮม">ซอยหมูแฮม</option>
-                        <option className='text-center' value="ซอย RS">ซอย RS</option>
-                        <option className='text-center' value="ซอยพรธิสาร">ซอยพรธิสาร</option>
-                        <option className='text-center' value="ซอย Icon">ซอย Icon</option>
-                        <option className='text-center' value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
+                        <option className="text-center" value="ซอยสะพานชมพู">
+                          ซอยสะพานชมพู
+                        </option>
+                        <option className="text-center" value="ซอยมาลี">
+                          ซอยมาลี
+                        </option>
+                        <option className="text-center" value="ซอยซูม">
+                          ซอยซูม
+                        </option>
+                        <option className="text-center" value="ซอย 4B">
+                          ซอย 4B
+                        </option>
+                        <option className="text-center" value="ซอยหมูแฮม">
+                          ซอยหมูแฮม
+                        </option>
+                        <option className="text-center" value="ซอย RS">
+                          ซอย RS
+                        </option>
+                        <option className="text-center" value="ซอยพรธิสาร">
+                          ซอยพรธิสาร
+                        </option>
+                        <option className="text-center" value="ซอย Icon">
+                          ซอย Icon
+                        </option>
+                        <option className="text-center" value="ซอยอีสเทิร์น">
+                          ซอยอีสเทิร์น
+                        </option>
                       </Form.Select>
                     </Col>
 
