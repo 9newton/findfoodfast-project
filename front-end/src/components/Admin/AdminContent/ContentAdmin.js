@@ -234,7 +234,6 @@ function Content() {
               </Form.Select>
             </Col>
           </Row>
-
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}

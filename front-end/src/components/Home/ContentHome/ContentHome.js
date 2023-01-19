@@ -62,6 +62,12 @@ function Content() {
     setAlley('');
     setSearchInput('');
   };
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 680,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div id="search" className="content-home">
@@ -298,27 +304,29 @@ function Content() {
         ) : null}
         {!showPagination ? (
           <Pagination>
-            <Pagination.Prev onClick={gotoPrevious} />
+            <Pagination.Prev onClick={() =>
+              gotoPrevious() & scrollUp()
+            } />
             <Pagination.Item
               key={0}
-              onClick={() => setPageNumber(0)}
+              onClick={() => setPageNumber(0) & scrollUp()}
               active={pageNumber === 0}
             >
               {1}
             </Pagination.Item>
             <Pagination.Ellipsis
               key={pages.length / 2}
-              onClick={() => setPageNumber(pages.length / 2)}
+              onClick={() => setPageNumber(pages.length / 2) & scrollUp()}
               active={pageNumber === pages.length / 2}
             />
             <Pagination.Item
               key={pages.length}
-              onClick={() => setPageNumber(pages.length - 1)}
+              onClick={() => setPageNumber(pages.length - 1) & scrollUp()}
               active={pageNumber === pages.length - 1}
             >
               {pages.length}
             </Pagination.Item>
-            <Pagination.Next onClick={gotoNext} />
+            <Pagination.Next onClick={() => gotoNext() & scrollUp()} />
           </Pagination>
         ) : null}
         Page : {pageNumber + 1} of {pages.length}
