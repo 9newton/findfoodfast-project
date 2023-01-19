@@ -20,10 +20,11 @@ import {
 } from "react-icons/fa";
 import Moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
-import "react-toastify/dist/ReactToastify.css";
+
 
 function AdminReport() {
   // Get Data
@@ -72,7 +73,7 @@ function AdminReport() {
         console.log(totalPages.length);
         if (totalPages > 5) {
           setShowPagination(false);
-        }
+        } else { setShowPagination(true); }
       });
   };
   const deleteReport = async (id) => {
@@ -104,286 +105,283 @@ function AdminReport() {
 
   return (
     <main className={show ? "space-toggle" : null}>
-      <div>
-        <header className={`header-admin ${show ? "space-toggle" : null}`}>
-          <div className="header-toggle" onClick={() => setShow(!show)}>
-            <FaBars
-              className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}
-            />
-          </div>
-        </header>
-        <aside className={`sidebar ${show ? "showed" : null}`}>
-          <nav className="nav">
-            <div>
-              <Link to="/" className="nav-logo">
-                <FaHome className={`fas fa-home-alt nav-logo-icon`} />
-                <span className="nav-logo-name">หน้าหลัก</span>
+      <header className={`header-admin ${show ? "space-toggle" : null}`}>
+        <div className="header-toggle" onClick={() => setShow(!show)}>
+          <FaBars
+            className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}
+          />
+        </div>
+      </header>
+      <aside className={`sidebar ${show ? "showed" : null}`}>
+        <nav className="nav">
+          <div>
+            <Link to="/" className="nav-logo">
+              <FaHome className={`fas fa-home-alt nav-logo-icon`} />
+              <span className="nav-logo-name">หน้าหลัก</span>
+            </Link>
+            <div className="nav-list">
+              <Link to="/admin" className="nav-link">
+                <FaChartLine className="fas fa-tachometer-alt nav-link-icon mt-1" />
+                <span className="nav-link-name">แดชบอร์ด</span>
               </Link>
-              <div className="nav-list">
-                <Link to="/admin" className="nav-link">
-                  <FaChartLine className="fas fa-tachometer-alt nav-link-icon mt-1" />
-                  <span className="nav-link-name">แดชบอร์ด</span>
-                </Link>
-                <Link to="/admin/manageRestaurant" className="nav-link">
-                  <FaUtensils className="fas fa-dollar-sign nav-link-icon mt-1" />
-                  <span className="nav-link-name">ร้านอาหาร</span>
-                </Link>
-                <Link to="/admin/like" className="nav-link">
-                  <FaStar className="fas fa-hotel nav-link-icon mt-1" />
-                  <span className="nav-link-name">ยอดดาว</span>
-                </Link>
-                <Link to="/admin/report" className="nav-link active">
-                  <FaInbox className="fas fa-image nav-link-icon mt-1" />
-                  <span className="nav-link-name">แจ้งปัญหา</span>
-                </Link>
-              </div>
+              <Link to="/admin/manageRestaurant" className="nav-link">
+                <FaUtensils className="fas fa-dollar-sign nav-link-icon mt-1" />
+                <span className="nav-link-name">ร้านอาหาร</span>
+              </Link>
+              <Link to="/admin/like" className="nav-link">
+                <FaStar className="fas fa-hotel nav-link-icon mt-1" />
+                <span className="nav-link-name">ยอดดาว</span>
+              </Link>
+              <Link to="/admin/report" className="nav-link active">
+                <FaInbox className="fas fa-image nav-link-icon mt-1" />
+                <span className="nav-link-name">แจ้งปัญหา</span>
+              </Link>
             </div>
-            {/* <Link to='/logout' className='nav-link'>
+          </div>
+          {/* <Link to='/logout' className='nav-link'>
             <i className='fas fa-sign-out nav-link-icon'></i>
             <span className='nav-link-name'>Logout</span>
           </Link> */}
-          </nav>
-        </aside>
+        </nav>
+      </aside>
 
-        <div className="content">
-          <Container>
-            <Row>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 12, offset: 0 }}
-                xl={{ span: 12, offset: 0 }}
-                className="mt-md-4"
-              >
-                <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
-                  <FaInbox className="mb-1" /> แจ้งปัญหา
-                </h1>
-              </Col>
-            </Row>
-          </Container>
-          <Container>
-            <Row>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 12, offset: 0 }}
-                xl={{ span: 3, offset: 0 }}
-                className="mt-md-4"
-              >
-                <Form.Control
-                  type="text"
-                  id="inputPassword5"
-                  className="form-search"
-                  aria-describedby="passwordHelpBlock"
-                  placeholder="Search"
-                  onChange={(e) =>
-                    setSubject(e.target.value) & resetPageNumber()
-                  }
-                />
-              </Col>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 6, offset: 0 }}
-                xl={{ span: 2, offset: 5 }}
-                className="mt-md-4"
-              >
-                <>
-                  <Form.Select
-                    className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
-                    aria-label="Select Sort"
-                    onChange={(e) =>
-                      setSort(e.target.value) & resetPageNumber()
-                    }
-                  >
-                    <option value="-1" selected>
-                      ใหม่ที่สุดไปเก่าที่สุด
-                    </option>
-                    <option value="1">เก่าที่สุดไปใหม่ที่สุด</option>
-                  </Form.Select>
-                </>
-              </Col>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 6, offset: 0 }}
-                xl={{ span: 2, offset: 0 }}
-                className="mt-md-4"
-              >
+      <div className="content">
+        <Container>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 12, offset: 0 }}
+              className="mt-md-4"
+            >
+              <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
+                <FaInbox className="mb-1" /> แจ้งปัญหา
+              </h1>
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 3, offset: 0 }}
+              className="mt-md-4"
+            >
+              <Form.Control
+                type="text"
+                className="form-search"
+                aria-describedby="Search Input"
+                placeholder="Search"
+                onChange={(e) =>
+                  setSubject(e.target.value) & resetPageNumber()
+                }
+              />
+            </Col>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
+              xl={{ span: 2, offset: 5 }}
+              className="mt-md-4"
+            >
+              <>
                 <Form.Select
                   className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
-                  aria-label="Select Category"
+                  aria-label="Select Sort"
                   onChange={(e) =>
-                    setCategory(e.target.value) & resetPageNumber()
+                    setSort(e.target.value) & resetPageNumber()
                   }
                 >
-                  <option selected hidden>
-                    เลือกหัวข้อ
+                  <option value="-1" selected>
+                    ใหม่ที่สุดไปเก่าที่สุด
                   </option>
-                  <option value="">ทั้งหมด</option>
-                  <option value="แจ้งปัญหาเว็บไซต์">แจ้งปัญหาเว็บไซต์</option>
-                  <option value="แจ้งร้านปิดให้บริการ">
-                    แจ้งร้านปิดให้บริการ
-                  </option>
-                  <option value="หมุดไม่ตรงกับสถานที่จริง">
-                    หมุดไม่ตรงกับสถานที่จริง
-                  </option>
-                  <option value="อื่นๆ">อื่นๆ</option>
+                  <option value="1">เก่าที่สุดไปใหม่ที่สุด</option>
                 </Form.Select>
-              </Col>
-            </Row>
-            <Row>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 12, offset: 0 }}
-                xl={{ span: 12, offset: 0 }}
-                className=" form"
+              </>
+            </Col>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
+              xl={{ span: 2, offset: 0 }}
+              className="mt-md-4"
+            >
+              <Form.Select
+                className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
+                aria-label="Select Category"
+                onChange={(e) =>
+                  setCategory(e.target.value) & resetPageNumber()
+                }
               >
-                <Card className="card-admin">
-                  <Card.Body>
-                    <Table responsive="sm text-center">
-                      <thead>
-                        <tr>
-                          <th>วันที่</th>
-                          <th>หัวข้อ</th>
-                          <th>เรื่อง</th>
-                          <th>รายละเอียด</th>
-                          <th>ลบ</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {reports.map((data, index) => (
-                          <tr key={data._id}>
-                            <td>
-                              {Moment(data.created_at).format("DD/MM/YYYY")}
-                            </td>
-                            <td>{data.category}</td>
-                            <td>{data.subject}</td>
-                            <td>{data.details}</td>
+                <option selected hidden>
+                  เลือกหัวข้อ
+                </option>
+                <option value="">ทั้งหมด</option>
+                <option value="แจ้งปัญหาเว็บไซต์">แจ้งปัญหาเว็บไซต์</option>
+                <option value="แจ้งร้านปิดให้บริการ">
+                  แจ้งร้านปิดให้บริการ
+                </option>
+                <option value="หมุดไม่ตรงกับสถานที่จริง">
+                  หมุดไม่ตรงกับสถานที่จริง
+                </option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </Form.Select>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 12, offset: 0 }}
+              xl={{ span: 12, offset: 0 }}
+              className=" form"
+            >
+              <Card className="card-admin">
+                <Card.Body>
+                  <Table responsive="sm text-center">
+                    <thead>
+                      <tr>
+                        <th>วันที่</th>
+                        <th>หัวข้อ</th>
+                        <th>เรื่อง</th>
+                        <th>รายละเอียด</th>
+                        <th>ลบ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {reports.map((data, index) => (
+                        <tr key={data._id}>
+                          <td>
+                            {Moment(data.created_at).format("DD/MM/YYYY")}
+                          </td>
+                          <td>{data.category}</td>
+                          <td>{data.subject}</td>
+                          <td>{data.details}</td>
 
-                            <td>
-                              <Link
-                                onClick={() =>
-                                  handleOpen() & setReportId(data._id)
-                                }
-                                className="button is-info is-small mr-1"
-                              >
-                                <FaTrash className="text-danger" />
-                              </Link>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                    <ToastContainer />
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-          <Modal
-            show={open}
-            size="lg"
-            onHide={handleClose}
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                <h1 className="name">ยืนยันการลบ</h1>
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h4>คุณต้องการจะลบใช่หรือไม่?</h4>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                variant="outline-danger"
-                className="mt-1 mt-xl-2"
-                onClick={handleClose}
-              >
-                ยกเลิก
-              </Button>
-              <Button
-                className="add-manage-btn mt-0"
-                onClick={() => deleteReport(reportId) & handleClose()}
-              >
-                ตกลง
-              </Button>
-            </Modal.Footer>
-          </Modal>
-          <Container>
-            <Row className="mt-4">
-              <Col
-                xs={{ span: 4, offset: 0 }}
-                md={{ span: 2, offset: 0 }}
-                xl={{ span: 1, offset: 0 }}
-                className="mt-0"
-              >
-                <Form.Select
-                  className="text-center"
-                  aria-label="Default select Page Size"
-                  onChange={(e) =>
-                    setPageSize(e.target.value) & resetPageNumber()
-                  }
-                >
-                  <option value="5" selected>
-                    5
-                  </option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                </Form.Select>
-              </Col>
-              <Col
-                xs={{ span: 5, offset: 3 }}
-                md={{ span: 3, offset: 7 }}
-                xl={{ span: 4, offset: 3 }}
-                className="mt-0"
-              >
-                <div className="page-of mb-5">
-                  {showPagination ? (
-                    <Pagination>
-                      <Pagination.Prev onClick={gotoPrevious} />
-                      {pages.map((pageIndex) => (
-                        <Pagination.Item
-                          key={pageIndex}
-                          onClick={() => setPageNumber(pageIndex)}
-                          active={pageNumber === pageIndex}
-                        >
-                          {pageIndex + 1}
-                        </Pagination.Item>
+                          <td>
+                            <Link
+                              onClick={() =>
+                                handleOpen() & setReportId(data._id)
+                              }
+                              className="button is-info is-small mr-1"
+                            >
+                              <FaTrash className="text-danger" />
+                            </Link>
+                          </td>
+                        </tr>
                       ))}
-                      <Pagination.Next onClick={gotoNext} />
-                    </Pagination>
-                  ) : null}
-                  {!showPagination ? (
-                    <Pagination>
-                      <Pagination.Prev onClick={gotoPrevious} />
+                    </tbody>
+                  </Table>
+                  <ToastContainer />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+        <Modal
+          show={open}
+          size="lg"
+          onHide={handleClose}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              <h1 className="name">ยืนยันการลบ</h1>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>คุณต้องการจะลบใช่หรือไม่?</h4>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="outline-danger"
+              className="mt-1 mt-xl-2"
+              onClick={handleClose}
+            >
+              ยกเลิก
+            </Button>
+            <Button
+              className="add-manage-btn mt-0"
+              onClick={() => deleteReport(reportId) & handleClose()}
+            >
+              ตกลง
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Container>
+          <Row className="mt-4">
+            <Col
+              xs={{ span: 4, offset: 0 }}
+              md={{ span: 2, offset: 0 }}
+              xl={{ span: 1, offset: 0 }}
+              className="mt-0"
+            >
+              <Form.Select
+                className="text-center"
+                aria-label="Default select Page Size"
+                onChange={(e) =>
+                  setPageSize(e.target.value) & resetPageNumber()
+                }
+              >
+                <option value="5" selected>
+                  5
+                </option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+              </Form.Select>
+            </Col>
+            <Col
+              xs={{ span: 5, offset: 3 }}
+              md={{ span: 3, offset: 7 }}
+              xl={{ span: 4, offset: 3 }}
+              className="mt-0"
+            >
+              <div className="page-of mb-5">
+                {showPagination ? (
+                  <Pagination>
+                    <Pagination.Prev onClick={gotoPrevious} />
+                    {pages.map((pageIndex) => (
                       <Pagination.Item
-                        key={0}
-                        onClick={() => setPageNumber(0)}
-                        active={pageNumber === 0}
+                        key={pageIndex}
+                        onClick={() => setPageNumber(pageIndex)}
+                        active={pageNumber === pageIndex}
                       >
-                        {1}
+                        {pageIndex + 1}
                       </Pagination.Item>
-                      <Pagination.Ellipsis
-                        key={pages.length / 2}
-                        onClick={() => setPageNumber(pages.length / 2)}
-                        active={pageNumber === pages.length / 2}
-                      />
-                      <Pagination.Item
-                        key={pages.length}
-                        onClick={() => setPageNumber(pages.length - 1)}
-                        active={pageNumber === pages.length - 1}
-                      >
-                        {pages.length}
-                      </Pagination.Item>
-                      <Pagination.Next onClick={gotoNext} />
-                    </Pagination>
-                  ) : null}
-                  Page : {pageNumber + 1} of {pages.length}
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+                    ))}
+                    <Pagination.Next onClick={gotoNext} />
+                  </Pagination>
+                ) : null}
+                {!showPagination ? (
+                  <Pagination>
+                    <Pagination.Prev onClick={gotoPrevious} />
+                    <Pagination.Item
+                      key={0}
+                      onClick={() => setPageNumber(0)}
+                      active={pageNumber === 0}
+                    >
+                      {1}
+                    </Pagination.Item>
+                    <Pagination.Ellipsis
+                      key={pages.length / 2}
+                      onClick={() => setPageNumber(pages.length / 2)}
+                      active={pageNumber === pages.length / 2}
+                    />
+                    <Pagination.Item
+                      key={pages.length}
+                      onClick={() => setPageNumber(pages.length - 1)}
+                      active={pageNumber === pages.length - 1}
+                    >
+                      {pages.length}
+                    </Pagination.Item>
+                    <Pagination.Next onClick={gotoNext} />
+                  </Pagination>
+                ) : null}
+                Page : {pageNumber + 1} of {pages.length}
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </main>
   );

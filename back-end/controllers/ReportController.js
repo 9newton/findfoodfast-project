@@ -75,3 +75,10 @@ export const deleteReport = async (req, res, next) => {
     next(error);
   }
 };
+
+export const resetRating = async (req, res, next) => {
+  Report.updateMany({}, { $set: { details: "" } }, (err, doc) => {
+    if (err) return res.status(500).send(err);
+    return res.send(doc);
+  });
+};

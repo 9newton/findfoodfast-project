@@ -28,7 +28,7 @@ function ContentRandom() {
   }, []);
 
   const fetchrestaurants = useCallback(async () => {
-    const response = await axios.get("http://localhost:5000/restaurants");
+    const response = await axios.get("http://localhost:5000/random");
     setRestaurants(response.data);
   }, []);
 

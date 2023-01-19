@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getRestaurants,
+  getRandom,
   getRestaurantById,
   saveRestaurant,
   updateRestaurant,
@@ -16,6 +17,7 @@ const multer = Multer({
 });
 
 router.get("/restaurants", getRestaurants);
+router.get("/random", getRandom);
 router.get("/restaurants/:id", getRestaurantById);
 router.post("/restaurants", saveRestaurant);
 router.post(

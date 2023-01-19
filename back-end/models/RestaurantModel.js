@@ -30,6 +30,8 @@ const restaurant = new Schema(
     alley: { type: String, required: true },
     location: { type: String },
     rating: { type: ratingSchema },
+    avgRating: { type: Number },
+    // timeRating: { type: Number },
   },
   {
     strict: false,

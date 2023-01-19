@@ -4,10 +4,48 @@ import { uploadImage } from "../utils/index.js";
 
 const { ObjectId } = mongoose.Types;
 
-export const getRestaurants = async (req, res, next) => {
+export const getRandom = async (req, res, next) => {
   try {
     const restaurants = await Restaurant.find();
     res.status(200).send(restaurants).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getRestaurants = async (req, res, next) => {
+  try {
+    const PAGE_SIZE = parseInt(req.query.pageSize);
+    const page = parseInt(req.query.page || "0");
+    const searchValid = req.query.search;
+    const tag = req.query.tag;
+    const alleyValid = req.query.alley;
+    // const sort = parseInt(req.query.sort);
+    const filterAndSearch = {
+      $or: [
+        { name: { $regex: searchValid, $options: 'i' } },
+        { food: { $regex: searchValid, $options: 'i' } },
+      ],
+      $and: [
+        { tag: { $regex: tagValid, $options: "i" } },
+        { alley: { $regex: alleyValid, $options: "i" } },
+      ],
+    };
+    const total = await Restaurant.countDocuments(filterAndSearch);
+
+    Restaurant.find(filterAndSearch)
+      .skip(PAGE_SIZE * page)
+      .limit(PAGE_SIZE)
+      // .sort({ created_at: sort })
+      .exec((err, result) => {
+        if (err) {
+          return res.status(500).json({ error: err });
+        }
+        res.json({
+          totalPages: Math.ceil(total / PAGE_SIZE),
+          data: result,
+        });
+      });
   } catch (error) {
     next(error);
   }
@@ -85,6 +123,25 @@ export const uploadImageRestaurant = async (req, res, next) => {
     next(error);
   }
 };
+
+// export const updateRatingRestaurant = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const updateRating = req.body.updateRating;
+
+//     const restaurant = await Restaurant.findById(id);
+//     if (!restaurant) {
+//       throw { message: "Restaurant not found", statusCode: 404 };
+//     }
+//     let timeRating = req.params.timeRating + 1;
+//     let rating = updateRating / timeRating
+
+//     await Restaurant.findByIdAndUpdate(id, { $set: { rating, timeRating: timeRating } });
+//     res.status(200).send("OK").end();
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 export const updateRatingRestaurant = async (req, res, next) => {
   try {

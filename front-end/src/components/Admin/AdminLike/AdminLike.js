@@ -69,7 +69,7 @@ function AdminLike() {
                     {result.map((data, index) => (
                       <tr key={data._id}>
                         <td>{index + 1}</td>
-                        <td></td>
+                        <td>{data.avgRating}</td>
                         <td>{data.name}</td>
                       </tr>
                     ))}
