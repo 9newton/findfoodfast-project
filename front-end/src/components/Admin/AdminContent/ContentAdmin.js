@@ -19,6 +19,8 @@ import {
   FaStar,
   FaInbox,
   FaUtensils,
+  FaMapMarkedAlt,
+  FaRegTimesCircle
 } from "react-icons/fa";
 import Image from "react-bootstrap/Image";
 import { ToastContainer, toast } from "react-toastify";
@@ -374,7 +376,10 @@ function Content() {
                             )}
                           </td>
                           <td>{data.alley}</td>
-                          <td>{data.location}</td>
+                          {data.location == "" ?
+                            <td className="text-danger"><FaRegTimesCircle /></td>
+                            : <td className="text-success"><FaMapMarkedAlt /></td>
+                          }
                         </tr>
                       ))}
                     </tbody>
