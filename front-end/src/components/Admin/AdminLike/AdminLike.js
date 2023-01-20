@@ -9,7 +9,16 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { FaBars, FaHome, FaChartLine, FaStar, FaInbox, FaUtensils } from 'react-icons/fa';
+import {
+  FaBars,
+  FaHome,
+  FaChartLine,
+  FaStar,
+  FaInbox,
+  FaUtensils,
+  FaPlus,
+  FaRedoAlt,
+} from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
@@ -95,10 +104,8 @@ function AdminLike() {
     setPageNumber(0);
   };
 
-
   return (
     <main className={show ? "space-toggle" : null}>
-
       <header className={`header-admin ${show ? "space-toggle" : null}`}>
         <div className="header-toggle" onClick={() => setShow(!show)}>
           <FaBars
@@ -152,7 +159,7 @@ function AdminLike() {
               className="mt-md-4"
             >
               <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
-                <FaStar className="mb-2" /> เรทติ้งดาว
+                <FaStar className="mb-2" /> เรตติ้งดาว
               </h1>
             </Col>
           </Row>
@@ -178,33 +185,24 @@ function AdminLike() {
             <Col
               xs={{ span: 12, offset: 0 }}
               md={{ span: 6, offset: 0 }}
-              xl={{ span: 2, offset: 5 }}
+              xl={{ span: 3, offset: 2 }}
               className="mt-md-4"
             >
               <Form.Select
                 className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                 aria-label="Select Sort"
-                onChange={(e) =>
-                  setSort(e.target.value) & resetPageNumber()
-                }
+                onChange={(e) => setSort(e.target.value) & resetPageNumber()}
               >
                 <option value="-1" selected>
-                  อันดับสูงสุดไปต่ำสุด
+                  คะแนนสูงสุดไปต่ำสุด
                 </option>
-                <option value="1">อันดับต่ำสุดไปสูงสุด</option>
+                <option value="1">คะแนนต่ำสุดไปสูงสุด</option>
               </Form.Select>
-              <Button
-                onClick={() => handleOpen()}
-                className="button is-info is-small mr-1"
-              >
-                Reset Rating
-              </Button>
-              <ToastContainer />
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
               md={{ span: 6, offset: 0 }}
-              xl={{ span: 2, offset: 5 }}
+              xl={{ span: 2, offset: 0 }}
               className="mt-md-4"
             >
               <Form.Select
@@ -262,25 +260,42 @@ function AdminLike() {
             >
               <Card className="card-admin">
                 <Card.Body>
+                  <Col
+                    xs={{ span: 12, offset: 0 }}
+                    md={{ span: 4, offset: 8 }}
+                    xl={{ span: 2, offset: 10 }}
+                    className="mt-md-0"
+                  >
+                    <button
+                      className="col-12 add-manage-btn mt-0 mt-md-0 mb-0"
+                      onClick={() => handleOpen()}
+                    >
+                      <FaRedoAlt className="mb-1" /> รีเซ็ตเรตติ้ง
+                    </button>
+                    <ToastContainer />
+                  </Col>
+
                   <Table responsive="sm text-center">
                     <thead>
                       <tr>
                         <th>อันดับ</th>
-                        <th>
-                          คะแนนดาวเฉลี่ย <FaStar className="mb-1" />
-                        </th>
+                        <th>เรตติ้ง</th>
                         <th>ชื่อร้าน</th>
                       </tr>
                     </thead>
                     <tbody>
                       {restaurants.map((data, index) => (
                         <tr key={data._id}>
-                          {sort === - 1 ? (
-                            <td> {(pageNumber * pageSize) + (index + 1)}</td>
-
-                          ) :
-                            <td> {(totalData + 1) - ((pageNumber * pageSize) + (index + 1))}</td>
-                          }
+                          {sort === -1 ? (
+                            <td> {pageNumber * pageSize + (index + 1)}</td>
+                          ) : (
+                            <td>
+                              {" "}
+                              {totalData +
+                                1 -
+                                (pageNumber * pageSize + (index + 1))}
+                            </td>
+                          )}
                           <td>{data.avgRating}</td>
                           <td>{data.name}</td>
                         </tr>
@@ -399,7 +414,7 @@ function AdminLike() {
           </Container>
         </Container>
       </div>
-    </main >
+    </main>
   );
 }
 
