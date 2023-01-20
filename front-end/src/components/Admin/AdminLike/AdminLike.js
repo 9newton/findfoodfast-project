@@ -286,7 +286,7 @@ function AdminLike() {
                     <tbody>
                       {restaurants.map((data, index) => (
                         <tr key={data._id}>
-                          {sort === -1 ? (
+                          {sort == -1 ? (
                             <td> {pageNumber * pageSize + (index + 1)}</td>
                           ) : (
                             <td>
