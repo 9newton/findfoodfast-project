@@ -189,3 +189,22 @@ const validateRating = (id, prevRating, updateRating) => {
     throw { message: "Please insert correct rating", statusCode: 400 };
   }
 };
+
+export const resetRating = async (req, res, next) => {
+  try {
+    const defaultValues = {
+      rating: {
+        fiveStar: 0,
+        fourStar: 0,
+        threeStar: 0,
+        twoStar: 0,
+        oneStar: 0
+      },
+      avgRating: 0
+    };
+    const result = await Restaurant.updateMany({}, { $set: defaultValues });
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+};

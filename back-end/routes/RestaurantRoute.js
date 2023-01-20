@@ -8,6 +8,7 @@ import {
   deleteRestaurant,
   uploadImageRestaurant,
   updateRatingRestaurant,
+  resetRating
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
 
@@ -31,6 +32,7 @@ router.post(
 router.put("/restaurants/rating/:id", updateRatingRestaurant);
 router.patch("/restaurants/:id", updateRestaurant);
 router.delete("/restaurants/:id", deleteRestaurant);
+router.put("/restaurants/resetRating", resetRating);
 
 // Error handler
 router.use((err, req, res, next) => {

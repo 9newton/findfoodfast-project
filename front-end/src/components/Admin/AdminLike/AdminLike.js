@@ -68,10 +68,19 @@ function AdminLike() {
         }
       });
   };
+  const resetRating = async () => {
+    try {
+      await axios.put(`http://localhost:5000/restaurants/resetRating`);
+      getRestaurants();
+      alertsubmit();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // alert
   const alertsubmit = () =>
-    toast.success("ลบเรียบร้อยแล้ว!", {
+    toast.success("รีเซ็ทร้อยแล้ว!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -85,6 +94,7 @@ function AdminLike() {
   const resetPageNumber = () => {
     setPageNumber(0);
   };
+
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -183,6 +193,13 @@ function AdminLike() {
                 </option>
                 <option value="1">อันดับต่ำสุดไปสูงสุด</option>
               </Form.Select>
+              <Button
+                onClick={() => handleOpen()}
+                className="button is-info is-small mr-1"
+              >
+                Reset Rating
+              </Button>
+              <ToastContainer />
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
@@ -258,7 +275,7 @@ function AdminLike() {
                     <tbody>
                       {restaurants.map((data, index) => (
                         <tr key={data._id}>
-                          {sort == -1 ? (
+                          {sort === - 1 ? (
                             <td> {(pageNumber * pageSize) + (index + 1)}</td>
 
                           ) :
@@ -274,6 +291,37 @@ function AdminLike() {
               </Card>
             </Col>
           </Row>
+          <Modal
+            show={open}
+            size="lg"
+            onHide={handleClose}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                <h1 className="name">ยืนยันการรีเซ็ท</h1>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h4>คุณต้องการจะรีเซ็ทคะแนนดาวทั้งหมดใช่หรือไม่?</h4>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="outline-danger"
+                className="mt-1 mt-xl-2"
+                onClick={handleClose}
+              >
+                ยกเลิก
+              </Button>
+              <Button
+                className="add-manage-btn mt-0"
+                onClick={() => resetRating() & handleClose()}
+              >
+                ตกลง
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <Container>
             <Row className="mt-4">
               <Col
