@@ -89,7 +89,7 @@ function AdminLike() {
 
   // alert
   const alertsubmit = () =>
-    toast.success("รีเซ็ทร้อยแล้ว!", {
+    toast.success("รีเซ็ตเรตติ้งเรียบร้อยแล้ว!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
