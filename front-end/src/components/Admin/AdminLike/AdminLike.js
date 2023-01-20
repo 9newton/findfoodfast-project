@@ -184,7 +184,7 @@ function AdminLike() {
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 6, offset: 0 }}
+              md={{ span: 4, offset: 0 }}
               xl={{ span: 3, offset: 2 }}
               className="mt-md-4"
             >
@@ -201,7 +201,7 @@ function AdminLike() {
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 6, offset: 0 }}
+              md={{ span: 4, offset: 0 }}
               xl={{ span: 2, offset: 0 }}
               className="mt-md-4"
             >
@@ -226,7 +226,7 @@ function AdminLike() {
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 6, offset: 0 }}
+              md={{ span: 4, offset: 0 }}
               xl={{ span: 2, offset: 0 }}
               className="mt-md-4"
             >
@@ -264,7 +264,7 @@ function AdminLike() {
                     xs={{ span: 12, offset: 0 }}
                     md={{ span: 4, offset: 8 }}
                     xl={{ span: 2, offset: 10 }}
-                    className="mt-md-0"
+                    className="mt-md-0 mb-md-4 mb-xl-0"
                   >
                     <button
                       className="col-12 add-manage-btn mt-0 mt-md-0 mb-0"
