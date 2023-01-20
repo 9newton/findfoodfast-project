@@ -315,26 +315,26 @@ function AdminLike() {
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                <h1 className="name">ยืนยันการรีเซ็ท</h1>
+                <h4 className="name">ยืนยันการรีเซ็ต</h4>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <h4>คุณต้องการจะรีเซ็ทคะแนนดาวทั้งหมดใช่หรือไม่?</h4>
+              <span>คุณต้องการจะรีเซ็ตเรตติ้งทั้งหมดใช่หรือไม่?</span>
             </Modal.Body>
             <Modal.Footer>
               <Button
                 variant="outline-danger"
-                className="mt-1 mt-xl-2"
+                className="btn-modal mt-1 mt-xl-0"
                 onClick={handleClose}
               >
                 ยกเลิก
               </Button>
-              <Button
-                className="add-manage-btn mt-0"
+              <button
+                className="btn-modal submit mt-0"
                 onClick={() => resetRating() & handleClose()}
               >
                 ตกลง
-              </Button>
+              </button>
             </Modal.Footer>
           </Modal>
           <Container>

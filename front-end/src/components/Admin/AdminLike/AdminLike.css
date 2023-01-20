@@ -71,3 +71,23 @@ th {
   text-align: center;
   margin-top: 100px;
 }
+
+.btn-modal {
+  height: 40px;
+  border-radius: 10px;
+  width: 70px;
+  border-width: 2px;
+}
+
+.submit {
+  color: #222c61;
+  background-color: transparent;
+  border: solid;
+  border-color: #222c61;
+  width: 70px;
+  border-width: 2px;
+}
+.submit:hover {
+  color: white;
+  background-color: #222c61;
+}
