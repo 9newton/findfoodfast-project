@@ -26,6 +26,9 @@ function AdminLike() {
   const [searchInput, setSearchInput] = useState("");
   const [tag, setTag] = useState("");
   const [alley, setAlley] = useState("");
+  // Sort
+  const [sort, setSort] = useState(-1);
+  const [totalData, setTotalData] = useState();
   // Pagination
   const [pageSize, setPageSize] = useState(5);
   const [pageNumber, setPageNumber] = useState(0);
@@ -38,7 +41,7 @@ function AdminLike() {
 
   useEffect(() => {
     getRestaurants();
-  }, [pageNumber, searchInput, tag, alley, pageSize]);
+  }, [pageNumber, searchInput, tag, alley, pageSize, sort]);
 
   // Pagination
   const gotoPrevious = () => {
@@ -51,13 +54,13 @@ function AdminLike() {
   // Express
   const getRestaurants = async () => {
     fetch(
-      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}&sort=${sort}`
     )
       .then((response) => response.json())
-      .then(({ totalPages, data }) => {
+      .then(({ totalPages, data, totalData }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
-        console.log(totalPages);
+        setTotalData(totalData.length);
         if (totalPages > 5) {
           setShowPagination(false);
         } else {
@@ -65,6 +68,7 @@ function AdminLike() {
         }
       });
   };
+
   // alert
   const alertsubmit = () =>
     toast.success("ลบเรียบร้อยแล้ว!", {
@@ -168,6 +172,25 @@ function AdminLike() {
               className="mt-md-4"
             >
               <Form.Select
+                className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
+                aria-label="Select Sort"
+                onChange={(e) =>
+                  setSort(e.target.value) & resetPageNumber()
+                }
+              >
+                <option value="-1" selected>
+                  อันดับสูงสุดไปต่ำสุด
+                </option>
+                <option value="1">อันดับต่ำสุดไปสูงสุด</option>
+              </Form.Select>
+            </Col>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
+              xl={{ span: 2, offset: 5 }}
+              className="mt-md-4"
+            >
+              <Form.Select
                 className="soi-btn pointer mt-4 mb-2 mt-md-0 text-center"
                 aria-label="Select Alley"
                 onChange={(e) => setTag(e.target.value) & resetPageNumber()}
@@ -213,8 +236,6 @@ function AdminLike() {
               </Form.Select>
             </Col>
           </Row>
-
-
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}
@@ -237,7 +258,12 @@ function AdminLike() {
                     <tbody>
                       {restaurants.map((data, index) => (
                         <tr key={data._id}>
-                          <td>{index + 1}</td>
+                          {sort == -1 ? (
+                            <td> {(pageNumber * pageSize) + (index + 1)}</td>
+
+                          ) :
+                            <td> {(totalData + 1) - ((pageNumber * pageSize) + (index + 1))}</td>
+                          }
                           <td>{data.avgRating}</td>
                           <td>{data.name}</td>
                         </tr>
@@ -325,7 +351,7 @@ function AdminLike() {
           </Container>
         </Container>
       </div>
-    </main>
+    </main >
   );
 }
 

@@ -184,20 +184,18 @@ function AdminReport() {
               xl={{ span: 2, offset: 5 }}
               className="mt-md-4"
             >
-              <>
-                <Form.Select
-                  className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
-                  aria-label="Select Sort"
-                  onChange={(e) =>
-                    setSort(e.target.value) & resetPageNumber()
-                  }
-                >
-                  <option value="-1" selected>
-                    ใหม่ที่สุดไปเก่าที่สุด
-                  </option>
-                  <option value="1">เก่าที่สุดไปใหม่ที่สุด</option>
-                </Form.Select>
-              </>
+              <Form.Select
+                className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
+                aria-label="Select Sort"
+                onChange={(e) =>
+                  setSort(e.target.value) & resetPageNumber()
+                }
+              >
+                <option value="-1" selected>
+                  ใหม่ที่สุดไปเก่าที่สุด
+                </option>
+                <option value="1">เก่าที่สุดไปใหม่ที่สุด</option>
+              </Form.Select>
             </Col>
             <Col
               xs={{ span: 12, offset: 0 }}

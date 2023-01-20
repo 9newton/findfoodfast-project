@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const ratingSchema = new Schema(
-  {
-    fiveStar: { type: Number, default: 0 },
-    fourStar: { type: Number, default: 0 },
-    threeStar: { type: Number, default: 0 },
-    twoStar: { type: Number, default: 0 },
-    oneStar: { type: Number, default: 0 },
-  },
-  { _id: false }
-);
 
 const restaurant = new Schema(
   {
@@ -29,9 +19,14 @@ const restaurant = new Schema(
     tag: { type: Array, required: true },
     alley: { type: String, required: true },
     location: { type: String },
-    rating: { type: ratingSchema },
+    rating: {
+      fiveStar: { type: Number, default: 0 },
+      fourStar: { type: Number, default: 0 },
+      threeStar: { type: Number, default: 0 },
+      twoStar: { type: Number, default: 0 },
+      oneStar: { type: Number, default: 0 }
+    },
     avgRating: { type: Number },
-    // timeRating: { type: Number },
   },
   {
     strict: false,
@@ -39,5 +34,18 @@ const restaurant = new Schema(
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
 );
+// calculate avgRating
+restaurant.post('save', function (doc) {
+  const rating = doc.rating;
+  const total = rating.fiveStar + rating.fourStar + rating.threeStar + rating.twoStar + rating.oneStar;
+  if (total == 0) {
+    doc.avgRating = 0;
+    doc.save();
+  } else {
+    const mean = (5 * rating.fiveStar + 4 * rating.fourStar + 3 * rating.threeStar + 2 * rating.twoStar + rating.oneStar) / total;
+    doc.avgRating = parseFloat(mean.toFixed(2));
+    doc.save();
+  }
+});
 
 export default mongoose.model("Restaurants", restaurant);
