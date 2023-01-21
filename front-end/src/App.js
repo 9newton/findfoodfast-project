@@ -14,6 +14,7 @@ import AddRestaurant from "./components/Admin/AdminContent/Popup";
 import AddImage from "./components/Admin/AdminContent/AddImage";
 import MenuAdmin from "./components/Admin/AdminMenu/MenuAdmin";
 import { useEffect } from "react";
+import Login from "./components/Login/Login";
 
 function App() {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
               component={Admin}
               element={<AdminDashboard />}
             />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>
