@@ -16,7 +16,6 @@ import {
   FaStar,
   FaInbox,
   FaUtensils,
-  FaPlus,
   FaRedoAlt,
 } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,9 +54,11 @@ function AdminLike() {
   // Pagination
   const gotoPrevious = () => {
     setPageNumber(Math.max(0, pageNumber - 1));
+    getRestaurants();
   };
   const gotoNext = () => {
     setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+    getRestaurants();
   };
 
   // Express
@@ -69,7 +70,7 @@ function AdminLike() {
       .then(({ totalPages, data, totalData }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
-        setTotalData(totalData.length);
+        setTotalData(totalData);
         if (totalPages > 5) {
           setShowPagination(false);
         } else {
@@ -98,6 +99,24 @@ function AdminLike() {
       draggable: false,
       theme: "light",
     });
+
+  // Sorting And Filter
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+    resetPageNumber();
+  };
+  const handleTagChange = (e) => {
+    setTag(e.target.value);
+    resetPageNumber();
+  };
+  const handleAlleyChange = (e) => {
+    setAlley(e.target.value);
+    resetPageNumber();
+  };
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+    resetPageNumber();
+  };
 
   // others
   const resetPageNumber = () => {
@@ -177,9 +196,8 @@ function AdminLike() {
                 className="form-search"
                 aria-describedby="Search Input"
                 placeholder="Search"
-                onChange={(e) =>
-                  setSearchInput(e.target.value) & resetPageNumber()
-                }
+                value={searchInput}
+                onChange={handleSearchInputChange}
               />
             </Col>
             <Col
@@ -191,7 +209,8 @@ function AdminLike() {
               <Form.Select
                 className="soi-btn pointer mt-2 mb-4 mt-md-0 text-center"
                 aria-label="Select Sort"
-                onChange={(e) => setSort(e.target.value) & resetPageNumber()}
+                value={sort}
+                onChange={handleSortChange}
               >
                 <option value="-1" selected>
                   คะแนนสูงสุดไปต่ำสุด
@@ -208,7 +227,8 @@ function AdminLike() {
               <Form.Select
                 className="soi-btn pointer mt-4 mb-2 mt-md-0 text-center"
                 aria-label="Select Alley"
-                onChange={(e) => setTag(e.target.value) & resetPageNumber()}
+                value={tag}
+                onChange={handleTagChange}
               >
                 <option selected hidden>
                   เลือกหมวดหมู่
@@ -233,7 +253,8 @@ function AdminLike() {
               <Form.Select
                 className="soi-btn pointer mt-0 mb-4 mt-md-0 text-center"
                 aria-label="Select Alley"
-                onChange={(e) => setAlley(e.target.value) & resetPageNumber()}
+                value={alley}
+                onChange={handleAlleyChange}
               >
                 <option selected hidden>
                   เลือกซอย

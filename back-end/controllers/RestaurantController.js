@@ -38,7 +38,7 @@ export const getRestaurants = async (req, res, next) => {
     Restaurant.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
-      .sort({ avgRating: sort })
+      .sort({ avgRating: sort, _id: 1 })
       .exec((err, result) => {
         if (err) {
           return res.status(500).json({ error: err });
@@ -46,7 +46,7 @@ export const getRestaurants = async (req, res, next) => {
         res.json({
           totalPages: Math.ceil(total / PAGE_SIZE),
           data: result,
-          totalData: totalData,
+          totalData: totalData.length,
         });
       });
   } catch (error) {
