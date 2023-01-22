@@ -339,11 +339,9 @@ function Content() {
                           </td>
                           <td>{data.ratePrice}</td>
                           <td>
-                            Tel: {data.tel}
-                            <br />
-                            Line: {data.line}
-                            <br />
-                            FB: {data.facebook}
+                            {data.tel !== "-" && <div>Tel: {data.tel}</div>}
+                            {data.line !== "-" && <div>Line: {data.line}</div>}
+                            {data.facebook !== "-" && <div>FB: {data.facebook}</div>}
                           </td>
                           <td>
                             {data.delivery.map((delivery, indexDelivery) =>
