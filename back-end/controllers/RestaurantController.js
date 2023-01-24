@@ -35,7 +35,7 @@ export const getRestaurants = async (req, res, next) => {
     const total = await Restaurant.countDocuments(filterAndSearch);
     const totalData = await Restaurant.find(filterAndSearch);
 
-    Restaurant.find(filterAndSearch)
+    const getrestaurant = await Restaurant.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
       .sort({ avgRating: sort, _id: 1 })
