@@ -17,10 +17,11 @@ export const getRandom = async (req, res, next) => {
 export const getRestaurants = async (req, res, next) => {
   try {
     const PAGE_SIZE = parseInt(req.query.pageSize);
+    console.log(PAGE_SIZE);
     const page = parseInt(req.query.page || "0");
-    const searchValid = req.query.search;
-    const tagValid = req.query.tag;
-    const alleyValid = req.query.alley;
+    const searchValid = (req.query.search || "");
+    const tagValid = (req.query.tag || "");
+    const alleyValid = (req.query.alley || "");
     const sort = parseInt(req.query.sort || -1);
     const filterAndSearch = {
       $or: [
@@ -32,23 +33,31 @@ export const getRestaurants = async (req, res, next) => {
         { alley: { $regex: alleyValid, $options: "i" } },
       ],
     };
-    const total = await Restaurant.countDocuments(filterAndSearch);
-    const totalData = await Restaurant.find(filterAndSearch);
-
-    const getrestaurant = await Restaurant.find(filterAndSearch)
+    console.log('Before');
+    const total = await Restaurant.find(filterAndSearch).countDocuments();
+    console.log('Hello 1');
+    const restaurant = await Restaurant.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
-      .sort({ avgRating: sort, _id: 1 })
-      .exec((err, result) => {
-        if (err) {
-          return res.status(500).json({ error: err });
-        }
-        res.json({
-          totalPages: Math.ceil(total / PAGE_SIZE),
-          data: result,
-          totalData: totalData.length,
-        });
-      });
+      .sort({ avgRating: sort, _id: 1 });
+
+    const result = { totalPages: Math.ceil(total / PAGE_SIZE), data: restaurant, totalData: total };
+
+    res.json(result);
+    // const getrestaurant = await Restaurant.find(filterAndSearch)
+    //   .skip(PAGE_SIZE * page)
+    //   .limit(PAGE_SIZE)
+    //   .sort({ avgRating: sort, _id: 1 })
+    //   .exec((err, result) => {
+    //     if (err) {
+    //       return res.status(500).json({ error: err });
+    //     }
+    //     res.json({
+    //       totalPages: Math.ceil(total / PAGE_SIZE),
+    //       data: result,
+    //       totalData: total,
+    //     });
+    //   });
   } catch (error) {
     next(error);
   }
@@ -88,8 +97,8 @@ export const updateRestaurant = async (req, res, next) => {
 export const deleteRestaurant = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const deletedRestaurant = await Restaurant.deleteOne({
-      _id: id,
+    const deletedRestaurant = await Restaurant.findOneAndDelete({
+      _id: ObjectId(id),
     });
     res.status(200).send(deletedRestaurant).end();
   } catch (error) {

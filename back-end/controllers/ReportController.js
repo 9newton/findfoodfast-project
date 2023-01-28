@@ -14,20 +14,27 @@ export const getReports = async (req, res, next) => {
       ],
     };
     const total = await Report.countDocuments(filterAndSearch);
-
-    Report.find(filterAndSearch)
+    const report = await Report.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
-      .sort({ created_at: sort })
-      .exec((err, result) => {
-        if (err) {
-          return res.status(500).json({ error: err });
-        }
-        res.json({
-          totalPages: Math.ceil(total / PAGE_SIZE),
-          data: result,
-        });
-      });
+      .sort({ created_at: sort });
+
+    const result = { totalPages: Math.ceil(total / PAGE_SIZE), data: report };
+
+    res.json(result);
+    // Report.find(filterAndSearch)
+    //   .skip(PAGE_SIZE * page)
+    //   .limit(PAGE_SIZE)
+    //   .sort({ created_at: sort })
+    //   .exec((err, result) => {
+    //     if (err) {
+    //       return res.status(500).json({ error: err });
+    //     }
+    //     res.json({
+    //       totalPages: Math.ceil(total / PAGE_SIZE),
+    //       data: result,
+    //     });
+    //   });
   } catch (error) {
     next(error);
   }
