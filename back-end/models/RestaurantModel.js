@@ -34,18 +34,5 @@ const restaurant = new Schema(
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
 );
-// calculate avgRating
-restaurant.post('save', function (doc) {
-  const rating = doc.rating;
-  const total = rating.fiveStar + rating.fourStar + rating.threeStar + rating.twoStar + rating.oneStar;
-  if (total == 0) {
-    doc.avgRating = 0;
-    doc.save();
-  } else {
-    const mean = (5 * rating.fiveStar + 4 * rating.fourStar + 3 * rating.threeStar + 2 * rating.twoStar + rating.oneStar) / total;
-    doc.avgRating = parseFloat(mean.toFixed(2));
-    doc.save();
-  }
-});
 
 export default mongoose.model("Restaurants", restaurant);

@@ -33,9 +33,9 @@ export const getRestaurants = async (req, res, next) => {
         { alley: { $regex: alleyValid, $options: "i" } },
       ],
     };
-    console.log('Before');
+
     const total = await Restaurant.find(filterAndSearch).countDocuments();
-    console.log('Hello 1');
+
     const restaurant = await Restaurant.find(filterAndSearch)
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
@@ -44,20 +44,6 @@ export const getRestaurants = async (req, res, next) => {
     const result = { totalPages: Math.ceil(total / PAGE_SIZE), data: restaurant, totalData: total };
 
     res.json(result);
-    // const getrestaurant = await Restaurant.find(filterAndSearch)
-    //   .skip(PAGE_SIZE * page)
-    //   .limit(PAGE_SIZE)
-    //   .sort({ avgRating: sort, _id: 1 })
-    //   .exec((err, result) => {
-    //     if (err) {
-    //       return res.status(500).json({ error: err });
-    //     }
-    //     res.json({
-    //       totalPages: Math.ceil(total / PAGE_SIZE),
-    //       data: result,
-    //       totalData: total,
-    //     });
-    //   });
   } catch (error) {
     next(error);
   }
@@ -165,6 +151,11 @@ export const updateRatingRestaurant = async (req, res, next) => {
       rating[prevRating] = rating[prevRating] - 1;
       rating[updateRating] = rating[updateRating] + 1;
     }
+
+    const ratingStar = restaurant.rating;
+    const total = ratingStar.fiveStar + ratingStar.fourStar + ratingStar.threeStar + ratingStar.twoStar + ratingStar.oneStar;
+    const mean = (5 * ratingStar.fiveStar + 4 * ratingStar.fourStar + 3 * ratingStar.threeStar + 2 * ratingStar.twoStar + ratingStar.oneStar) / total;
+    restaurant.avgRating = parseFloat(mean.toFixed(2));
 
     await Restaurant.findByIdAndUpdate(id, { $set: { rating } });
     await restaurant.save();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -16,8 +16,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ContentRestaurant({ restaurant }) {
-  const [updateRating, setUpdateRating] = useState("");
-  const [prevRating, setPrevRating] = useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -32,7 +30,7 @@ function ContentRestaurant({ restaurant }) {
     activeColor: "#ffd700",
   };
   const ratingChanged = async (newRating) => {
-    console.log(newRating);
+    // console.log('newRating = ' + newRating);
     try {
       const point = {
         1: "oneStar",
@@ -46,8 +44,7 @@ function ContentRestaurant({ restaurant }) {
       // alert("ให้คะแนนร้านค้าเรียบร้อยแล้ว!");
 
       const selectedRating = point[newRating];
-      console.log(selectedRating);
-      console.log(prevRating);
+      // console.log('selectedRating = ' + selectedRating);
 
       await axios.put(
         `http://localhost:5000/restaurants/rating/${restaurant._id}`,
