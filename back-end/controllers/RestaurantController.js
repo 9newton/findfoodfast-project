@@ -17,7 +17,6 @@ export const getRandom = async (req, res, next) => {
 export const getRestaurants = async (req, res, next) => {
   try {
     const PAGE_SIZE = parseInt(req.query.pageSize);
-    console.log(PAGE_SIZE);
     const page = parseInt(req.query.page || "0");
     const searchValid = (req.query.search || "");
     const tagValid = (req.query.tag || "");
@@ -179,7 +178,6 @@ const validateRating = (id, prevRating, updateRating) => {
     "none",
   ];
 
-  console.log(updateRating);
 
   if (!staticStar.includes(prevRating) || !staticStar.includes(updateRating)) {
     throw { message: "Please insert correct rating", statusCode: 400 };

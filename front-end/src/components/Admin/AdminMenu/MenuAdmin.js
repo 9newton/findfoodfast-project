@@ -16,7 +16,10 @@ import AdminLike from "../AdminLike/AdminLike";
 
 const MenuAdmin = () => {
   const [show, setShow] = useState(false);
-
+  const Logout = () => {
+    localStorage.removeItem("jwt");
+    window.location.href = "/login";
+  };
   return (
     <nav className="nav">
       <div>
@@ -45,10 +48,10 @@ const MenuAdmin = () => {
         </div>
       </div>
 
-      {/* <Link to='/logout' className='nav-link'>
-            <i className='fas fa-sign-out nav-link-icon'></i>
-            <span className='nav-link-name'>Logout</span>
-          </Link> */}
+      <div to='/logout' className='nav-link'>
+        <i className='fas fa-sign-out nav-link-icon'></i>
+        <span className='nav-link-name' onClick={Logout}>Logout</span>
+      </div>
     </nav>
   );
 };

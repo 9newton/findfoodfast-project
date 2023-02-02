@@ -70,7 +70,6 @@ function AdminReport() {
       .then(({ totalPages, data }) => {
         setReport(data);
         setNumberOfPages(totalPages);
-        console.log(totalPages.length);
         if (totalPages > 5) {
           setShowPagination(false);
         } else { setShowPagination(true); }

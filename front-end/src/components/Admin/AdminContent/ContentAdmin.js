@@ -72,7 +72,6 @@ function Content() {
       .then(({ totalPages, data }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
-        console.log(totalPages);
         if (totalPages > 5) {
           setShowPagination(false);
         } else {
@@ -83,7 +82,6 @@ function Content() {
   const deleteRestaurant = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/restaurants/${id}`);
-      console.log(`http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`);
       getRestaurants();
       alertsubmit();
     } catch (error) {

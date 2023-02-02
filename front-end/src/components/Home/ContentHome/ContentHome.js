@@ -46,7 +46,6 @@ function Content() {
       .then(({ totalPages, data }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
-        console.log(totalPages);
         if (totalPages > 5) {
           setShowPagination(false);
         } else { setShowPagination(true); }

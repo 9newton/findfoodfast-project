@@ -18,7 +18,6 @@ function ContentRandom() {
   });
   // hide
   const [showResults, setShowResults] = React.useState(false);
-  console.log("Show result : " + showResults);
   // end hide
   const handleSearch = useCallback((event, type) => {
     setInput((prev) => {

@@ -23,6 +23,7 @@ function AdminDashboard() {
       }}
     />
   );
+
   return (
     <div className="content">
       <Container>
