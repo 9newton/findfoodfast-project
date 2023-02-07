@@ -27,7 +27,7 @@ function Footer() {
                     <div className="col-xs={12} col-md">
                         <h5>ช่วยเหลือ</h5>
                         <ul className='list-unstyled'>
-                            <Link to='/report' className='a'><li href="#">แจ้งปัญหา</li></Link>
+                            <Link to='/report' className='a' style={{ textDecoration: 'none' }}><li>แจ้งปัญหา</li></Link>
                             {/* <Router>
                             <Link style={{textDecoration: 'none'}} to="/">
                                 Home

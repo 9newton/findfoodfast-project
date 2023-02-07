@@ -13,52 +13,63 @@ import EditRestaurant from "./components/Admin/AdminContent/Edit";
 import AddRestaurant from "./components/Admin/AdminContent/Popup";
 import AddImage from "./components/Admin/AdminContent/AddImage";
 import MenuAdmin from "./components/Admin/AdminMenu/MenuAdmin";
-import { useEffect } from "react";
 import Login from "./components/Login/Login";
+import { RequireAuth } from "./services/authService";
 
 function App() {
-  useEffect(() => {
-    console.log("Hello world");
-  }, []);
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route>
-            <Route index element={<Home />} />
-            <Route path="/home/restaurant/:id" element={<Restaurant />} />
-            <Route path="/random" element={<Random />} />
-            <Route path="/report" element={<Report />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route
-              path="/admin/manageRestaurant"
-              element={<ManageRestaurant />}
-            />
-            <Route
-              path="/admin/manageRestaurant/add"
-              element={<AddRestaurant />}
-            />
-            <Route
-              path="/admin/manageRestaurant/edit/:id"
-              element={<EditRestaurant />}
-            />
-            <Route
-              path="/admin/manageRestaurant/addImage/:id/:name/:alley"
-              element={<AddImage />}
-            />
-            <Route path="/admin/like" element={<AdminLike />} />
-            <Route
-              path="/admin/report"
-              component={Admin}
-              element={<AdminReport />}
-            />
-            <Route
-              path="/admin/dashboard"
-              component={Admin}
-              element={<AdminDashboard />}
-            />
-            <Route path="/login" element={<Login />} />
-          </Route>
+          <Route path="/" index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home/restaurant/:id" element={<Restaurant />} />
+          <Route path="/random" element={<Random />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="/admin" element={
+            <RequireAuth>
+              <Admin />
+            </RequireAuth>}
+          />
+          <Route
+            path="/admin/manageRestaurant"
+            element={
+              <RequireAuth>
+                <ManageRestaurant />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/admin/manageRestaurant/add"
+            element={
+              <RequireAuth>
+                <AddRestaurant />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/admin/manageRestaurant/edit/:id"
+            element={
+              <RequireAuth><EditRestaurant /></RequireAuth>
+
+            }
+          />
+          <Route
+            path="/admin/manageRestaurant/addImage/:id/:name/:alley"
+            element={<RequireAuth><AddImage /></RequireAuth>}
+          />
+          <Route path="/admin/like" element={<RequireAuth><AdminLike /></RequireAuth>} />
+          <Route
+            path="/admin/report"
+            component={Admin}
+            element={<RequireAuth><AdminReport /></RequireAuth>}
+          />
+          <Route
+            path="/admin/dashboard"
+            component={Admin}
+            element={<RequireAuth><AdminDashboard /></RequireAuth>}
+          />
+          <Route path="*" index element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -67,6 +67,7 @@ function ContentRandom() {
                     <Link
                       to={`/home/restaurant/${randomFilter?._id}`}
                       target="_blank"
+                      style={{ textDecoration: 'none' }}
                     >
                       <Card.Body className="card-show-food">
                         <Row>

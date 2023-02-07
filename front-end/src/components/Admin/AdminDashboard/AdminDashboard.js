@@ -25,7 +25,24 @@ function AdminDashboard() {
     />
   );
 
-  return (
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setIsAuthenticated(false);
+      window.location.href = "/login";
+    } else {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
+  return isAuthenticated ? (
     <div className="content">
       <MenuAdmin />
       <Container>
@@ -328,7 +345,7 @@ function AdminDashboard() {
           </Col>
         </Row>
       </Container>
-
+      <button onClick={logout}>Logout</button>
       {/* <Container>
         <Row>
           <Col
@@ -348,7 +365,7 @@ function AdminDashboard() {
         </Row>
       </Container> */}
     </div>
-  );
+  ) : null
 }
 
 export default AdminDashboard;

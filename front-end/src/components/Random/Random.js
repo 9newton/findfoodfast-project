@@ -5,9 +5,6 @@ import Footer from '../Footer';
 import Header from '../Header';
 import ContentRandom from './ContentRandom/ContentRandom';
 
-
-
-
 function Random() {
   return (
     <div className="random">

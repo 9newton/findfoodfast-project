@@ -28,9 +28,9 @@ function Banner() {
               <h1>{bannerData.desc1}</h1>
               <h1>{bannerData.desc2}</h1>
               <div className="py-4"></div>
-              <ScrollDown to="search">
-                <ScrollLink>
-                  <button className="banner-btn">
+              <ScrollDown to="search" style={{ textDecoration: 'none' }}>
+                <ScrollLink >
+                  <button className="banner-btn" >
                     <FaSearch /> ค้นหาร้านอาหาร
                   </button>
                 </ScrollLink>
