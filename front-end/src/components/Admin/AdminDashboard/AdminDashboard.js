@@ -11,7 +11,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Hero from "../../../image/hero.png";
 import Image from "react-bootstrap/Image";
-import { FaChartLine } from 'react-icons/fa';
+import { FaChartLine } from "react-icons/fa";
+import MenuAdmin from "../AdminMenu/MenuAdmin";
 
 function AdminDashboard() {
   const ColoredLine = ({ color }) => (
@@ -26,6 +27,7 @@ function AdminDashboard() {
 
   return (
     <div className="content">
+      <MenuAdmin />
       <Container>
         <Row>
           <Col

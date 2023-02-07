@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { FaHamburger, FaAngleLeft } from 'react-icons/fa';
+import { FaHamburger, FaAngleLeft } from "react-icons/fa";
 import Logo from "../image/Logo3.png";
 import { NavLink, Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
@@ -17,7 +17,7 @@ function Header() {
       <div className="container">
         <div className="header-con">
           <div className="logo-container">
-            <Link to="/admin">
+            <Link to="/admin/dashboard">
               <Image className="img-logo" src={Logo} />
             </Link>
           </div>

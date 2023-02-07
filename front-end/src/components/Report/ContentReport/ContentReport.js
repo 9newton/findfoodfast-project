@@ -54,7 +54,7 @@ function ContentReport() {
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 2 }}
+              md={{ span: 10, offset: 1 }}
               xl={{ span: 4, offset: 3 }}
               xxl={{ span: 4, offset: 4 }}
               className="mt-4 form"
@@ -86,7 +86,7 @@ function ContentReport() {
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 2 }}
+              md={{ span: 10, offset: 1 }}
               xl={{ span: 4, offset: 3 }}
               xxl={{ span: 4, offset: 4 }}
               className="mt-4 form"
@@ -108,7 +108,7 @@ function ContentReport() {
           <Row>
             <Col
               xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 2 }}
+              md={{ span: 10, offset: 1 }}
               xl={{ span: 4, offset: 3 }}
               xxl={{ span: 4, offset: 4 }}
               className="mt-4 form"
@@ -132,7 +132,6 @@ function ContentReport() {
               {" "}
               ส่ง{" "}
             </button>
-            
           </div>
         </Container>
         <ToastContainer />
