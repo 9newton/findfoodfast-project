@@ -2,7 +2,6 @@ import User from "../models/UserModel.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-
 export const register = async (req, res) => {
   //our register logic goes here
   try {
@@ -35,9 +34,9 @@ export const register = async (req, res) => {
     const token = jwt.sign(
       { user_id: user._id, username },
       process.env.TOKEN_KEY,
-      {
-        expiresIn: "2h"
-      }
+      // {
+      //   expiresIn: "2h"
+      // }
     )
     //save user token
     user.token = token;
@@ -57,7 +56,7 @@ export const login = async (req, res) => {
 
     // Validate user input
     if (!(username && password)) {
-      res.status(400).send("All input is required")
+      res.status(400).send("All input is required");
     }
 
     // Validate if user exist in our database
@@ -68,19 +67,18 @@ export const login = async (req, res) => {
       const token = jwt.sign(
         { user_id: user._id, username },
         process.env.TOKEN_KEY,
-        {
-          expiresIn: "2h"
-        }
-      )
+        // {
+        //   expiresIn: "2h"
+        // }
+      );
 
       //save user token
       user.token = token;
 
       res.status(200).json(user);
+    } else {
+      res.status(403).send("Forbided");
     }
-
-    res.status(400).send("Invalid Credentials");
-
   } catch (err) {
     console.log(err);
   }

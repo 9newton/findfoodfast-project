@@ -11,6 +11,7 @@ import {
   resetRating
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 const multer = Multer({
@@ -20,6 +21,8 @@ const multer = Multer({
 router.get("/restaurants", getRestaurants);
 router.get("/random", getRandom);
 router.get("/restaurants/:id", getRestaurantById);
+
+// router.use(auth);
 router.post("/restaurants", saveRestaurant);
 router.post(
   "/restaurants/upload/:id/:alley",

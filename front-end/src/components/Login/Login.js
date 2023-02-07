@@ -25,7 +25,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post("http://localhost:5000/login", userData);
-      localStorage.setItem("jwt", response.data.token);
+      localStorage.setItem("token", response.data.token);
       window.location.href = "/admin";
     } catch (error) {
       console.log(error.response.data.message);
@@ -74,7 +74,7 @@ function Login() {
                 รหัสผ่าน
               </Form.Label>
               <Form.Control
-                type="text"
+                type="password"
                 className="form-name"
                 placeholder="รหัสผ่าน"
                 id="password"
