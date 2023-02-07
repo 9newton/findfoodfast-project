@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -7,8 +7,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -26,12 +28,21 @@ function Login() {
     try {
       const response = await axios.post("http://localhost:5000/login", userData);
       localStorage.setItem("token", response.data.token);
-      window.location.href = "/admin";
+      navigate("/admin/dashboard");
     } catch (error) {
       console.log(error.response.data.message);
       toast.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div className="content-report">

@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -24,14 +24,14 @@ function AdminDashboard() {
       }}
     />
   );
-
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsAuthenticated(false);
-      window.location.href = "/login";
+      navigate("/login");
     } else {
       setIsAuthenticated(true);
     }
@@ -39,7 +39,7 @@ function AdminDashboard() {
 
   const logout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return isAuthenticated ? (
