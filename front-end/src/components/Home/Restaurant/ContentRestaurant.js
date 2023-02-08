@@ -30,7 +30,6 @@ function ContentRestaurant({ restaurant }) {
     activeColor: "#ffd700",
   };
   const ratingChanged = async (newRating) => {
-    // console.log('newRating = ' + newRating);
     try {
       const point = {
         1: "oneStar",
@@ -41,10 +40,8 @@ function ContentRestaurant({ restaurant }) {
       };
       handleClose();
       alertSubmit();
-      // alert("ให้คะแนนร้านค้าเรียบร้อยแล้ว!");
 
       const selectedRating = point[newRating];
-      // console.log('selectedRating = ' + selectedRating);
 
       await axios.put(
         `http://localhost:5000/restaurants/rating/${restaurant._id}`,
@@ -73,7 +70,6 @@ function ContentRestaurant({ restaurant }) {
   const countVisits = async () => {
     try {
       const response = await axios.put(`http://localhost:5000/restaurants/countVisits/${restaurant._id}`);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

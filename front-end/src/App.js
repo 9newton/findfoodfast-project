@@ -21,7 +21,6 @@ function App() {
   const countVisits = async () => {
     try {
       const response = await axios.post('http://localhost:5000/countVisitsWeb');
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

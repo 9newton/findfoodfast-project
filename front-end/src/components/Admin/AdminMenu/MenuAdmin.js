@@ -11,7 +11,6 @@ const MenuAdmin = () => {
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => setClick(!click);
-  console.log(click);
   const closeMobileMenu = () => setClick(false);
 
   // Modal
