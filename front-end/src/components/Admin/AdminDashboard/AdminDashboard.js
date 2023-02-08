@@ -37,11 +37,6 @@ function AdminDashboard() {
     }
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   return isAuthenticated ? (
     <div className="content">
       <MenuAdmin />
@@ -345,7 +340,7 @@ function AdminDashboard() {
           </Col>
         </Row>
       </Container>
-      <button onClick={logout}>Logout</button>
+
       {/* <Container>
         <Row>
           <Col
@@ -365,7 +360,7 @@ function AdminDashboard() {
         </Row>
       </Container> */}
     </div>
-  ) : null
+  ) : null;
 }
 
 export default AdminDashboard;

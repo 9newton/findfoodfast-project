@@ -18,3 +18,16 @@
 
   color: #fff;
 }
+
+.card-login {
+  border-radius: 20px;
+  border: transparent;
+  box-shadow: 0px 0px 20px #81808031;
+}
+
+@media screen and (max-width: 576px) {
+  .form-name {
+    height: 45px;
+    font-size: 15px;
+  }
+}

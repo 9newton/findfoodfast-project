@@ -1,18 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MenuAdmin.css";
 import { FaHamburger, FaAngleLeft } from "react-icons/fa";
 import Logo from "../../../image/Logo3.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import Image from "react-bootstrap/Image";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const MenuAdmin = () => {
   const [click, setClick] = useState(false);
+  const navigate = useNavigate();
   const handleClick = () => setClick(!click);
   console.log(click);
   const closeMobileMenu = () => setClick(false);
   const Logout = () => {
     localStorage.removeItem("jwt");
     window.location.href = "/login";
+  };
+  // Modal
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
   return (
     <>
@@ -66,7 +79,41 @@ const MenuAdmin = () => {
                   แจ้งปัญหา
                 </NavLink>
               </li>
+              <Modal
+                show={open}
+                size="lg"
+                onHide={handleClose}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    <h4 className="name">ยืนยันการออกจากระบบ</h4>
+                  </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                  <span>คุณต้องการออกจากระบบใช่หรือไม่?</span>
+                </Modal.Body>
+
+                <Modal.Footer>
+                  <Button
+                    variant="outline-danger"
+                    className="btn-modal mt-1 mt-xl-0"
+                    onClick={handleClose}
+                  >
+                    ยกเลิก
+                  </Button>
+                  <button className="btn-modal submit mt-0" onClick={logout}>
+                    ตกลง
+                  </button>
+                </Modal.Footer>
+              </Modal>
+              <li className="menu-link" onClick={() => handleOpen() & logout}>
+                <div className="text-danger pointer">ออกจากระบบ</div>
+              </li>
             </ul>
+
             <div className="mobile-menu" onClick={handleClick}>
               {click ? <FaAngleLeft /> : <FaHamburger />}
             </div>

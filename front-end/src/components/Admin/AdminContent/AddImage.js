@@ -32,11 +32,12 @@ const AddImage = () => {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append('coverImg', coverImg)
+      formData.append("coverImg", coverImg);
       for (let i = 0; i < file.length; i++) {
-        formData.append('images', file[i]);
+        formData.append("images", file[i]);
       }
-      await axios.post(`http://localhost:5000/restaurants/upload/${id}/${alley}`,
+      await axios.post(
+        `http://localhost:5000/restaurants/upload/${id}/${alley}`,
         formData
       );
       navigate("/admin/manageRestaurant");
@@ -47,7 +48,7 @@ const AddImage = () => {
 
   return (
     <div className="content">
-      <h1 className="content-head mb-4 mt-4 mt-md-0">{name}</h1>
+      <h1 className="content-head mb-4 mt-4 mt-md-5">{name}</h1>
       <Container>
         <Row>
           <Col
@@ -58,7 +59,7 @@ const AddImage = () => {
           >
             <Card className="card-admin">
               <Card.Body>
-                <Form onSubmit={uploadImageRestaurant} >
+                <Form onSubmit={uploadImageRestaurant}>
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
@@ -73,13 +74,14 @@ const AddImage = () => {
                       <Image
                         src={coverImg || "http://via.placeholder.com/300"}
                         alt="Image-Select"
+                        className="add-image mb-2"
                       />
                       <Form.Control
                         type="file"
                         className="file"
                         accept="image/*"
                         onChange={(e) => {
-                          setCoverImg(e.target.files[0])
+                          setCoverImg(e.target.files[0]);
                         }}
                         required
                       />
@@ -97,32 +99,29 @@ const AddImage = () => {
                           รูปเมนู
                         </Form.Label>
                       </div>
-                      <Image
+                      {/* <Image
                         src={file || "http://via.placeholder.com/300"}
                         alt="Image-Select"
-                      />
+                      /> */}
                       <Form.Control
                         type="file"
                         className="file"
                         accept="image/*"
-                        name='images'
+                        name="images"
                         onChange={(e) => setFile(e.target.files)}
                         multiple="multiple"
                         required
                       />
                     </Col>
                   </Row>
-                  <Row className="mt-3">
-                    <button
-                      className="col-12 mt-md-4 add-btn pointer"
-                      type="submit"
-                    >
-                      เพิ่มรูปภาพ
-                    </button>
-                  </Row>
                 </Form>
               </Card.Body>
             </Card>
+            <Row className="mt-3">
+              <button className="col-12 mt-md-4 add-btn pointer" type="submit">
+                เพิ่มรูปภาพ
+              </button>
+            </Row>
           </Col>
         </Row>
       </Container>
