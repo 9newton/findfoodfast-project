@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -12,11 +13,24 @@ import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard";
 import EditRestaurant from "./components/Admin/AdminContent/Edit";
 import AddRestaurant from "./components/Admin/AdminContent/Popup";
 import AddImage from "./components/Admin/AdminContent/AddImage";
-import MenuAdmin from "./components/Admin/AdminMenu/MenuAdmin";
 import Login from "./components/Login/Login";
 import { RequireAuth } from "./services/authService";
+import axios from 'axios';
 
 function App() {
+  const countVisits = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/countVisitsWeb');
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    countVisits();
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>

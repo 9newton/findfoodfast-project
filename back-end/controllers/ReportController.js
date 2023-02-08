@@ -22,19 +22,7 @@ export const getReports = async (req, res, next) => {
     const result = { totalPages: Math.ceil(total / PAGE_SIZE), data: report };
 
     res.json(result);
-    // Report.find(filterAndSearch)
-    //   .skip(PAGE_SIZE * page)
-    //   .limit(PAGE_SIZE)
-    //   .sort({ created_at: sort })
-    //   .exec((err, result) => {
-    //     if (err) {
-    //       return res.status(500).json({ error: err });
-    //     }
-    //     res.json({
-    //       totalPages: Math.ceil(total / PAGE_SIZE),
-    //       data: result,
-    //     });
-    //   });
+
   } catch (error) {
     next(error);
   }

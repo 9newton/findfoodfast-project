@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ContentRestaurant.css";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
@@ -69,6 +69,20 @@ function ContentRestaurant({ restaurant }) {
       progress: undefined,
       theme: "light",
     });
+
+  const countVisits = async () => {
+    try {
+      const response = await axios.put(`http://localhost:5000/restaurants/countVisits/${restaurant._id}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    countVisits();
+  });
+
   return (
     <div className="content-restaurant">
       <Modal

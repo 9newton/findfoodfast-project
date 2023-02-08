@@ -3,10 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from "cors";
 import http from 'http';
-// import bcrypt from 'bcryptjs';
-// import jwt from 'jsonwebtoken';
-// import auth from './middleware/auth.js';
-// import http from 'http';
 
 import connect from './config/database.js';
 
@@ -14,6 +10,7 @@ import connect from './config/database.js';
 import RestaurantRoute from "./routes/RestaurantRoute.js";
 import ReportRoute from "./routes/ReportRoute.js";
 import UserRoute from './routes/UserRoute.js';
+import VisitorCounterRoute from './routes/VisitorCounterRoute.js';
 
 const app = express();
 
@@ -24,6 +21,7 @@ app.use(express.json());
 app.use(RestaurantRoute);
 app.use(ReportRoute);
 app.use(UserRoute);
+app.use(VisitorCounterRoute);
 
 
 const { API_PORT } = process.env;

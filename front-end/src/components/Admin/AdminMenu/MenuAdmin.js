@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./MenuAdmin.css";
 import { FaHamburger, FaAngleLeft } from "react-icons/fa";
 import Logo from "../../../image/Logo3.png";
@@ -13,10 +13,7 @@ const MenuAdmin = () => {
   const handleClick = () => setClick(!click);
   console.log(click);
   const closeMobileMenu = () => setClick(false);
-  const Logout = () => {
-    localStorage.removeItem("jwt");
-    window.location.href = "/login";
-  };
+
   // Modal
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);

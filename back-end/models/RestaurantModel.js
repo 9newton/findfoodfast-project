@@ -27,6 +27,7 @@ const restaurant = new Schema(
       oneStar: { type: Number, default: 0 }
     },
     avgRating: { type: Number },
+    visitorCount: { type: Number, default: 0 },
   },
   {
     strict: false,

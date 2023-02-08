@@ -14,6 +14,97 @@ export const getRandom = async (req, res, next) => {
   }
 };
 
+export const getTopRating = async (req, res, next) => {
+  try {
+    const topRestaurant = await Restaurant.findOne().sort({ avgRating: -1 });
+    res.status(200).send(topRestaurant).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getMostView = async (req, res, next) => {
+  try {
+    const mostViewRestaurant = await Restaurant.findOne().sort({ visitorCount: -1 });
+    res.status(200).send(mostViewRestaurant).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getCountWithTagALaCarte = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'อาหารจานเดียว' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagNoodle = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'ก๋วยเตี๋ยว' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagBeverage = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'เครื่องดื่ม' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagSteak = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'สเต็ก' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagShabu = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'ชาบู' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagGrill = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'หมูกะทะ' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagSnacks = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'ของทานเล่น' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagDessert = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'ของหวาน' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getCountWithTagFruit = async (req, res, next) => {
+  try {
+    const count = await Restaurant.countDocuments({ tag: 'ผลไม้' });
+    res.status(200).send({ count }).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getRestaurants = async (req, res, next) => {
   try {
     const PAGE_SIZE = parseInt(req.query.pageSize);
@@ -65,6 +156,23 @@ export const saveRestaurant = async (req, res, next) => {
     res.status(201).send(insertedrestaurant).send();
   } catch (error) {
     next(error);
+  }
+};
+
+export const countVisits = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const restaurant = await Restaurant.findByIdAndUpdate(
+      id,
+      { $inc: { visitorCount: 1 } },
+      { new: true }
+    );
+    if (!restaurant) {
+      return res.status(404).send("Restaurant not found");
+    }
+    return res.send(restaurant);
+  } catch (error) {
+    return next(error);
   }
 };
 

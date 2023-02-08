@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "./AdminDashboard.css";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Hero from "../../../image/hero.png";
-import Image from "react-bootstrap/Image";
+import { useNavigate } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import { FaChartLine } from "react-icons/fa";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
 
 function AdminDashboard() {
-  const ColoredLine = ({ color }) => (
-    <hr
-      style={{
-        color: color,
-        backgroundColor: color,
-        height: 5,
-      }}
-    />
-  );
+  // The total number of visitor Count Website
+  const [visitorCountWeb, setVisitorCountWeb] = useState([]);
+  // The total number of restaurants
+  const [restaurants, setRestaurants] = useState(null);
+  // Top rating restaurant
+  const [topRating, setTopRating] = useState([]);
+  // Most view restaurant
+  const [mostView, setMostView] = useState([]);
+  // The total number of tags
+  const [aLaCarte, setALaCarte] = useState([]);
+  const [noodle, setNoodle] = useState([]);
+  const [beverage, setBeverage] = useState([]);
+  const [steak, setSteak] = useState([]);
+  const [shabu, setShabu] = useState([]);
+  const [grill, setGrill] = useState([]);
+  const [snacks, setSnacks] = useState([]);
+  const [dessert, setDessert] = useState([]);
+  const [fruit, setFruit] = useState([]);
+
+
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -34,8 +39,134 @@ function AdminDashboard() {
       navigate("/login");
     } else {
       setIsAuthenticated(true);
+      usedAllExpress();
     }
   }, []);
+
+  ///////Express
+  const usedAllExpress = () => {
+    getVisitorCount();
+    getAllRestaurants();
+    getTopRating();
+    getMostView();
+    getALaCarte();
+    getNoodle();
+    getBeverage();
+    getSteak();
+    getShabu();
+    getGrill();
+    getSnacks();
+    getDessert();
+    getFruit();
+  };
+  // Get Visitor Count Website
+  const getVisitorCount = async () => {
+    const response = await fetch('http://localhost:5000/visitor');
+    if (response.ok) {
+      const visitorCount = await response.json();
+      setVisitorCountWeb(visitorCount);
+    } else {
+      console.error('Request failed with status: ' + response.status);
+    }
+  };
+  // Get All Restaurants
+  const getAllRestaurants = async () => {
+    const response = await fetch("http://localhost:5000/random");
+    if (response.ok) {
+      const allRestaurants = await response.json();
+      setRestaurants(allRestaurants.length);
+    } else {
+      console.error('Request failed with status: ' + response.status);
+    }
+  };
+  // Get Top Rating Restaurants
+  const getTopRating = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/topRating`
+    );
+    const topRestaurant = await response.json();
+    setTopRating(topRestaurant);
+  };
+  // Get Most View Restaurants
+  const getMostView = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/mostView`
+    );
+    const mostViewRestaurant = await response.json();
+    setMostView(mostViewRestaurant);
+  };
+  // Get the total number of A La Carte
+  const getALaCarte = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/aLaCarte`
+    );
+    const aLaCarte = await response.json();
+    setALaCarte(aLaCarte.count);
+  };
+  // Get the total number of Noodle
+  const getNoodle = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/noodle`
+    );
+    const noodle = await response.json();
+    setNoodle(noodle.count);
+  };
+  // Get the total number of Beverage
+  const getBeverage = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/beverage`
+    );
+    const beverage = await response.json();
+    setBeverage(beverage.count);
+  };
+  // Get the total number of Steak
+  const getSteak = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/steak`
+    );
+    const steak = await response.json();
+    setSteak(steak.count);
+  };
+  // Get the total number of Shabu 
+  const getShabu = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/shabu`
+    );
+    const shabu = await response.json();
+    setShabu(shabu.count);
+  };
+  // Get the total number of Grill
+  const getGrill = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/grill`
+    );
+    const grill = await response.json();
+    setGrill(grill.count);
+  };
+  // Get the total number of Snacks 
+  const getSnacks = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/snacks`
+    );
+    const snacks = await response.json();
+    setSnacks(snacks.count);
+  };
+  // Get the total number of Dessert
+  const getDessert = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/dessert`
+    );
+    const dessert = await response.json();
+    setDessert(dessert.count);
+  };
+  // Get the total number of Fruit
+  const getFruit = async () => {
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/fruit`
+    );
+    const fruit = await response.json();
+    setFruit(fruit.count);
+  };
 
   return isAuthenticated ? (
     <div className="content">
@@ -86,7 +217,9 @@ function AdminDashboard() {
                   <div className="title-dashboard-main mt-4 mb-4">
                     <div className="h5">ยอดการเข้าใช้เว็บ</div>
                     <div className="vertical-blue"></div>
-                    <div className="h1">1,339</div>
+                    {visitorCountWeb.map((data, index) => (
+                      <div className="h1">{data.visitorCount}</div>
+                    ))}
                   </div>
                 </Card.Body>
               </Card>
@@ -103,7 +236,7 @@ function AdminDashboard() {
                   <div className="title-dashboard-main mt-4 mb-4">
                     <div className="h5">ร้านอาหารทั้งหมด</div>
                     <div className="vertical"></div>
-                    <div className="h1">250</div>
+                    <div className="h1">{restaurants}</div>
                   </div>
                 </Card.Body>
               </Card>
@@ -123,7 +256,7 @@ function AdminDashboard() {
                       </div>
                       <div className="h2">
                         <div className="h2 mt-2">
-                          <span>เครปไส้แตก</span>
+                          <span>{topRating.name}</span>
                         </div>
                       </div>
                     </div>
@@ -144,7 +277,7 @@ function AdminDashboard() {
                         <span>ร้านที่มีจำนวนคนกดเข้าดูเยอะที่สุด</span>
                       </div>
                       <div className="h2 mt-2">
-                        <span>ข้าวต้มมหาชัย</span>
+                        <span>{mostView.name}</span>
                       </div>
                     </div>
                   </Card.Body>
@@ -183,7 +316,7 @@ function AdminDashboard() {
                       <span className="span">อาหารจานเดียว</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">57</span>
+                      <span className="tag-value">{aLaCarte}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -201,7 +334,7 @@ function AdminDashboard() {
                       <span className="span">ก๋วยเตี๋ยว</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">20</span>
+                      <span className="tag-value">{noodle}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -219,7 +352,7 @@ function AdminDashboard() {
                       <span className="span">เครื่องดื่ม</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">36</span>
+                      <span className="tag-value">{beverage}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -239,7 +372,7 @@ function AdminDashboard() {
                       <span className="span">สเต็ก</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">23</span>
+                      <span className="tag-value">{steak}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -257,7 +390,7 @@ function AdminDashboard() {
                       <span className="span">ชาบู</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">4</span>
+                      <span className="tag-value">{shabu}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -275,7 +408,7 @@ function AdminDashboard() {
                       <span className="span">หมูกะทะ</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">6</span>
+                      <span className="tag-value">{grill}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -295,7 +428,7 @@ function AdminDashboard() {
                       <span className="span">ของทานเล่น</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">60</span>
+                      <span className="tag-value">{snacks}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -313,7 +446,7 @@ function AdminDashboard() {
                       <span className="span">ของหวาน</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">14</span>
+                      <span className="tag-value">{dessert}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -331,7 +464,7 @@ function AdminDashboard() {
                       <span className="span">ผลไม้</span>
                     </div>
                     <div className="font-blue h1 mt-0">
-                      <span className="tag-value">8</span>
+                      <span className="tag-value">{fruit}</span>
                     </div>
                   </Card.Body>
                 </Card>
@@ -340,25 +473,6 @@ function AdminDashboard() {
           </Col>
         </Row>
       </Container>
-
-      {/* <Container>
-        <Row>
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            xl={{ span: 12, offset: 0 }}
-            className="mt-md-4"
-          >
-            <Card className="card-dashboard-transparent">
-              <Card.Body>
-                <div className="hero">
-                  <Image className="img-logo" src={Hero} />
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container> */}
     </div>
   ) : null;
 }

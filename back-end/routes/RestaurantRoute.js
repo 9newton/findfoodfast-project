@@ -8,7 +8,19 @@ import {
   deleteRestaurant,
   uploadImageRestaurant,
   updateRatingRestaurant,
-  resetRating
+  resetRating,
+  countVisits,
+  getTopRating,
+  getMostView,
+  getCountWithTagALaCarte,
+  getCountWithTagNoodle,
+  getCountWithTagBeverage,
+  getCountWithTagSteak,
+  getCountWithTagShabu,
+  getCountWithTagGrill,
+  getCountWithTagSnacks,
+  getCountWithTagDessert,
+  getCountWithTagFruit
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
 import auth from "../middleware/auth.js";
@@ -19,6 +31,19 @@ const multer = Multer({
 });
 
 router.get("/restaurants", getRestaurants);
+
+router.get("/adminDashboard/topRating", getTopRating);
+router.get("/adminDashboard/mostView", getMostView);
+router.get("/adminDashboard/aLaCarte", getCountWithTagALaCarte);
+router.get("/adminDashboard/noodle", getCountWithTagNoodle);
+router.get("/adminDashboard/beverage", getCountWithTagBeverage);
+router.get("/adminDashboard/steak", getCountWithTagSteak);
+router.get("/adminDashboard/shabu", getCountWithTagShabu);
+router.get("/adminDashboard/grill", getCountWithTagGrill);
+router.get("/adminDashboard/snacks", getCountWithTagSnacks);
+router.get("/adminDashboard/dessert", getCountWithTagDessert);
+router.get("/adminDashboard/fruit", getCountWithTagFruit);
+
 router.get("/random", getRandom);
 router.get("/restaurants/:id", getRestaurantById);
 
@@ -32,6 +57,7 @@ router.post(
   ]),
   uploadImageRestaurant
 );
+router.put("/restaurants/countVisits/:id", countVisits)
 router.put("/restaurants/rating/:id", updateRatingRestaurant);
 router.patch("/restaurants/:id", updateRestaurant);
 router.delete("/restaurants/:id", deleteRestaurant);
