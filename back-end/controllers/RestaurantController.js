@@ -32,74 +32,28 @@ export const getMostView = async (req, res, next) => {
   }
 };
 
-export const getCountWithTagALaCarte = async (req, res, next) => {
+export const getCountWithTag = async (req, res, next) => {
   try {
-    const count = await Restaurant.countDocuments({ tag: 'อาหารจานเดียว' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagNoodle = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'ก๋วยเตี๋ยว' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagBeverage = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'เครื่องดื่ม' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagSteak = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'สเต็ก' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagShabu = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'ชาบู' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagGrill = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'หมูกะทะ' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagSnacks = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'ของทานเล่น' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagDessert = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'ของหวาน' });
-    res.status(200).send({ count }).end();
-  } catch (error) {
-    next(error);
-  }
-};
-export const getCountWithTagFruit = async (req, res, next) => {
-  try {
-    const count = await Restaurant.countDocuments({ tag: 'ผลไม้' });
-    res.status(200).send({ count }).end();
+    const countALaCarte = await Restaurant.countDocuments({ tag: 'อาหารจานเดียว' });
+    const countNoodle = await Restaurant.countDocuments({ tag: 'ก๋วยเตี๋ยว' });
+    const countBeverage = await Restaurant.countDocuments({ tag: 'เครื่องดื่ม' });
+    const countSteak = await Restaurant.countDocuments({ tag: 'สเต็ก' });
+    const countShabu = await Restaurant.countDocuments({ tag: 'ชาบู' });
+    const countGrill = await Restaurant.countDocuments({ tag: 'หมูกะทะ' });
+    const countSnacks = await Restaurant.countDocuments({ tag: 'ของทานเล่น' });
+    const countDessert = await Restaurant.countDocuments({ tag: 'ของหวาน' });
+    const countFruit = await Restaurant.countDocuments({ tag: 'ผลไม้' });
+    res.status(200).send({
+      countALaCarte,
+      countNoodle,
+      countBeverage,
+      countSteak,
+      countShabu,
+      countGrill,
+      countSnacks,
+      countDessert,
+      countFruit
+    }).end();
   } catch (error) {
     next(error);
   }

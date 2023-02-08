@@ -49,15 +49,7 @@ function AdminDashboard() {
     getAllRestaurants();
     getTopRating();
     getMostView();
-    getALaCarte();
-    getNoodle();
-    getBeverage();
-    getSteak();
-    getShabu();
-    getGrill();
-    getSnacks();
-    getDessert();
-    getFruit();
+    getCountWithTag();
   };
   // Get Visitor Count Website
   const getVisitorCount = async () => {
@@ -96,76 +88,20 @@ function AdminDashboard() {
     setMostView(mostViewRestaurant);
   };
   // Get the total number of A La Carte
-  const getALaCarte = async () => {
+  const getCountWithTag = async () => {
     const response = await fetch(
-      `http://localhost:5000/adminDashboard/aLaCarte`
+      `http://localhost:5000/adminDashboard/countWithTag`
     );
-    const aLaCarte = await response.json();
-    setALaCarte(aLaCarte.count);
-  };
-  // Get the total number of Noodle
-  const getNoodle = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/noodle`
-    );
-    const noodle = await response.json();
-    setNoodle(noodle.count);
-  };
-  // Get the total number of Beverage
-  const getBeverage = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/beverage`
-    );
-    const beverage = await response.json();
-    setBeverage(beverage.count);
-  };
-  // Get the total number of Steak
-  const getSteak = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/steak`
-    );
-    const steak = await response.json();
-    setSteak(steak.count);
-  };
-  // Get the total number of Shabu 
-  const getShabu = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/shabu`
-    );
-    const shabu = await response.json();
-    setShabu(shabu.count);
-  };
-  // Get the total number of Grill
-  const getGrill = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/grill`
-    );
-    const grill = await response.json();
-    setGrill(grill.count);
-  };
-  // Get the total number of Snacks 
-  const getSnacks = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/snacks`
-    );
-    const snacks = await response.json();
-    setSnacks(snacks.count);
-  };
-  // Get the total number of Dessert
-  const getDessert = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/dessert`
-    );
-    const dessert = await response.json();
-    setDessert(dessert.count);
-  };
-  // Get the total number of Fruit
-  const getFruit = async () => {
-    const response = await fetch(
-      `http://localhost:5000/adminDashboard/fruit`
-    );
-    const fruit = await response.json();
-    setFruit(fruit.count);
+    const countWithTag = await response.json();
+    setALaCarte(countWithTag.countALaCarte);
+    setNoodle(countWithTag.countNoodle);
+    setBeverage(countWithTag.countBeverage);
+    setSteak(countWithTag.countSteak);
+    setShabu(countWithTag.countShabu);
+    setGrill(countWithTag.countGrill);
+    setSnacks(countWithTag.countSnacks);
+    setDessert(countWithTag.countDessert);
+    setFruit(countWithTag.countFruit);
   };
 
   return isAuthenticated ? (

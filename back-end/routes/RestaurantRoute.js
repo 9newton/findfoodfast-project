@@ -12,15 +12,7 @@ import {
   countVisits,
   getTopRating,
   getMostView,
-  getCountWithTagALaCarte,
-  getCountWithTagNoodle,
-  getCountWithTagBeverage,
-  getCountWithTagSteak,
-  getCountWithTagShabu,
-  getCountWithTagGrill,
-  getCountWithTagSnacks,
-  getCountWithTagDessert,
-  getCountWithTagFruit
+  getCountWithTag
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
 
@@ -51,15 +43,7 @@ router.put("/restaurants/resetRating", resetRating);
 //Admin Dashboard
 router.get("/adminDashboard/topRating", getTopRating);
 router.get("/adminDashboard/mostView", getMostView);
-router.get("/adminDashboard/aLaCarte", getCountWithTagALaCarte);
-router.get("/adminDashboard/noodle", getCountWithTagNoodle);
-router.get("/adminDashboard/beverage", getCountWithTagBeverage);
-router.get("/adminDashboard/steak", getCountWithTagSteak);
-router.get("/adminDashboard/shabu", getCountWithTagShabu);
-router.get("/adminDashboard/grill", getCountWithTagGrill);
-router.get("/adminDashboard/snacks", getCountWithTagSnacks);
-router.get("/adminDashboard/dessert", getCountWithTagDessert);
-router.get("/adminDashboard/fruit", getCountWithTagFruit);
+router.get("/adminDashboard/countWithTag", getCountWithTag);
 
 // Error handler
 router.use((err, req, res, next) => {
