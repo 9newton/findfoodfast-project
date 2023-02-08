@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MenuAdmin.css";
-import { FaHamburger, FaAngleLeft } from "react-icons/fa";
+import { FaHamburger, FaAngleLeft, FaHome } from "react-icons/fa";
 import Logo from "../../../image/Logo3.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Image from "react-bootstrap/Image";
@@ -36,6 +36,11 @@ const MenuAdmin = () => {
             </div> */}
 
             <ul className={click ? "menu active" : "menu"}>
+              <li className="menu-link" onClick={closeMobileMenu}>
+                <NavLink to="/">
+                  <FaHome />
+                </NavLink>
+              </li>
               <li className="menu-link" onClick={closeMobileMenu}>
                 <NavLink
                   to="/admin/dashboard"
