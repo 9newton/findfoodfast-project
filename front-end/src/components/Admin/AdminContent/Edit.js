@@ -645,6 +645,16 @@ const Edit = () => {
                                 checked={checkboxTagFunc("เครื่องดื่ม")}
                                 onChange={(e) => checkboxTag(e)}
                               />
+                              <Form.Check
+                                inline
+                                label="ผลไม้"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="ผลไม้"
+                                checked={checkboxTagFunc("ผลไม้")}
+                                onChange={(e) => checkboxTag(e)}
+                              />
                             </div>
                           </div>
                         ))}

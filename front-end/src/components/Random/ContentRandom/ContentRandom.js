@@ -8,7 +8,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt } from "react-icons/fa";
 import Card from "react-bootstrap/Card";
 
 function ContentRandom() {
@@ -67,7 +67,7 @@ function ContentRandom() {
                     <Link
                       to={`/home/restaurant/${randomFilter?._id}`}
                       target="_blank"
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: "none" }}
                     >
                       <Card.Body className="card-show-food">
                         <Row>
@@ -118,7 +118,7 @@ function ContentRandom() {
                                   {randomFilter?.holiday.map(
                                     (holiday, indexHoliday) =>
                                       randomFilter?.holiday.length - 1 ===
-                                        indexHoliday ? (
+                                      indexHoliday ? (
                                         <span key={indexHoliday + "holiday"}>
                                           {holiday}
                                         </span>
@@ -144,7 +144,7 @@ function ContentRandom() {
                                 <span>
                                   {randomFilter?.tag.map((tag, indexTag) =>
                                     randomFilter?.tag.length - 1 ===
-                                      indexTag ? (
+                                    indexTag ? (
                                       <span
                                         key={indexTag + "tag"}
                                         className="tag mx-1"
@@ -209,6 +209,7 @@ function ContentRandom() {
           <option value="ของทานเล่น">ของทานเล่น</option>
           <option value="ของหวาน">ของหวาน</option>
           <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+          <option value="ผลไม้">ผลไม้</option>
         </Form.Select>
       </div>
       <div className="col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3 mt-1">

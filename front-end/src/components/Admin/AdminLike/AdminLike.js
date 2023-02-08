@@ -200,6 +200,7 @@ function AdminLike() {
               <option value="ของทานเล่น">ของทานเล่น</option>
               <option value="ของหวาน">ของหวาน</option>
               <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+              <option value="ผลไม้">ผลไม้</option>
             </Form.Select>
           </Col>
           <Col

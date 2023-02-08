@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { FaMapMarkerAlt, FaRedoAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,9 +17,9 @@ function Content() {
   // Get Data
   const [restaurants, setRestaurant] = useState([]);
   // Filter And Search
-  const [searchInput, setSearchInput] = useState('');
-  const [tag, setTag] = useState('');
-  const [alley, setAlley] = useState('');
+  const [searchInput, setSearchInput] = useState("");
+  const [tag, setTag] = useState("");
+  const [alley, setAlley] = useState("");
   // Pagination
   const [pageSize, setPageSize] = useState(5);
   const [pageNumber, setPageNumber] = useState(0);
@@ -40,7 +40,8 @@ function Content() {
   };
 
   const getRestaurants = async () => {
-    fetch(`http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+    fetch(
+      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -48,7 +49,9 @@ function Content() {
         setNumberOfPages(totalPages);
         if (totalPages > 5) {
           setShowPagination(false);
-        } else { setShowPagination(true); }
+        } else {
+          setShowPagination(true);
+        }
       });
   };
 
@@ -57,9 +60,9 @@ function Content() {
     setPageNumber(0);
   };
   const resetInput = () => {
-    setTag('');
-    setAlley('');
-    setSearchInput('');
+    setTag("");
+    setAlley("");
+    setSearchInput("");
   };
   const scrollUp = () => {
     window.scrollTo({
@@ -81,12 +84,12 @@ function Content() {
               className="text-center"
               name="tag"
               value={tag}
-              onChange={(e) =>
-                setTag(e.target.value) & resetPageNumber()
-              }
+              onChange={(e) => setTag(e.target.value) & resetPageNumber()}
             >
               <option value="">ทั้งหมด</option>
-              <option option value="อาหารจานเดียว">อาหารจานเดียว</option>
+              <option option value="อาหารจานเดียว">
+                อาหารจานเดียว
+              </option>
               <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
               <option value="สเต็ก">สเต็ก</option>
               <option value="หมูกะทะ">หมูกะทะ</option>
@@ -94,6 +97,7 @@ function Content() {
               <option value="ของทานเล่น">ของทานเล่น</option>
               <option value="ของหวาน">ของหวาน</option>
               <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+              <option value="ผลไม้">ผลไม้</option>
             </select>
 
             <Form.Control
@@ -107,7 +111,7 @@ function Content() {
             />
           </InputGroup>
         </div>
-      </div >
+      </div>
 
       <div className="col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
         <Form.Select
@@ -115,9 +119,7 @@ function Content() {
           aria-label="Select Alley"
           name="alley"
           value={alley}
-          onChange={(e) =>
-            setAlley(e.target.value) & resetPageNumber()
-          }
+          onChange={(e) => setAlley(e.target.value) & resetPageNumber()}
         >
           <option className="text-center" selected hidden>
             เลือกซอย
@@ -156,9 +158,7 @@ function Content() {
       </div>
 
       <div>
-        <p
-          className="link-reset mt-3 mt-md-3 mt-xl-2"
-        >
+        <p className="link-reset mt-3 mt-md-3 mt-xl-2">
           <Link onClick={(e) => resetInput()}>
             <Button variant="outline-danger" className="mt-1 mt-xl-2">
               <FaRedoAlt className="mb-1" /> ล้างค่าทั้งหมด
@@ -166,125 +166,122 @@ function Content() {
           </Link>
         </p>
       </div>
-      {
-        restaurants.map((data, index) => (
-          <Container key={data._id}>
-            <Row>
-              <Col
-                xs={{ span: 12, offset: 0 }}
-                md={{ span: 8, offset: 2 }}
-                xl={{ span: 6, offset: 3 }}
-                xxl={{ span: 6, offset: 3 }}
-                className="mt-4 form"
-              >
-                <Card className="card-restaurant">
-                  <Link to={`/home/restaurant/${data._id}`} target="_blank" style={{ textDecoration: 'none' }}>
-                    <Card.Body className="card-show-food">
-                      <Row>
-                        <Col
-                          xs={{ span: 6, offset: 0 }}
-                          md={{ span: 5, offset: 0 }}
-                          xl={{ span: 5, offset: 0 }}
-                          xxl={{ span: 5, offset: 0 }}
-                          className="show-img"
-                        >
-                          <Image
-                            className="img-cover-show"
-                            src={data.coverImg}
-                            alt=""
-                          />
-                        </Col>
+      {restaurants.map((data, index) => (
+        <Container key={data._id}>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 8, offset: 2 }}
+              xl={{ span: 6, offset: 3 }}
+              xxl={{ span: 6, offset: 3 }}
+              className="mt-4 form"
+            >
+              <Card className="card-restaurant">
+                <Link
+                  to={`/home/restaurant/${data._id}`}
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Card.Body className="card-show-food">
+                    <Row>
+                      <Col
+                        xs={{ span: 6, offset: 0 }}
+                        md={{ span: 5, offset: 0 }}
+                        xl={{ span: 5, offset: 0 }}
+                        xxl={{ span: 5, offset: 0 }}
+                        className="show-img"
+                      >
+                        <Image
+                          className="img-cover-show"
+                          src={data.coverImg}
+                          alt=""
+                        />
+                      </Col>
 
-                        <Col
-                          xs={{ span: 6, offset: 0 }}
-                          md={{ span: 7, offset: 0 }}
-                          xl={{ span: 7, offset: 0 }}
-                          xxl={{ span: 7, offset: 0 }}
-                          className="show-detail"
-                        >
-                          <div className="detail-right">
-                            <div className="mb-3 name-right">
-                              <span className="h2 font-blue">
-                                {data.name}
-                              </span>
-                            </div>
-                            <p className="text-dark">
-                              อาหารที่ขาย :{" "}
-                              <span className="font-blue">{data.food}</span>
-                            </p>
-                            <p className="text-dark">
-                              เวลาเปิด - ปิด :{" "}
-                              <span className="font-blue">
-                                {" "}
-                                {data.timeOpen}-{data.timeClose} น.
-                              </span>
-                            </p>
-                            <p className="text-dark">
-                              วันหยุดของร้าน :{" "}
-                              <span className="font-blue">
-                                {data.holiday.map((holiday, indexHoliday) =>
-                                  data.holiday.length - 1 === indexHoliday ? (
-                                    <span key={indexHoliday + "holiday"}>
-                                      {holiday}
-                                    </span>
-                                  ) : (
-                                    <span key={indexHoliday + "holiday"}>
-                                      {holiday},{" "}
-                                    </span>
-                                  )
-                                )}
-                              </span>
-                            </p>
-                            <p className="text-dark">
-                              เรทราคา :{" "}
-                              <span className="font-blue">
-                                {data.ratePrice} บาท
-                              </span>
-                            </p>
-                            <p className="font-blue">
-                              <FaMapMarkerAlt className="text-danger" />{" "}
-                              {data.alley}
-                            </p>
-                            <div className="box-tag">
-                              <span>
-                                {data.tag.map((tag, indexTag) =>
-                                  data.tag.length - 1 === indexTag ? (
-                                    <span
-                                      key={indexTag + "tag"}
-                                      className="tag mx-1"
-                                    >
-                                      {tag}
-                                    </span>
-                                  ) : (
-                                    <span
-                                      key={indexTag + "tag"}
-                                      className="tag"
-                                    >
-                                      {tag}
-                                    </span>
-                                  )
-                                )}
-                              </span>
-                            </div>
-                            <p className="link-menu mt-0 mb-0 mt-md-4">
-                              <Link
-                                to="/home/restaurant"
-                                className="btn btn-link go-menu"
-                              >
-                                ดูเมนูเพิ่มเติม
-                              </Link>
-                            </p>
+                      <Col
+                        xs={{ span: 6, offset: 0 }}
+                        md={{ span: 7, offset: 0 }}
+                        xl={{ span: 7, offset: 0 }}
+                        xxl={{ span: 7, offset: 0 }}
+                        className="show-detail"
+                      >
+                        <div className="detail-right">
+                          <div className="mb-3 name-right">
+                            <span className="h2 font-blue">{data.name}</span>
                           </div>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Link>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        ))
-      }
+                          <p className="text-dark">
+                            อาหารที่ขาย :{" "}
+                            <span className="font-blue">{data.food}</span>
+                          </p>
+                          <p className="text-dark">
+                            เวลาเปิด - ปิด :{" "}
+                            <span className="font-blue">
+                              {" "}
+                              {data.timeOpen}-{data.timeClose} น.
+                            </span>
+                          </p>
+                          <p className="text-dark">
+                            วันหยุดของร้าน :{" "}
+                            <span className="font-blue">
+                              {data.holiday.map((holiday, indexHoliday) =>
+                                data.holiday.length - 1 === indexHoliday ? (
+                                  <span key={indexHoliday + "holiday"}>
+                                    {holiday}
+                                  </span>
+                                ) : (
+                                  <span key={indexHoliday + "holiday"}>
+                                    {holiday},{" "}
+                                  </span>
+                                )
+                              )}
+                            </span>
+                          </p>
+                          <p className="text-dark">
+                            เรทราคา :{" "}
+                            <span className="font-blue">
+                              {data.ratePrice} บาท
+                            </span>
+                          </p>
+                          <p className="font-blue">
+                            <FaMapMarkerAlt className="text-danger" />{" "}
+                            {data.alley}
+                          </p>
+                          <div className="box-tag">
+                            <span>
+                              {data.tag.map((tag, indexTag) =>
+                                data.tag.length - 1 === indexTag ? (
+                                  <span
+                                    key={indexTag + "tag"}
+                                    className="tag mx-1"
+                                  >
+                                    {tag}
+                                  </span>
+                                ) : (
+                                  <span key={indexTag + "tag"} className="tag">
+                                    {tag}
+                                  </span>
+                                )
+                              )}
+                            </span>
+                          </div>
+                          <p className="link-menu mt-0 mb-0 mt-md-4">
+                            <Link
+                              to="/home/restaurant"
+                              className="btn btn-link go-menu"
+                            >
+                              ดูเมนูเพิ่มเติม
+                            </Link>
+                          </p>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Link>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      ))}
       <div className="page-of mt-5">
         {showPagination ? (
           <Pagination>
@@ -303,9 +300,7 @@ function Content() {
         ) : null}
         {!showPagination ? (
           <Pagination>
-            <Pagination.Prev onClick={() =>
-              gotoPrevious() & scrollUp()
-            } />
+            <Pagination.Prev onClick={() => gotoPrevious() & scrollUp()} />
             <Pagination.Item
               key={0}
               onClick={() => setPageNumber(0) & scrollUp()}
@@ -330,7 +325,7 @@ function Content() {
         ) : null}
         Page : {pageNumber + 1} of {pages.length}
       </div>
-    </div >
+    </div>
   );
 }
 export default Content;
