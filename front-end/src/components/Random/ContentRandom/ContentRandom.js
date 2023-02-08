@@ -1,15 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./ContentRandom.css";
-import Form from "react-bootstrap/Form";
 import Img from "../../../image/random.png";
 import { Link } from "react-router-dom";
-import Image from "react-bootstrap/Image";
+import { Container, Row, Col, Card, Form, Image } from "react-bootstrap";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import Card from "react-bootstrap/Card";
 
 function ContentRandom() {
   const [restaurants, setRestaurants] = useState(null);
@@ -118,7 +113,7 @@ function ContentRandom() {
                                   {randomFilter?.holiday.map(
                                     (holiday, indexHoliday) =>
                                       randomFilter?.holiday.length - 1 ===
-                                      indexHoliday ? (
+                                        indexHoliday ? (
                                         <span key={indexHoliday + "holiday"}>
                                           {holiday}
                                         </span>
@@ -144,7 +139,7 @@ function ContentRandom() {
                                 <span>
                                   {randomFilter?.tag.map((tag, indexTag) =>
                                     randomFilter?.tag.length - 1 ===
-                                    indexTag ? (
+                                      indexTag ? (
                                       <span
                                         key={indexTag + "tag"}
                                         className="tag mx-1"

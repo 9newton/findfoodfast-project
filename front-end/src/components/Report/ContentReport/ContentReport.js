@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import "./ContentReport.css";
 import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Popup from 'react-popup';
 
 function ContentReport() {
   const [subject, setSubject] = useState("");

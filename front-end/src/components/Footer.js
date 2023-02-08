@@ -13,7 +13,7 @@ function Footer() {
                     <div className="col-xs={12} col-md">
                         <Link to='/'><Image src={Logo} /></Link>
                         <ul className='list-unstyled'>
-                            <Link to='https://www.facebook.com/FFFKlong6' className='icon-facebook'><span><FaFacebook /></span></Link>
+                            <a href="https://www.facebook.com/FFFKlong6" className='icon-facebook' target={'_blank'} ><FaFacebook /></a>
                         </ul>
                     </div>
 
@@ -28,11 +28,6 @@ function Footer() {
                         <h5>ช่วยเหลือ</h5>
                         <ul className='list-unstyled'>
                             <Link to='/report' className='a' style={{ textDecoration: 'none' }}><li>แจ้งปัญหา</li></Link>
-                            {/* <Router>
-                            <Link style={{textDecoration: 'none'}} to="/">
-                                Home
-                            </Link>
-                            </Router> */}
                         </ul>
                     </div>
                 </div>

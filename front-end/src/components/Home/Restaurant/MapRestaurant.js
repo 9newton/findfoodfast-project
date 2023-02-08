@@ -1,10 +1,7 @@
-import React, {  useEffect, useState } from "react";
+import React from "react";
 import "./MapRestaurant.css";
 import "reactjs-popup/dist/index.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 import Iframe from 'react-iframe'
 
 function ContentRestaurant({ restaurant }) {
@@ -42,11 +39,11 @@ function ContentRestaurant({ restaurant }) {
                 className="form mt-2"
               >
                 <div className="map">
-                <Iframe src={restaurant?.location}></Iframe>
+                  <Iframe src={restaurant?.location}></Iframe>
                 </div>
               </Col>
             </Row>
-          </Col>  
+          </Col>
         </Row>
       </Container>
     </div>

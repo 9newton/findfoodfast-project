@@ -1,16 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ContentHome.css";
 import "./Search.css";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import Card from "react-bootstrap/Card";
+import { Form, InputGroup, Card, Container, Row, Col, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
 import Pagination from "react-bootstrap/Pagination";
 
 function Content() {
@@ -21,7 +14,7 @@ function Content() {
   const [tag, setTag] = useState("");
   const [alley, setAlley] = useState("");
   // Pagination
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize] = useState(5);
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);

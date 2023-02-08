@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";

@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./ContentRestaurant.css";
-import Card from "react-bootstrap/Card";
+import { Card, Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
 import "reactjs-popup/dist/index.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { FaMapMarkerAlt, FaLine, FaPhone, FaFacebook, FaStar } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import Image from "react-bootstrap/Image";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

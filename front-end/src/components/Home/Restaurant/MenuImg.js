@@ -1,11 +1,7 @@
 import React, { useMemo } from "react";
 import "./MenuImg.css";
-import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import ImgCover from "../../../image/test1.jpg";
+import { Container, Row, Col } from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 
 function ContentRestaurant({ restaurant }) {

@@ -5,24 +5,20 @@ import Footer from '../Footer';
 import Header from '../Header';
 import ContentReport from './ContentReport/ContentReport';
 
-
-
 function Report() {
-    return (
-        <div className="report">
-          
-          <div className='page-container'>
-          <div className='content-wrap'>
+  return (
+    <div className="report">
+      <div className='page-container'>
+        <div className='content-wrap'>
           <div className='fixed-top'>
             <Header />
-            </div>
-            <ContentReport />
-            </div>
-            <Footer />
           </div>
+          <ContentReport />
         </div>
-        
-    )
+        <Footer />
+      </div>
+    </div>
+  )
 }
 
 export default Report;

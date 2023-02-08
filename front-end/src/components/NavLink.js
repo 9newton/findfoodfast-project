@@ -7,7 +7,7 @@ class NavLink extends React.Component {
         var isActive = this.context.router.route.location.pathname === this.props.to;
         var className = isActive ? 'active' : '';
 
-        return(
+        return (
             <Link className={className} {...this.props}>
                 {this.props.children}
             </Link>

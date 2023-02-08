@@ -20,7 +20,7 @@ import axios from 'axios';
 function App() {
   const countVisits = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/countVisitsWeb');
+      await axios.post('http://localhost:5000/countVisitsWeb');
     } catch (error) {
       console.error(error);
     }
