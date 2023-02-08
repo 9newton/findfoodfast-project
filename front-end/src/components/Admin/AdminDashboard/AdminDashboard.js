@@ -63,13 +63,11 @@ function AdminDashboard() {
   };
   // Get All Restaurants
   const getAllRestaurants = async () => {
-    const response = await fetch("http://localhost:5000/random");
-    if (response.ok) {
-      const allRestaurants = await response.json();
-      setRestaurants(allRestaurants.length);
-    } else {
-      console.error('Request failed with status: ' + response.status);
-    }
+    const response = await fetch(
+      `http://localhost:5000/adminDashboard/countRestaurant`
+    );
+    const AllRestaurant = await response.json();
+    setRestaurants(AllRestaurant.countRestaurant);
   };
   // Get Top Rating Restaurants
   const getTopRating = async () => {

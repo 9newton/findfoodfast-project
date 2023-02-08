@@ -12,7 +12,8 @@ import {
   countVisits,
   getTopRating,
   getMostView,
-  getCountWithTag
+  getCountWithTag,
+  getCountRestaurant
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
 
@@ -43,6 +44,7 @@ router.put("/restaurants/resetRating", resetRating);
 //Admin Dashboard
 router.get("/adminDashboard/topRating", getTopRating);
 router.get("/adminDashboard/mostView", getMostView);
+router.get("/adminDashboard/countRestaurant", getCountRestaurant);
 router.get("/adminDashboard/countWithTag", getCountWithTag);
 
 // Error handler

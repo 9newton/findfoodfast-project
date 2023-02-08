@@ -13,6 +13,14 @@ export const getRandom = async (req, res, next) => {
     next(error);
   }
 };
+export const getCountRestaurant = async (req, res, next) => {
+  try {
+    const countRestaurant = await Restaurant.countDocuments();
+    res.status(200).send({ countRestaurant }).end();
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const getTopRating = async (req, res, next) => {
   try {
