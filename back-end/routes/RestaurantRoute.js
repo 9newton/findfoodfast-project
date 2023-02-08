@@ -23,7 +23,6 @@ import {
   getCountWithTagFruit
 } from "../controllers/RestaurantController.js";
 import Multer from "multer";
-import auth from "../middleware/auth.js";
 
 const router = express.Router();
 const multer = Multer({
@@ -31,7 +30,25 @@ const multer = Multer({
 });
 
 router.get("/restaurants", getRestaurants);
+router.get("/random", getRandom);
+router.get("/restaurants/:id", getRestaurantById);
+router.put("/restaurants/countVisits/:id", countVisits)
+router.put("/restaurants/rating/:id", updateRatingRestaurant);
 
+// Admin
+router.post("/restaurants", saveRestaurant);
+router.post(
+  "/restaurants/upload/:id/:alley",
+  multer.fields([
+    { name: "images", maxCount: 10 },
+    { name: "coverImg", maxCount: 1 },
+  ]),
+  uploadImageRestaurant
+);
+router.patch("/restaurants/:id", updateRestaurant);
+router.delete("/restaurants/:id", deleteRestaurant);
+router.put("/restaurants/resetRating", resetRating);
+//Admin Dashboard
 router.get("/adminDashboard/topRating", getTopRating);
 router.get("/adminDashboard/mostView", getMostView);
 router.get("/adminDashboard/aLaCarte", getCountWithTagALaCarte);
@@ -43,25 +60,6 @@ router.get("/adminDashboard/grill", getCountWithTagGrill);
 router.get("/adminDashboard/snacks", getCountWithTagSnacks);
 router.get("/adminDashboard/dessert", getCountWithTagDessert);
 router.get("/adminDashboard/fruit", getCountWithTagFruit);
-
-router.get("/random", getRandom);
-router.get("/restaurants/:id", getRestaurantById);
-
-// router.use(auth);
-router.post("/restaurants", saveRestaurant);
-router.post(
-  "/restaurants/upload/:id/:alley",
-  multer.fields([
-    { name: "images", maxCount: 10 },
-    { name: "coverImg", maxCount: 1 },
-  ]),
-  uploadImageRestaurant
-);
-router.put("/restaurants/countVisits/:id", countVisits)
-router.put("/restaurants/rating/:id", updateRatingRestaurant);
-router.patch("/restaurants/:id", updateRestaurant);
-router.delete("/restaurants/:id", deleteRestaurant);
-router.put("/restaurants/resetRating", resetRating);
 
 // Error handler
 router.use((err, req, res, next) => {

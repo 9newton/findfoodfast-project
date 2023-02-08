@@ -22,7 +22,7 @@ const MenuAdmin = () => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/teamLogin");
   };
   return (
     <>

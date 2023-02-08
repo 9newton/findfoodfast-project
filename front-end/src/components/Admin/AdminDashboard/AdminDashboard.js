@@ -36,7 +36,7 @@ function AdminDashboard() {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsAuthenticated(false);
-      navigate("/login");
+      navigate("/teamLogin");
     } else {
       setIsAuthenticated(true);
       usedAllExpress();

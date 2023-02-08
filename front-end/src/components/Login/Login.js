@@ -44,7 +44,7 @@ function Login() {
     if (token) {
       navigate("/admin/dashboard");
     } else {
-      navigate("/login");
+      navigate("/teamLogin");
     }
   }, []);
 

@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
+
 // Error handler
 router.use((err, req, res, next) => {
     console.log({ err });
