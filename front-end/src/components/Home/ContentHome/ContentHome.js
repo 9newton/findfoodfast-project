@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./ContentHome.css";
 import "./Search.css";
-import { Form, InputGroup, Card, Container, Row, Col, Button, Image } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  Card,
+  Container,
+  Row,
+  Col,
+  Button,
+  Image,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import Pagination from "react-bootstrap/Pagination";
@@ -258,12 +267,9 @@ function Content() {
                             </span>
                           </div>
                           <p className="link-menu mt-0 mb-0 mt-md-4">
-                            <Link
-                              to="/home/restaurant"
-                              className="btn btn-link go-menu"
-                            >
+                            <Button variant="link" className="font-blue">
                               ดูเมนูเพิ่มเติม
-                            </Link>
+                            </Button>
                           </p>
                         </div>
                       </Col>
