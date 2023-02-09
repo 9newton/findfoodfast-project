@@ -11,12 +11,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {
   FaTrash,
-  FaBars,
-  FaHome,
-  FaChartLine,
-  FaStar,
   FaInbox,
-  FaUtensils,
 } from "react-icons/fa";
 import Moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
@@ -32,7 +27,6 @@ function AdminReport() {
   // Delete Data
   const [reportId, setReportId] = useState();
   // Nav
-  const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   // Filter And Search
   const [subject, setSubject] = useState("");
@@ -237,7 +231,7 @@ function AdminReport() {
         </Modal.Header>
 
         <Modal.Body>
-          <span>คุณต้องการจะลบร้านอาหารใช่หรือไม่?</span>
+          <span>คุณต้องการจะลบรายงานนี้ใช่หรือไม่?</span>
         </Modal.Body>
 
         <Modal.Footer>
