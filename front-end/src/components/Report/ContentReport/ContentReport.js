@@ -11,7 +11,6 @@ function ContentReport() {
   const [details, setDetails] = useState("");
   const [email, setEmail] = useState("");
 
-
   const saveReport = async (e) => {
     e.preventDefault();
     try {
@@ -58,7 +57,7 @@ function ContentReport() {
               className="mt-4 form"
             >
               <Form.Label className="name h5 " htmlFor="inputPassword5">
-                หัวข้อ
+                หัวข้อ<h5 className="text-danger">*</h5>
               </Form.Label>
               <Form.Select
                 className="section-btn text-center"
@@ -90,7 +89,7 @@ function ContentReport() {
               className="mt-4 form"
             >
               <Form.Label className="name h5 " htmlFor="inputPassword5">
-                เรื่อง
+                เรื่อง<h5 className="text-danger">*</h5>
               </Form.Label>
               <Form.Control
                 type="text"
@@ -112,7 +111,7 @@ function ContentReport() {
               className="mt-4 form"
             >
               <Form.Label className="name h5" htmlFor="inputPassword5">
-                รายละเอียด
+                รายละเอียด<h5 className="text-danger">*</h5>
               </Form.Label>
               <Form.Control
                 className="form-detail-report"
