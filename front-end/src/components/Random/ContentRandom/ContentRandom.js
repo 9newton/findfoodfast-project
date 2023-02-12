@@ -192,9 +192,6 @@ function ContentRandom() {
           value={input.tag}
           onChange={(e) => handleSearch(e, "tag")}
         >
-          <option value="" selected hidden>
-            เลือกหมวดหมู่
-          </option>
           <option value="">ทั้งหมด</option>
           <option value="อาหารจานเดียว">อาหารจานเดียว</option>
           <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
