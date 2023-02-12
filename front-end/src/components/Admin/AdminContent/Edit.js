@@ -148,6 +148,7 @@ const Edit = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="ชื่อร้านอาหาร"
+                        required
                       />
                     </Col>
 
@@ -190,6 +191,7 @@ const Edit = () => {
                         className="form-input"
                         value={timeOpen}
                         onChange={(e) => setTimeOpen(e.target.value)}
+                        required
                       />
                     </Col>
 
@@ -209,6 +211,7 @@ const Edit = () => {
                         className="form-input"
                         value={timeClose}
                         onChange={(e) => setTimeClose(e.target.value)}
+                        required
                       />
                     </Col>
 
@@ -332,6 +335,7 @@ const Edit = () => {
                         value={ratePrice}
                         onChange={(e) => setRatePrice(e.target.value)}
                         placeholder="เรทราคา (Ex. 60-100)"
+                        required
                       />
                     </Col>
 
@@ -349,6 +353,7 @@ const Edit = () => {
                         aria-label="Default select example"
                         value={alley}
                         onChange={(e) => setAlley(e.target.value)}
+                        required
                       >
                         <option className="text-center" value="ซอยสะพานชมพู">
                           ซอยสะพานชมพู
