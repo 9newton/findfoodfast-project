@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Login.css";
 import axios from "axios";
 import { Container, Row, Col, Card, Form } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -56,7 +56,6 @@ function Login() {
         >
           <Card className="card-login">
             <h1 className="content-head mb-4 mt-4 mt-md-4">ล็อคอิน</h1>
-            <ToastContainer />
             <form onSubmit={handleSubmit}>
               <Container>
                 <Row>
