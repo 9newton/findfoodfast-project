@@ -1,24 +1,18 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AdminLike.css";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import "reactjs-popup/dist/index.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {
-  FaBars,
-  FaHome,
-  FaChartLine,
   FaStar,
-  FaInbox,
-  FaUtensils,
   FaRedoAlt,
 } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
@@ -29,7 +23,6 @@ function AdminLike() {
   // Get Data
   const [restaurants, setRestaurant] = useState([]);
   // Nav
-  const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   // Filter And Search
   const [searchInput, setSearchInput] = useState("");
@@ -90,7 +83,7 @@ function AdminLike() {
   };
 
   // alert
-  const alertsubmit = () =>
+  const alertsubmit = () => {
     toast.success("รีเซ็ตเรตติ้งเรียบร้อยแล้ว!", {
       position: "top-right",
       autoClose: 3000,
@@ -100,6 +93,7 @@ function AdminLike() {
       draggable: false,
       theme: "light",
     });
+  };
 
   // Sorting And Filter
   const handleSearchInputChange = (e) => {
@@ -252,7 +246,6 @@ function AdminLike() {
                   >
                     <FaRedoAlt className="mb-1" /> รีเซ็ตเรตติ้ง
                   </button>
-                  <ToastContainer />
                 </Col>
 
                 <Table responsive="sm text-center">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ContentReport.css";
 import axios from "axios";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ContentReport() {
@@ -25,15 +25,17 @@ function ContentReport() {
       console.log(error);
     }
   };
-  const alertsubmit = () =>
+  const alertsubmit = () => {
     toast.success("แจ้งเรื่องเรียบร้อยแล้ว", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: false,
-      pauseOnHover: true,
+      pauseOnHover: false,
+      draggable: false,
       theme: "light",
     });
+  };
 
   const resetForm = () => {
     setSubject("");
@@ -149,7 +151,6 @@ function ContentReport() {
             </button>
           </div>
         </Container>
-        <ToastContainer />
       </div>
     </Form>
   );

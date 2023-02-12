@@ -23,7 +23,7 @@ import {
   FaRegTimesCircle,
 } from "react-icons/fa";
 import Image from "react-bootstrap/Image";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
@@ -91,16 +91,17 @@ function Content() {
   };
 
   // alert
-  const alertsubmit = () =>
+  const alertsubmit = () => {
     toast.success("ลบเรียบร้อยแล้ว!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: false,
-      pauseOnHover: true,
+      pauseOnHover: false,
+      draggable: false,
       theme: "light",
     });
-
+  };
   // others
   const resetPageNumber = () => {
     setPageNumber(0);
@@ -344,7 +345,6 @@ function Content() {
                     ))}
                   </tbody>
                 </Table>
-                <ToastContainer />
               </Card.Body>
             </Card>
           </Col>

@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Popup = () => {
@@ -83,7 +83,7 @@ const Popup = () => {
     }
   };
 
-  const alertErrorSubmit = () =>
+  const alertErrorSubmit = () => {
     toast.warning("กรุณากรอกข้อมูลให้ครบถ้วน", {
       position: "top-right",
       autoClose: 3000,
@@ -92,6 +92,7 @@ const Popup = () => {
       pauseOnHover: true,
       theme: "light",
     });
+  };
 
   return (
     <div className="content">
@@ -631,7 +632,6 @@ const Popup = () => {
           </Col>
         </Row>
       </Container>
-      <ToastContainer />
     </div>
   );
 };

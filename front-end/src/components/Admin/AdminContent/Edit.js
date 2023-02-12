@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -119,7 +119,7 @@ const Edit = () => {
     return tag.includes(tags);
   };
 
-  const alertErrorSubmit = () =>
+  const alertErrorSubmit = () => {
     toast.warning("กรุณากรอกข้อมูลให้ครบถ้วน", {
       position: "top-right",
       autoClose: 3000,
@@ -128,7 +128,7 @@ const Edit = () => {
       pauseOnHover: true,
       theme: "light",
     });
-
+  };
   return (
     <div className="content">
       <h1 className="content-head mb-4 mt-4 mt-md-5">{name}</h1>
@@ -697,7 +697,6 @@ const Edit = () => {
           </Col>
         </Row>
       </Container>
-      <ToastContainer />
     </div>
   );
 };

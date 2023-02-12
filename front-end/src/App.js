@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -20,6 +20,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const hasCountedVisits = useRef(false);
+
   const countVisits = async () => {
     try {
       await axios.post('http://localhost:5000/countVisitsWeb');
@@ -28,8 +30,8 @@ function App() {
     }
   };
 
-  const infoWebSite = () =>
-    toast.info("ขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาต", {
+  const infoWebSite = () => {
+    toast.info("เว็บไซต์นี้จัดทำขึ้นเพื่อการพัฒนาสำหรับการศึกษาจึงขออนุญาตเข้าถึงข้อมูล อาจจะมีบางเนื้อหาที่ต้องมีการปรับปรุงแก้ไขเพื่อให้ถูกต้องตามกฏหมายของการใช้งานเว็บไซต์ทั่วไป", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: true,
@@ -38,10 +40,14 @@ function App() {
       draggable: true,
       theme: "light",
     });
+  };
 
   useEffect(() => {
-    countVisits();
-    infoWebSite();
+    if (!hasCountedVisits.current) {
+      hasCountedVisits.current = true;
+      infoWebSite();
+      countVisits();
+    }
   }, []);
 
   return (
