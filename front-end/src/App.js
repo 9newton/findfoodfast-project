@@ -16,6 +16,8 @@ import AddImage from "./components/Admin/AdminContent/AddImage";
 import Login from "./components/Login/Login";
 import { RequireAuth } from "./services/authService";
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const countVisits = async () => {
@@ -26,8 +28,20 @@ function App() {
     }
   };
 
+  const infoWebSite = () =>
+    toast.info("ขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาตขออนุญาต", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+
   useEffect(() => {
     countVisits();
+    infoWebSite();
   }, []);
 
   return (
@@ -85,6 +99,7 @@ function App() {
           <Route path="*" index element={<Home />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }

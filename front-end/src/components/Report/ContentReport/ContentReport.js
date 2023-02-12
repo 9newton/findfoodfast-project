@@ -30,10 +30,8 @@ function ContentReport() {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
-      closeOnClick: true,
+      closeOnClick: false,
       pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
       theme: "light",
     });
 
