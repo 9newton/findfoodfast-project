@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "fff-project-95ee1"
+  },
+  "targets": {
+    "fff-project-95ee1": {
+      "hosting": {
+        "find-food": [
+          "find-food"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
