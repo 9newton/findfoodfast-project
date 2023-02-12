@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -120,6 +121,21 @@ function Login() {
               </Container>
             </form>
           </Card>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 10, offset: 1 }}
+              xl={{ span: 10, offset: 1 }}
+              xxl={{ span: 10, offset: 1 }}
+              className="mt-4 form"
+            >
+              <NavLink to="/">
+                <button type="submit" className="col-12 border-btn mb-5">
+                  ไปที่หน้าเว็บไซต์
+                </button>
+              </NavLink>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>
