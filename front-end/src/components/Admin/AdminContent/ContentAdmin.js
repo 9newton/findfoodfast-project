@@ -97,8 +97,7 @@ function Content() {
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
+      pauseOnHover: true,
       theme: "light",
     });
 

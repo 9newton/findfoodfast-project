@@ -7,6 +7,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -23,7 +26,6 @@ const Edit = () => {
   const [alley, setAlley] = useState("");
   const [location, setLocation] = useState("");
   const [coverImg, setCoverImg] = useState("");
-  // const [menuImg, setMenuImg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -70,6 +72,7 @@ const Edit = () => {
       });
       navigate("/admin/manageRestaurant");
     } catch (error) {
+      alertErrorSubmit();
       console.log(error);
     }
   };
@@ -115,6 +118,16 @@ const Edit = () => {
   const checkboxTagFunc = (tags) => {
     return tag.includes(tags);
   };
+
+  const alertErrorSubmit = () =>
+    toast.warning("กรุณากรอกข้อมูลให้ครบถ้วน", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      theme: "light",
+    });
 
   return (
     <div className="content">
@@ -684,6 +697,7 @@ const Edit = () => {
           </Col>
         </Row>
       </Container>
+      <ToastContainer />
     </div>
   );
 };
