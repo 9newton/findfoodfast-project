@@ -45,7 +45,7 @@ function ContentReport() {
   return (
     <Form onSubmit={saveReport}>
       <div className="content-report">
-        <h1 className="content-head mb-4 mt-4 mt-md-0">แจ้งปัญหาอะไรดี?</h1>
+        <h1 className="content-head mb-4 mt-4 mt-md-0">แจ้งข้อมูลอะไรดี?</h1>
         <Container>
           <Row>
             <Col
@@ -118,7 +118,28 @@ function ContentReport() {
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
                 placeholder="รายละเอียดที่ต้องการแจ้ง"
-                rows={7}
+                rows={4}
+                required
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 10, offset: 1 }}
+              xl={{ span: 4, offset: 3 }}
+              xxl={{ span: 4, offset: 4 }}
+              className="mt-4 form"
+            >
+              <Form.Label className="name h5 " htmlFor="inputPassword5">
+                อีเมล
+              </Form.Label>
+              <Form.Control
+                type="text"
+                className="form-name"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="อีเมล"
                 required
               />
             </Col>
