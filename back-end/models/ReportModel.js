@@ -6,6 +6,7 @@ const report = new Schema(
     subject: { type: String, required: true },
     category: { type: String, required: true },
     details: { type: String, required: true },
+    email: { type: String, required: false }
   },
   {
     strict: false,

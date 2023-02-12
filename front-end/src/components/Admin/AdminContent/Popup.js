@@ -113,6 +113,7 @@ const Popup = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="ชื่อร้านอาหาร"
+                        required
                       />
                     </Col>
 
@@ -155,6 +156,7 @@ const Popup = () => {
                         className="form-input"
                         value={timeOpen}
                         onChange={(e) => setTimeOpen(e.target.value)}
+                        required
                       />
                     </Col>
 
@@ -174,6 +176,7 @@ const Popup = () => {
                         className="form-input"
                         value={timeClose}
                         onChange={(e) => setTimeClose(e.target.value)}
+                        required
                       />
                     </Col>
 
@@ -287,6 +290,7 @@ const Popup = () => {
                         value={ratePrice}
                         onChange={(e) => setRatePrice(e.target.value)}
                         placeholder="เรทราคา (Ex. 60-100)"
+                        required
                       />
                     </Col>
                     <Col

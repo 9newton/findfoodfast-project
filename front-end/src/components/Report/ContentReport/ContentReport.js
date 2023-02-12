@@ -9,6 +9,8 @@ function ContentReport() {
   const [subject, setSubject] = useState("");
   const [category, setCategory] = useState("");
   const [details, setDetails] = useState("");
+  const [email, setEmail] = useState("");
+
 
   const saveReport = async (e) => {
     e.preventDefault();
@@ -131,16 +133,15 @@ function ContentReport() {
               xxl={{ span: 4, offset: 4 }}
               className="mt-4 form"
             >
-              <Form.Label className="name h5 " htmlFor="inputPassword5">
+              <Form.Label className="name h5 " htmlFor="email">
                 อีเมล
               </Form.Label>
               <Form.Control
-                type="text"
+                type="email"
                 className="form-name"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="อีเมล"
-                required
               />
             </Col>
           </Row>
