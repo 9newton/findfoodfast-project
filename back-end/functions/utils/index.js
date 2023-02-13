@@ -1,4 +1,5 @@
-import serviceAccount from "../firebase-config.json" assert { type: "json" };
+import serviceAccount from "../../firebase.json"
+//  assert { type: "json" };
 import admin from "firebase-admin";
 // import restaurantModel from "../models/RestaurantModel";
 
@@ -11,9 +12,8 @@ const bucket = storage.bucket();
 
 export const uploadImage = async (id, alley, name, file, type = "coverImg") => {
   const folder = `${alley}/${id}`;
-  const fileName = `${folder}/${
-    type === "coverImg" ? `coverImg/${name}` : `menus/${Date.now()}_${name}`
-  }`;
+  const fileName = `${folder}/${type === "coverImg" ? `coverImg/${name}` : `menus/${Date.now()}_${name}`
+    }`;
 
   const fileUpload = bucket.file(fileName);
   const imageStream = fileUpload.createWriteStream({
@@ -25,7 +25,7 @@ export const uploadImage = async (id, alley, name, file, type = "coverImg") => {
   imageStream.on("error", (err) => {
     throw { message: err.message, statusCode: 500 };
   });
-  imageStream.on("finish", async () => {});
+  imageStream.on("finish", async () => { });
   imageStream.end(file.buffer);
 
   return await getUrlImage(fileName);
