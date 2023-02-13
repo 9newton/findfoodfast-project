@@ -1,7 +1,10 @@
-import serviceAccount from "../../firebase.json"
 //  assert { type: "json" };
 import admin from "firebase-admin";
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 // import restaurantModel from "../models/RestaurantModel";
+const serviceAccount = require("../serviceAccount.json");
 
 const FirebaseApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

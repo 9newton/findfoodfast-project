@@ -1,4 +1,3 @@
-const functions = require("firebase-functions");
 
 import express from "express";
 import dotenv from 'dotenv';
@@ -13,6 +12,10 @@ import RestaurantRoute from "./routes/RestaurantRoute.js";
 import ReportRoute from "./routes/ReportRoute.js";
 import UserRoute from './routes/UserRoute.js';
 import VisitorCounterRoute from './routes/VisitorCounterRoute.js';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+const functions = require("firebase-functions");
 
 const app = express();
 
@@ -35,4 +38,5 @@ server.listen(port, () => {
     console.log(`Server running on port ➜  ${port}`);
 });
 
-exports.findFood = functions.https.onRequest(app);
+const findFood = functions.https.onRequest(app);
+export default findFood
