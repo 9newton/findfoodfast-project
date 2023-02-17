@@ -53,7 +53,7 @@ function AdminDashboard() {
   };
   // Get Visitor Count Website
   const getVisitorCount = async () => {
-    const response = await fetch(`https://${getApiUrl()}/visitor`);
+    const response = await fetch(`http://${getApiUrl()}/visitor`);
     if (response.ok) {
       const visitorCount = await response.json();
       setVisitorCountWeb(visitorCount);
@@ -64,7 +64,7 @@ function AdminDashboard() {
   // Get All Restaurants
   const getAllRestaurants = async () => {
     const response = await fetch(
-      `https://${getApiUrl()}/adminDashboard/countRestaurant`
+      `http://${getApiUrl()}/adminDashboard/countRestaurant`
     );
     const AllRestaurant = await response.json();
     setRestaurants(AllRestaurant.countRestaurant);
@@ -72,7 +72,7 @@ function AdminDashboard() {
   // Get Top Rating Restaurants
   const getTopRating = async () => {
     const response = await fetch(
-      `https://${getApiUrl()}/adminDashboard/topRating`
+      `http://${getApiUrl()}/adminDashboard/topRating`
     );
     const topRestaurant = await response.json();
     setTopRating(topRestaurant);
@@ -80,7 +80,7 @@ function AdminDashboard() {
   // Get Most View Restaurants
   const getMostView = async () => {
     const response = await fetch(
-      `https://${getApiUrl()}/adminDashboard/mostView`
+      `http://${getApiUrl()}/adminDashboard/mostView`
     );
     const mostViewRestaurant = await response.json();
     setMostView(mostViewRestaurant);
@@ -88,7 +88,7 @@ function AdminDashboard() {
   // Get the total number of A La Carte
   const getCountWithTag = async () => {
     const response = await fetch(
-      `https://${getApiUrl()}/adminDashboard/countWithTag`
+      `http://${getApiUrl()}/adminDashboard/countWithTag`
     );
     const countWithTag = await response.json();
     setALaCarte(countWithTag.countALaCarte);

@@ -23,7 +23,7 @@ function ContentRandom() {
   }, []);
 
   const fetchrestaurants = useCallback(async () => {
-    const response = await axios.get(`https://${getApiUrl()}/random`);
+    const response = await axios.get(`http://${getApiUrl()}/random`);
     setRestaurants(response.data);
   }, []);
 
@@ -114,7 +114,7 @@ function ContentRandom() {
                                   {randomFilter?.holiday.map(
                                     (holiday, indexHoliday) =>
                                       randomFilter?.holiday.length - 1 ===
-                                      indexHoliday ? (
+                                        indexHoliday ? (
                                         <span key={indexHoliday + "holiday"}>
                                           {holiday}
                                         </span>
@@ -140,7 +140,7 @@ function ContentRandom() {
                                 <span>
                                   {randomFilter?.tag.map((tag, indexTag) =>
                                     randomFilter?.tag.length - 1 ===
-                                    indexTag ? (
+                                      indexTag ? (
                                       <span
                                         key={indexTag + "tag"}
                                         className="tag mx-1"

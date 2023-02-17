@@ -68,7 +68,7 @@ function Content() {
   // Express
   const getRestaurants = async () => {
     fetch(
-      `https://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+      `http://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -83,7 +83,7 @@ function Content() {
   };
   const deleteRestaurant = async (id) => {
     try {
-      await axios.delete(`https://${getApiUrl()}/restaurants/${id}`);
+      await axios.delete(`http://${getApiUrl()}/restaurants/${id}`);
       getRestaurants();
       alertsubmit();
     } catch (error) {

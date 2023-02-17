@@ -15,7 +15,7 @@ function ContentReport() {
   const saveReport = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://${getApiUrl()}/reports`, {
+      await axios.post(`http://${getApiUrl()}/reports`, {
         subject,
         category,
         details,

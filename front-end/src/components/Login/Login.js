@@ -26,7 +26,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `https://${getApiUrl()}/login`,
+        `http://${getApiUrl()}/login`,
         userData
       );
       localStorage.setItem("token", response.data.token);

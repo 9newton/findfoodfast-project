@@ -35,7 +35,7 @@ const Edit = () => {
 
   const getRestaurantById = async () => {
     const response = await axios.get(
-      `https://${getApiUrl()}/restaurants/${id}`
+      `http://${getApiUrl()}/restaurants/${id}`
     );
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
@@ -56,7 +56,7 @@ const Edit = () => {
   const updateRestaurant = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://${getApiUrl()}/restaurants/${id}`, {
+      await axios.patch(`http://${getApiUrl()}/restaurants/${id}`, {
         coverImg,
         name,
         food,

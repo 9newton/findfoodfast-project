@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "../Footer";
@@ -8,6 +8,9 @@ import ContentHome from "./ContentHome/ContentHome";
 import BackToTopButton from "./BackToTop/BackToTopButton";
 
 function HomePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="home">
       <div className="page-container">

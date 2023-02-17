@@ -56,7 +56,7 @@ function AdminReport() {
   // Express
   const getReports = async () => {
     fetch(
-      `https://${getApiUrl()}/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
+      `http://${getApiUrl()}/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -71,7 +71,7 @@ function AdminReport() {
   };
   const deleteReport = async (id) => {
     try {
-      await axios.delete(`https://${getApiUrl()}/reports/${id}`);
+      await axios.delete(`http://${getApiUrl()}/reports/${id}`);
       getReports();
       alertsubmit();
     } catch (error) {

@@ -72,7 +72,7 @@ function AdminLike() {
   };
   const resetRating = async () => {
     try {
-      await axios.put(`https://${getApiUrl()}/restaurants/resetRating`);
+      await axios.put(`http://${getApiUrl()}/restaurants/resetRating`);
       getRestaurants();
       alertsubmit();
     } catch (error) {

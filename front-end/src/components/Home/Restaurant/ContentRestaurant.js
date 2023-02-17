@@ -79,7 +79,7 @@ function ContentRestaurant({ restaurant }) {
   const countVisits = async () => {
     try {
       const response = await axios.put(
-        `https://${getApiUrl()}/restaurants/countVisits/${restaurant._id}`
+        `http://${getApiUrl()}/restaurants/countVisits/${restaurant._id}`
       );
     } catch (error) {
       console.error(error);

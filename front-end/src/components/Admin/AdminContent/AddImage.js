@@ -24,7 +24,7 @@ const AddImage = () => {
 
   const getRestaurantById = async () => {
     const response = await axios.get(
-      `https://${getApiUrl()}/restaurants/${id}`
+      `http://${getApiUrl()}/restaurants/${id}`
     );
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
@@ -40,7 +40,7 @@ const AddImage = () => {
         formData.append("images", file[i]);
       }
       await axios.post(
-        `https://${getApiUrl()}/restaurants/upload/${id}/${alley}`,
+        `http://${getApiUrl()}/restaurants/upload/${id}/${alley}`,
         formData
       );
       navigate("/admin/manageRestaurant");
@@ -60,9 +60,9 @@ const AddImage = () => {
             xl={{ span: 4, offset: 4 }}
             className="mt-md-4"
           >
-            <Card className="card-admin">
-              <Card.Body>
-                <Form onSubmit={uploadImageRestaurant}>
+            <Form onSubmit={uploadImageRestaurant}>
+              <Card className="card-admin">
+                <Card.Body>
                   <Row>
                     <Col
                       xs={{ span: 12, offset: 0 }}
@@ -117,14 +117,14 @@ const AddImage = () => {
                       />
                     </Col>
                   </Row>
-                </Form>
-              </Card.Body>
-            </Card>
-            <Row className="mt-3">
-              <button className="col-12 mt-md-4 add-btn pointer" type="submit">
-                เพิ่มรูปภาพ
-              </button>
-            </Row>
+                </Card.Body>
+              </Card>
+              <Row className="mt-3">
+                <button className="col-12 mt-md-4 add-btn pointer" type="submit">
+                  เพิ่มรูปภาพ
+                </button>
+              </Row>
+            </Form>
           </Col>
         </Row>
       </Container>

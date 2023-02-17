@@ -25,7 +25,7 @@ function App() {
 
   const countVisits = async () => {
     try {
-      await axios.post(`https://${getApiUrl()}/countVisitsWeb`);
+      await axios.post(`http://${getApiUrl()}/countVisitsWeb`);
     } catch (error) {
       console.error(error);
     }

@@ -9,7 +9,6 @@ import Image from "react-bootstrap/Image";
 function Header() {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-  console.log(click);
   const closeMobileMenu = () => setClick(false);
 
   return (
