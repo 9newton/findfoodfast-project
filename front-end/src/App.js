@@ -15,31 +15,35 @@ import AddRestaurant from "./components/Admin/AdminContent/Popup";
 import AddImage from "./components/Admin/AdminContent/AddImage";
 import Login from "./components/Login/Login";
 import { RequireAuth } from "./services/authService";
-import axios from 'axios';
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getApiUrl } from "./api.js";
 
 function App() {
   const hasCountedVisits = useRef(false);
 
   const countVisits = async () => {
     try {
-      await axios.post('http://localhost:5000/countVisitsWeb');
+      await axios.post(`https://${getApiUrl()}/countVisitsWeb`);
     } catch (error) {
       console.error(error);
     }
   };
 
   const infoWebSite = () => {
-    toast.info("เว็บไซต์นี้จัดทำขึ้นเพื่อการพัฒนาสำหรับการศึกษาจึงขออนุญาตเข้าถึงข้อมูล อาจจะมีบางเนื้อหาที่ต้องมีการปรับปรุงแก้ไขเพื่อให้ถูกต้องตามกฏหมายของการใช้งานเว็บไซต์ทั่วไป", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
-    });
+    toast.info(
+      "เว็บไซต์นี้จัดทำขึ้นเพื่อการพัฒนาสำหรับการศึกษาจึงขออนุญาตเข้าถึงข้อมูล อาจจะมีบางเนื้อหาที่ต้องมีการปรับปรุงแก้ไขเพื่อให้ถูกต้องตามกฏหมายของการใช้งานเว็บไซต์ทั่วไป",
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      }
+    );
   };
 
   useEffect(() => {
@@ -59,10 +63,13 @@ function App() {
           <Route path="/home/restaurant/:id" element={<Restaurant />} />
           <Route path="/random" element={<Random />} />
           <Route path="/report" element={<Report />} />
-          <Route path="/admin" element={
-            <RequireAuth>
-              <Admin />
-            </RequireAuth>}
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth>
+                <Admin />
+              </RequireAuth>
+            }
           />
           <Route
             path="/admin/manageRestaurant"
@@ -83,24 +90,44 @@ function App() {
           <Route
             path="/admin/manageRestaurant/edit/:id"
             element={
-              <RequireAuth><EditRestaurant /></RequireAuth>
-
+              <RequireAuth>
+                <EditRestaurant />
+              </RequireAuth>
             }
           />
           <Route
             path="/admin/manageRestaurant/addImage/:id/:name/:alley"
-            element={<RequireAuth><AddImage /></RequireAuth>}
+            element={
+              <RequireAuth>
+                <AddImage />
+              </RequireAuth>
+            }
           />
-          <Route path="/admin/like" element={<RequireAuth><AdminLike /></RequireAuth>} />
+          <Route
+            path="/admin/like"
+            element={
+              <RequireAuth>
+                <AdminLike />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/admin/report"
             component={Admin}
-            element={<RequireAuth><AdminReport /></RequireAuth>}
+            element={
+              <RequireAuth>
+                <AdminReport />
+              </RequireAuth>
+            }
           />
           <Route
             path="/admin/dashboard"
             component={Admin}
-            element={<RequireAuth><AdminDashboard /></RequireAuth>}
+            element={
+              <RequireAuth>
+                <AdminDashboard />
+              </RequireAuth>
+            }
           />
           <Route path="*" index element={<Home />} />
         </Routes>

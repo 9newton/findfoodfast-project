@@ -29,6 +29,7 @@ import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
+import { getApiUrl } from "../../../api.js";
 
 function Content() {
   // Get Data
@@ -67,7 +68,7 @@ function Content() {
   // Express
   const getRestaurants = async () => {
     fetch(
-      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+      `https://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -82,7 +83,7 @@ function Content() {
   };
   const deleteRestaurant = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/restaurants/${id}`);
+      await axios.delete(`https://${getApiUrl()}/restaurants/${id}`);
       getRestaurants();
       alertsubmit();
     } catch (error) {

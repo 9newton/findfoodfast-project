@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaChartLine } from "react-icons/fa";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
+import { getApiUrl } from "../../../api.js";
 
 function AdminDashboard() {
   // The total number of visitor Count Website
@@ -27,7 +28,6 @@ function AdminDashboard() {
   const [snacks, setSnacks] = useState([]);
   const [dessert, setDessert] = useState([]);
   const [fruit, setFruit] = useState([]);
-
 
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,18 +53,18 @@ function AdminDashboard() {
   };
   // Get Visitor Count Website
   const getVisitorCount = async () => {
-    const response = await fetch('http://localhost:5000/visitor');
+    const response = await fetch(`https://${getApiUrl()}/visitor`);
     if (response.ok) {
       const visitorCount = await response.json();
       setVisitorCountWeb(visitorCount);
     } else {
-      console.error('Request failed with status: ' + response.status);
+      console.error("Request failed with status: " + response.status);
     }
   };
   // Get All Restaurants
   const getAllRestaurants = async () => {
     const response = await fetch(
-      `http://localhost:5000/adminDashboard/countRestaurant`
+      `https://${getApiUrl()}/adminDashboard/countRestaurant`
     );
     const AllRestaurant = await response.json();
     setRestaurants(AllRestaurant.countRestaurant);
@@ -72,7 +72,7 @@ function AdminDashboard() {
   // Get Top Rating Restaurants
   const getTopRating = async () => {
     const response = await fetch(
-      `http://localhost:5000/adminDashboard/topRating`
+      `https://${getApiUrl()}/adminDashboard/topRating`
     );
     const topRestaurant = await response.json();
     setTopRating(topRestaurant);
@@ -80,7 +80,7 @@ function AdminDashboard() {
   // Get Most View Restaurants
   const getMostView = async () => {
     const response = await fetch(
-      `http://localhost:5000/adminDashboard/mostView`
+      `https://${getApiUrl()}/adminDashboard/mostView`
     );
     const mostViewRestaurant = await response.json();
     setMostView(mostViewRestaurant);
@@ -88,7 +88,7 @@ function AdminDashboard() {
   // Get the total number of A La Carte
   const getCountWithTag = async () => {
     const response = await fetch(
-      `http://localhost:5000/adminDashboard/countWithTag`
+      `https://${getApiUrl()}/adminDashboard/countWithTag`
     );
     const countWithTag = await response.json();
     setALaCarte(countWithTag.countALaCarte);

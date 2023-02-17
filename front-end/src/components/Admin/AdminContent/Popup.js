@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getApiUrl } from "../../../api.js";
 
 const Popup = () => {
   const [coverImg, setCoverImg] = useState("");
@@ -60,7 +61,7 @@ const Popup = () => {
   const saveRestaurant = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/restaurants", {
+      await axios.post(`https://${getApiUrl()}/restaurants`, {
         coverImg,
         name,
         food,

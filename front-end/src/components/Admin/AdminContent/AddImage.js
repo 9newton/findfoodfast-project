@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import { getApiUrl } from "../../../api.js";
 
 const AddImage = () => {
   const [name, setName] = useState("");
@@ -22,7 +23,9 @@ const AddImage = () => {
   }, []);
 
   const getRestaurantById = async () => {
-    const response = await axios.get(`http://localhost:5000/restaurants/${id}`);
+    const response = await axios.get(
+      `https://${getApiUrl()}/restaurants/${id}`
+    );
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
     setAlley(response.data.alley);
@@ -37,7 +40,7 @@ const AddImage = () => {
         formData.append("images", file[i]);
       }
       await axios.post(
-        `http://localhost:5000/restaurants/upload/${id}/${alley}`,
+        `https://${getApiUrl()}/restaurants/upload/${id}/${alley}`,
         formData
       );
       navigate("/admin/manageRestaurant");

@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import Pagination from "react-bootstrap/Pagination";
+import { getApiUrl } from "../../../api.js";
 
 function Content() {
   // Get Data
@@ -43,7 +44,7 @@ function Content() {
 
   const getRestaurants = async () => {
     fetch(
-      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+      `https://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {

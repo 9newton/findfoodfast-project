@@ -4,6 +4,7 @@ import axios from "axios";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getApiUrl } from "../../../api.js";
 
 function ContentReport() {
   const [subject, setSubject] = useState("");
@@ -14,7 +15,7 @@ function ContentReport() {
   const saveReport = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/reports", {
+      await axios.post(`https://${getApiUrl()}/reports`, {
         subject,
         category,
         details,
@@ -41,6 +42,7 @@ function ContentReport() {
     setSubject("");
     setCategory("");
     setDetails("");
+    setEmail("");
   };
 
   return (

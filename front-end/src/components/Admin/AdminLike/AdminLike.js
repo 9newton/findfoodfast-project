@@ -8,16 +8,14 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {
-  FaStar,
-  FaRedoAlt,
-} from "react-icons/fa";
+import { FaStar, FaRedoAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
+import { getApiUrl } from "../../../api.js";
 
 function AdminLike() {
   // Get Data
@@ -58,7 +56,7 @@ function AdminLike() {
   // Express
   const getRestaurants = async () => {
     fetch(
-      `http://localhost:5000/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}&sort=${sort}`
+      `http://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}&sort=${sort}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data, totalData }) => {
@@ -74,7 +72,7 @@ function AdminLike() {
   };
   const resetRating = async () => {
     try {
-      await axios.put(`http://localhost:5000/restaurants/resetRating`);
+      await axios.put(`https://${getApiUrl()}/restaurants/resetRating`);
       getRestaurants();
       alertsubmit();
     } catch (error) {

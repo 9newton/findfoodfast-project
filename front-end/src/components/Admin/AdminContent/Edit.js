@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { getApiUrl } from "../../../api.js";
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -34,7 +34,9 @@ const Edit = () => {
   }, []);
 
   const getRestaurantById = async () => {
-    const response = await axios.get(`http://localhost:5000/restaurants/${id}`);
+    const response = await axios.get(
+      `https://${getApiUrl()}/restaurants/${id}`
+    );
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
     setFood(response.data.food);
@@ -54,7 +56,7 @@ const Edit = () => {
   const updateRestaurant = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/restaurants/${id}`, {
+      await axios.patch(`https://${getApiUrl()}/restaurants/${id}`, {
         coverImg,
         name,
         food,

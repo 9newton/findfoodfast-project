@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { getApiUrl } from "../../api.js";
 
 function Login() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/login",
+        `https://${getApiUrl()}/login`,
         userData
       );
       localStorage.setItem("token", response.data.token);

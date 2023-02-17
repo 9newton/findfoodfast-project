@@ -1,33 +1,36 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import './Restaurant.css';
-import 'reactjs-popup/dist/index.css';
-import ContentRestaurant from './ContentRestaurant';
-import MenuImg from './MenuImg';
-import MapRestaurant from './MapRestaurant';
-import Header from '../../Header';
-import Footer from '../../Footer';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from "react";
+import "./Restaurant.css";
+import "reactjs-popup/dist/index.css";
+import ContentRestaurant from "./ContentRestaurant";
+import MenuImg from "./MenuImg";
+import MapRestaurant from "./MapRestaurant";
+import Header from "../../Header";
+import Footer from "../../Footer";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { getApiUrl } from "../../../api.js";
 
 function Restaurant() {
   const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null)
+  const [restaurant, setRestaurant] = useState(null);
   const fetchrestaurantsData = useCallback(async (_id) => {
-    const response = await axios.get(`http://localhost:5000/restaurants/${_id}`);
-    setRestaurant(response.data)
+    const response = await axios.get(
+      `https://${getApiUrl()}/restaurants/${_id}`
+    );
+    setRestaurant(response.data);
   }, []);
 
   useEffect(() => {
     if (id) {
-      fetchrestaurantsData(id)
+      fetchrestaurantsData(id);
     }
-  }, [id])
+  }, [id]);
 
   return (
     <div className="restaurant">
-      <div className='page-container'>
-        <div className='content-wrap'>
-          <div className='fixed-top'>
+      <div className="page-container">
+        <div className="content-wrap">
+          <div className="fixed-top">
             <Header />
           </div>
           <ContentRestaurant restaurant={restaurant} />
@@ -37,8 +40,7 @@ function Restaurant() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
 
 export default Restaurant;
-

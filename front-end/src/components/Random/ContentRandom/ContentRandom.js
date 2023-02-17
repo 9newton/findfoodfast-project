@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Form, Image } from "react-bootstrap";
 import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { getApiUrl } from "../../../api.js";
 
 function ContentRandom() {
   const [restaurants, setRestaurants] = useState(null);
@@ -22,7 +23,7 @@ function ContentRandom() {
   }, []);
 
   const fetchrestaurants = useCallback(async () => {
-    const response = await axios.get("http://localhost:5000/random");
+    const response = await axios.get(`https://${getApiUrl()}/random`);
     setRestaurants(response.data);
   }, []);
 
@@ -113,7 +114,7 @@ function ContentRandom() {
                                   {randomFilter?.holiday.map(
                                     (holiday, indexHoliday) =>
                                       randomFilter?.holiday.length - 1 ===
-                                        indexHoliday ? (
+                                      indexHoliday ? (
                                         <span key={indexHoliday + "holiday"}>
                                           {holiday}
                                         </span>
@@ -139,7 +140,7 @@ function ContentRandom() {
                                 <span>
                                   {randomFilter?.tag.map((tag, indexTag) =>
                                     randomFilter?.tag.length - 1 ===
-                                      indexTag ? (
+                                    indexTag ? (
                                       <span
                                         key={indexTag + "tag"}
                                         className="tag mx-1"

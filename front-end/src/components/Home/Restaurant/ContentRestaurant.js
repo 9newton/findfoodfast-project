@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./ContentRestaurant.css";
-import { Card, Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Image,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import "reactjs-popup/dist/index.css";
-import { FaMapMarkerAlt, FaLine, FaPhone, FaFacebook, FaStar } from 'react-icons/fa';
+import {
+  FaMapMarkerAlt,
+  FaLine,
+  FaPhone,
+  FaFacebook,
+  FaStar,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getApiUrl } from "../../../api.js";
 
 function ContentRestaurant({ restaurant }) {
   const [show, setShow] = useState(false);
@@ -38,7 +53,7 @@ function ContentRestaurant({ restaurant }) {
       const selectedRating = point[newRating];
 
       await axios.put(
-        `http://localhost:5000/restaurants/rating/${restaurant._id}`,
+        `http://${getApiUrl()}/restaurants/rating/${restaurant._id}`,
         {
           prevRating: "none",
           updateRating: selectedRating,
@@ -63,7 +78,9 @@ function ContentRestaurant({ restaurant }) {
 
   const countVisits = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/restaurants/countVisits/${restaurant._id}`);
+      const response = await axios.put(
+        `https://${getApiUrl()}/restaurants/countVisits/${restaurant._id}`
+      );
     } catch (error) {
       console.error(error);
     }

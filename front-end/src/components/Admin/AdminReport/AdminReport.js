@@ -9,10 +9,7 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {
-  FaTrash,
-  FaInbox,
-} from "react-icons/fa";
+import { FaTrash, FaInbox } from "react-icons/fa";
 import Moment from "moment";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +17,7 @@ import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
+import { getApiUrl } from "../../../api.js";
 
 function AdminReport() {
   // Get Data
@@ -58,7 +56,7 @@ function AdminReport() {
   // Express
   const getReports = async () => {
     fetch(
-      `http://localhost:5000/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
+      `https://${getApiUrl()}/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
     )
       .then((response) => response.json())
       .then(({ totalPages, data }) => {
@@ -73,7 +71,7 @@ function AdminReport() {
   };
   const deleteReport = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/reports/${id}`);
+      await axios.delete(`https://${getApiUrl()}/reports/${id}`);
       getReports();
       alertsubmit();
     } catch (error) {
