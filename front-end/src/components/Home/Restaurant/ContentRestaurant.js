@@ -102,7 +102,7 @@ function ContentRestaurant({ restaurant }) {
         <Modal.Body>
           <Row>
             <Col
-              xs={{ span: 8, offset: 2 }}
+              xs={{ span: 10, offset: 2 }}
               md={{ span: 6, offset: 3 }}
               xl={{ span: 10, offset: 1 }}
               xxl={{ span: 6, offset: 3 }}
@@ -223,12 +223,10 @@ function ContentRestaurant({ restaurant }) {
                             {restaurant?.delivery.toString()}
                           </p>
                           <div className="mt-2 offset-md-0 location-md">
-                            <Link to="https://goo.gl/maps/t3FGmaA5oXeMxrpp6">
-                              <span className="heading-location p">
-                                <FaMapMarkerAlt className="text-danger" />{" "}
-                                {restaurant?.alley}
-                              </span>
-                            </Link>
+                            <span className="heading-location p">
+                              <FaMapMarkerAlt className="text-danger" />{" "}
+                              {restaurant?.alley}
+                            </span>
                           </div>
                         </div>
                       </Col>

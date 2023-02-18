@@ -61,6 +61,10 @@
   color: #222c61;
 }
 
+.react-stars-wrapper {
+  display: inline-flex;
+}
+
 @media screen and (max-width: 480px) {
   .card-restaurant {
     width: 100%;
