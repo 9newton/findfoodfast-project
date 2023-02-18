@@ -1,3 +1,7 @@
+.rating-container {
+  display: flex;
+  justify-content: center;
+}
 .content-restaurant {
   padding-top: 8rem;
   padding-bottom: 5rem;

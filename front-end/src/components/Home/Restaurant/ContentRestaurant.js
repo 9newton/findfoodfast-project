@@ -17,7 +17,6 @@ import {
   FaFacebook,
   FaStar,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -101,14 +100,10 @@ function ContentRestaurant({ restaurant }) {
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col
-              xs={{ span: 10, offset: 2 }}
-              md={{ span: 6, offset: 3 }}
-              xl={{ span: 10, offset: 1 }}
-              xxl={{ span: 6, offset: 3 }}
-              className="mt-0 form"
-            >
-              <ReactStars {...ratingStars} onChange={ratingChanged} />
+            <Col className="mt-0 form">
+              <span className="rating-container">
+                <ReactStars {...ratingStars} onChange={ratingChanged} />
+              </span>
             </Col>
           </Row>
         </Modal.Body>
