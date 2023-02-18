@@ -17,7 +17,6 @@ import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
-import { getApiUrl } from "../../../api.js";
 
 function AdminReport() {
   // Get Data
@@ -55,10 +54,11 @@ function AdminReport() {
 
   // Express
   const getReports = async () => {
-    fetch(
-      `http://${getApiUrl()}/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
-    )
-      .then((response) => response.json())
+    axios
+      .get(
+        `/reports?page=${pageNumber}&subject=${subject}&category=${category}&pageSize=${pageSize}&sort=${sort}`
+      )
+      .then((response) => response.data)
       .then(({ totalPages, data }) => {
         setReport(data);
         setNumberOfPages(totalPages);
@@ -71,7 +71,7 @@ function AdminReport() {
   };
   const deleteReport = async (id) => {
     try {
-      await axios.delete(`http://${getApiUrl()}/reports/${id}`);
+      await axios.delete(`/reports/${id}`);
       getReports();
       alertsubmit();
     } catch (error) {

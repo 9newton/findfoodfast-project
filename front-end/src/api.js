@@ -1,3 +1,3 @@
 export const getApiUrl = () => {
-  return "18.181.83.221";
+  return "https://18.181.83.221";
 };

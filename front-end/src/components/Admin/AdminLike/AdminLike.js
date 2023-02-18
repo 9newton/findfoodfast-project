@@ -55,10 +55,11 @@ function AdminLike() {
 
   // Express
   const getRestaurants = async () => {
-    fetch(
-      `http://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}&sort=${sort}`
-    )
-      .then((response) => response.json())
+    axios
+      .get(
+        `/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}&sort=${sort}`
+      )
+      .then((response) => response.data)
       .then(({ totalPages, data, totalData }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
@@ -72,7 +73,7 @@ function AdminLike() {
   };
   const resetRating = async () => {
     try {
-      await axios.put(`http://${getApiUrl()}/restaurants/resetRating`);
+      await axios.put(`/restaurants/resetRating`);
       getRestaurants();
       alertsubmit();
     } catch (error) {
@@ -177,7 +178,6 @@ function AdminLike() {
             <Form.Select
               className="soi-btn pointer mt-4 mb-2 mt-md-0 text-center"
               aria-label="Select Alley"
-              value={tag}
               onChange={handleTagChange}
             >
               <option selected hidden>
@@ -204,7 +204,6 @@ function AdminLike() {
             <Form.Select
               className="soi-btn pointer mt-0 mb-4 mt-md-0 text-center"
               aria-label="Select Alley"
-              value={alley}
               onChange={handleAlleyChange}
             >
               <option selected hidden>

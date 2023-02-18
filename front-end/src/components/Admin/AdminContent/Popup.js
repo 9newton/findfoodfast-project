@@ -61,7 +61,7 @@ const Popup = () => {
   const saveRestaurant = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://${getApiUrl()}/restaurants`, {
+      await axios.post(`/restaurants`, {
         coverImg,
         name,
         food,

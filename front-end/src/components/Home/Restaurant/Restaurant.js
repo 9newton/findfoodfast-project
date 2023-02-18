@@ -14,9 +14,7 @@ function Restaurant() {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
   const fetchrestaurantsData = useCallback(async (_id) => {
-    const response = await axios.get(
-      `http://${getApiUrl()}/restaurants/${_id}`
-    );
+    const response = await axios.get(`/restaurants/${_id}`);
     setRestaurant(response.data);
   }, []);
 

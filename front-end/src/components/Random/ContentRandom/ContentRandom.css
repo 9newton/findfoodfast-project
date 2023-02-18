@@ -61,7 +61,7 @@
 
 @media screen and (max-width: 480px) {
   .img-random {
-    width: 100%;
+    width: 50%;
   }
   .content-wording {
     font-size: 20px;

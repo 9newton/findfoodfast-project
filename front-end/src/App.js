@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -22,14 +22,20 @@ import { getApiUrl } from "./api.js";
 
 function App() {
   const hasCountedVisits = useRef(false);
+  const [isInit, setIsInit] = useState(false);
 
   const countVisits = async () => {
     try {
-      await axios.post(`http://${getApiUrl()}/countVisitsWeb`);
+      await axios.post(`/countVisitsWeb`);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    axios.defaults.baseURL = getApiUrl();
+    setIsInit(true);
+  }, []);
 
   const infoWebSite = () => {
     toast.info(
@@ -47,12 +53,16 @@ function App() {
   };
 
   useEffect(() => {
-    if (!hasCountedVisits.current) {
+    if (!hasCountedVisits.current && isInit) {
       hasCountedVisits.current = true;
       infoWebSite();
       countVisits();
     }
-  }, []);
+  }, [isInit]);
+
+  if (!isInit) {
+    return null;
+  }
 
   return (
     <div className="App">

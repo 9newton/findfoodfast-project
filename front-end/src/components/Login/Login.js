@@ -25,10 +25,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        `http://${getApiUrl()}/login`,
-        userData
-      );
+      const response = await axios.post(`/login`, userData);
       localStorage.setItem("token", response.data.token);
       navigate("/admin/dashboard");
     } catch (error) {

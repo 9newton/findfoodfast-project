@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaChartLine } from "react-icons/fa";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
-import { getApiUrl } from "../../../api.js";
+import axios from "axios";
 
 function AdminDashboard() {
   // The total number of visitor Count Website
@@ -53,44 +53,36 @@ function AdminDashboard() {
   };
   // Get Visitor Count Website
   const getVisitorCount = async () => {
-    const response = await fetch(`http://${getApiUrl()}/visitor`);
-    if (response.ok) {
-      const visitorCount = await response.json();
+    try {
+      const response = await axios.get(`/visitor`);
+      const visitorCount = await response.data;
       setVisitorCountWeb(visitorCount);
-    } else {
-      console.error("Request failed with status: " + response.status);
+    } catch (error) {
+      console.error("Request failed with status: " + error);
     }
   };
   // Get All Restaurants
   const getAllRestaurants = async () => {
-    const response = await fetch(
-      `http://${getApiUrl()}/adminDashboard/countRestaurant`
-    );
-    const AllRestaurant = await response.json();
+    const response = await axios.get(`/adminDashboard/countRestaurant`);
+    const AllRestaurant = await response.data;
     setRestaurants(AllRestaurant.countRestaurant);
   };
   // Get Top Rating Restaurants
   const getTopRating = async () => {
-    const response = await fetch(
-      `http://${getApiUrl()}/adminDashboard/topRating`
-    );
-    const topRestaurant = await response.json();
+    const response = await axios.get(`/adminDashboard/topRating`);
+    const topRestaurant = await response.data;
     setTopRating(topRestaurant);
   };
   // Get Most View Restaurants
   const getMostView = async () => {
-    const response = await fetch(
-      `http://${getApiUrl()}/adminDashboard/mostView`
-    );
-    const mostViewRestaurant = await response.json();
+    const response = await axios.get(`/adminDashboard/mostView`);
+    const mostViewRestaurant = await response.data;
     setMostView(mostViewRestaurant);
   };
   // Get the total number of A La Carte
   const getCountWithTag = async () => {
-    const response = await fetch(
-      `http://${getApiUrl()}/adminDashboard/countWithTag`
-    );
-    const countWithTag = await response.json();
+    const response = await axios.get(`/adminDashboard/countWithTag`);
+    const countWithTag = await response.data;
     setALaCarte(countWithTag.countALaCarte);
     setNoodle(countWithTag.countNoodle);
     setBeverage(countWithTag.countBeverage);

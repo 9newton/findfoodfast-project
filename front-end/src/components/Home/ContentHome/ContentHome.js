@@ -10,11 +10,14 @@ import {
   Col,
   Button,
   Image,
+  DropdownButton,
+  Dropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import Pagination from "react-bootstrap/Pagination";
 import { getApiUrl } from "../../../api.js";
+import axios from "axios";
 
 function Content() {
   // Get Data
@@ -43,10 +46,11 @@ function Content() {
   };
 
   const getRestaurants = async () => {
-    fetch(
-      `http://${getApiUrl()}/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
-    )
-      .then((response) => response.json())
+    axios
+      .get(
+        `/restaurants?page=${pageNumber}&search=${searchInput}&tag=${tag}&alley=${alley}&pageSize=${pageSize}`
+      )
+      .then((response) => response.data)
       .then(({ totalPages, data }) => {
         setRestaurant(data);
         setNumberOfPages(totalPages);
@@ -69,7 +73,7 @@ function Content() {
   };
   const scrollUp = () => {
     window.scrollTo({
-      top: 680,
+      top: 1000,
       behavior: "smooth",
     });
   };
@@ -77,87 +81,107 @@ function Content() {
   return (
     <div id="search" className="content-home">
       <div className="input">
-        <h1 className="search-head mt-5 mt-xl-5 mb-4 mb-xl-5">
+        <h1 className="search-head mt-5 mt-xl-5 mb-1 mb-xl-5">
           วันนี้กินอะไรดี?
         </h1>
-        <div className="col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
-          <InputGroup className="mb-3">
-            <select
-              id="input-group-dropdown-1"
-              className="text-center"
-              name="tag"
-              value={tag}
-              onChange={(e) => setTag(e.target.value) & resetPageNumber()}
+        <Container>
+          <Row>
+            <Col
+              xs={{ span: 12, offset: 0 }}
+              md={{ span: 10, offset: 1 }}
+              xl={{ span: 8, offset: 2 }}
+              xxl={{ span: 8, offset: 2 }}
+              className="mt-4 form"
             >
-              <option value="">ทั้งหมด</option>
-              <option option value="อาหารจานเดียว">
-                อาหารจานเดียว
-              </option>
-              <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
-              <option value="สเต็ก">สเต็ก</option>
-              <option value="หมูกะทะ">หมูกะทะ</option>
-              <option value="ชาบู">ชาบู</option>
-              <option value="ของทานเล่น">ของทานเล่น</option>
-              <option value="ของหวาน">ของหวาน</option>
-              <option value="เครื่องดื่ม">เครื่องดื่ม</option>
-              <option value="ผลไม้">ผลไม้</option>
-            </select>
+              <Form.Control
+                className="input-search text-center"
+                placeholder="ค้นหาชื่อร้านอาหาร หรือ อาหารต้องการ"
+                name="searchInput"
+                value={searchInput}
+                onChange={(e) =>
+                  setSearchInput(e.target.value) & resetPageNumber()
+                }
+              />
+            </Col>
+          </Row>
 
-            <Form.Control
-              className="input-search"
-              placeholder="ค้นหาชื่อร้านอาหาร หรือ ชื่ออาหาร"
-              name="searchInput"
-              value={searchInput}
-              onChange={(e) =>
-                setSearchInput(e.target.value) & resetPageNumber()
-              }
-            />
-          </InputGroup>
-        </div>
-      </div>
-
-      <div className="col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
-        <Form.Select
-          className="select"
-          aria-label="Select Alley"
-          name="alley"
-          value={alley}
-          onChange={(e) => setAlley(e.target.value) & resetPageNumber()}
-        >
-          <option className="text-center" selected hidden>
-            เลือกซอย
-          </option>
-          <option className="text-center" value="">
-            ทั้งหมด
-          </option>
-          <option className="text-center" value="ซอยสะพานชมพู">
-            ซอยสะพานชมพู
-          </option>
-          <option className="text-center" value="ซอยมาลี">
-            ซอยมาลี
-          </option>
-          <option className="text-center" value="ซอยซูม">
-            ซอยซูม
-          </option>
-          <option className="text-center" value="ซอย 4B">
-            ซอย 4B
-          </option>
-          <option className="text-center" value="ซอยหมูแฮม">
-            ซอยหมูแฮม
-          </option>
-          <option className="text-center" value="ซอย RS">
-            ซอย RS
-          </option>
-          <option className="text-center" value="ซอยพรธิสาร">
-            ซอยพรธิสาร
-          </option>
-          <option className="text-center" value="ซอย Icon">
-            ซอย Icon
-          </option>
-          <option className="text-center" value="ซอยอีสเทิร์น">
-            ซอยอีสเทิร์น
-          </option>
-        </Form.Select>
+          <Row>
+            <Col
+              xs={{ span: 6, offset: 0 }}
+              md={{ span: 5, offset: 1 }}
+              xl={{ span: 4, offset: 2 }}
+              xxl={{ span: 4, offset: 2 }}
+              className="mt-4 form-search-1"
+            >
+              <Form.Select
+                className="select-tag text-center"
+                aria-label="Select Alley"
+                value={tag}
+                onChange={(e) => setTag(e.target.value) & resetPageNumber()}
+              >
+                <option option value="">
+                  หมวดหมู่ทั้งหมด
+                </option>
+                <option option value="อาหารจานเดียว">
+                  อาหารจานเดียว
+                </option>
+                <option value="ก๋วยเตี๋ยว">ก๋วยเตี๋ยว</option>
+                <option value="สเต็ก">สเต็ก</option>
+                <option value="หมูกะทะ">หมูกะทะ</option>
+                <option value="ชาบู">ชาบู</option>
+                <option value="ของทานเล่น">ของทานเล่น</option>
+                <option value="ของหวาน">ของหวาน</option>
+                <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                <option value="ผลไม้">ผลไม้</option>
+              </Form.Select>
+            </Col>
+            <Col
+              xs={{ span: 6, offset: 0 }}
+              md={{ span: 5, offset: 0 }}
+              xl={{ span: 4, offset: 0 }}
+              xxl={{ span: 4, offset: 0 }}
+              className="mt-4 form-search-2"
+            >
+              <Form.Select
+                className="select"
+                aria-label="Select Alley"
+                value={alley}
+                onChange={(e) => setAlley(e.target.value) & resetPageNumber()}
+              >
+                <option className="text-center" value="">
+                  ซอยทั้งหมด
+                </option>
+                <option className="text-center" value="ซอยสะพานชมพู">
+                  ซอยสะพานชมพู
+                </option>
+                <option className="text-center" value="ซอยมาลี">
+                  ซอยมาลี
+                </option>
+                <option className="text-center" value="ซอยซูม">
+                  ซอยซูม
+                </option>
+                <option className="text-center" value="ซอย 4B">
+                  ซอย 4B
+                </option>
+                <option className="text-center" value="ซอยหมูแฮม">
+                  ซอยหมูแฮม
+                </option>
+                <option className="text-center" value="ซอย RS">
+                  ซอย RS
+                </option>
+                <option className="text-center" value="ซอยพรธิสาร">
+                  ซอยพรธิสาร
+                </option>
+                <option className="text-center" value="ซอย Icon">
+                  ซอย Icon
+                </option>
+                <option className="text-center" value="ซอยอีสเทิร์น">
+                  ซอยอีสเทิร์น
+                </option>
+              </Form.Select>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
       <div>

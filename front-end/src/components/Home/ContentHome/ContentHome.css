@@ -82,6 +82,13 @@
 .show-detail {
   padding: 0px;
 }
+.form-search-1 {
+  padding-right: 0;
+}
+
+.form-search-2 {
+  padding-left: 0;
+}
 
 @media screen and (max-width: 480px) {
   .content-con {

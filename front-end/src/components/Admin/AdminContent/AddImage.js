@@ -8,7 +8,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import { getApiUrl } from "../../../api.js";
 
 const AddImage = () => {
   const [name, setName] = useState("");
@@ -23,9 +22,7 @@ const AddImage = () => {
   }, []);
 
   const getRestaurantById = async () => {
-    const response = await axios.get(
-      `http://${getApiUrl()}/restaurants/${id}`
-    );
+    const response = await axios.get(`/restaurants/${id}`);
     setCoverImg(response.data.coverImg);
     setName(response.data.name);
     setAlley(response.data.alley);
@@ -39,10 +36,7 @@ const AddImage = () => {
       for (let i = 0; i < file.length; i++) {
         formData.append("images", file[i]);
       }
-      await axios.post(
-        `http://${getApiUrl()}/restaurants/upload/${id}/${alley}`,
-        formData
-      );
+      await axios.post(`/restaurants/upload/${id}/${alley}`, formData);
       navigate("/admin/manageRestaurant");
     } catch (error) {
       console.log(error);
@@ -120,7 +114,10 @@ const AddImage = () => {
                 </Card.Body>
               </Card>
               <Row className="mt-3">
-                <button className="col-12 mt-md-4 add-btn pointer" type="submit">
+                <button
+                  className="col-12 mt-md-4 add-btn pointer"
+                  type="submit"
+                >
                   เพิ่มรูปภาพ
                 </button>
               </Row>

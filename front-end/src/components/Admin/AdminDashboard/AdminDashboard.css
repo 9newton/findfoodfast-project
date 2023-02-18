@@ -35,6 +35,9 @@
   display: flex;
   align-items: center;
 }
+.top-view {
+  font-size: 25px;
+}
 .card-dashboard {
   min-height: 148px;
   color: white;

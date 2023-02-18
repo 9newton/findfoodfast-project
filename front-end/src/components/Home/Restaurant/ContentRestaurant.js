@@ -52,13 +52,10 @@ function ContentRestaurant({ restaurant }) {
 
       const selectedRating = point[newRating];
 
-      await axios.put(
-        `http://${getApiUrl()}/restaurants/rating/${restaurant._id}`,
-        {
-          prevRating: "none",
-          updateRating: selectedRating,
-        }
-      );
+      await axios.put(`/restaurants/rating/${restaurant._id}`, {
+        prevRating: "none",
+        updateRating: selectedRating,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +76,7 @@ function ContentRestaurant({ restaurant }) {
   const countVisits = async () => {
     try {
       const response = await axios.put(
-        `http://${getApiUrl()}/restaurants/countVisits/${restaurant._id}`
+        `/restaurants/countVisits/${restaurant._id}`
       );
     } catch (error) {
       console.error(error);
