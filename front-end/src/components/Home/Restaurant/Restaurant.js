@@ -8,7 +8,6 @@ import Header from "../../Header";
 import Footer from "../../Footer";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { getApiUrl } from "../../../api.js";
 
 function Restaurant() {
   const { id } = useParams();

@@ -20,9 +20,8 @@ import {
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getApiUrl } from "../../../api.js";
 
 function ContentRestaurant({ restaurant }) {
   const [show, setShow] = useState(false);
@@ -119,7 +118,6 @@ function ContentRestaurant({ restaurant }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer />
       <h1 className="content-head mb-4 mt-0 mt-md-0">ร้านอาหาร</h1>
       <Container>
         <Row>
