@@ -1,3 +1,3 @@
 export const getApiUrl = () => {
-  return "https://18.181.83.221";
+  return "https://www.find-fast-food-api.tech";
 };

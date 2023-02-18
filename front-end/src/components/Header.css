@@ -1,5 +1,5 @@
 .container {
-  max-width: 1600px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 .header {
@@ -79,6 +79,12 @@
   }
   .img-logo {
     width: 150px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .container {
+    max-width: 1700px;
   }
 }
 
