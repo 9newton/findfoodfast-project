@@ -13,11 +13,6 @@ import {
   FaPlus,
   FaEdit,
   FaTrash,
-  FaBars,
-  FaHome,
-  FaChartLine,
-  FaStar,
-  FaInbox,
   FaUtensils,
   FaMapMarkedAlt,
   FaRegTimesCircle,
@@ -29,16 +24,12 @@ import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import MenuAdmin from "../AdminMenu/MenuAdmin";
-import { getApiUrl } from "../../../api.js";
 
 function Content() {
   // Get Data
   const [restaurants, setRestaurant] = useState([]);
   // Delete Data
   const [restaurantId, setRestaurantId] = useState();
-  // Nav
-  const [show, setShow] = useState(false);
-  const [open, setOpen] = useState(false);
   // Filter And Search
   const [searchInput, setSearchInput] = useState("");
   const [tag, setTag] = useState("");
@@ -49,9 +40,18 @@ function Content() {
   const [numberOfPages, setNumberOfPages] = useState(0);
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   const [showPagination, setShowPagination] = React.useState(true);
-  // Modal
+  // Modal of Delete
+  const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+  // Modal of Images
+  const [showModal, setShowModal] = useState(false);
+  const handleClose2 = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+  // Data for Modal Images
+  const [imageURL, setImageURL] = useState("");
+  const [menuURL, setMenuURL] = useState([]);
+  const [nameInModal, setNameInModal] = useState("");
 
   useEffect(() => {
     getRestaurants();
@@ -270,11 +270,24 @@ function Content() {
                             <FaTrash className="text-danger" />
                           </Link>
                         </td>
-                        <td>
-                          <Link to={data.coverImg}>
-                            <Image src={data.coverImg} className="img-avatar" />
-                          </Link>
-                        </td>
+                        {data.coverImg == "" ? (
+                          <td className="text-danger">
+                            <FaRegTimesCircle />
+                          </td>
+                        ) : (
+                          <td>
+                            <Image
+                              src={data.coverImg}
+                              className="img-avatar pointer"
+                              onClick={() => {
+                                setNameInModal(data.name);
+                                setImageURL(data.coverImg);
+                                setMenuURL(data.images);
+                                handleShow();
+                              }}
+                            />
+                          </td>
+                        )}
                         <td>{data.name}</td>
                         <td>{data.food}</td>
                         <td>
@@ -296,13 +309,19 @@ function Content() {
                           )}
                         </td>
                         <td>{data.ratePrice}</td>
-                        <td>
-                          {data.tel !== "-" && <div>Tel: {data.tel}</div>}
-                          {data.line !== "-" && <div>Line: {data.line}</div>}
-                          {data.facebook !== "-" && (
-                            <div>FB: {data.facebook}</div>
-                          )}
-                        </td>
+                        {data.tel == "" && data.line == "" && data.facebook == "" ? (
+                          <td className="text-danger">
+                            <FaRegTimesCircle />
+                          </td>
+                        ) : (
+                          <td>
+                            {data.tel !== "-" && <div>Tel: {data.tel}</div>}
+                            {data.line !== "-" && <div>Line: {data.line}</div>}
+                            {data.facebook !== "-" && (
+                              <div>FB: {data.facebook}</div>
+                            )}
+                          </td>
+                        )}
                         <td>
                           {data.delivery.map((delivery, indexDelivery) =>
                             data.delivery.length - 1 === indexDelivery ? (
@@ -352,6 +371,41 @@ function Content() {
           </Col>
         </Row>
       </Container>
+      {/* Modal */}
+      {/* Modal Images */}
+      {/* <Button onClick={handleShow}>Open Modal</Button> */}
+      <Modal show={showModal} onHide={handleClose2} centered>
+        <Modal.Header closeButton>
+          <Modal.Title className="content-head">{nameInModal}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5 className="name">ภาพหน้าร้าน</h5>
+          <p className="text-center">
+            <Image src={imageURL} className="img-show" />
+          </p>
+          <h5 className="name">ภาพเมนูอาหาร</h5>
+          <p className="text-center">
+            {menuURL && menuURL.map((imageUrl, index) => (
+              <Image
+                src={imageUrl}
+                key={index}
+                alt={`Image ${index}`}
+                className="img-show-menu mx-2 mb-2"
+              />
+            ))}
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="outline-danger"
+            className="btn-modal mt-1 mt-xl-0"
+            onClick={handleClose2}
+          >
+            ปิด
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/* Modal Delete */}
       <Modal
         show={open}
         size="lg"

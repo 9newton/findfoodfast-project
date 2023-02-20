@@ -102,6 +102,21 @@ th {
   height: auto;
   border-radius: 10px;
 }
+.img-avatar:hover {
+  opacity: 0.5;
+}
+
+.img-show {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.img-show-menu {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
 
 .add-manage-btn {
   height: 50px;

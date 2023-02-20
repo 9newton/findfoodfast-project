@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getApiUrl } from "../../../api.js";
 
 const Popup = () => {
   const [coverImg, setCoverImg] = useState("");
