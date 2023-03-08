@@ -350,6 +350,9 @@ const Popup = () => {
                         <option className="text-center" value="ซอยอีสเทิร์น">
                           ซอยอีสเทิร์น
                         </option>
+                        <option className="text-center" value="ร้านอาหารออนไลน์">
+                          ร้านอาหารออนไลน์
+                        </option>
                       </Form.Select>
                     </Col>
 

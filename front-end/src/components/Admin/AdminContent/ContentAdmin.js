@@ -194,6 +194,7 @@ function Content() {
               <option value="ซอยพรธิสาร">ซอยพรธิสาร</option>
               <option value="ซอย Icon">ซอย Icon</option>
               <option value="ซอยอีสเทิร์น">ซอยอีสเทิร์น</option>
+              <option value="ร้านอาหารออนไลน์">ร้านอาหารออนไลน์</option>
             </Form.Select>
           </Col>
         </Row>

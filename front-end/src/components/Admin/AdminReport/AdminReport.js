@@ -108,7 +108,7 @@ function AdminReport() {
             className="mt-md-4"
           >
             <h1 className="content-head-admin mb-4 mt-4 mt-md-0">
-              <FaInbox className="mb-1" /> แจ้งปัญหา
+              <FaInbox className="mb-1" /> แจ้งข้อมูล
             </h1>
           </Col>
         </Row>

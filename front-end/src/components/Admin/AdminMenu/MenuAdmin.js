@@ -77,7 +77,7 @@ const MenuAdmin = () => {
                     isActive ? "link-active" : "link"
                   }
                 >
-                  แจ้งปัญหา
+                  แจ้งข้อมูล
                 </NavLink>
               </li>
               <Modal
